@@ -1,0 +1,28 @@
+# The fortran modules provided by this target.
+provides
+ angdata_i.mod
+ densnew_i.mod
+ densnew_seltz_i.mod
+ densread_i.mod
+ densread_seltz_i.mod
+ edensityfit_i.mod
+ engout_i.mod
+ getmixblock_i.mod
+ getsmd_i.mod
+ polint_i.mod
+ rint_sms2_i.mod
+ rint_sms3_i.mod
+ rintdens_i.mod
+ rintdensvec_i.mod
+ rinti_nms_i.mod
+ ris_c.mod
+ ris_cal_i.mod
+ setdbg_i.mod
+ setsum_i.mod
+ sigma_1_i.mod
+ sigma_2_i.mod
+ smsnew_i.mod
+ smsread_i.mod
+ strsum_i.mod
+ teilst_c.mod
+ vinti_i.mod
