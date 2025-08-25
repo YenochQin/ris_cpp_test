@@ -1,0 +1,50 @@
+ Number of eigenvalues:   2
+
+
+ Level  J Parity  Energy
+   1      1/2 -        -0.4191518990D+04  (a.u.)
+   1      3/2 -        -0.4169841275D+04  (a.u.)
+
+
+ Level  J Parity  Normal mass shift parameter
+
+                             <K^1>             <K^2+K^3>         <K^1+K^2+K^3>
+   1      1/2 -         0.5925078416D+04   -0.1959332355D+04    0.3965746061D+04  (a.u.)
+                        0.2138646632D+08   -0.7072175669D+07    0.1431429065D+08  (GHz u)
+
+                             <K^1>             <K^2+K^3>         <K^1+K^2+K^3>
+   1      3/2 -         0.5845877515D+04   -0.1899506666D+04    0.3946370849D+04  (a.u.)
+                        0.2110059206D+08   -0.6856235897D+07    0.1424435616D+08  (GHz u)
+
+
+ Level  J Parity  Specific mass shift parameter
+
+                             <K^1>             <K^2+K^3>         <K^1+K^2+K^3>
+   1      1/2 -        -0.3231766232D+03    0.1075904728D+03   -0.2155861504D+03  (a.u.)
+                       -0.1166500337D+07    0.3883459191D+06   -0.7781544176D+06  (GHz u)
+
+                             <K^1>             <K^2+K^3>         <K^1+K^2+K^3>
+   1      3/2 -        -0.2605893459D+03    0.2821814470D+02   -0.2323712012D+03  (a.u.)
+                       -0.9405926602D+06    0.1018528969D+06   -0.8387397633D+06  (GHz u)
+
+
+ Level  J Parity  Electron density in atomic units
+
+                        Dens. (a.u.)
+   1      1/2 -         0.3904510838D+06
+   1      3/2 -         0.3895135826D+06
+
+
+ Level  J Parity  Field shift electronic factors and average point discrepancy in fit
+
+                        F0 (GHz/fm^2)       F2 (GHz/fm^4)       F4 (GHz/fm^6)       F6 (GHz/fm^8)       Disc. (per mille)
+   1      1/2 -         0.1152867143D+06   -0.9433317043D+02    0.3045946272D+00   -0.6029757809D-03    0.0021
+   1      3/2 -         0.1150099026D+06   -0.9411717330D+02    0.3038888853D+00   -0.6015790376D-03    0.0021
+
+
+ Level  J Parity  Field shift electronic factors (corrected for varying density inside nucleus)
+
+                        F0VED0 (GHz/fm^2)   F0VED1 (GHz/fm^4)
+   1      1/2 -         0.1104995761D+06   -0.8100872521D+02
+   1      3/2 -         0.1102337017D+06   -0.8082409378D+02
+

@@ -1,0 +1,50 @@
+
+ REFERENCE ISOTOPE DATA FROM ISODATA
+ Atomic number:  60.000000
+ Fermi nucleus: 
+             c:   5.823175 fm
+         r_rms:   4.912300 fm
+             t:   2.300000 fm
+
+ INPUT ISOTOPE DATA
+                Isotope 1    Isotope 2
+    Mass [amu]: 142.000000   150.000000
+    r_rms [fm]:   4.912300     5.040000
+        t [fm]:   2.300000     2.300000
+         omega:   0.000000     0.000000
+          b_20:   0.000000     0.000000
+          b_40:   0.000000     0.000000
+
+ NUCLEAR RADIAL MOMENTS
+                Isotope 1    Isotope 2     Isotope 1 - Isotope 2
+  <r^2> [fm^2]: 2.41307D+01  2.54016D+01   -1.27091D+00
+  <r^4> [fm^4]: 7.60906D+02  8.39120D+02   -7.82141D+01
+  <r^6> [fm^6]: 2.88468D+04  3.31530D+04   -4.30613D+03
+  <r^8> [fm^8]: 1.28426D+06  1.52909D+06   -2.44823D+05
+
+ LINE MASS SHIFT PARAMETERS
+
+ Upper level             Lower level             Energy (cm-1)   NMS-S (GHz u)      NMS (GHz u)      SMS (GHz u)        MS (GHz u)
+
+1s(2).2p_2P   1/2 -     1s(2).2s_2S   1/2 +       1125860.31    -1.8515912D+04    -1.5990960D+04    -8.1747805D+05    -8.3346901D+05
+1s(2).2p_2P   3/2 -     1s(2).2s_2S   1/2 +       5883568.81    -9.6761243D+04    -8.5925450D+04    -8.7806340D+05    -9.6398885D+05
+
+ LINE FIELD SHIFT PARAMETERS
+
+ Upper level             Lower level             Energy (cm-1)   F0 (GHz fm-2)     F2 (GHz fm-4)     F4 (GHz fm-6)     F6 (GHz fm-8)
+
+1s(2).2p_2P   1/2 -     1s(2).2s_2S   1/2 +       1125860.31    -7.8821485D+03     6.4827702D+00    -2.0905089D-02     4.1383518D-05
+1s(2).2p_2P   3/2 -     1s(2).2s_2S   1/2 +       5883568.81    -8.1589602D+03     6.6987673D+00    -2.1610831D-02     4.2780261D-05
+
+ Upper level             Lower level             Energy (cm-1) F0VED0 (GHz fm-2) F0VED1 (GHz fm-4)
+
+1s(2).2p_2P   1/2 -     1s(2).2s_2S   1/2 +       1125860.31    -7.5530881D+03     5.5698877D+00
+1s(2).2p_2P   3/2 -     1s(2).2s_2S   1/2 +       5883568.81    -7.8189625D+03     5.7545191D+00
+
+ LINE ISOTOPE SHIFT ENERGIES
+
+ Upper level             Lower level             Energy (cm-1)      MS (GHz)         FS (GHz)          IS (GHz)
+
+1s(2).2p_2P   1/2 -     1s(2).2s_2S   1/2 +       1125860.31     3.1304001D+02    -9.5903356D+03    -9.2772956D+03
+1s(2).2p_2P   3/2 -     1s(2).2s_2S   1/2 +       5883568.81     3.6206154D+02    -9.9279410D+03    -9.5658795D+03
+

@@ -1,0 +1,38 @@
+ Number of eigenvalues:   1
+
+
+ Level  J Parity  Energy
+   1      1/2 +        -0.4196648787D+04  (a.u.)
+
+
+ Level  J Parity  Normal mass shift parameter
+
+                             <K^1>             <K^2+K^3>         <K^1+K^2+K^3>
+   1      1/2 +         0.6018994401D+04   -0.2048818074D+04    0.3970176327D+04  (a.u.)
+                        0.2172545441D+08   -0.7395172798D+07    0.1433028161D+08  (GHz u)
+
+
+ Level  J Parity  Specific mass shift parameter
+
+                             <K^1>             <K^2+K^3>         <K^1+K^2+K^3>
+   1      1/2 +         0.1750187972D+02   -0.6607343709D+01    0.1089453601D+02  (a.u.)
+                        0.6317272698D+05   -0.2384909089D+05    0.3932363609D+05  (GHz u)
+
+
+ Level  J Parity  Electron density in atomic units
+
+                        Dens. (a.u.)
+   1      1/2 +         0.4171462103D+06
+
+
+ Level  J Parity  Field shift electronic factors and average point discrepancy in fit
+
+                        F0 (GHz/fm^2)       F2 (GHz/fm^4)       F4 (GHz/fm^6)       F6 (GHz/fm^8)       Disc. (per mille)
+   1      1/2 +         0.1231688628D+06   -0.1008159406D+03    0.3254997160D+00   -0.6443592985D-03    0.0021
+
+
+ Level  J Parity  Field shift electronic factors (corrected for varying density inside nucleus)
+
+                        F0VED0 (GHz/fm^2)   F0VED1 (GHz/fm^4)
+   1      1/2 +         0.1180526642D+06   -0.8657861286D+02
+

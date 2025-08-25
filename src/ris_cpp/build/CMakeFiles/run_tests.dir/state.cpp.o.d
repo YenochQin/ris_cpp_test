@@ -1,4 +1,3 @@
 CMakeFiles/run_tests.dir/state.cpp.o: \
- /home/qqqyy/AppFiles/ris_test/src/ris_cpp/state.cpp \
- /usr/include/stdc-predef.h \
- /home/qqqyy/AppFiles/ris_test/src/ris_cpp/state.hpp
+  /Users/yiqin/Documents/ProjectFiles/ris_cpp_test/src/ris_cpp/state.cpp \
+  /Users/yiqin/Documents/ProjectFiles/ris_cpp_test/src/ris_cpp/state.hpp
