@@ -8,7 +8,11 @@
 #include "summary.hpp"
 #include "constants.hpp"
 #include "machine.hpp"
+#include "facts.hpp"
+#include "smd.hpp"
 #include "csl.hpp"
+#include "mixblock.hpp"
+#include "ris_cal.hpp"
 
 
 int main() {
@@ -46,10 +50,22 @@ int main() {
     setsum(name, nci);
     int ncore_not_used = 0;
     setcsla(name, ncore_not_used);
-    //   CALL GETSMD(NAME)
-    //   CALL GETMIXBLOCK(NAME,NCI)
-    //   CALL FACTT
-    //   CALL RIS_CAL(NAME)
+    getsmd(name);
+    
+    // Get mixing coefficients
+    MixingData mixing_data;
+    if (!getmixblock(name, nci, mixing_data)) {
+        std::cerr << "Failed to read mixing coefficients" << std::endl;
+        return 1;
+    }
+    
+    factt();
+    
+    // Perform RIS calculation
+    if (!ris_cal(name, mixing_data)) {
+        std::cerr << "RIS calculation failed" << std::endl;
+        return 1;
+    }
 
     std::cout << "RIS: Execution complete." << std::endl;
 

@@ -233,6 +233,114 @@ debug.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/debug.cpp.s
 .PHONY : debug.cpp.s
 
+def.o: def.cpp.o
+.PHONY : def.o
+
+# target to build an object file
+def.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/def.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/def.cpp.o
+.PHONY : def.cpp.o
+
+def.i: def.cpp.i
+.PHONY : def.i
+
+# target to preprocess a source file
+def.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/def.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/def.cpp.i
+.PHONY : def.cpp.i
+
+def.s: def.cpp.s
+.PHONY : def.s
+
+# target to generate assembly for a file
+def.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/def.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/def.cpp.s
+.PHONY : def.cpp.s
+
+facts.o: facts.cpp.o
+.PHONY : facts.o
+
+# target to build an object file
+facts.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/facts.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/facts.cpp.o
+.PHONY : facts.cpp.o
+
+facts.i: facts.cpp.i
+.PHONY : facts.i
+
+# target to preprocess a source file
+facts.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/facts.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/facts.cpp.i
+.PHONY : facts.cpp.i
+
+facts.s: facts.cpp.s
+.PHONY : facts.s
+
+# target to generate assembly for a file
+facts.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/facts.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/facts.cpp.s
+.PHONY : facts.cpp.s
+
+fortran_interface.o: fortran_interface.cpp.o
+.PHONY : fortran_interface.o
+
+# target to build an object file
+fortran_interface.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/fortran_interface.cpp.o
+.PHONY : fortran_interface.cpp.o
+
+fortran_interface.i: fortran_interface.cpp.i
+.PHONY : fortran_interface.i
+
+# target to preprocess a source file
+fortran_interface.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/fortran_interface.cpp.i
+.PHONY : fortran_interface.cpp.i
+
+fortran_interface.s: fortran_interface.cpp.s
+.PHONY : fortran_interface.s
+
+# target to generate assembly for a file
+fortran_interface.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/fortran_interface.cpp.s
+.PHONY : fortran_interface.cpp.s
+
+globals.o: globals.cpp.o
+.PHONY : globals.o
+
+# target to build an object file
+globals.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/globals.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/globals.cpp.o
+.PHONY : globals.cpp.o
+
+globals.i: globals.cpp.i
+.PHONY : globals.i
+
+# target to preprocess a source file
+globals.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/globals.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/globals.cpp.i
+.PHONY : globals.cpp.i
+
+globals.s: globals.cpp.s
+.PHONY : globals.s
+
+# target to generate assembly for a file
+globals.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/globals.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/globals.cpp.s
+.PHONY : globals.cpp.s
+
 io.o: io.cpp.o
 .PHONY : io.o
 
@@ -311,6 +419,87 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+mixblock.o: mixblock.cpp.o
+.PHONY : mixblock.o
+
+# target to build an object file
+mixblock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/mixblock.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/mixblock.cpp.o
+.PHONY : mixblock.cpp.o
+
+mixblock.i: mixblock.cpp.i
+.PHONY : mixblock.i
+
+# target to preprocess a source file
+mixblock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/mixblock.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/mixblock.cpp.i
+.PHONY : mixblock.cpp.i
+
+mixblock.s: mixblock.cpp.s
+.PHONY : mixblock.s
+
+# target to generate assembly for a file
+mixblock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/mixblock.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/mixblock.cpp.s
+.PHONY : mixblock.cpp.s
+
+ris_cal.o: ris_cal.cpp.o
+.PHONY : ris_cal.o
+
+# target to build an object file
+ris_cal.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/ris_cal.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/ris_cal.cpp.o
+.PHONY : ris_cal.cpp.o
+
+ris_cal.i: ris_cal.cpp.i
+.PHONY : ris_cal.i
+
+# target to preprocess a source file
+ris_cal.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/ris_cal.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/ris_cal.cpp.i
+.PHONY : ris_cal.cpp.i
+
+ris_cal.s: ris_cal.cpp.s
+.PHONY : ris_cal.s
+
+# target to generate assembly for a file
+ris_cal.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/ris_cal.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/ris_cal.cpp.s
+.PHONY : ris_cal.cpp.s
+
+smd.o: smd.cpp.o
+.PHONY : smd.o
+
+# target to build an object file
+smd.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/smd.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/smd.cpp.o
+.PHONY : smd.cpp.o
+
+smd.i: smd.cpp.i
+.PHONY : smd.i
+
+# target to preprocess a source file
+smd.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/smd.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/smd.cpp.i
+.PHONY : smd.cpp.i
+
+smd.s: smd.cpp.s
+.PHONY : smd.s
+
+# target to generate assembly for a file
+smd.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/standalone_ris4.dir/build.make CMakeFiles/standalone_ris4.dir/smd.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/smd.cpp.s
+.PHONY : smd.cpp.s
+
 state.o: state.cpp.o
 .PHONY : state.o
 
@@ -365,29 +554,29 @@ summary.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/summary.cpp.s
 .PHONY : summary.cpp.s
 
-test/test_main.o: test/test_main.cpp.o
-.PHONY : test/test_main.o
+test/test_modern_cpp.o: test/test_modern_cpp.cpp.o
+.PHONY : test/test_modern_cpp.o
 
 # target to build an object file
-test/test_main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/test/test_main.cpp.o
-.PHONY : test/test_main.cpp.o
+test/test_modern_cpp.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/test/test_modern_cpp.cpp.o
+.PHONY : test/test_modern_cpp.cpp.o
 
-test/test_main.i: test/test_main.cpp.i
-.PHONY : test/test_main.i
+test/test_modern_cpp.i: test/test_modern_cpp.cpp.i
+.PHONY : test/test_modern_cpp.i
 
 # target to preprocess a source file
-test/test_main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/test/test_main.cpp.i
-.PHONY : test/test_main.cpp.i
+test/test_modern_cpp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/test/test_modern_cpp.cpp.i
+.PHONY : test/test_modern_cpp.cpp.i
 
-test/test_main.s: test/test_main.cpp.s
-.PHONY : test/test_main.s
+test/test_modern_cpp.s: test/test_modern_cpp.cpp.s
+.PHONY : test/test_modern_cpp.s
 
 # target to generate assembly for a file
-test/test_main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/test/test_main.cpp.s
-.PHONY : test/test_main.cpp.s
+test/test_modern_cpp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/test/test_modern_cpp.cpp.s
+.PHONY : test/test_modern_cpp.cpp.s
 
 # Help Target
 help:
@@ -409,6 +598,18 @@ help:
 	@echo "... debug.o"
 	@echo "... debug.i"
 	@echo "... debug.s"
+	@echo "... def.o"
+	@echo "... def.i"
+	@echo "... def.s"
+	@echo "... facts.o"
+	@echo "... facts.i"
+	@echo "... facts.s"
+	@echo "... fortran_interface.o"
+	@echo "... fortran_interface.i"
+	@echo "... fortran_interface.s"
+	@echo "... globals.o"
+	@echo "... globals.i"
+	@echo "... globals.s"
 	@echo "... io.o"
 	@echo "... io.i"
 	@echo "... io.s"
@@ -418,15 +619,24 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... mixblock.o"
+	@echo "... mixblock.i"
+	@echo "... mixblock.s"
+	@echo "... ris_cal.o"
+	@echo "... ris_cal.i"
+	@echo "... ris_cal.s"
+	@echo "... smd.o"
+	@echo "... smd.i"
+	@echo "... smd.s"
 	@echo "... state.o"
 	@echo "... state.i"
 	@echo "... state.s"
 	@echo "... summary.o"
 	@echo "... summary.i"
 	@echo "... summary.s"
-	@echo "... test/test_main.o"
-	@echo "... test/test_main.i"
-	@echo "... test/test_main.s"
+	@echo "... test/test_modern_cpp.o"
+	@echo "... test/test_modern_cpp.i"
+	@echo "... test/test_modern_cpp.s"
 .PHONY : help
 
 

@@ -184,6 +184,104 @@ CMakeFiles/standalone_ris4.dir/csl.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/standalone_ris4.dir/csl.cpp.s"
 	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qqqyy/AppFiles/ris_test/src/ris_cpp/csl.cpp -o CMakeFiles/standalone_ris4.dir/csl.cpp.s
 
+CMakeFiles/standalone_ris4.dir/def.cpp.o: CMakeFiles/standalone_ris4.dir/flags.make
+CMakeFiles/standalone_ris4.dir/def.cpp.o: /home/qqqyy/AppFiles/ris_test/src/ris_cpp/def.cpp
+CMakeFiles/standalone_ris4.dir/def.cpp.o: CMakeFiles/standalone_ris4.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/qqqyy/AppFiles/ris_test/src/ris_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/standalone_ris4.dir/def.cpp.o"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/standalone_ris4.dir/def.cpp.o -MF CMakeFiles/standalone_ris4.dir/def.cpp.o.d -o CMakeFiles/standalone_ris4.dir/def.cpp.o -c /home/qqqyy/AppFiles/ris_test/src/ris_cpp/def.cpp
+
+CMakeFiles/standalone_ris4.dir/def.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/standalone_ris4.dir/def.cpp.i"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qqqyy/AppFiles/ris_test/src/ris_cpp/def.cpp > CMakeFiles/standalone_ris4.dir/def.cpp.i
+
+CMakeFiles/standalone_ris4.dir/def.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/standalone_ris4.dir/def.cpp.s"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qqqyy/AppFiles/ris_test/src/ris_cpp/def.cpp -o CMakeFiles/standalone_ris4.dir/def.cpp.s
+
+CMakeFiles/standalone_ris4.dir/smd.cpp.o: CMakeFiles/standalone_ris4.dir/flags.make
+CMakeFiles/standalone_ris4.dir/smd.cpp.o: /home/qqqyy/AppFiles/ris_test/src/ris_cpp/smd.cpp
+CMakeFiles/standalone_ris4.dir/smd.cpp.o: CMakeFiles/standalone_ris4.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/qqqyy/AppFiles/ris_test/src/ris_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/standalone_ris4.dir/smd.cpp.o"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/standalone_ris4.dir/smd.cpp.o -MF CMakeFiles/standalone_ris4.dir/smd.cpp.o.d -o CMakeFiles/standalone_ris4.dir/smd.cpp.o -c /home/qqqyy/AppFiles/ris_test/src/ris_cpp/smd.cpp
+
+CMakeFiles/standalone_ris4.dir/smd.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/standalone_ris4.dir/smd.cpp.i"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qqqyy/AppFiles/ris_test/src/ris_cpp/smd.cpp > CMakeFiles/standalone_ris4.dir/smd.cpp.i
+
+CMakeFiles/standalone_ris4.dir/smd.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/standalone_ris4.dir/smd.cpp.s"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qqqyy/AppFiles/ris_test/src/ris_cpp/smd.cpp -o CMakeFiles/standalone_ris4.dir/smd.cpp.s
+
+CMakeFiles/standalone_ris4.dir/facts.cpp.o: CMakeFiles/standalone_ris4.dir/flags.make
+CMakeFiles/standalone_ris4.dir/facts.cpp.o: /home/qqqyy/AppFiles/ris_test/src/ris_cpp/facts.cpp
+CMakeFiles/standalone_ris4.dir/facts.cpp.o: CMakeFiles/standalone_ris4.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/qqqyy/AppFiles/ris_test/src/ris_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/standalone_ris4.dir/facts.cpp.o"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/standalone_ris4.dir/facts.cpp.o -MF CMakeFiles/standalone_ris4.dir/facts.cpp.o.d -o CMakeFiles/standalone_ris4.dir/facts.cpp.o -c /home/qqqyy/AppFiles/ris_test/src/ris_cpp/facts.cpp
+
+CMakeFiles/standalone_ris4.dir/facts.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/standalone_ris4.dir/facts.cpp.i"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qqqyy/AppFiles/ris_test/src/ris_cpp/facts.cpp > CMakeFiles/standalone_ris4.dir/facts.cpp.i
+
+CMakeFiles/standalone_ris4.dir/facts.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/standalone_ris4.dir/facts.cpp.s"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qqqyy/AppFiles/ris_test/src/ris_cpp/facts.cpp -o CMakeFiles/standalone_ris4.dir/facts.cpp.s
+
+CMakeFiles/standalone_ris4.dir/mixblock.cpp.o: CMakeFiles/standalone_ris4.dir/flags.make
+CMakeFiles/standalone_ris4.dir/mixblock.cpp.o: /home/qqqyy/AppFiles/ris_test/src/ris_cpp/mixblock.cpp
+CMakeFiles/standalone_ris4.dir/mixblock.cpp.o: CMakeFiles/standalone_ris4.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/qqqyy/AppFiles/ris_test/src/ris_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/standalone_ris4.dir/mixblock.cpp.o"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/standalone_ris4.dir/mixblock.cpp.o -MF CMakeFiles/standalone_ris4.dir/mixblock.cpp.o.d -o CMakeFiles/standalone_ris4.dir/mixblock.cpp.o -c /home/qqqyy/AppFiles/ris_test/src/ris_cpp/mixblock.cpp
+
+CMakeFiles/standalone_ris4.dir/mixblock.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/standalone_ris4.dir/mixblock.cpp.i"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qqqyy/AppFiles/ris_test/src/ris_cpp/mixblock.cpp > CMakeFiles/standalone_ris4.dir/mixblock.cpp.i
+
+CMakeFiles/standalone_ris4.dir/mixblock.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/standalone_ris4.dir/mixblock.cpp.s"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qqqyy/AppFiles/ris_test/src/ris_cpp/mixblock.cpp -o CMakeFiles/standalone_ris4.dir/mixblock.cpp.s
+
+CMakeFiles/standalone_ris4.dir/ris_cal.cpp.o: CMakeFiles/standalone_ris4.dir/flags.make
+CMakeFiles/standalone_ris4.dir/ris_cal.cpp.o: /home/qqqyy/AppFiles/ris_test/src/ris_cpp/ris_cal.cpp
+CMakeFiles/standalone_ris4.dir/ris_cal.cpp.o: CMakeFiles/standalone_ris4.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/qqqyy/AppFiles/ris_test/src/ris_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/standalone_ris4.dir/ris_cal.cpp.o"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/standalone_ris4.dir/ris_cal.cpp.o -MF CMakeFiles/standalone_ris4.dir/ris_cal.cpp.o.d -o CMakeFiles/standalone_ris4.dir/ris_cal.cpp.o -c /home/qqqyy/AppFiles/ris_test/src/ris_cpp/ris_cal.cpp
+
+CMakeFiles/standalone_ris4.dir/ris_cal.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/standalone_ris4.dir/ris_cal.cpp.i"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qqqyy/AppFiles/ris_test/src/ris_cpp/ris_cal.cpp > CMakeFiles/standalone_ris4.dir/ris_cal.cpp.i
+
+CMakeFiles/standalone_ris4.dir/ris_cal.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/standalone_ris4.dir/ris_cal.cpp.s"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qqqyy/AppFiles/ris_test/src/ris_cpp/ris_cal.cpp -o CMakeFiles/standalone_ris4.dir/ris_cal.cpp.s
+
+CMakeFiles/standalone_ris4.dir/globals.cpp.o: CMakeFiles/standalone_ris4.dir/flags.make
+CMakeFiles/standalone_ris4.dir/globals.cpp.o: /home/qqqyy/AppFiles/ris_test/src/ris_cpp/globals.cpp
+CMakeFiles/standalone_ris4.dir/globals.cpp.o: CMakeFiles/standalone_ris4.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/qqqyy/AppFiles/ris_test/src/ris_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/standalone_ris4.dir/globals.cpp.o"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/standalone_ris4.dir/globals.cpp.o -MF CMakeFiles/standalone_ris4.dir/globals.cpp.o.d -o CMakeFiles/standalone_ris4.dir/globals.cpp.o -c /home/qqqyy/AppFiles/ris_test/src/ris_cpp/globals.cpp
+
+CMakeFiles/standalone_ris4.dir/globals.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/standalone_ris4.dir/globals.cpp.i"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qqqyy/AppFiles/ris_test/src/ris_cpp/globals.cpp > CMakeFiles/standalone_ris4.dir/globals.cpp.i
+
+CMakeFiles/standalone_ris4.dir/globals.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/standalone_ris4.dir/globals.cpp.s"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qqqyy/AppFiles/ris_test/src/ris_cpp/globals.cpp -o CMakeFiles/standalone_ris4.dir/globals.cpp.s
+
+CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.o: CMakeFiles/standalone_ris4.dir/flags.make
+CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.o: /home/qqqyy/AppFiles/ris_test/src/ris_cpp/fortran_interface.cpp
+CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.o: CMakeFiles/standalone_ris4.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/qqqyy/AppFiles/ris_test/src/ris_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.o"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.o -MF CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.o.d -o CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.o -c /home/qqqyy/AppFiles/ris_test/src/ris_cpp/fortran_interface.cpp
+
+CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.i"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qqqyy/AppFiles/ris_test/src/ris_cpp/fortran_interface.cpp > CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.i
+
+CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.s"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qqqyy/AppFiles/ris_test/src/ris_cpp/fortran_interface.cpp -o CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.s
+
 # Object files for target standalone_ris4
 standalone_ris4_OBJECTS = \
 "CMakeFiles/standalone_ris4.dir/main.cpp.o" \
@@ -193,7 +291,14 @@ standalone_ris4_OBJECTS = \
 "CMakeFiles/standalone_ris4.dir/state.cpp.o" \
 "CMakeFiles/standalone_ris4.dir/constants.cpp.o" \
 "CMakeFiles/standalone_ris4.dir/summary.cpp.o" \
-"CMakeFiles/standalone_ris4.dir/csl.cpp.o"
+"CMakeFiles/standalone_ris4.dir/csl.cpp.o" \
+"CMakeFiles/standalone_ris4.dir/def.cpp.o" \
+"CMakeFiles/standalone_ris4.dir/smd.cpp.o" \
+"CMakeFiles/standalone_ris4.dir/facts.cpp.o" \
+"CMakeFiles/standalone_ris4.dir/mixblock.cpp.o" \
+"CMakeFiles/standalone_ris4.dir/ris_cal.cpp.o" \
+"CMakeFiles/standalone_ris4.dir/globals.cpp.o" \
+"CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.o"
 
 # External object files for target standalone_ris4
 standalone_ris4_EXTERNAL_OBJECTS =
@@ -206,10 +311,17 @@ standalone_ris4: CMakeFiles/standalone_ris4.dir/state.cpp.o
 standalone_ris4: CMakeFiles/standalone_ris4.dir/constants.cpp.o
 standalone_ris4: CMakeFiles/standalone_ris4.dir/summary.cpp.o
 standalone_ris4: CMakeFiles/standalone_ris4.dir/csl.cpp.o
+standalone_ris4: CMakeFiles/standalone_ris4.dir/def.cpp.o
+standalone_ris4: CMakeFiles/standalone_ris4.dir/smd.cpp.o
+standalone_ris4: CMakeFiles/standalone_ris4.dir/facts.cpp.o
+standalone_ris4: CMakeFiles/standalone_ris4.dir/mixblock.cpp.o
+standalone_ris4: CMakeFiles/standalone_ris4.dir/ris_cal.cpp.o
+standalone_ris4: CMakeFiles/standalone_ris4.dir/globals.cpp.o
+standalone_ris4: CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.o
 standalone_ris4: CMakeFiles/standalone_ris4.dir/build.make
 standalone_ris4: CMakeFiles/standalone_ris4.dir/compiler_depend.ts
 standalone_ris4: CMakeFiles/standalone_ris4.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/qqqyy/AppFiles/ris_test/src/ris_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable standalone_ris4"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/qqqyy/AppFiles/ris_test/src/ris_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable standalone_ris4"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/standalone_ris4.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

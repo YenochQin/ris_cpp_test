@@ -10,6 +10,13 @@ standalone_ris4: \
   CMakeFiles/standalone_ris4.dir/constants.cpp.o \
   CMakeFiles/standalone_ris4.dir/summary.cpp.o \
   CMakeFiles/standalone_ris4.dir/csl.cpp.o \
+  CMakeFiles/standalone_ris4.dir/def.cpp.o \
+  CMakeFiles/standalone_ris4.dir/smd.cpp.o \
+  CMakeFiles/standalone_ris4.dir/facts.cpp.o \
+  CMakeFiles/standalone_ris4.dir/mixblock.cpp.o \
+  CMakeFiles/standalone_ris4.dir/ris_cal.cpp.o \
+  CMakeFiles/standalone_ris4.dir/globals.cpp.o \
+  CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.o \
   /usr/lib/gcc/x86_64-redhat-linux/15/libstdc++.so \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so \
@@ -59,6 +66,20 @@ CMakeFiles/standalone_ris4.dir/constants.cpp.o:
 CMakeFiles/standalone_ris4.dir/summary.cpp.o:
 
 CMakeFiles/standalone_ris4.dir/csl.cpp.o:
+
+CMakeFiles/standalone_ris4.dir/def.cpp.o:
+
+CMakeFiles/standalone_ris4.dir/smd.cpp.o:
+
+CMakeFiles/standalone_ris4.dir/facts.cpp.o:
+
+CMakeFiles/standalone_ris4.dir/mixblock.cpp.o:
+
+CMakeFiles/standalone_ris4.dir/ris_cal.cpp.o:
+
+CMakeFiles/standalone_ris4.dir/globals.cpp.o:
+
+CMakeFiles/standalone_ris4.dir/fortran_interface.cpp.o:
 
 /usr/lib/gcc/x86_64-redhat-linux/15/libstdc++.so:
 
