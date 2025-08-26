@@ -1,4 +1,5 @@
 #include "summary.hpp"
+#include "globals.hpp"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -11,9 +12,12 @@ void setsum(const std::string& name, int nci) {
         filename = name + ".i";
     }
 
-    std::ofstream sum_file(filename);
-    if (!sum_file.is_open()) {
+    // Open the global output file stream
+    output_file.open(filename);
+    if (!output_file.is_open()) {
         std::cerr << "Error when opening " << filename << std::endl;
         exit(1);
     }
+    
+    std::cout << "Output file " << filename << " opened successfully" << std::endl;
 }

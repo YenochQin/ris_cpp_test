@@ -4,6 +4,7 @@
 #include <fstream>
 #include <iomanip>
 #include <stdexcept>
+#include <cstdint>
 
 
 bool getmixblock(const std::string& name, int nci, MixingData& mixing_data) {
@@ -26,22 +27,43 @@ bool getmixblock(const std::string& name, int nci, MixingData& mixing_data) {
             return false;
         }
 
-        // Check header
+        // Read Fortran record header: record length + "G92MIX" + record length
+        int32_t record_len_before;
+        file.read(reinterpret_cast<char*>(&record_len_before), sizeof(int32_t));
+        
         char g92mix[7] = {0};
         file.read(g92mix, 6);
+        
+        int32_t record_len_after;
+        file.read(reinterpret_cast<char*>(&record_len_after), sizeof(int32_t));
+        
+        if (record_len_before != record_len_after || record_len_before != 6) {
+            std::cerr << "Invalid Fortran record format" << std::endl;
+            file.close();
+            return false;
+        }
+        
         if (std::string(g92mix) != "G92MIX") {
             std::cerr << "Not a GRASP92 MIXing Coefficients File" << std::endl;
             file.close();
             return false;
         }
 
-        // Read main parameters
+        // Read main parameters from Fortran record
+        file.read(reinterpret_cast<char*>(&record_len_before), sizeof(int32_t));
         file.read(reinterpret_cast<char*>(&mixing_data.nelec), sizeof(int));
         file.read(reinterpret_cast<char*>(&mixing_data.ncftot), sizeof(int));
         file.read(reinterpret_cast<char*>(&mixing_data.nw), sizeof(int));
         file.read(reinterpret_cast<char*>(&mixing_data.nvectot), sizeof(int));
         file.read(reinterpret_cast<char*>(&mixing_data.nvecsiz), sizeof(int));
         file.read(reinterpret_cast<char*>(&mixing_data.nblock), sizeof(int));
+        file.read(reinterpret_cast<char*>(&record_len_after), sizeof(int32_t));
+        
+        if (record_len_before != record_len_after || record_len_before != 24) { // 6 integers * 4 bytes
+            std::cerr << "Invalid parameter record format" << std::endl;
+            file.close();
+            return false;
+        }
 
         std::cout << "   nelec  = " << mixing_data.nelec << std::endl;
         std::cout << "   ncftot = " << mixing_data.ncftot << std::endl;
@@ -69,11 +91,20 @@ bool getmixblock(const std::string& name, int nci, MixingData& mixing_data) {
         for (int jb = 1; jb <= mixing_data.nblock; ++jb) {
             int nb, ncfblk, nevblk, iatjp, iaspa;
             
+            // Read block header from Fortran record
+            file.read(reinterpret_cast<char*>(&record_len_before), sizeof(int32_t));
             file.read(reinterpret_cast<char*>(&nb), sizeof(int));
             file.read(reinterpret_cast<char*>(&ncfblk), sizeof(int));
             file.read(reinterpret_cast<char*>(&nevblk), sizeof(int));
             file.read(reinterpret_cast<char*>(&iatjp), sizeof(int));
             file.read(reinterpret_cast<char*>(&iaspa), sizeof(int));
+            file.read(reinterpret_cast<char*>(&record_len_after), sizeof(int32_t));
+            
+            if (record_len_before != record_len_after || record_len_before != 20) { // 5 integers * 4 bytes
+                std::cerr << "Invalid block header record format" << std::endl;
+                file.close();
+                return false;
+            }
 
             std::cout << std::setw(8) << nb << std::setw(8) << ncfblk 
                      << std::setw(8) << nevblk << std::setw(8) << iatjp 
@@ -84,9 +115,17 @@ bool getmixblock(const std::string& name, int nci, MixingData& mixing_data) {
             }
 
             if (nevblk > 0) {
-                // Read IVEC values for this block
+                // Read IVEC values from Fortran record
+                file.read(reinterpret_cast<char*>(&record_len_before), sizeof(int32_t));
                 for (int i = 0; i < nevblk; ++i) {
                     file.read(reinterpret_cast<char*>(&mixing_data.ivec[nvecpat + i]), sizeof(int));
+                }
+                file.read(reinterpret_cast<char*>(&record_len_after), sizeof(int32_t));
+                
+                if (record_len_before != record_len_after || record_len_before != nevblk * 4) {
+                    std::cerr << "Invalid IVEC record format" << std::endl;
+                    file.close();
+                    return false;
                 }
 
                 // Set quantum numbers for this block
@@ -95,7 +134,8 @@ bool getmixblock(const std::string& name, int nci, MixingData& mixing_data) {
                     mixing_data.iaspar[nvecpat + i] = iaspa;
                 }
 
-                // Read average energy and eigenvalues
+                // Read average energy and eigenvalues from Fortran record
+                file.read(reinterpret_cast<char*>(&record_len_before), sizeof(int32_t));
                 double block_eav;
                 file.read(reinterpret_cast<char*>(&block_eav), sizeof(double));
                 
@@ -103,17 +143,32 @@ bool getmixblock(const std::string& name, int nci, MixingData& mixing_data) {
                     file.read(reinterpret_cast<char*>(&mixing_data.eval[nvecpat + i]), sizeof(double));
                     mixing_data.eval[nvecpat + i] += block_eav; // Add average energy
                 }
+                file.read(reinterpret_cast<char*>(&record_len_after), sizeof(int32_t));
+                
+                if (record_len_before != record_len_after || record_len_before != (1 + nevblk) * 8) {
+                    std::cerr << "Invalid energy record format" << std::endl;
+                    file.close();
+                    return false;
+                }
 
                 // Update overall average energy calculation
                 eavsum += block_eav * ncfblk;
                 neavsum += ncfblk;
 
-                // Read eigenvector coefficients
+                // Read eigenvector coefficients from Fortran record
+                file.read(reinterpret_cast<char*>(&record_len_before), sizeof(int32_t));
                 for (int j = 0; j < nevblk; ++j) {
                     for (int i = 0; i < ncfblk; ++i) {
                         int index = nvecsizpat + ncfpat + i + j * mixing_data.ncftot;
                         file.read(reinterpret_cast<char*>(&mixing_data.evec[index]), sizeof(double));
                     }
+                }
+                file.read(reinterpret_cast<char*>(&record_len_after), sizeof(int32_t));
+                
+                if (record_len_before != record_len_after || record_len_before != nevblk * ncfblk * 8) {
+                    std::cerr << "Invalid eigenvector record format" << std::endl;
+                    file.close();
+                    return false;
                 }
             }
 

@@ -1,0 +1,48 @@
+ Number of eigenvalues:   2
+
+
+ Level  J Parity  Energy
+   1         1  +           -4.1915189900E+03  (a.u.)
+   2         2  +           -4.1698412753E+03  (a.u.)
+
+
+ Level  J Parity  Normal mass shift parameter
+
+                        <K^1>        <K^2+K^3><K^1+K^2+K^3>
+   1         1  +            9.7539455980E-01                -NAN                -NAN  (a.u.)
+                            3.5206695034E+03                -NAN                -NAN  (GHz u)
+
+   2         2  +            0.0000000000E+00                -NAN                -NAN  (a.u.)
+                            0.0000000000E+00                -NAN                -NAN  (GHz u)
+
+
+ Level  J Parity  Specific mass shift parameter
+
+                        <K^1>        <K^2+K^3><K^1+K^2+K^3>
+   1         1  +                        -NAN                -NAN                -NAN  (a.u.)
+                                        -NAN                -NAN                -NAN  (GHz u)
+
+   2         2  +                        -NAN                -NAN                -NAN  (a.u.)
+                                        -NAN                -NAN                -NAN  (GHz u)
+
+
+ Level  J Parity  Electron density in atomic units
+
+           Dens. (a.u.)
+   1         1  +                 1.9418501912E+05
+   2         2  +                 0.0000000000E+00
+
+
+ Level  J Parity  Field shift electronic factors and average point discrepancy in fit
+
+           F0 (GHz/fm^2)       F2 (GHz/fm^4)       F4 (GHz/fm^6)       F6 (GHz/fm^8)  Disc. (per mille)
+   1         1  +                 1.4160562323E+08    4.2481686969E+05    2.0229374747E+03    1.1800468603E+01              0.0021
+   2         2  +                           0.0000              0.0000              0.0000              0.0000              0.0021
+
+
+ Level  J Parity  Field shift electronic factors (corrected for varying density inside nucleus)
+
+       F0VED0 (GHz/fm^2)  F0VED1 (GHz/fm^4)
+   1         1  +            1.3594139830E+08   -9.5158978812E+06
+   2         2  +            0.0000000000E+00   -0.0000000000E+00
+
