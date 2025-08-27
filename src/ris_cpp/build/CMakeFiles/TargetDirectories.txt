@@ -1,5 +1,0 @@
-/home/qqqyy/AppFiles/ris_test/src/ris_cpp/build/CMakeFiles/standalone_ris4.dir
-/home/qqqyy/AppFiles/ris_test/src/ris_cpp/build/CMakeFiles/run_tests.dir
-/home/qqqyy/AppFiles/ris_test/src/ris_cpp/build/CMakeFiles/test.dir
-/home/qqqyy/AppFiles/ris_test/src/ris_cpp/build/CMakeFiles/edit_cache.dir
-/home/qqqyy/AppFiles/ris_test/src/ris_cpp/build/CMakeFiles/rebuild_cache.dir
