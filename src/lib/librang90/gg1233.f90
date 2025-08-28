@@ -26,7 +26,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, TENTH, EPS
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
@@ -41,14 +41,14 @@
 !-----------------------------------------------
       INTEGER,      INTENT(IN)               :: K1
       INTEGER,      INTENT(IN), DIMENSION(7) :: IK1,IK2,IK3,ID1,ID2,ID3
-      REAL(DOUBLE), INTENT(IN)               :: QM1,QM2,QM3,QM4
-      REAL(DOUBLE), INTENT(IN), DIMENSION(3) :: BK1,BK2,BK3,BD1,BD2,BD3
-      REAL(DOUBLE), INTENT(OUT)              :: WW
+      real(real64), INTENT(IN)               :: QM1,QM2,QM3,QM4
+      real(real64), INTENT(IN), DIMENSION(3) :: BK1,BK2,BK3,BD1,BD2,BD3
+      real(real64), INTENT(OUT)              :: WW
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER      :: IQMM1,IQMM2,IQMM3,IQMM4,IQMM34
-      REAL(DOUBLE) :: A1, C, C1, S, W
+      real(real64) :: A1, C, C1, S, W
 !-----------------------------------------------
       WW=ZERO
       IF(IK1(3) > 9) THEN

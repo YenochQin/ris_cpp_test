@@ -16,7 +16,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE FACTS_C
       IMPLICIT NONE
 !-----------------------------------------------
@@ -28,7 +28,7 @@
       INTEGER , INTENT(IN) :: L
       INTEGER , INTENT(IN) :: M
       INTEGER , INTENT(IN) :: N
-      REAL(DOUBLE) , INTENT(OUT) :: RAC
+      real(real64) , INTENT(OUT) :: RAC
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

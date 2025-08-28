@@ -15,7 +15,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO
       USE m_C,             ONLY: JLIST, JJQ1, JJQ2, JJC1, JJC2
 !-----------------------------------------------
@@ -30,12 +30,12 @@
       INTEGER, INTENT(IN)       :: JA1, KA, IRE
 !      INTEGER, INTENT(OUT)      :: IAT
       INTEGER, INTENT(INOUT)      :: IAT
-      REAL(DOUBLE), INTENT(OUT) :: RECC
+      real(real64), INTENT(OUT) :: RECC
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: IJ1,IA1,IB1,K1,J1,IT1,IT1S,IFAZ,LL1
-      REAL(DOUBLE) :: A1
+      real(real64) :: A1
 !-----------------------------------------------
       RECC = ZERO
       IJ1=JLIST(JA1)

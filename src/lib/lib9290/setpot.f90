@@ -24,7 +24,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE IOUNIT_C
       USE DEF_C
       USE GRID_C
@@ -41,7 +41,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: I
-      REAL(DOUBLE) :: DMHB2C, ENERGY, ENEFAC, RPI, YPRPOR
+      real(real64) :: DMHB2C, ENERGY, ENEFAC, RPI, YPRPOR
       LOGICAL :: NOTSET
 !-----------------------------------------------
 !

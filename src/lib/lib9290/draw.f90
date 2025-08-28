@@ -16,7 +16,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,   ONLY: NNNP
       USE GRID_C
       IMPLICIT NONE
@@ -24,15 +24,15 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       INTEGER, INTENT(IN) :: MF
-      REAL(DOUBLE), INTENT(IN) :: SP
-      REAL(DOUBLE), INTENT(IN) :: SQ
-      REAL(DOUBLE), DIMENSION(NNNP), INTENT(IN) :: P
-      REAL(DOUBLE), DIMENSION(NNNP), INTENT(IN) :: Q
+      real(real64), INTENT(IN) :: SP
+      real(real64), INTENT(IN) :: SQ
+      real(real64), DIMENSION(NNNP), INTENT(IN) :: P
+      real(real64), DIMENSION(NNNP), INTENT(IN) :: Q
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: I, IOFFST, IXLOCQ, IXLOCP, IYLOC
-      REAL(DOUBLE) :: SIXTY, FIFT4, OHTHT, DMX, DMN, SPI, SQI, RMX, XSCAL, &
+      real(real64) :: SIXTY, FIFT4, OHTHT, DMX, DMN, SPI, SQI, RMX, XSCAL, &
          YSCAL, SQX, SPX
       LOGICAL :: FIRST
       CHARACTER :: CBLANK*132, CDASH*132

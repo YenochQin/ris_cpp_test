@@ -22,7 +22,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, TENTH, EPS
       USE trk_C
 !-----------------------------------------------
@@ -35,13 +35,13 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       INTEGER,      INTENT(IN)               :: K1, K2
-      REAL(DOUBLE), INTENT(IN)               :: QM1, QM2, QM3, QM4
-      REAL(DOUBLE), INTENT(OUT)              :: AA
+      real(real64), INTENT(IN)               :: QM1, QM2, QM3, QM4
+      real(real64), INTENT(OUT)              :: AA
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: IQMM1, IQMM2, IQMM3, IQMM4, IQMM12, IQMM34
-      REAL(DOUBLE) :: A1, W
+      real(real64) :: A1, W
 !-----------------------------------------------
       AA=ZERO
       IF(IK1(3) > 9) THEN

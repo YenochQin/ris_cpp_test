@@ -26,7 +26,7 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW), INTENT(IN) :: VINT, VINT2
+      real(real64), DIMENSION(NNNW,NNNW), INTENT(IN) :: VINT, VINT2
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
@@ -34,7 +34,7 @@
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      REAL(DOUBLE) :: CONTRI, CONTRIK1, COEFFSMS
+      real(real64) :: CONTRI, CONTRIK1, COEFFSMS
       INTEGER :: IC, IR, I, J, IIA, IIB, IIC, IID, LOC, LAB, IOS
 !-----------------------------------------------
 !

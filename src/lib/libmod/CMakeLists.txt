@@ -1,6 +1,6 @@
 add_library(mod STATIC
     parameter_def_M.f90
-    vast_kind_param_M.f90
+    grasp_utilities_interfaces.f90
     memory_man.f90
     AME_C.f90
     bcore_C.f90
@@ -103,6 +103,7 @@ add_library(mod STATIC
     wchblk_C.f90
     wfac_C.f90
     whfrom_C.f90
+    precision_definitions.f90
 )
 setup_fortran_modules(mod)
 install(TARGETS mod DESTINATION lib/)

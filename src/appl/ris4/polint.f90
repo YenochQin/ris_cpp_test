@@ -13,20 +13,20 @@ SUBROUTINE POLINT(XA,YA,DENS)
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       IMPLICIT NONE
-      REAL(DOUBLE), INTENT(OUT) :: DENS
-      REAL(DOUBLE), DIMENSION(3),  INTENT(IN) :: XA, YA
+      real(real64), INTENT(OUT) :: DENS
+      real(real64), DIMENSION(3),  INTENT(IN) :: XA, YA
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      REAL(DOUBLE), DIMENSION(3,3) :: M, MI
-      REAL(DOUBLE), DIMENSION(3) :: RM, PM
+      real(real64), DIMENSION(3,3) :: M, MI
+      real(real64), DIMENSION(3) :: RM, PM
 
-      REAL(DOUBLE) :: MDET
+      real(real64) :: MDET
 !-----------------------------------------------
 
       RM(1) = YA(1)

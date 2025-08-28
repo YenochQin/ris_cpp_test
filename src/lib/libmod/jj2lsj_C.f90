@@ -11,7 +11,7 @@
 !     NIST                                     last update: May 2011   *
 !                                                                      *
 !***********************************************************************
-      USE vast_kind_param, ONLY:  LONG, DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
 !
 ! Define some global data for the jj2LSJ transformation program
 !
@@ -27,7 +27,7 @@
 !         sequence
          integer       :: w, Q, L, S, J, Nm, Qm, Jm, Qp, Jp
          integer       :: factor
-         integer(LONG) :: nom, denom
+         integer(int64) :: nom, denom
       end type LS_jj_me
 !
 ! Define the values of all LS-jj transformation coefficients

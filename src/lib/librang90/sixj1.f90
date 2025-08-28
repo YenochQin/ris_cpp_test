@@ -18,7 +18,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, HALF, ONE, TWO, THREE
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
@@ -30,12 +30,12 @@
 !-----------------------------------------------
       INTEGER                   :: I, J, K, L, M
       INTEGER, INTENT(IN)       :: ITIK
-      REAL(DOUBLE), INTENT(OUT) :: SI
+      real(real64), INTENT(OUT) :: SI
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER      :: IFA
-      REAL(DOUBLE) :: AS, AKA, A, B, C
+      real(real64) :: AS, AKA, A, B, C
 !-----------------------------------------------
       SI = ZERO
       IF (ITIK /= 0) THEN

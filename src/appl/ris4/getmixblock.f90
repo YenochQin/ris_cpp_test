@@ -18,7 +18,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE memory_man
       USE def_C
       USE EIGV_C
@@ -41,7 +41,7 @@
 !-----------------------------------------------
       INTEGER :: K, IERR, IOS, NCFTOT, NVECTOT, NVECSIZ, NBLOCK, I, NVECPAT, &
          NCFPAT, NVECSIZPAT, NEAVSUM, JB, NB, NCFBLK, NEVBLK, IATJP, IASPA, J
-      REAL(DOUBLE) :: EAVSUM
+      real(real64) :: EAVSUM
       CHARACTER :: FILNAM*256, FORM*11, G92MIX*6, STATUS*3
 !-----------------------------------------------
 !

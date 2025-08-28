@@ -14,23 +14,23 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE DEBUG_C
       USE DEF_C
       IMPLICIT NONE
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
-      REAL(DOUBLE), PARAMETER :: AINFCM = 0.52917721067D-08
-      REAL(DOUBLE), PARAMETER :: ALFAI  = 137.035999139D00
-      REAL(DOUBLE), PARAMETER :: CCMPS  = 2.99792458D10
-      REAL(DOUBLE), PARAMETER :: EESU   = 4.803204673D-10
-      REAL(DOUBLE), PARAMETER :: EMEG   = 9.10938356D-28
-      REAL(DOUBLE), PARAMETER :: EMEAMU = 5.48579909070D-04
-      REAL(DOUBLE), PARAMETER :: EMPAMU = 1.007276466879D00
-      REAL(DOUBLE), PARAMETER :: HBARES = 1.054571800D-27
-      REAL(DOUBLE), PARAMETER :: RINFEV = 13.605693009D00
-      REAL(DOUBLE), PARAMETER :: RINFK  = 109737.31568508D00
+      real(real64), PARAMETER :: AINFCM = 0.52917721067D-08
+      real(real64), PARAMETER :: ALFAI  = 137.035999139D00
+      real(real64), PARAMETER :: CCMPS  = 2.99792458D10
+      real(real64), PARAMETER :: EESU   = 4.803204673D-10
+      real(real64), PARAMETER :: EMEG   = 9.10938356D-28
+      real(real64), PARAMETER :: EMEAMU = 5.48579909070D-04
+      real(real64), PARAMETER :: EMPAMU = 1.007276466879D00
+      real(real64), PARAMETER :: HBARES = 1.054571800D-27
+      real(real64), PARAMETER :: RINFEV = 13.605693009D00
+      real(real64), PARAMETER :: RINFK  = 109737.31568508D00
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

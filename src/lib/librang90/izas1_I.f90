@@ -2,9 +2,9 @@
       INTERFACE
 !
       INTEGER FUNCTION IZAS1(IB,QB,IK,QK)
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER,      INTENT(IN) :: IB, IK
-      REAL(DOUBLE), INTENT(IN) :: QB, QK
+      real(real64), INTENT(IN) :: QB, QK
       END FUNCTION
       END INTERFACE
       END MODULE

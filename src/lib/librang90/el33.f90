@@ -23,7 +23,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, HALF, EPS
       USE m_C,             ONLY: NQ1, JLIST, NPEEL
       USE orb_C,           ONLY: NAK
@@ -63,10 +63,10 @@
                  NE2,N,NN,NU,NUP1,MU
       INTEGER, DIMENSION(3) :: J
       INTEGER, DIMENSION(4) :: IS,KAPS,KS
-      REAL(DOUBLE)          :: A1,AA,AB,BB,QM1,QM2,QM3,QM4,RAG,RECC,SI
-      REAL(DOUBLE), DIMENSION(12) :: S
-      REAL(DOUBLE), DIMENSION(30) :: PMGG,RAGG
-      REAL(DOUBLE), DIMENSION(12,20) :: CONE
+      real(real64)          :: A1,AA,AB,BB,QM1,QM2,QM3,QM4,RAG,RECC,SI
+      real(real64), DIMENSION(12) :: S
+      real(real64), DIMENSION(30) :: PMGG,RAGG
+      real(real64), DIMENSION(12,20) :: CONE
 !-----------------------------------------------
       IF(NPEEL <= 1)RETURN
       CALL EILE(JA,JB,JC,JAA,JBB,JCC)

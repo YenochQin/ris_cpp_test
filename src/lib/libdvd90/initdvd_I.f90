@@ -5,7 +5,7 @@
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE initdvd (IRC, IREV, N, NOC, NIV, NUME, LIM, HIEND, SCRA1&
          , ORTHOBASIS, BASIS, AB, S)
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER, INTENT(INOUT) :: IRC
       INTEGER, DIMENSION(*), INTENT(OUT) :: IREV
       INTEGER, INTENT(IN) :: N
@@ -14,11 +14,11 @@
       INTEGER, INTENT(IN) :: NUME
       INTEGER, INTENT(IN) :: LIM
       LOGICAL, INTENT(IN) :: HIEND
-      REAL(DOUBLE), DIMENSION(*) :: SCRA1
-      REAL(DOUBLE), DIMENSION(N*(NOC + LIM)) :: ORTHOBASIS
-      REAL(DOUBLE), DIMENSION(N*LIM) :: BASIS
-      REAL(DOUBLE), DIMENSION(N*LIM) :: AB
-      REAL(DOUBLE), DIMENSION(*) :: S
+      real(real64), DIMENSION(*) :: SCRA1
+      real(real64), DIMENSION(N*(NOC + LIM)) :: ORTHOBASIS
+      real(real64), DIMENSION(N*LIM) :: BASIS
+      real(real64), DIMENSION(N*LIM) :: AB
+      real(real64), DIMENSION(*) :: S
 !VAST...Calls: DINIT, DCOPY, MGS_NRM, DSCAL, ADDS
       END SUBROUTINE
       END INTERFACE

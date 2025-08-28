@@ -22,7 +22,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param,  ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,    ONLY: KEYORB, NNNW
       USE debug_C
       USE prnt_C
@@ -39,7 +39,7 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW), INTENT(IN) :: VINT, VINT2
+      real(real64), DIMENSION(NNNW,NNNW), INTENT(IN) :: VINT, VINT2
       INTEGER, INTENT(IN) :: DOIT
 !-----------------------------------------------
 !  E x t e r n a l   F u n c t i o n s
@@ -57,7 +57,7 @@
       CHARACTER*2  :: CK
       LOGICAL      :: GETYN,FIRSTT,VSH,NUCDE,SMSSH,YES
       LOGICAL      :: LFORDR,LTRANS,LVP,LSE,LNMS,LSMS
-      REAL(DOUBLE) :: CONTRI, CONTRIK1, VCOEFF
+      real(real64) :: CONTRI, CONTRIK1, VCOEFF
       INTEGER      :: I,J,K,LAB,LOC,IC,IR,ITJPOC,IIA,IIB,IIC,IID,INCOR
       INTEGER      :: LCNUM
 !-----------------------------------------------

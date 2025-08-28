@@ -2,10 +2,10 @@
       INTERFACE
 !
       SUBROUTINE GG1122(K1,K2,QM1,QM2,QM3,QM4,AA)
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER,      INTENT(IN)               :: K1, K2
-      REAL(DOUBLE), INTENT(IN)               :: QM1, QM2, QM3, QM4
-      REAL(DOUBLE), INTENT(OUT)              :: AA
+      real(real64), INTENT(IN)               :: QM1, QM2, QM3, QM4
+      real(real64), INTENT(OUT)              :: AA
       END SUBROUTINE
       END INTERFACE
       END MODULE

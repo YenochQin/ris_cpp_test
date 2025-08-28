@@ -4,20 +4,20 @@
       MODULE npar_C
 !                                                                      *
 !***********************************************************************
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
 !...Created by Pacific-Sierra Research 77to90  4.3E  06:23:52  12/28/06
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       INTEGER :: NPARM
-      REAL(DOUBLE), DIMENSION(2) :: PARM
+      real(real64), DIMENSION(2) :: PARM
       END MODULE npar_C
 
       MODULE nsmdat_C
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64
 !...Created by Pacific-Sierra Research 77to90  4.3E  06:36:34  12/28/06
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
-      REAL(DOUBLE) :: SQN,DMOMNM,QMOMB
-      REAL(DOUBLE) :: HFSI, HFSD, HFSQ
-      REAL(DOUBLE) :: SMSI, SMSD, SMSQ
+      real(real64) :: SQN,DMOMNM,QMOMB
+      real(real64) :: HFSI, HFSD, HFSQ
+      real(real64) :: SMSI, SMSD, SMSQ
       END MODULE nsmdat_C

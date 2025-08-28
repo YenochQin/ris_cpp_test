@@ -3,16 +3,16 @@
 !...Translated by Gediminas Gaigalas 11/18/19
       SUBROUTINE densnew (DOIT,DINT1,DINT2,DINT3,DINT4,DINT5,DINT6,    &
                           DINT7)
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,   ONLY: NNNW, NNNP
       USE prnt_C,          ONLY : NVEC
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT1
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT2
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT3
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT4
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT5
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT6
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT7
+      real(real64), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT1
+      real(real64), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT2
+      real(real64), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT3
+      real(real64), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT4
+      real(real64), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT5
+      real(real64), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT6
+      real(real64), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT7
       INTEGER, INTENT(IN) :: DOIT
       END SUBROUTINE
       END INTERFACE

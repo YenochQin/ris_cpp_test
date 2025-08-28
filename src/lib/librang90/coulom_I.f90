@@ -2,9 +2,9 @@
       INTERFACE
 !
       SUBROUTINE COULOM(J1,J2,J3,J4,L1,L2,L3,L4,K,AA)
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER, INTENT(IN) :: J1, J2, J3, J4, L1, L2, L3, L4, K
-      REAL(DOUBLE),INTENT(OUT)  :: AA
+      real(real64),INTENT(OUT)  :: AA
       END SUBROUTINE
       END INTERFACE
       END MODULE

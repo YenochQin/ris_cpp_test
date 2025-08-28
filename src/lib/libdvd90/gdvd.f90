@@ -15,7 +15,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
@@ -37,21 +37,21 @@
       INTEGER  :: NLOOPS
       INTEGER, INTENT(OUT) :: NMV
       INTEGER  :: IERR
-      REAL(DOUBLE)  :: CRITE
-      REAL(DOUBLE)  :: CRITC
-      REAL(DOUBLE)  :: CRITR
-      REAL(DOUBLE)  :: ORTHO
+      real(real64)  :: CRITE
+      real(real64)  :: CRITC
+      real(real64)  :: CRITR
+      real(real64)  :: ORTHO
       LOGICAL  :: HIEND
       INTEGER  :: ISELEC(LIM)
       INTEGER  :: IWORK(IIWSZ)
-      real(DOUBLE), DIMENSION(N), INTENT(INOUT) :: DIAG
-      REAL(DOUBLE)  :: WORK(IWRSZ)
+      real(real64), DIMENSION(N), INTENT(INOUT) :: DIAG
+      real(real64)  :: WORK(IWRSZ)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER, DIMENSION(7) :: IREV
       INTEGER :: NOC, IRC, NB, IW1, IW2, IW3, IIW, IIN, IW4, ICUR, I, INDX, J
-      REAL(DOUBLE) :: VALUE, OVALUE, RNORM, EPSIL
+      real(real64) :: VALUE, OVALUE, RNORM, EPSIL
 !
 !**********************************************************************
 !  NOC = number of orthogonalization constraints

@@ -4,10 +4,10 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE es (F, S2F, S3F)
-      USE vast_kind_param,ONLY: DOUBLE
-      REAL(DOUBLE), INTENT(IN) :: F
-      REAL(DOUBLE), INTENT(OUT) :: S2F
-      REAL(DOUBLE), INTENT(OUT) :: S3F
+      use iso_fortran_env, only: real64, int32, int64, real128
+      real(real64), INTENT(IN) :: F
+      real(real64), INTENT(OUT) :: S2F
+      real(real64), INTENT(OUT) :: S3F
       END SUBROUTINE
       END INTERFACE
       END MODULE

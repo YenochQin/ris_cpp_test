@@ -19,7 +19,7 @@ SUBROUTINE DENSREAD(DINT1,DINT2,DINT3,DINT4,DINT5,DINT6,DINT7)
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param,  ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,    ONLY: KEYORB, NNNW, NNNP
       USE prnt_C
       USE ris_C
@@ -32,7 +32,7 @@ SUBROUTINE DENSREAD(DINT1,DINT2,DINT3,DINT4,DINT5,DINT6,DINT7)
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT1, DINT2,  &
+      real(real64), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT1, DINT2,  &
                                           DINT3, DINT4, DINT5, DINT6,  &
                                           DINT7
 !-----------------------------------------------
@@ -42,11 +42,11 @@ SUBROUTINE DENSREAD(DINT1,DINT2,DINT3,DINT4,DINT5,DINT6,DINT7)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      REAL(DOUBLE), DIMENSION(NNNW) :: TSHELL_R
-      REAL(DOUBLE) :: ELEMNT1, ELEMNT2, ELEMNT3, ELEMNT4, ELEMNT5
-      REAL(DOUBLE) :: ELEMNT6, ELEMNT7
-      REAL(DOUBLE) :: CONTRI1, CONTRI2, CONTRI3, CONTRI4, CONTRI5
-      REAL(DOUBLE) :: CONTRI6, CONTRI7
+      real(real64), DIMENSION(NNNW) :: TSHELL_R
+      real(real64) :: ELEMNT1, ELEMNT2, ELEMNT3, ELEMNT4, ELEMNT5
+      real(real64) :: ELEMNT6, ELEMNT7
+      real(real64) :: CONTRI1, CONTRI2, CONTRI3, CONTRI4, CONTRI5
+      real(real64) :: CONTRI6, CONTRI7
       INTEGER :: ICOLD, IROLD, IOS, IA, IB, IC, IR, I, J, L, LOC, LAB
       INTEGER :: NCOUNT
 !-----------------------------------------------

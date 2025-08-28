@@ -4,15 +4,15 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE dcbsrw (N, KAPPA, Z, E, RG0, RG, RF, MTP)
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def, ONLY: NNNP
       INTEGER, INTENT(IN) :: N
       INTEGER, INTENT(IN) :: KAPPA
-      REAL(DOUBLE), INTENT(IN) :: Z
-      REAL(DOUBLE), INTENT(OUT) :: E
-      REAL(DOUBLE), INTENT(OUT) :: RG0
-      REAL(DOUBLE), DIMENSION(NNNP), INTENT(INOUT) :: RG
-      REAL(DOUBLE), DIMENSION(NNNP), INTENT(OUT) :: RF
+      real(real64), INTENT(IN) :: Z
+      real(real64), INTENT(OUT) :: E
+      real(real64), INTENT(OUT) :: RG0
+      real(real64), DIMENSION(NNNP), INTENT(INOUT) :: RG
+      real(real64), DIMENSION(NNNP), INTENT(OUT) :: RF
       INTEGER, INTENT(OUT) :: MTP
 !VAST.../DEF2/ C(IN)
 !VAST.../DEF4/ ACCY(IN)

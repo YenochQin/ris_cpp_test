@@ -17,7 +17,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,   ONLY:  NNNW
       USE DEBUG_C
       USE DEF_C
@@ -34,8 +34,8 @@
 !-----------------------------------------------
       INTEGER, DIMENSION(NNNW) :: J
       INTEGER :: L, NAKL, KOUNT, MTP0, K, MTP, I
-      REAL(DOUBLE), DIMENSION(NNNW) :: OVLAP
-      REAL(DOUBLE) :: EPS, OVRLAP, DNORM, FACTOR
+      real(real64), DIMENSION(NNNW) :: OVLAP
+      real(real64) :: EPS, OVRLAP, DNORM, FACTOR
       LOGICAL :: CHANGED
 !-----------------------------------------------
 !

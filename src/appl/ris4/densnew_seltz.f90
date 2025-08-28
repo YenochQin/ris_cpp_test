@@ -25,7 +25,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param,  ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,    ONLY: KEYORB, NNNW, NNNP
       USE blk_C
       USE debug_C
@@ -55,13 +55,13 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT1, DINT2, &
+      INTEGER, INTENT(IN) :: DOIT, NRNUC
+      real(real64), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT1, DINT2, &
                                                         DINT3, DINT4, &
                                                         DINT5, DINT6, &
                                                         DINT7
-      REAL(DOUBLE), DIMENSION(NVEC,NRNUC), INTENT(OUT)     :: DENS1VEC !  JE ADD
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW,NRNUC), INTENT(IN) :: DINT1VEC !  JE ADD
-      INTEGER, INTENT(IN) :: DOIT
+      real(real64), DIMENSION(NVEC,NRNUC), INTENT(OUT)     :: DENS1VEC !  JE ADD
+      real(real64), DIMENSION(NNNW,NNNW,NRNUC), INTENT(IN) :: DINT1VEC !  JE ADD
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
@@ -69,18 +69,18 @@
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      REAL(DOUBLE), DIMENSION(NNNW) :: TSHELL, TSHELL_S
-      REAL(DOUBLE), DIMENSION(NRNUC) :: CONTRI1VEC, ELEMNT1VEC
-      REAL(DOUBLE), DIMENSION(:), pointer :: EMT1, EMT2, EMT3, EMT4,   &
+      real(real64), DIMENSION(NNNW) :: TSHELL, TSHELL_S
+      real(real64), DIMENSION(NRNUC) :: CONTRI1VEC, ELEMNT1VEC
+      real(real64), DIMENSION(:), pointer :: EMT1, EMT2, EMT3, EMT4,   &
                                              EMT5, EMT6
-      REAL(DOUBLE) :: ELEMNT1, ELEMNT2, ELEMNT3, ELEMNT4, ELEMNT5,     &
+      real(real64) :: ELEMNT1, ELEMNT2, ELEMNT3, ELEMNT4, ELEMNT5,     &
                       ELEMNT6, ELEMNT7, CONTRI1, CONTRI2, CONTRI3,     &
                       CONTRI4, CONTRI5, CONTRI6, CONTRI7
       LOGICAL :: VSH, NUCDE, SMSSH, YES
       CHARACTER :: CNUM*11, CK*2
       INTEGER, DIMENSION(NNNW) :: IA_S
       INTEGER :: KA, IOPAR, INCOR, IC, LCNUM, ITJPOC, IR, IA, IB, I, II, J
-      Integer :: L, LOC, NCONTR, LAB, NRNUC
+      Integer :: L, LOC, NCONTR, LAB
 !-----------------------------------------------
 !
 ! DOIT: IF DOIT=1 angular coefficients will be stored after creation

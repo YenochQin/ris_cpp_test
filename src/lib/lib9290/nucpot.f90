@@ -15,7 +15,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE DEBUG_C
       USE DEF_C,           ONLY: Z, PI
       USE GRID_C
@@ -30,7 +30,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: I, NB3, NROWS, II, II1, II2, II3
-      REAL(DOUBLE) :: C, A, ABC, TABC, ABC2, THABC2, ABC3, CBA, PI2, HPIAC2, &
+      real(real64) :: C, A, ABC, TABC, ABC2, THABC2, ABC3, CBA, PI2, HPIAC2, &
          H3PHP, S2MCBA, S3MCBA, SABC3, DMSAS, EN, ZBN, RI, RMC, RMCBA, RBC, &
          S2RCBA, S3RCBA
       LOGICAL :: SET

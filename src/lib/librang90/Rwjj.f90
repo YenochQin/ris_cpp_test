@@ -11,7 +11,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C
       USE ribojj_C
 !-----------------------------------------------
@@ -26,7 +26,7 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       INTEGER,      INTENT(IN)  :: J, J1, J2, K1, K2
-      REAL(DOUBLE), INTENT(OUT) :: COEF
+      real(real64), INTENT(OUT) :: COEF
 !-----------------------------------------------
       IF(J == 1) THEN
          CALL RMEW1JJ(J1,J2,K1,K2,COEF)

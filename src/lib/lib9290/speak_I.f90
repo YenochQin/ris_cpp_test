@@ -4,7 +4,7 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE speak (JA, JB, IA1, IB1, IA2, IB2, K, X)
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER, INTENT(IN) :: JA
       INTEGER, INTENT(IN) :: JB
       INTEGER, INTENT(IN) :: IA1
@@ -12,7 +12,7 @@
       INTEGER, INTENT(IN) :: IA2
       INTEGER, INTENT(IN) :: IB2
       INTEGER, INTENT(IN) :: K
-      REAL(DOUBLE), INTENT(IN) :: X
+      real(real64), INTENT(IN) :: X
 !VAST.../BUFFER/ NBDIM(IN), NVCOEF(INOUT)
 !VAST.../DEBUG/ IBUG1(IN)
 !VAST.../ORB4/ NP(IN)

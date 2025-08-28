@@ -22,7 +22,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY:  EPS, ZERO
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
@@ -34,7 +34,7 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       INTEGER, INTENT(IN)        :: J1,J2,J3,J4,L1,L2,L3,L4,K
-      REAL(DOUBLE), INTENT(OUT)  :: AA
+      real(real64), INTENT(OUT)  :: AA
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

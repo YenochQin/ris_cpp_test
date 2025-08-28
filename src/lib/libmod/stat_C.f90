@@ -5,12 +5,12 @@
 !
 !***********************************************************************
 !                                                                      *
-      USE vast_kind_param, ONLY:  DOUBLE, BYTE
+      use iso_fortran_env, only: real64, int32, int64, int8, real128
 !...Created by Pacific-Sierra Research 77to90  4.3E  07:21:55   1/ 6/07
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       INTEGER, DIMENSION(:,:,:), pointer :: jqsar
-      INTEGER(BYTE), DIMENSION(:,:,:), pointer :: jqsa
+      integer(int8), DIMENSION(:,:,:), pointer :: jqsa
       INTEGER, DIMENSION(:,:), pointer :: jcupar
-      INTEGER(BYTE), DIMENSION(:,:), pointer :: jcupa
+      integer(int8), DIMENSION(:,:), pointer :: jcupa
       END MODULE stat_C

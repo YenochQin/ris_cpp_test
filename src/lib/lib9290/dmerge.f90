@@ -13,23 +13,23 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       INTEGER,      INTENT(IN)    :: N
-      REAL(DOUBLE), INTENT(IN)    :: DCONST
-      REAL(DOUBLE), INTENT(OUT)   :: DL
+      real(real64), INTENT(IN)    :: DCONST
+      real(real64), INTENT(OUT)   :: DL
       INTEGER, DIMENSION(N), INTENT(IN) :: IDY
-      REAL(DOUBLE), DIMENSION(*), INTENT(IN) :: DB
-      REAL(DOUBLE), DIMENSION(*), INTENT(INOUT) :: DC
-      REAL(DOUBLE), DIMENSION(N), INTENT(IN) :: DA
+      real(real64), DIMENSION(*), INTENT(IN) :: DB
+      real(real64), DIMENSION(*), INTENT(INOUT) :: DC
+      real(real64), DIMENSION(N), INTENT(IN) :: DA
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: I
-      REAL(DOUBLE) :: DSUM
+      real(real64) :: DSUM
 !-----------------------------------------------
 
       DSUM = 0.0

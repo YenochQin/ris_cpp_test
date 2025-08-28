@@ -2,9 +2,9 @@
       INTERFACE
 !...Translated by Gediminas Gaigalas 11/18/19
       SUBROUTINE smsread (VINT,VINT2)
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,   ONLY: NNNW
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW), INTENT(IN) :: VINT, VINT2
+      real(real64), DIMENSION(NNNW,NNNW), INTENT(IN) :: VINT, VINT2
       END SUBROUTINE
       END INTERFACE
       END MODULE

@@ -25,7 +25,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE FACTS_C
       IMPLICIT NONE
 !-----------------------------------------------
@@ -36,7 +36,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: KA, KB, KAPKB, KABKP, KAMKB, KBMKA
-      REAL(DOUBLE) :: EXPTRM
+      real(real64) :: EXPTRM
 !-----------------------------------------------
 !
 !

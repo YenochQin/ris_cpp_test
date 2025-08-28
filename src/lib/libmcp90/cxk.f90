@@ -9,7 +9,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       IMPLICIT NONE
 !      DIMENSION IS(4),KAPS(4),S(12)
 !-----------------------------------------------
@@ -21,7 +21,7 @@
       INTEGER, INTENT(IN) :: IEX
       INTEGER, INTENT(IN) :: IS(4)
       INTEGER, INTENT(IN) :: KAPS(4)
-      REAL(DOUBLE) , INTENT(INOUT) :: S(12)
+      real(real64) , INTENT(INOUT) :: S(12)
 !-----------------------------------------------
 !
       STOP 'CXK: Error '

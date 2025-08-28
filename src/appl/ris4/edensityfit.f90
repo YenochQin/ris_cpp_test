@@ -12,7 +12,7 @@ SUBROUTINE EDENSITYFIT(XVEC,YVEC,Z,PAR,NRNUC,F,RHO,RES)
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param,  ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE def_C,            ONLY: PI,FMTOAU,CCMS,AUCM
       USE parameter_def,    ONLY: NNNP, NNN1
 !-----------------------------------------------
@@ -22,27 +22,27 @@ SUBROUTINE EDENSITYFIT(XVEC,YVEC,Z,PAR,NRNUC,F,RHO,RES)
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      REAL(DOUBLE), DIMENSION(NNN1) :: XVEC
-      REAL(DOUBLE), DIMENSION(NNNP) :: YVEC
-!GG      REAL(DOUBLE), DIMENSION(NNNP) :: XVEC, YVEC
-      REAL(DOUBLE), DIMENSION(5) :: P
-      REAL(DOUBLE), DIMENSION(6) :: F
-      REAL(DOUBLE), DIMENSION(2) :: PAR
-      REAL(DOUBLE) :: Z, DRMS, RHO, RES
+      real(real64), DIMENSION(NNN1) :: XVEC
+      real(real64), DIMENSION(NNNP) :: YVEC
+!GG      real(real64), DIMENSION(NNNP) :: XVEC, YVEC
+      real(real64), DIMENSION(5) :: P
+      real(real64), DIMENSION(6) :: F
+      real(real64), DIMENSION(2) :: PAR
+      real(real64) :: Z, DRMS, RHO, RES
       INTEGER      :: NRNUC, NPARFIT
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      REAL(DOUBLE), DIMENSION(NNN1) :: X
-      REAL(DOUBLE), DIMENSION(NNNP) :: Y, W, DY
-!GG      REAL(DOUBLE), DIMENSION(NNNP) :: X, Y, W, DY
-      REAL(DOUBLE), DIMENSION(3,3)  :: M, MI, C, CI
-      REAL(DOUBLE), DIMENSION(4)    :: DR, DR2
-      REAL(DOUBLE), DIMENSION(3)    :: RM, PM, B, DF2
-      REAL(DOUBLE), DIMENSION(2)    :: PARF, PARF2
-      REAL(DOUBLE) :: MDET, CDET, AU2FM, NORM, CONST, CONST2, A0
-      REAL(DOUBLE) :: A1, A2, FDSUM, FO90, R2,DR4,DR6, DE, DEN, dDEN
-      REAL(DOUBLE) :: dDEN2, DX2, DY2, X2, Y2
+      real(real64), DIMENSION(NNN1) :: X
+      real(real64), DIMENSION(NNNP) :: Y, W, DY
+!GG      real(real64), DIMENSION(NNNP) :: X, Y, W, DY
+      real(real64), DIMENSION(3,3)  :: M, MI, C, CI
+      real(real64), DIMENSION(4)    :: DR, DR2
+      real(real64), DIMENSION(3)    :: RM, PM, B, DF2
+      real(real64), DIMENSION(2)    :: PARF, PARF2
+      real(real64) :: MDET, CDET, AU2FM, NORM, CONST, CONST2, A0
+      real(real64) :: A1, A2, FDSUM, FO90, R2,DR4,DR6, DE, DEN, dDEN
+      real(real64) :: dDEN2, DX2, DY2, X2, Y2
       INTEGER :: I, INUC, NMIN, NMAX, NR
 !-----------------------------------------------
 !

@@ -4,12 +4,12 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE draw (P, SP, Q, SQ, MF)
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def, ONLY: NNNP
-      REAL(DOUBLE), DIMENSION(NNNP), INTENT(IN) :: P
-      REAL(DOUBLE), INTENT(IN) :: SP
-      REAL(DOUBLE), DIMENSION(NNNP), INTENT(IN) :: Q
-      REAL(DOUBLE), INTENT(IN) :: SQ
+      real(real64), DIMENSION(NNNP), INTENT(IN) :: P
+      real(real64), INTENT(IN) :: SP
+      real(real64), DIMENSION(NNNP), INTENT(IN) :: Q
+      real(real64), INTENT(IN) :: SQ
       INTEGER, INTENT(IN) :: MF
 !VAST.../GRID/ R(IN), N(IN)
 !...This routine performs I/O.

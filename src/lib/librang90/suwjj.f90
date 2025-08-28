@@ -14,7 +14,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, EPS
       USE ribojj_C
 !-----------------------------------------------
@@ -30,13 +30,13 @@
 !-----------------------------------------------
       INTEGER,      INTENT(IN)  :: K1, K2, J1, J2
       INTEGER,      INTENT(OUT) :: LL
-      REAL(DOUBLE), INTENT(OUT) :: SUW
+      real(real64), INTENT(OUT) :: SUW
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: KK1,KK2,I,IP,IG,L2Q1,L2V1,L2J1,L2Q2,L2V2,L2J2, &
                  L2QI,L2VI,L2JI
-      REAL(DOUBLE) :: COEF1, COEF2, S, SI1, SI2
+      real(real64) :: COEF1, COEF2, S, SI1, SI2
 !-----------------------------------------------
       SUW=ZERO
       IF(IMPTJJ(J1) /= IMPTJJ(J2)) RETURN

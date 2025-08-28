@@ -1,0 +1,350 @@
+# This file is generated automatically. DO NOT EDIT!
+
+AME_C.o :  \
+	vast_kind_param_M.o
+
+bcore_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+bess_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+bilst_C.o :  \
+	vast_kind_param_M.o
+
+biorb_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+blim_C.o :  \
+	vast_kind_param_M.o
+
+blk_C.o :  \
+	vast_kind_param_M.o
+
+blkidx_C.o :  \
+	vast_kind_param_M.o
+
+buffer_C.o :  \
+	vast_kind_param_M.o
+
+cffmat_C.o :  \
+	vast_kind_param_M.o
+
+ciimat_C.o :  \
+	vast_kind_param_M.o
+
+cimat_C.o :  \
+	vast_kind_param_M.o
+
+cnc_C.o :  \
+	vast_kind_param_M.o
+
+coeils_C.o :  \
+	vast_kind_param_M.o
+
+computational_parameters_M.o :  \
+	precision_definitions_M.o
+
+configuration_interface.o : 
+
+cons_C.o :  \
+	vast_kind_param_M.o
+
+core_C.o : 
+
+corre_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+coun_C.o :  \
+	vast_kind_param_M.o
+
+couple_C.o :  \
+	vast_kind_param_M.o
+
+csf_interface.o : 
+
+cteilsrk_C.o :  \
+	vast_kind_param_M.o
+
+cuto_C.o :  \
+	vast_kind_param_M.o
+
+damp_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+debug_C.o :  \
+	vast_kind_param_M.o
+
+debug_setup_interface.o : 
+
+decide_C.o :  \
+	vast_kind_param_M.o
+
+def_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+default_C.o :  \
+	vast_kind_param_M.o
+
+dumx_C.o :  \
+	cons_C.o \
+	parameter_def_M.o
+
+eigv_C.o :  \
+	vast_kind_param_M.o
+
+eigvec1_C.o :  \
+	vast_kind_param_M.o
+
+factorial_interface.o : 
+
+facts_C.o :  \
+	vast_kind_param_M.o
+
+fixd_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+foparm_C.o : 
+
+fposition_C.o : 
+
+grid_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+hblock_C.o :  \
+	vast_kind_param_M.o
+
+hmat_C.o :  \
+	vast_kind_param_M.o
+
+horb_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+hydpar_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+iccu_C.o : 
+
+int_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+invt_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+iounit_C.o : 
+
+isotope_shift_calculation_interface.o : 
+
+jj2lsj_C.o :  \
+	vast_kind_param_M.o
+
+jj2lsjbio_C.o :  \
+	vast_kind_param_M.o
+
+jlabl_C.o : 
+
+jqjc_C.o : 
+
+keilst_C.o :  \
+	vast_kind_param_M.o
+
+kkstart_C.o :  \
+	vast_kind_param_M.o
+
+kkstartbreit_C.o : 
+
+l1_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+l2_C.o :  \
+	vast_kind_param_M.o
+
+lagr_C.o :  \
+	vast_kind_param_M.o
+
+left_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+lib92p_C.o : 
+
+lic13_C.o :  \
+	vast_kind_param_M.o
+
+m_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+mathematical_utilities.o :  \
+	precision_definitions_M.o
+
+mcp_C.o :  \
+	vast_kind_param_M.o
+
+mcpa_C.o :  \
+	vast_kind_param_M.o
+
+mcpb_C.o :  \
+	vast_kind_param_M.o
+
+mcpdata_C.o :  \
+	vast_kind_param_M.o
+
+memory_man.o :  \
+	vast_kind_param_M.o
+
+mixblock_interface.o : 
+
+mixing_coefficients_interface.o : 
+
+modern_file_operations.o :  \
+	precision_definitions_M.o
+
+mtjj2_C.o : 
+
+mtjj_C.o : 
+
+ncc_C.o :  \
+	vast_kind_param_M.o
+
+ncdist_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+node_C.o :  \
+	parameter_def_M.o
+
+npar_C.o :  \
+	vast_kind_param_M.o
+
+npot_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+offd_C.o : 
+
+orb_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+orba_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+orbord_C.o : 
+
+orthct_C.o : 
+
+osc_C.o :  \
+	vast_kind_param_M.o
+
+ovl_C.o :  \
+	vast_kind_param_M.o
+
+parameter_def_M.o : 
+
+peav_C.o :  \
+	vast_kind_param_M.o
+
+pos_C.o :  \
+	vast_kind_param_M.o
+
+pote_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+precision_definitions.o : 
+
+precision_definitions_M.o : 
+
+prnt_C.o :  \
+	vast_kind_param_M.o
+
+qedcut_C.o : 
+
+rang_Int_C.o : 
+
+ribojj11_C.o : 
+
+ribojj9_C.o : 
+
+ribojj_C.o : 
+
+sacoef_C.o :  \
+	vast_kind_param_M.o
+
+sbc_C.o :  \
+	vast_kind_param_M.o
+
+sbdat1_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+sbdat_C.o :  \
+	parameter_def_M.o
+
+scf_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+stat_C.o :  \
+	vast_kind_param_M.o
+
+stor_C.o :  \
+	vast_kind_param_M.o
+
+structure_sum_interface.o : 
+
+summary_interface.o : 
+
+syma_C.o :  \
+	vast_kind_param_M.o
+
+tatb_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+terms_C.o : 
+
+titl_C.o :  \
+	vast_kind_param_M.o
+
+trk_C.o :  \
+	vast_kind_param_M.o
+
+user_interaction_interface.o : 
+
+vast_kind_param_M.o : 
+
+vinlst_C.o :  \
+	vast_kind_param_M.o
+
+vpilst_C.o :  \
+	vast_kind_param_M.o
+
+wave_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o
+
+wchblk_C.o :  \
+	vast_kind_param_M.o
+
+wfac_C.o :  \
+	vast_kind_param_M.o
+
+whfrom_C.o :  \
+	parameter_def_M.o \
+	vast_kind_param_M.o

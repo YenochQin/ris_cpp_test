@@ -32,7 +32,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, HALF, EPS
       USE m_C,             ONLY: NQ1, JLIST, NPEEL
       USE orb_C,           ONLY: NAK
@@ -68,10 +68,10 @@
                  J12,JB1,JD1,ND1,ND2,NE1,NE2,N,NN,NU,NUP1,MU
       INTEGER, DIMENSION(4) :: J
       INTEGER, DIMENSION(4) :: IS,KAPS,KS
-      REAL(DOUBLE)          :: AA,AB,A1,BB,QM1,QM2,QM3,QM4,RAG,RECC,SI
-      REAL(DOUBLE), DIMENSION(12) :: S
-      REAL(DOUBLE), DIMENSION(30) :: PMGG
-      REAL(DOUBLE), DIMENSION(12,20) :: COND,CONE
+      real(real64)          :: AA,AB,A1,BB,QM1,QM2,QM3,QM4,RAG,RECC,SI
+      real(real64), DIMENSION(12) :: S
+      real(real64), DIMENSION(30) :: PMGG
+      real(real64), DIMENSION(12,20) :: COND,CONE
 !-----------------------------------------------
       IF(NPEEL <= 3)RETURN
       CALL RECO(JA,JD,JC,JB,3,IAT)

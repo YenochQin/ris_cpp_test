@@ -18,7 +18,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE memory_man
       IMPLICIT NONE
 !-----------------------------------------------
@@ -29,15 +29,15 @@
       INTEGER  :: NIV
       INTEGER, DIMENSION(0:*), INTENT(IN) :: JCOL
       INTEGER, DIMENSION(*), INTENT(IN) :: IROW
-      REAL(DOUBLE), DIMENSION(*) :: BASIS
-      REAL(DOUBLE), DIMENSION(*), INTENT(IN) :: HMX
+      real(real64), DIMENSION(*) :: BASIS
+      real(real64), DIMENSION(*), INTENT(IN) :: HMX
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: NS, JOFFSPAR, J, JOFFNORM, IR, NFOUND, INFO, IERR
 
       integer, dimension(:), pointer :: iwork,ifail
-      real(double), dimension(:), pointer :: ap, eigval,vec, work
+      real(real64), dimension(:), pointer :: ap, eigval,vec, work
 
 !-----------------------------------------------
 
@@ -79,7 +79,7 @@
          CALL DCOPY (NS, VEC(NS*(J-1)+1), 1, BASIS(NCF*(J-1)+1), 1)
       END DO
 
-      CALL DCOPY (NIV, EIGVAL, 1, BASIS(NIV*NCF+1), 1)
+      CALL DCOPY (NIV, EIGVAL(1), 1, BASIS(NIV*NCF+1), 1)
 
       !deallocate(ap)
       !deallocate(eigval)

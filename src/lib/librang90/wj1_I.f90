@@ -2,12 +2,12 @@
       INTERFACE
 !
       SUBROUTINE WJ1(IK,BK,ID,BD,K2,QM1,QM2,WJ)
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER,      INTENT(IN)               :: K2
       INTEGER,      INTENT(IN), DIMENSION(7) :: IK, ID
-      REAL(DOUBLE), INTENT(IN)               :: QM1, QM2
-      REAL(DOUBLE), INTENT(IN), DIMENSION(3) :: BK, BD
-      REAL(DOUBLE), INTENT(OUT)              :: WJ
+      real(real64), INTENT(IN)               :: QM1, QM2
+      real(real64), INTENT(IN), DIMENSION(3) :: BK, BD
+      real(real64), INTENT(OUT)              :: WJ
       END SUBROUTINE
       END INTERFACE
       END MODULE

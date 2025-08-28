@@ -19,7 +19,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE DEF_C, ONLY: AUCM, AUEV
       USE JLABL_C
       IMPLICIT NONE
@@ -28,16 +28,16 @@
 !-----------------------------------------------
       INTEGER, INTENT(IN) :: NN
       INTEGER, INTENT(IN) :: MODE
-      REAL(DOUBLE), INTENT(IN) :: EAV
+      real(real64), INTENT(IN) :: EAV
       INTEGER, INTENT(IN) :: JTOT(NN)
       INTEGER, INTENT(IN) :: IPAR(NN)
       INTEGER, INTENT(IN) :: ILEV(NN)
-      REAL(DOUBLE), INTENT(IN) :: E(NN)
+      real(real64), INTENT(IN) :: E(NN)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER      :: J, I, IP
-      REAL(DOUBLE) :: EAU, ECM, EEV
+      real(real64) :: EAU, ECM, EEV
 !-----------------------------------------------
 !
 !   Always print the eigenenergies

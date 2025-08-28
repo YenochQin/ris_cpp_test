@@ -4,13 +4,13 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE intrpq (PA, QA, MA, RA, J, DNORM)
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER MXORD
       PARAMETER (MXORD = 13)
-      REAL(DOUBLE), DIMENSION(*), INTENT(IN) :: PA, QA, RA
+      real(real64), DIMENSION(*), INTENT(IN) :: PA, QA, RA
       INTEGER, INTENT(IN) :: MA
       INTEGER, INTENT(IN) :: J
-      REAL(DOUBLE), INTENT(OUT) :: DNORM
+      real(real64), INTENT(OUT) :: DNORM
       END SUBROUTINE
       END INTERFACE
       END MODULE

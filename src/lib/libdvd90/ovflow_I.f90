@@ -4,16 +4,16 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE ovflow (N, NUME, KPASS, SCRA1, BASIS, AB, S, SVEC, EIGVAL)
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER, INTENT(IN) :: N
       INTEGER, INTENT(IN) :: NUME
       INTEGER, INTENT(INOUT) :: KPASS
 !CFF   .. added dimension to scra1
-      REAL(DOUBLE) :: SCRA1(NUME)
-      REAL(DOUBLE), DIMENSION(N*KPASS) :: BASIS
-      REAL(DOUBLE), DIMENSION(N*KPASS) :: AB
-      REAL(DOUBLE), DIMENSION((KPASS*(KPASS + 1))/2), INTENT(OUT) :: S
-      REAL(DOUBLE), DIMENSION(KPASS), INTENT(IN) :: EIGVAL
+      real(real64) :: SCRA1(NUME)
+      real(real64), DIMENSION(N*KPASS) :: BASIS
+      real(real64), DIMENSION(N*KPASS) :: AB
+      real(real64), DIMENSION((KPASS*(KPASS + 1))/2), INTENT(OUT) :: S
+      real(real64), DIMENSION(KPASS), INTENT(IN) :: EIGVAL
 !VAST...Calls: MULTBC, DINIT
       END SUBROUTINE
       END INTERFACE

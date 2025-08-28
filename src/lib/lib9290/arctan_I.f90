@@ -4,9 +4,9 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       REAL(KIND(0.0D0)) FUNCTION arctan (ARG1, ARG2)
-      USE vast_kind_param,ONLY: DOUBLE
-      REAL(DOUBLE), INTENT(IN) :: ARG1
-      REAL(DOUBLE), INTENT(IN) :: ARG2
+      use iso_fortran_env, only: real64, int32, int64, real128
+      real(real64), INTENT(IN) :: ARG1
+      real(real64), INTENT(IN) :: ARG2
 !VAST.../DEF9/ PI(IN)
       END FUNCTION
       END INTERFACE

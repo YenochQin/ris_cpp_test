@@ -11,7 +11,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, HALF, EPS
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
@@ -23,12 +23,12 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       INTEGER,      INTENT(IN)  :: LL, J1, J2
-      REAL(DOUBLE), INTENT(OUT) :: S
+      real(real64), INTENT(OUT) :: S
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER      :: LQ, LV, LQS, LVS, J, J1S, N, INN
-      REAL(DOUBLE) :: A1, A4, Q, QQ, QS, QM, QMS
+      real(real64) :: A1, A4, Q, QQ, QS, QM, QMS
 !-----------------------------------------------
       S=ZERO
       CALL RUMTJJ(J1,LL,LQ,LV,J)

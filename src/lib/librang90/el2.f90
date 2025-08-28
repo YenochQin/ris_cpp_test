@@ -20,7 +20,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, HALF, EPS
       USE m_C,             ONLY: JLIST, NPEEL
       USE orb_C,           ONLY: NAK
@@ -54,9 +54,9 @@
                  KRA,L1,L2,N,ND1,ND2,NE1,NE2,NUP1,NU,MU
       INTEGER, DIMENSION(2) :: J
       INTEGER, DIMENSION(4) :: IS,KAPS,KS
-      REAL(DOUBLE)          :: AA,A1,AB,BB,QM1,QM2,QM3,QM4,RECC,SI
-      REAL(DOUBLE), DIMENSION(12)    :: S
-      REAL(DOUBLE), DIMENSION(12,20) :: COND
+      real(real64)          :: AA,A1,AB,BB,QM1,QM2,QM3,QM4,RECC,SI
+      real(real64), DIMENSION(12)    :: S
+      real(real64), DIMENSION(12,20) :: COND
 !-----------------------------------------------
       IF(NPEEL <= 1)RETURN
       IF(JA > JB) THEN

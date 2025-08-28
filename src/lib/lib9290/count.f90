@@ -17,7 +17,7 @@
 !-----------------------------------------------                       *
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param,  ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,    ONLY: NNNP
       USE COUN_C
       USE DEF_C, ONLY: ACCY
@@ -28,14 +28,14 @@
 !-----------------------------------------------
       INTEGER, INTENT(IN) :: MTPFR
       INTEGER, INTENT(OUT) :: NNCFF
-      REAL(DOUBLE), INTENT(OUT) :: SGN
-      REAL(DOUBLE), DIMENSION(NNNP), INTENT(IN) :: FR
+      real(real64), INTENT(OUT) :: SGN
+      real(real64), DIMENSION(NNNP), INTENT(IN) :: FR
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER, DIMENSION(NNNP) :: LCEXT
       INTEGER :: NEXT, I, LOC, NSTPS
-      REAL(DOUBLE) :: EXT, EMX, ABFRI, TEST, THRESE, ABLCL
+      real(real64) :: EXT, EMX, ABFRI, TEST, THRESE, ABLCL
 !-----------------------------------------------
 !
 !

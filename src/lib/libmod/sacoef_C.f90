@@ -8,9 +8,9 @@
 !     NIST                                     last update: May 2017   *
 !                                                                      *
 !***********************************************************************
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
 !
-      REAL(DOUBLE), DIMENSION(:,:), pointer :: TCOEFF
+      real(real64), DIMENSION(:,:), pointer :: TCOEFF
       INTEGER, DIMENSION(:,:), pointer :: IICLMN, IINDEX, ILABEL
 !
       END MODULE sacoef_C

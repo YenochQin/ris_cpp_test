@@ -19,7 +19,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, TENTH, HALF, EPS
       USE m_C,             ONLY: NQ1, JLIST
       USE orb_C,           ONLY: NAK
@@ -37,13 +37,13 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       INTEGER, INTENT(IN)       :: NS,KA,JA,JB
-      REAL(DOUBLE), INTENT(OUT) :: COEFF
+      real(real64), INTENT(OUT) :: COEFF
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER      :: I,IA,IB,IAT,IJ,IFAZ,IQMM1,IQMM2,JIBKS1,JIB, &
                       KS1,KS2
-      REAL(DOUBLE) :: REC,A1,A2,A3,S1,S2,QM1,QM2
+      real(real64) :: REC,A1,A2,A3,S1,S2,QM1,QM2
 !-----------------------------------------------
 !
 !     THE CASE 12   + -

@@ -4,13 +4,13 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE multbc (N, K, M, C, TEMP, B)
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER, INTENT(IN) :: N
       INTEGER, INTENT(IN) :: K
       INTEGER, INTENT(IN) :: M
-      REAL(DOUBLE), DIMENSION(K*M) :: C
-      REAL(DOUBLE), DIMENSION(M) :: TEMP
-      REAL(DOUBLE), DIMENSION(N*K) :: B
+      real(real64), DIMENSION(K*M) :: C
+      real(real64), DIMENSION(M) :: TEMP
+      real(real64), DIMENSION(N*K) :: B
 !VAST...Calls: DGEMV, DCOPY
       END SUBROUTINE
       END INTERFACE

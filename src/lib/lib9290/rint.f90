@@ -22,7 +22,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE GRID_C
       USE TATB_C, ONLY: TA, MTP
       USE WAVE_C
@@ -44,7 +44,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: L
-      REAL(DOUBLE) :: RESULT
+      real(real64) :: RESULT
 !-----------------------------------------------
 !
 !

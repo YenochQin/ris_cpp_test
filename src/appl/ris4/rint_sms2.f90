@@ -20,7 +20,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE grid_C
       USE tatb_C
       USE wave_C
@@ -40,7 +40,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER      :: L
-      REAL(DOUBLE) :: RESULT, APART1, APART2
+      real(real64) :: RESULT, APART1, APART2
 !-----------------------------------------------
 !
 !   Tabulate integrand as required for SUBROUTINE QUAD

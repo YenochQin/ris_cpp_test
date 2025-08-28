@@ -11,21 +11,21 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, EPS
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       INTEGER,      INTENT(IN), DIMENSION(7) :: IK, ID
-      REAL(DOUBLE), INTENT(IN), DIMENSION(3) :: BK, BD
-      REAL(DOUBLE), INTENT(IN)               :: QM1
-      REAL(DOUBLE), INTENT(OUT)              :: A
+      real(real64), INTENT(IN), DIMENSION(3) :: BK, BD
+      real(real64), INTENT(IN)               :: QM1
+      real(real64), INTENT(OUT)              :: A
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER      :: IFAZ, ISUMA
-      REAL(DOUBLE) :: AB
+      real(real64) :: AB
 !-----------------------------------------------
       A=ZERO
       IF(QM1 < EPS) THEN

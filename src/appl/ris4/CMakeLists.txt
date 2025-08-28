@@ -25,7 +25,7 @@ add_executable(ris4
     sigma_2_I.f90
     vinti_I.f90
     engout_I.f90
-    ris.f90
+    isotope_shift.f90
     angdata.f90
     densread.f90
     densread_seltz.f90

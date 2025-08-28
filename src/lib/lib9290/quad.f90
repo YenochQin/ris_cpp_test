@@ -29,7 +29,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE DEF_C
       USE GRID_C
       USE NCC_C
@@ -38,12 +38,12 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      REAL(DOUBLE) , INTENT(OUT) :: RESULT
+      real(real64) , INTENT(OUT) :: RESULT
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: MTPM1, I, IP1, LOC
-      REAL(DOUBLE) :: TAI, TAIP1, QUOTT, FRIP1, FRI, RATIO, RIP1, RI, SIGMA
+      real(real64) :: TAI, TAIP1, QUOTT, FRIP1, FRI, RATIO, RIP1, RI, SIGMA
 !-----------------------------------------------
 !
 !

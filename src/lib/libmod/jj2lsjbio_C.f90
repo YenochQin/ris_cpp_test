@@ -8,9 +8,9 @@
 !     NIST                                     last update: May 2017   *
 !                                                                      *
 !***********************************************************************
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
 !
-      REAL(DOUBLE), DIMENSION(:), pointer :: RLev_ENER_1,RLev_ENER_2
+      real(real64), DIMENSION(:), pointer :: RLev_ENER_1,RLev_ENER_2
       CHARACTER(LEN=64), POINTER, DIMENSION(:) :: string_CSF1
       CHARACTER(LEN=64), POINTER, DIMENSION(:) :: string_CSF2
       INTEGER :: NVECTOTI,NVECTOTF,IOPEN_STATUS1,IOPEN_STATUS2

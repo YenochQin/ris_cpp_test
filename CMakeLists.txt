@@ -10,13 +10,13 @@
 # which will compile and install all the libraries to lib/
 #
 
-# This minimum CMake requirement can probably be loosened. But GRASP has not
-# been tested with CMake versions older than 3.6.3.
+# This minimum CMake requirement has been updated to 3.26 to support
+# modern CMake features and better Fortran 2023 support for code modernization.
 #
-# This particular minimum version is necessary as it is the lowest one which
-# ships with a FindBLAS module that is able to detect OpenBLAS loaded with
-# Environment Modules.
-cmake_minimum_required(VERSION 3.6)
+# The previous minimum (3.6) was necessary for FindBLAS module that could
+# detect OpenBLAS loaded with Environment Modules, but 3.26 provides much
+# better Fortran language support and modernization capabilities.
+cmake_minimum_required(VERSION 3.26)
 
 project(grasp)
 
@@ -107,7 +107,7 @@ set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR})
 #
 #     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libgfortran")
 #
-set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -fno-automatic -fallow-argument-mismatch")
+set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -fno-automatic")
 
 message("Compiler flags etc. for this GRASP build:")
 message("* CMAKE_BUILD_TYPE:                ${CMAKE_BUILD_TYPE}")

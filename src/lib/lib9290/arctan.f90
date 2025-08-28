@@ -16,15 +16,15 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE DEF_C
 !
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      REAL(DOUBLE), INTENT(IN) :: ARG1
-      REAL(DOUBLE), INTENT(IN) :: ARG2
+      real(real64), INTENT(IN) :: ARG1
+      real(real64), INTENT(IN) :: ARG2
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

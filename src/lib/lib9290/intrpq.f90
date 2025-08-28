@@ -19,7 +19,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,   ONLY: NNNP
       USE DEBUG_C
       USE DEF_C,           ONLY: ACCY
@@ -35,8 +35,8 @@
 !-----------------------------------------------
       INTEGER, INTENT(IN) :: MA
       INTEGER  :: J
-      REAL(DOUBLE), INTENT(OUT) :: DNORM
-      REAL(DOUBLE), DIMENSION(*), INTENT(IN) :: PA, QA, RA
+      real(real64), INTENT(OUT) :: DNORM
+      real(real64), DIMENSION(*), INTENT(IN) :: PA, QA, RA
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
@@ -46,10 +46,10 @@
 !-----------------------------------------------
       INTEGER :: I, MFJ, NRSTLO, KOUNT, IROW, K, NRSTHI, LLO, LHI, LOCNXT, &
          ILIROK, ILDIAG, ILOTHR, MFJP1
-      REAL(DOUBLE) :: RAMA
-      REAL(DOUBLE), DIMENSION(MXORD) :: X, DX
-      REAL(DOUBLE), DIMENSION((MXORD*(MXORD + 1))/2) :: POLYP, POLYQ
-      REAL(DOUBLE) :: RN, XBAR, PESTL, QESTL, DIFF, DIFFT, DXKMN1, DXIROW, &
+      real(real64) :: RAMA
+      real(real64), DIMENSION(MXORD) :: X, DX
+      real(real64), DIMENSION((MXORD*(MXORD + 1))/2) :: POLYP, POLYQ
+      real(real64) :: RN, XBAR, PESTL, QESTL, DIFF, DIFFT, DXKMN1, DXIROW, &
          FACTOR, PESTT, QESTT, DPBP, DQBQ, DNFAC
       LOGICAL :: SET
       LOGICAL, DIMENSION(NNNP) :: USED

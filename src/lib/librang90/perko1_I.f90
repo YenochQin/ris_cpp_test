@@ -2,10 +2,10 @@
       INTERFACE
 !
       SUBROUTINE PERKO1(JA,BK,IK,BD,ID)
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER,      INTENT(IN)                :: JA
       INTEGER,      INTENT(OUT), DIMENSION(7) :: IK, ID
-      REAL(DOUBLE), INTENT(OUT), DIMENSION(3) :: BK, BD
+      real(real64), INTENT(OUT), DIMENSION(3) :: BK, BD
       END SUBROUTINE
       END INTERFACE
       END MODULE

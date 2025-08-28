@@ -13,7 +13,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE DEF_C
       USE NPAR_C
       USE NSMDAT_C,        ONLY: SQN, DMOMNM, QMOMB
@@ -21,7 +21,7 @@
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      REAL(DOUBLE) :: A, APARM, CPARM, EMNAMU
+      real(real64) :: A, APARM, CPARM, EMNAMU
 !
 !   Read and echo pertinent information from  .iso  file
 !

@@ -18,7 +18,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: HALF
       USE m_C,             ONLY: JLIST, NQ1, NQ2, JJQ1, JJQ2
       USE orb_C,           ONLY: NP, NAK
@@ -32,7 +32,7 @@
 !-----------------------------------------------
       INTEGER,      INTENT(IN)                :: JA
       INTEGER,      INTENT(OUT), DIMENSION(7) :: IK, ID
-      REAL(DOUBLE), INTENT(OUT), DIMENSION(3) :: BK, BD
+      real(real64), INTENT(OUT), DIMENSION(3) :: BK, BD
 !      DIMENSION BK(3),IK(7),BD(3),ID(7)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s

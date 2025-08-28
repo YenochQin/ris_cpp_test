@@ -17,7 +17,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, ONE
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
@@ -37,13 +37,13 @@
 !-----------------------------------------------
       INTEGER             :: I, J, K, L, M, N
       INTEGER, INTENT(IN) :: ITIK
-      REAL(DOUBLE)        :: SI
+      real(real64)        :: SI
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: IFA
-      REAL(DOUBLE), DIMENSION(0:4,0:4,0:4,0:4,0:4,0:4) :: RACA
-      REAL(DOUBLE) :: UNDEF, A
+      real(real64), DIMENSION(0:4,0:4,0:4,0:4,0:4,0:4) :: RACA
+      real(real64) :: UNDEF, A
       LOGICAL :: SAVE
 !-----------------------------------------------
       DATA RACA/ 15625*1.D-20/

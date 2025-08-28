@@ -21,7 +21,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param,  ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,    ONLY: NNNW
       USE memory_man
       USE debug_C
@@ -62,25 +62,25 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       CHARACTER*24, INTENT(IN) :: NAME
-!      REAL(DOUBLE), INTENT(IN) :: DR2
+!      real(real64), INTENT(IN) :: DR2
 !      INTEGER, INTENT(IN)      :: NOPAR
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      REAL(DOUBLE), DIMENSION(:,:,:), pointer :: DINT1VEC
-      REAL(DOUBLE), DIMENSION(:,:), pointer   :: DENS1VEC
-      REAL(DOUBLE), DIMENSION(:), pointer     :: DENSFIT
-      REAL(DOUBLE), DIMENSION(:,:), pointer     :: FMAT
-      REAL(DOUBLE), DIMENSION(:), pointer     :: RHO
-      REAL(DOUBLE), DIMENSION(:), pointer     :: RES
+      real(real64), DIMENSION(:,:,:), pointer :: DINT1VEC
+      real(real64), DIMENSION(:,:), pointer   :: DENS1VEC
+      real(real64), DIMENSION(:), pointer     :: DENSFIT
+      real(real64), DIMENSION(:,:), pointer     :: FMAT
+      real(real64), DIMENSION(:), pointer     :: RHO
+      real(real64), DIMENSION(:), pointer     :: RES
 
 
-      REAL(DOUBLE), DIMENSION(NNNW)      :: TSHELL
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW) :: VINT, VINT2
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW) :: DINT1, DINT2, DINT3, &
+      real(real64), DIMENSION(NNNW)      :: TSHELL
+      real(real64), DIMENSION(NNNW,NNNW) :: VINT, VINT2
+      real(real64), DIMENSION(NNNW,NNNW) :: DINT1, DINT2, DINT3, &
                                             DINT4, DINT5, DINT6, &
                                             DINT7
-      REAL(DOUBLE) :: AU2FM, RCRE, HzSMSu, HzNMSu, FO90
+      real(real64) :: AU2FM, RCRE, HzSMSu, HzNMSu, FO90
       CHARACTER*11 :: CNUM
       CHARACTER*2  :: CK
       LOGICAL :: VSH, NUCDE, SMSSH, YES, YES2, AVAIL_TB, AVAIL_OB
@@ -438,16 +438,16 @@
            //24X,'Dens. (a.u.)')
 
 !     Electronic factors header
-317   FORMAT (//' Level  J Parity  Field shift electronic factors and av&
-           erage point discrepancy in fit' &
+317   FORMAT (//' Level  J Parity  Field shift electronic factors and av', &
+           'erage point discrepancy in fit' &
            //24X, &
            'F0 (GHz/fm^2)',6X,' F2 (GHz/fm^4)', &
-           6X,' F4 (GHz/fm^6)',6X,' F6 (GHz/fm^8)' &
+           6X,' F4 (GHz/fm^6)',6X,' F6 (GHz/fm^8)', &
            6X,' Disc. (per mille)')
 
 !     Electronic field shift header
-327   FORMAT (//' Level  J Parity  Field shift electronic factors (corre&
-           cted for varying density inside nucleus)' &
+327   FORMAT (//' Level  J Parity  Field shift electronic factors (corre', &
+           'cted for varying density inside nucleus)' &
            //24X, &
            'F0VED0 (GHz/fm^2)   F0VED1 (GHz/fm^4)')
 

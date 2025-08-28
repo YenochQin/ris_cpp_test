@@ -4,8 +4,8 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE cxk (S, IS, KAPS, NU, K, IBR, IEX)
-      USE vast_kind_param,ONLY: DOUBLE
-      REAL(DOUBLE), DIMENSION(12), INTENT(INOUT) :: S
+      use iso_fortran_env, only: real64, int32, int64, real128
+      real(real64), DIMENSION(12), INTENT(INOUT) :: S
       INTEGER, DIMENSION(4), INTENT(IN) :: IS
       INTEGER, DIMENSION(4), INTENT(IN) :: KAPS
       INTEGER, INTENT(IN) :: NU

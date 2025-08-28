@@ -20,7 +20,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE GRID_C
       USE LIC13_C
       USE TATB_C, ONLY: TA, TB
@@ -34,7 +34,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: I, K, IROW, LOC
-      REAL(DOUBLE) :: A1, A2, A3, A4, A5, A6, HDPBDT, HDQBDT, AIK
+      real(real64) :: A1, A2, A3, A4, A5, A6, HDPBDT, HDQBDT, AIK
 !-----------------------------------------------
 !
 

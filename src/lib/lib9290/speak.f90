@@ -14,7 +14,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE BUFFER_C,        ONLY: LABEL, COEFF, NBDIM, NVCOEF
       USE DEBUG_C ,        ONLY: IBUG1
       USE ORB_C,           ONLY: NP, NH
@@ -34,7 +34,7 @@
       INTEGER, INTENT(IN) :: IA2
       INTEGER, INTENT(IN) :: IB2
       INTEGER, INTENT(IN) :: K
-      REAL(DOUBLE), INTENT(IN) :: X
+      real(real64), INTENT(IN) :: X
 !-----------------------------------------------
 !
 !

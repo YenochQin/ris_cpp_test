@@ -33,7 +33,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,   ONLY: NNN1
       USE CNC_C,           ONLY: CNC5C
       USE DEF_C,           ONLY: ACCY
@@ -61,10 +61,10 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: II, MTPP1, MTPP3, MTPP4, KK, NP4
-      REAL(DOUBLE), DIMENSION(NNN1) :: RHOP
-      REAL(DOUBLE), DIMENSION(NNN1,KLIMIT) :: RTTK, RTTKM, RTTK1, RTTKM1
-      REAL(DOUBLE), DIMENSION(NNN1) :: RM, WK, TEMP
-      REAL(DOUBLE) :: SUM, RTMP, ZKLIM, DIF
+      real(real64), DIMENSION(NNN1) :: RHOP
+      real(real64), DIMENSION(NNN1,KLIMIT) :: RTTK, RTTKM, RTTK1, RTTKM1
+      real(real64), DIMENSION(NNN1) :: RM, WK, TEMP
+      real(real64) :: SUM, RTMP, ZKLIM, DIF
       LOGICAL, DIMENSION(0:KLIMIT) :: KCALC
 
       SAVE KCALC, RTTK, RTTKM, RTTK1, RTTKM1, RM

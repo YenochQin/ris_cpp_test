@@ -17,7 +17,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,   ONLY:  NNNW
       USE CONS_C
       USE m_C
@@ -40,7 +40,7 @@
 !-----------------------------------------------
       INTEGER, INTENT(IN)  :: KA,IOPAR,JA,JB
       INTEGER, INTENT(OUT) :: IA1,IA2
-      REAL(DOUBLE), INTENT(OUT) :: VSHELL(NNNW)
+      real(real64), INTENT(OUT) :: VSHELL(NNNW)
 !      DIMENSION VSHELL(NNNW)
 !      DIMENSION IS(2),KS(2)
 !-----------------------------------------------
@@ -49,7 +49,7 @@
       INTEGER :: KK,IJ,IDQ,JA1,JA2,JW,NDQ,NS,ISH,I,II,I1,IM,  &
                  KS1,KS2,NX,NPEELM
       INTEGER, DIMENSION(2) :: IS,KS
-      REAL(DOUBLE) :: TCOEFF
+      real(real64) :: TCOEFF
 !-----------------------------------------------
       IA1 = 0
       KK = KA+KA+1

@@ -19,17 +19,17 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       INTEGER, INTENT(IN) :: NARR
-      REAL(DOUBLE), INTENT(IN) :: XVAL
-      REAL(DOUBLE), INTENT(OUT) :: YVAL
-      REAL(DOUBLE), INTENT(IN) :: ACCY
-      REAL(DOUBLE), DIMENSION(NARR), INTENT(IN) :: XARR
-      REAL(DOUBLE), DIMENSION(NARR), INTENT(IN) :: YARR
+      real(real64), INTENT(IN) :: XVAL
+      real(real64), INTENT(OUT) :: YVAL
+      real(real64), INTENT(IN) :: ACCY
+      real(real64), DIMENSION(NARR), INTENT(IN) :: XARR
+      real(real64), DIMENSION(NARR), INTENT(IN) :: YARR
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
@@ -39,9 +39,9 @@
 !-----------------------------------------------
       INTEGER :: NRSTLO, NRSTHI, K, LLO, LHI, LLR, IROW, LOCNXT, ILIROK, ILDIAG&
          , ILOTHR, IBEST
-      REAL(DOUBLE), DIMENSION(MXORD) :: DX, X, EST
-      REAL(DOUBLE), DIMENSION((MXORD*(MXORD + 1))/2) :: POLY
-      REAL(DOUBLE) :: DIFF, DIFFT, DEBEB, DEBE
+      real(real64), DIMENSION(MXORD) :: DX, X, EST
+      real(real64), DIMENSION((MXORD*(MXORD + 1))/2) :: POLY
+      real(real64) :: DIFF, DIFFT, DEBEB, DEBE
       LOGICAL :: SET
       LOGICAL, DIMENSION(2*MXORD + 2) :: USED
 !-----------------------------------------------

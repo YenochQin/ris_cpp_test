@@ -4,10 +4,10 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  11/02/17
       SUBROUTINE polint (XA, YA, DENS)
-      USE vast_kind_param,ONLY: DOUBLE
-      REAL(DOUBLE), DIMENSION(3), INTENT(IN) :: XA
-      REAL(DOUBLE), DIMENSION(3), INTENT(IN) :: YA
-      REAL(DOUBLE), INTENT(OUT) :: DENS
+      use iso_fortran_env, only: real64, int32, int64, real128
+      real(real64), DIMENSION(3), INTENT(IN) :: XA
+      real(real64), DIMENSION(3), INTENT(IN) :: YA
+      real(real64), INTENT(OUT) :: DENS
       END SUBROUTINE
       END INTERFACE
       END MODULE

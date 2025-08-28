@@ -19,7 +19,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE ORB_C
       USE M_C
 !-----------------------------------------------
@@ -42,12 +42,12 @@
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
-      REAL(DOUBLE), PARAMETER :: EPS = 1.0D-10
+      real(real64), PARAMETER :: EPS = 1.0D-10
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: IA1,IB1,NS,KAP1,J1,NQS1,NUMAX,NU,KAP2,J2,NQS2,NUMIN
-      REAL(DOUBLE) :: X,CONST,GAM
+      real(real64) :: X,CONST,GAM
 !-----------------------------------------------
 !
 !

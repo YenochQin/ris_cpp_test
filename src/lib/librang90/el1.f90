@@ -20,7 +20,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, HALF, EPS
       USE m_C,             ONLY: JLIST, NPEEL
       USE orb_C,           ONLY: NAK
@@ -57,10 +57,10 @@
                  NE1,NE2,NUP1
       INTEGER, DIMENSION(2) :: J
       INTEGER, DIMENSION(4) :: IS,KAPS,KS
-      REAL(DOUBLE)          :: QM1,QM2,QM3,QM4,AA,AB,A1,BB,SI,RECC,RAG
-      REAL(DOUBLE), DIMENSION(12)   :: S
-      REAL(DOUBLE), DIMENSION(30)   :: PMGG,RAGG
-      REAL(DOUBLE), DIMENSION(7,20) :: CONE
+      real(real64)          :: QM1,QM2,QM3,QM4,AA,AB,A1,BB,SI,RECC,RAG
+      real(real64), DIMENSION(12)   :: S
+      real(real64), DIMENSION(30)   :: PMGG,RAGG
+      real(real64), DIMENSION(7,20) :: CONE
 !-----------------------------------------------
       IF(JA /= JB)GO TO 9
 !

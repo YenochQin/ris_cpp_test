@@ -15,7 +15,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE DEBUG_C
       USE DEF_C, ONLY: PRECIS
       USE GRID_C
@@ -24,7 +24,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: NP10, I, NB2, NROWS, II, II1, II2
-      REAL(DOUBLE) :: EPH, ETT, ETTM1, EPSLON, A, RLAST, REST, T, RESTS, FOFR, &
+      real(real64) :: EPH, ETT, ETTM1, EPSLON, A, RLAST, REST, T, RESTS, FOFR, &
          FPRI, DELR
 !-----------------------------------------------
 !

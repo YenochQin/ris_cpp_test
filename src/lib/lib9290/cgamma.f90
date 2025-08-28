@@ -22,21 +22,21 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE DEF_C
       USE arctan_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      REAL(DOUBLE), INTENT(IN) :: ARGI, ARGR
-      REAL(DOUBLE), INTENT(OUT) :: RESR, RESI
+      real(real64), INTENT(IN) :: ARGI, ARGR
+      real(real64), INTENT(OUT) :: RESR, RESI
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: I
-      REAL(DOUBLE), DIMENSION(7) :: FN, FD
-      REAL(DOUBLE) :: HLNTPI, TWOI, DIFF, ARGUM, CLNGI, FACNEG, ARGUR, OVLFAC, &
+      real(real64), DIMENSION(7) :: FN, FD
+      real(real64) :: HLNTPI, TWOI, DIFF, ARGUM, CLNGI, FACNEG, ARGUR, OVLFAC, &
          CLNGR, FAC, OBASQ, ARGUI, ARGUI2, OVLFR, OVLFI, TERMR, TERMI, ARGUR2, &
          OBASQR, OBASQI, ZFACR, ZFACI
       LOGICAL,SAVE :: FIRST, NEGARG

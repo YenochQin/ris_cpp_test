@@ -18,7 +18,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE debug_C
       USE grid_C
       USE orb_C
@@ -39,7 +39,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: I, KPJ, KPK, IFACT1, IFACT2
-      REAL(DOUBLE) :: PIECE1, FACT1, FACT2, PIECE2
+      real(real64) :: PIECE1, FACT1, FACT2, PIECE2
 !-----------------------------------------------
 !
       MTP = MAX(MF(J),MF(K))

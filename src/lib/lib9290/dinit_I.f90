@@ -4,10 +4,10 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE dinit (N, A, X, INCX)
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER, INTENT(IN) :: N
-      REAL(DOUBLE), INTENT(IN) :: A
-      REAL(DOUBLE), DIMENSION(*), INTENT(OUT) :: X
+      real(real64), INTENT(IN) :: A
+      real(real64), DIMENSION(*), INTENT(OUT) :: X
       INTEGER, INTENT(IN) :: INCX
       END SUBROUTINE
       END INTERFACE

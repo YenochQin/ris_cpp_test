@@ -1,7 +1,7 @@
       SUBROUTINE DINIT(N, A, X, INCX)
 !     ==================================================================
 !
-!     PURPOSE ... INITIALIZES REAL*8           VECTOR TO
+!     PURPOSE ... INITIALIZES real(real64)           VECTOR TO
 !                 A CONSTANT VALUE 'A'
 !
 !     CREATED ... APR. 14, 1987
@@ -13,15 +13,15 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       INTEGER, INTENT(IN) :: N
       INTEGER, INTENT(IN) :: INCX
-      REAL(DOUBLE), INTENT(IN) :: A
-      REAL(DOUBLE), DIMENSION(*), INTENT(OUT) :: X
+      real(real64), INTENT(IN) :: A
+      real(real64), DIMENSION(*), INTENT(OUT) :: X
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

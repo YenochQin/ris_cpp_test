@@ -14,7 +14,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,   ONLY:  KEYORB
       USE BUFFER_C
       USE debug_C
@@ -28,7 +28,7 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       INTEGER, INTENT(IN) :: JA, JB, NU, IA, IB, IC, ID, ITYPE
-      REAL(DOUBLE), INTENT(IN) :: COEF
+      real(real64), INTENT(IN) :: COEF
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------

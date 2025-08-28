@@ -4,7 +4,7 @@
       MODULE syma_C
 !                                                                      *
 !***********************************************************************
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER, PARAMETER::nblk0 = 50    ! Maximum number of blocks
 !...Created by Pacific-Sierra Research 77to90  4.3E  07:38:02   1/ 6/07
 !...Modified by Charlotte Froese Fischer

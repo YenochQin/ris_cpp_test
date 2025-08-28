@@ -19,7 +19,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE def_C,           ONLY: cvac, pi
       USE grid_C
       USE wave_C
@@ -36,8 +36,8 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: L, II, NMIN
-      REAL(DOUBLE), DIMENSION(3) :: XA, YA
-      REAL(DOUBLE) :: DENS
+      real(real64), DIMENSION(3) :: XA, YA
+      real(real64) :: DENS
 !-----------------------------------------------
 !
       NMIN = 10

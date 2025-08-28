@@ -18,7 +18,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE DEBUG_C
       USE DEF_C,           ONLY: C
       USE GRID_C
@@ -45,7 +45,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: I
-      REAL(DOUBLE) :: PIECE1, PIECE2, PIECE3, PIECE4
+      real(real64) :: PIECE1, PIECE2, PIECE3, PIECE4
 !-----------------------------------------------
 !
 !   Stop if orbitals J and K have different kappa values

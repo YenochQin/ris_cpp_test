@@ -12,14 +12,14 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: TENTH, TWO
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       INTEGER,      INTENT(IN) :: IB, IK
-      REAL(DOUBLE), INTENT(IN) :: QB, QK
+      real(real64), INTENT(IN) :: QB, QK
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

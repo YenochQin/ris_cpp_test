@@ -1,5 +1,5 @@
       MODULE fixd_C
-      USE vast_kind_param,  ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,    ONLY: NNNW
 !...Created by Pacific-Sierra Research 77to90  4.3E  06:37:37  12/28/06
 !...Modified by Charlotte Froese Fischer

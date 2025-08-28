@@ -1,5 +1,5 @@
 MODULE memory_man
-   USE vast_kind_param
+   use iso_fortran_env, only: int32, int64, int8, real64
    INTERFACE alloc
       MODULE PROCEDURE alloc_0i, alloc_1i, alloc_2i, alloc_3i,     &
                                  alloc_1iL,                        &
@@ -123,7 +123,7 @@ MODULE memory_man
    SUBROUTINE alloc_1iL(p, n, var, sub)
      IMPLICIT NONE
      INTEGER, POINTER, DIMENSION(:) :: p
-     INTEGER(LONG), INTENT(IN) :: n
+     integer(int64), INTENT(IN) :: n
      CHARACTER(LEN=*), INTENT(IN) :: var, sub
      INTEGER :: error
 
@@ -146,7 +146,7 @@ MODULE memory_man
 
    SUBROUTINE alloc_1r(p, n, var, sub)
      IMPLICIT NONE
-     real(double), POINTER, DIMENSION(:) :: p
+     real(real64), POINTER, DIMENSION(:) :: p
      INTEGER, INTENT(IN) :: n
      CHARACTER(LEN=*), INTENT(IN) :: var, sub
      INTEGER :: error
@@ -170,7 +170,7 @@ MODULE memory_man
 
    SUBROUTINE alloc_2r(p, n1, n2, var, sub)
      IMPLICIT NONE
-     REAL(double), POINTER, DIMENSION(:,:) :: p
+     REAL(real64), POINTER, DIMENSION(:,:) :: p
      INTEGER, INTENT(IN) :: n1, n2
      CHARACTER(LEN=*), INTENT(IN) :: var, sub
      INTEGER :: error
@@ -194,8 +194,8 @@ MODULE memory_man
 
    SUBROUTINE alloc_1rL(p, n, var, sub)
      IMPLICIT NONE
-     real(double), POINTER, DIMENSION(:) :: p
-     INTEGER(LONG), INTENT(IN) :: n
+     real(real64), POINTER, DIMENSION(:) :: p
+     integer(int64), INTENT(IN) :: n
      CHARACTER(LEN=*), INTENT(IN) :: var, sub
      INTEGER :: error
 
@@ -218,7 +218,7 @@ MODULE memory_man
 
    SUBROUTINE alloc_0b(p, first, last, var, sub )
      IMPLICIT NONE
-     INTEGER(BYTE), POINTER, DIMENSION(:) :: p
+     integer(int8), POINTER, DIMENSION(:) :: p
      INTEGER, INTENT(IN) :: first, last
      CHARACTER(LEN=*), INTENT(IN) :: var, sub
      INTEGER :: error
@@ -242,7 +242,7 @@ MODULE memory_man
 
    SUBROUTINE alloc_1b(p, n, var, sub)
      IMPLICIT NONE
-     INTEGER(BYTE), POINTER, DIMENSION(:) :: p
+     integer(int8), POINTER, DIMENSION(:) :: p
      INTEGER, INTENT(IN) :: n
      CHARACTER(LEN=*), INTENT(IN) :: var, sub
      INTEGER :: error
@@ -266,7 +266,7 @@ MODULE memory_man
 
    SUBROUTINE alloc_2b(p, n1, n2, var, sub)
      IMPLICIT NONE
-     INTEGER(BYTE), POINTER, DIMENSION(:,:) :: p
+     integer(int8), POINTER, DIMENSION(:,:) :: p
      INTEGER, INTENT(IN) :: n1, n2
      CHARACTER(LEN=*), INTENT(IN) :: var, sub
      INTEGER :: error
@@ -290,7 +290,7 @@ MODULE memory_man
 
    SUBROUTINE alloc_3b(p, n1, n2, n3, var, sub)
      IMPLICIT NONE
-     INTEGER(BYTE), POINTER, DIMENSION(:,:,:) :: p
+     integer(int8), POINTER, DIMENSION(:,:,:) :: p
      INTEGER, INTENT(IN) :: n1, n2, n3
      CHARACTER(LEN=*), INTENT(IN) :: var, sub
      INTEGER :: error
@@ -377,7 +377,7 @@ MODULE memory_man
 
    SUBROUTINE dalloc_1r(p, var, sub)
      IMPLICIT NONE
-     REAL(DOUBLE), POINTER, DIMENSION(:) :: p
+     REAL(real64), POINTER, DIMENSION(:) :: p
      CHARACTER(LEN=*) :: var, sub
 !    write(777,*) "dalloc_1r var, sub",var, "  ", sub
      IF (ASSOCIATED(p)) THEN
@@ -390,7 +390,7 @@ MODULE memory_man
 
    SUBROUTINE dalloc_2r(p, var, sub)
      IMPLICIT NONE
-     REAL(DOUBLE), POINTER, DIMENSION(:,:) :: p
+     REAL(real64), POINTER, DIMENSION(:,:) :: p
      CHARACTER(LEN=*) :: var, sub
 !    write(777,*) "dalloc_2r var, sub",var, "  ", sub
      IF (ASSOCIATED(p)) THEN
@@ -403,7 +403,7 @@ MODULE memory_man
 
    SUBROUTINE dalloc_1b(p, var, sub)
      IMPLICIT NONE
-     INTEGER(BYTE), POINTER, DIMENSION(:) :: p
+     integer(int8), POINTER, DIMENSION(:) :: p
      CHARACTER(LEN=*) :: var, sub
 !    write(777,*) "dalloc_1b var, sub",var, "  ", sub
      IF (ASSOCIATED(p)) THEN
@@ -416,7 +416,7 @@ MODULE memory_man
 
    SUBROUTINE dalloc_2b(p, var, sub)
      IMPLICIT NONE
-     INTEGER(BYTE), POINTER, DIMENSION(:,:) :: p
+     integer(int8), POINTER, DIMENSION(:,:) :: p
      CHARACTER(LEN=*) :: var, sub
 !    write(777,*) "dalloc_2b var, sub",var, "  ", sub
      IF (ASSOCIATED(p)) THEN
@@ -429,7 +429,7 @@ MODULE memory_man
 
    SUBROUTINE dalloc_3b(p, var, sub)
      IMPLICIT NONE
-     INTEGER(BYTE), POINTER, DIMENSION(:,:,:) :: p
+     integer(int8), POINTER, DIMENSION(:,:,:) :: p
      CHARACTER(LEN=*) :: var, sub
 !    write(777,*) "dalloc_3b var, sub",var, "  ", sub
      IF (ASSOCIATED(p)) THEN
@@ -567,7 +567,7 @@ MODULE memory_man
 
    SUBROUTINE ralloc_1r(p, n, var, sub)
      IMPLICIT NONE
-     real(double), POINTER, DIMENSION(:) :: p, pnew
+     real(real64), POINTER, DIMENSION(:) :: p, pnew
      INTEGER, INTENT(IN) :: n
      CHARACTER(LEN=*), INTENT(IN) :: var, sub
      INTEGER :: error, nold
@@ -594,7 +594,7 @@ MODULE memory_man
 
    SUBROUTINE ralloc_2r(p, n1, n2, var, sub)
      IMPLICIT NONE
-     REAL(double), POINTER, DIMENSION(:,:) :: p, pnew
+     REAL(real64), POINTER, DIMENSION(:,:) :: p, pnew
      INTEGER, INTENT(IN) :: n1, n2
      CHARACTER(LEN=*), INTENT(IN) :: var, sub
      INTEGER :: error, n1_old, n2_old
@@ -622,7 +622,7 @@ MODULE memory_man
 
    SUBROUTINE ralloc_0b(p, first, last, var, sub)
      IMPLICIT NONE
-     INTEGER(BYTE), POINTER, DIMENSION(:) :: p, pnew
+     integer(int8), POINTER, DIMENSION(:) :: p, pnew
      INTEGER, INTENT(IN) :: first, last
      CHARACTER(LEN=*), INTENT(IN) :: var, sub
      INTEGER :: error, nold
@@ -649,7 +649,7 @@ MODULE memory_man
 
    SUBROUTINE ralloc_1b(p, n, var, sub)
      IMPLICIT NONE
-     INTEGER(BYTE), POINTER, DIMENSION(:) :: p, pnew
+     integer(int8), POINTER, DIMENSION(:) :: p, pnew
      INTEGER, INTENT(IN) :: n
      CHARACTER(LEN=*), INTENT(IN) :: var, sub
      INTEGER :: error, nold
@@ -675,7 +675,7 @@ MODULE memory_man
 
    SUBROUTINE ralloc_2b(p, n1, n2, var, sub)
      IMPLICIT NONE
-     INTEGER(BYTE), POINTER, DIMENSION(:,:) :: p, pnew
+     integer(int8), POINTER, DIMENSION(:,:) :: p, pnew
      INTEGER, INTENT(IN) :: n1, n2
      CHARACTER(LEN=*), INTENT(IN) :: var, sub
      INTEGER :: error, n1_old, n2_old
@@ -703,7 +703,7 @@ MODULE memory_man
 
    SUBROUTINE ralloc_3b(p, n1, n2, n3, var, sub)
      IMPLICIT NONE
-     INTEGER(BYTE), POINTER, DIMENSION(:,:,:) :: p, pnew
+     integer(int8), POINTER, DIMENSION(:,:,:) :: p, pnew
      INTEGER, INTENT(IN) :: n1, n2, n3
      CHARACTER(LEN=*), INTENT(IN) :: var, sub
      INTEGER :: error, n1_old, n2_old, n3_old, i

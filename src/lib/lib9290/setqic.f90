@@ -16,7 +16,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CNC_C
       USE GRID_C
       USE LIC13_C, A13=>A
@@ -27,11 +27,11 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: I, J
-      REAL(DOUBLE), DIMENSION(13,13) :: B13
-      REAL(DOUBLE), DIMENSION(6) :: CG
-      REAL(DOUBLE), DIMENSION(5,2:5) :: C5NUM
-      REAL(DOUBLE), DIMENSION(6,2:6) :: C6NUM
-      REAL(DOUBLE) :: B13DEN, DENOM, C5DEN, C6DEN, FACTOR
+      real(real64), DIMENSION(13,13) :: B13
+      real(real64), DIMENSION(6) :: CG
+      real(real64), DIMENSION(5,2:5) :: C5NUM
+      real(real64), DIMENSION(6,2:6) :: C6NUM
+      real(real64) :: B13DEN, DENOM, C5DEN, C6DEN, FACTOR
       LOGICAL :: FIRST
 !-----------------------------------------------
 !

@@ -15,7 +15,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE orb_C,           ONLY: NP, NAK
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
@@ -26,12 +26,12 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       INTEGER, INTENT(IN) :: IPAR, I1, I2
-      REAL(DOUBLE), INTENT(OUT) :: APART
+      real(real64), INTENT(OUT) :: APART
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: L1, L2, KAP1, KAP2, J1, J2, L1_TILDA
-      REAL(DOUBLE) :: RAC
+      real(real64) :: RAC
 !-----------------------------------------------
 !
 !   Set KAP1 and KAP2

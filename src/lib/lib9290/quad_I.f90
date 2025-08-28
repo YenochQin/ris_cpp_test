@@ -4,8 +4,8 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE quad (RESULT)
-      USE vast_kind_param,ONLY: DOUBLE
-      REAL(DOUBLE), INTENT(OUT) :: RESULT
+      use iso_fortran_env, only: real64, int32, int64, real128
+      real(real64), INTENT(OUT) :: RESULT
 !VAST.../GRID/ R(IN), RP(IN)
 !VAST.../NCC/ C1(IN), C2(IN), C3(IN), C4(IN)
 !VAST.../TATB/ TA(INOUT), MTP(IN)

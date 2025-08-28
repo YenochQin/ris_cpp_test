@@ -4,14 +4,14 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE adds (N, LIM, KPASS, NNCV, BASIS, AB, S)
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER, INTENT(IN) :: N
       INTEGER, INTENT(IN) :: LIM
       INTEGER, INTENT(IN) :: KPASS
       INTEGER, INTENT(IN) :: NNCV
-      REAL(DOUBLE), DIMENSION(N*LIM) :: BASIS
-      REAL(DOUBLE), DIMENSION(N*LIM) :: AB
-      REAL(DOUBLE), DIMENSION(LIM*(LIM + 1)/2), INTENT(OUT) :: S
+      real(real64), DIMENSION(N*LIM) :: BASIS
+      real(real64), DIMENSION(N*LIM) :: AB
+      real(real64), DIMENSION(LIM*(LIM + 1)/2), INTENT(OUT) :: S
 !VAST...Calls: DDOT
       END SUBROUTINE
       END INTERFACE

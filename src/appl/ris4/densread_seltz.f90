@@ -19,7 +19,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param,  ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,    ONLY: KEYORB, NNNW, NNNP
       USE prnt_C
       USE ris_C
@@ -32,11 +32,12 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT1, DINT2,  &
+      INTEGER, INTENT(IN) :: NRNUC
+      real(real64), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT1, DINT2,  &
                                           DINT3, DINT4, DINT5, DINT6,  &
                                           DINT7
-      REAL(DOUBLE), DIMENSION(NVEC,NRNUC), INTENT(OUT)     :: DENS1VEC !  JE ADD
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW,NRNUC), INTENT(IN) :: DINT1VEC !  JE ADD
+      real(real64), DIMENSION(NVEC,NRNUC), INTENT(OUT)     :: DENS1VEC !  JE ADD
+      real(real64), DIMENSION(NNNW,NNNW,NRNUC), INTENT(IN) :: DINT1VEC !  JE ADD
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
@@ -44,14 +45,14 @@
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      REAL(DOUBLE), DIMENSION(NNNW) :: TSHELL_R
-      REAL(DOUBLE), DIMENSION(NRNUC) :: CONTRI1VEC, ELEMNT1VEC
-      REAL(DOUBLE) :: ELEMNT1, ELEMNT2, ELEMNT3, ELEMNT4, ELEMNT5
-      REAL(DOUBLE) :: ELEMNT6, ELEMNT7
-      REAL(DOUBLE) :: CONTRI1, CONTRI2, CONTRI3, CONTRI4, CONTRI5
-      REAL(DOUBLE) :: CONTRI6, CONTRI7
+      real(real64), DIMENSION(NNNW) :: TSHELL_R
+      real(real64), DIMENSION(NRNUC) :: CONTRI1VEC, ELEMNT1VEC
+      real(real64) :: ELEMNT1, ELEMNT2, ELEMNT3, ELEMNT4, ELEMNT5
+      real(real64) :: ELEMNT6, ELEMNT7
+      real(real64) :: CONTRI1, CONTRI2, CONTRI3, CONTRI4, CONTRI5
+      real(real64) :: CONTRI6, CONTRI7
       INTEGER :: ICOLD, IROLD, IOS, IA, IB, IC, IR, I, J, L, LOC, LAB
-      INTEGER :: NCOUNT, NRNUC
+      INTEGER :: NCOUNT
 !-----------------------------------------------
 !
 ! DINT1 contain the density

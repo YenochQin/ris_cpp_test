@@ -1,9 +1,9 @@
       MODULE sigma_2_I
       INTERFACE
       SUBROUTINE sigma_2 (IPAR,I1,I2,APART)
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER, INTENT(IN) :: IPAR, I1, I2
-      REAL(DOUBLE), INTENT(OUT) :: APART
+      real(real64), INTENT(OUT) :: APART
       END SUBROUTINE sigma_2
       END INTERFACE
       END MODULE

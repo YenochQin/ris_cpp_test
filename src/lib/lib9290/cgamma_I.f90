@@ -4,11 +4,11 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE cgamma (ARGR, ARGI, RESR, RESI)
-      USE vast_kind_param,ONLY: DOUBLE
-      REAL(DOUBLE), INTENT(IN) :: ARGR
-      REAL(DOUBLE), INTENT(IN) :: ARGI
-      REAL(DOUBLE), INTENT(OUT) :: RESR
-      REAL(DOUBLE), INTENT(OUT) :: RESI
+      use iso_fortran_env, only: real64, int32, int64, real128
+      real(real64), INTENT(IN) :: ARGR
+      real(real64), INTENT(IN) :: ARGI
+      real(real64), INTENT(OUT) :: RESR
+      real(real64), INTENT(OUT) :: RESI
 !VAST.../DEF0/ EXPMAX(IN), EXPMIN(IN), PRECIS(IN)
 !VAST.../DEF9/ PI(IN)
 !VAST...Calls: ARCTAN

@@ -21,7 +21,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, HALF, EPS
       USE m_C
       USE trk_C
@@ -37,12 +37,12 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       INTEGER, INTENT(IN) :: JJA,JJB,JA,JB
-      REAL(DOUBLE), INTENT(OUT) :: COEFF
+      real(real64), INTENT(OUT) :: COEFF
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER      :: IAT,JAA,JBB,NN,IB1,II,INN,IFAZ
-      REAL(DOUBLE) :: QM1,QM2,REC,WW
+      real(real64) :: QM1,QM2,REC,WW
 !-----------------------------------------------
       COEFF=ZERO
       IF(JA == JB) RETURN

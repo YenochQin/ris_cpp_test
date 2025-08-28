@@ -6,7 +6,7 @@
       SUBROUTINE dvdson (IRC, IREV, N, LIM, NOC, ILOW, IHIGH, ISELEC, NIV&
          , MBLOCK, CRITE, CRITC, CRITR, MAXITER, WORK, IWRSZ, IWORK, IIWSZ&
          , HIEND, NLOOPS, IERR)
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER, INTENT(INOUT) :: IRC
       INTEGER, DIMENSION(*), INTENT(INOUT) :: IREV
       INTEGER, INTENT(IN) :: N
@@ -17,11 +17,11 @@
       INTEGER, DIMENSION(LIM), INTENT(INOUT) :: ISELEC
       INTEGER, INTENT(IN) :: NIV
       INTEGER, INTENT(IN) :: MBLOCK
-      REAL(DOUBLE) :: CRITE
-      REAL(DOUBLE) :: CRITC
-      REAL(DOUBLE) :: CRITR
+      real(real64) :: CRITE
+      real(real64) :: CRITC
+      real(real64) :: CRITR
       INTEGER :: MAXITER
-      REAL(DOUBLE), DIMENSION(IWRSZ) :: WORK
+      real(real64), DIMENSION(IWRSZ) :: WORK
       INTEGER, INTENT(IN) :: IWRSZ
       INTEGER, DIMENSION(IIWSZ) :: IWORK
       INTEGER, INTENT(IN) :: IIWSZ

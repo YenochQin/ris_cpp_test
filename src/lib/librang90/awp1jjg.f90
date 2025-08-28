@@ -11,7 +11,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, TWO, TENTH, EPS
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
@@ -29,16 +29,16 @@
 !-----------------------------------------------
       INTEGER,      INTENT(IN)               :: K1
       INTEGER,      INTENT(IN), DIMENSION(7) :: IK, ID
-      REAL(DOUBLE), INTENT(IN)               :: BK2, QM1, QM2, QM3
-      REAL(DOUBLE), INTENT(IN), DIMENSION(3) :: BK, BD
-      REAL(DOUBLE), INTENT(OUT)              :: AW
+      real(real64), INTENT(IN)               :: BK2, QM1, QM2, QM3
+      real(real64), INTENT(IN), DIMENSION(3) :: BK, BD
+      real(real64), INTENT(OUT)              :: AW
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: KK1, KK2, IE, IQ, IQ2, IQ3, IQM, IT, ITP, ITG, IBTT
       INTEGER,      DIMENSION(7) :: IBT
-      REAL(DOUBLE)               :: ENQP, D1, SI1, W
-      REAL(DOUBLE), DIMENSION(3) :: BT
+      real(real64)               :: ENQP, D1, SI1, W
+      real(real64), DIMENSION(3) :: BT
 !-----------------------------------------------
       AW=ZERO
       IF(IZAS1(ID(7),BD(3),IK(7),BK(3)) == 0)RETURN

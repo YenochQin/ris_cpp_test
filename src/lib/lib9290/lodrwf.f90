@@ -17,7 +17,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,   ONLY: NNNP
       USE memory_man
       USE DEBUG_C
@@ -44,8 +44,8 @@
 !-----------------------------------------------
       INTEGER :: J, I, K, NWIN, IOS, NPY, NAKY, MY
       integer :: ierr
-      REAL(DOUBLE) :: CON, FKK, EY, PZY, DNORM
-      real(double), dimension(:), pointer :: PA, QA, RA
+      real(real64) :: CON, FKK, EY, PZY, DNORM
+      real(real64), dimension(:), pointer :: PA, QA, RA
 !-----------------------------------------------
 !
 !

@@ -2,9 +2,9 @@
       INTERFACE
 !
       SUBROUTINE RMEW3JJ(J1,J2,K1,K2,COEF)
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER,      INTENT(IN)  :: J1, J2, K1, K2
-      REAL(DOUBLE), INTENT(OUT) :: COEF
+      real(real64), INTENT(OUT) :: COEF
       END SUBROUTINE
       END INTERFACE
       END MODULE

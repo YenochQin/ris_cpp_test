@@ -33,7 +33,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def, ONLY: NNNP
       USE DEF_C ,          ONLY: C, ACCY
       USE GRID_C, ONLY: R, NTP=>N
@@ -49,16 +49,16 @@
       INTEGER, INTENT(IN) :: N
       INTEGER, INTENT(IN) :: KAPPA
       INTEGER, INTENT(OUT) :: MTP
-      REAL(DOUBLE), INTENT(IN) :: Z
-      REAL(DOUBLE), INTENT(OUT) :: E
-      REAL(DOUBLE), INTENT(OUT) :: RG0
-      REAL(DOUBLE), DIMENSION(NNNP), INTENT(INOUT) :: RG
-      REAL(DOUBLE), DIMENSION(NNNP), INTENT(OUT) :: RF
+      real(real64), INTENT(IN) :: Z
+      real(real64), INTENT(OUT) :: E
+      real(real64), INTENT(OUT) :: RG0
+      real(real64), DIMENSION(NNNP), INTENT(INOUT) :: RG
+      real(real64), DIMENSION(NNNP), INTENT(OUT) :: RF
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: K, NR, NRFAC, I, IORDR1, IORDR2
-      REAL(DOUBLE) :: ALFA, FN, FKAPPA, FK, FNR, ZALFA, GAMMA, TWOGP1, BIGN, &
+      real(real64) :: ALFA, FN, FKAPPA, FK, FNR, ZALFA, GAMMA, TWOGP1, BIGN, &
          EPS, ARGR, ARGI, RGAMM1, DUMMY, RGAMM2, FAC, FG, FF, FACN, A, AN1, AN2&
          , B, BN, FDEN, BIGNMK, RHO, RHON, F1, F2, OVLFAC, CUTOFF
 !-----------------------------------------------

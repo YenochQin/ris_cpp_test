@@ -24,7 +24,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,   ONLY: NNNP
       USE CNC_C
       USE DEF_C,           ONLY: C, Z, ACCY
@@ -40,17 +40,17 @@
 !-----------------------------------------------
       INTEGER  :: IORB
       INTEGER, INTENT(IN) :: ITYPE
-      REAL(DOUBLE), INTENT(IN) :: P0
-      REAL(DOUBLE), INTENT(OUT) :: Q0
-      REAL(DOUBLE), DIMENSION(NNNP), INTENT(INOUT) :: P
-      REAL(DOUBLE), DIMENSION(NNNP), INTENT(INOUT) :: Q
+      real(real64), INTENT(IN) :: P0
+      real(real64), INTENT(OUT) :: Q0
+      real(real64), DIMENSION(NNNP), INTENT(INOUT) :: P
+      real(real64), DIMENSION(NNNP), INTENT(INOUT) :: Q
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: MXITER=36, KIORB, I, JORB, NITER, J
-      REAL(DOUBLE), DIMENSION(6) :: RDP, RDQ, RSEP, RSEQ
-      REAL(DOUBLE), DIMENSION(2:6) :: SPEST, SQEST
-      REAL(DOUBLE) :: OBC, ZONC, GIORB, FKIORB, OMGI, OMGMK, OMGPK, RSEP1, &
+      real(real64), DIMENSION(6) :: RDP, RDQ, RSEP, RSEQ
+      real(real64), DIMENSION(2:6) :: SPEST, SQEST
+      real(real64) :: OBC, ZONC, GIORB, FKIORB, OMGI, OMGMK, OMGPK, RSEP1, &
          RSEQ1, PZERO, P1, Q1, SUMP, SUMQ, FACTOR, CSQ, TWOCSQ, ENERGY, ENEFAC&
          , RI, RPI, RIRPI, YPIRPI, DIFMAW, DIFMAX, COEFIJ, PI, QI, RJ
 !-----------------------------------------------

@@ -1,7 +1,7 @@
       MODULE cuto_C
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
 !...Created by Pacific-Sierra Research 77to90  4.3E  07:39:37   1/ 6/07
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
-      REAL(DOUBLE) :: CUTOFF
+      real(real64) :: CUTOFF
       END MODULE cuto_C

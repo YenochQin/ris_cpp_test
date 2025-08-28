@@ -4,11 +4,11 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE spicmv2 (N, M, B, C)
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER, INTENT(IN) :: N
       INTEGER, INTENT(IN) :: M
-      REAL(DOUBLE), DIMENSION(N,M), INTENT(IN) :: B
-      REAL(DOUBLE), DIMENSION(N,M), INTENT(INOUT) :: C
+      real(real64), DIMENSION(N,M), INTENT(IN) :: B
+      real(real64), DIMENSION(N,M), INTENT(INOUT) :: C
 !VAST...Calls: DINIT, IENDC, EMT, DMERGE, IROW
       END SUBROUTINE
       END INTERFACE

@@ -6,23 +6,23 @@
       SUBROUTINE gdvd (OP, N, LIM, DIAG, ILOW, IHIGH, ISELEC, NIV, MBLOCK&
          , CRITE, CRITC, CRITR, ORTHO, MAXITER, WORK, IWRSZ, IWORK, IIWSZ&
          , HIEND, NLOOPS, NMV, IERR)
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       EXTERNAL OP
       integer, INTENT(IN) :: N
       integer, INTENT(IN) :: LIM
-      real(DOUBLE), DIMENSION(N), INTENT(INOUT) :: DIAG
+      real(real64), DIMENSION(N), INTENT(INOUT) :: DIAG
       integer :: ILOW
       integer :: IHIGH
       integer, DIMENSION(LIM) :: ISELEC
       integer, INTENT(IN) :: NIV
       integer :: MBLOCK
-      real(DOUBLE) :: CRITE
-      real(DOUBLE) :: CRITC
-      real(DOUBLE) :: CRITR
-      real(DOUBLE) :: ORTHO
+      real(real64) :: CRITE
+      real(real64) :: CRITC
+      real(real64) :: CRITR
+      real(real64) :: ORTHO
 !VAST...Dummy argument ORTHO is not referenced in this routine.
       integer :: MAXITER
-      real(DOUBLE), DIMENSION(IWRSZ), INTENT(INOUT) :: WORK
+      real(real64), DIMENSION(IWRSZ), INTENT(INOUT) :: WORK
       integer, INTENT(IN) :: IWRSZ
       integer, DIMENSION(IIWSZ), INTENT(IN) :: IWORK
       integer, INTENT(IN) :: IIWSZ

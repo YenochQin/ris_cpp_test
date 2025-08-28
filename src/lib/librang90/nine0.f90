@@ -18,7 +18,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, ONE
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
@@ -29,12 +29,12 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       INTEGER  :: J1, J2, J3, L1, L2, L3, K1, K2, K3
-      REAL(DOUBLE), INTENT(OUT) :: AA
+      real(real64), INTENT(OUT) :: AA
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER      :: IFA
-      REAL(DOUBLE) :: A, B
+      real(real64) :: A, B
 !-----------------------------------------------
       IF (J1 == 0) THEN
          CALL SIXJ (L2, K2, J2, K3, L3, L1, 0, A)

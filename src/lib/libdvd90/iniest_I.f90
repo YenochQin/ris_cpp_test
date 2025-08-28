@@ -9,7 +9,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER, INTENT(IN) :: N
       INTEGER, INTENT(IN) :: NB
       INTEGER  :: NIV
@@ -17,8 +17,8 @@
       INTEGER, INTENT(IN) :: JCOL(0:*)
       INTEGER, INTENT(IN) :: IROW(*)
       INTEGER, INTENT(IN) :: IBLOCK(*)
-      REAL(DOUBLE), INTENT(IN) :: HMX(*)
-      REAL(DOUBLE)  :: BASIS(*)
+      real(real64), INTENT(IN) :: HMX(*)
+      real(real64)  :: BASIS(*)
       END SUBROUTINE
       END INTERFACE
       END MODULE

@@ -21,7 +21,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, HALF, EPS
       USE m_C,             ONLY: NQ1, JLIST, NPEEL
       USE orb_C,           ONLY: NAK
@@ -56,8 +56,8 @@
                  L1,L2,N,NN,ND1,ND2,NE1,NE2
       INTEGER, DIMENSION(2) :: J
       INTEGER, DIMENSION(4) :: IS,KAPS,KS
-      REAL(DOUBLE)          :: AA,AB,A1,BB,QM1,QM2,QM3,QM4,SI,RECC
-      REAL(DOUBLE), DIMENSION(12) :: S
+      real(real64)          :: AA,AB,A1,BB,QM1,QM2,QM3,QM4,SI,RECC
+      real(real64), DIMENSION(12) :: S
 !-----------------------------------------------
       IF(NPEEL <= 1)RETURN
       IIA=JLIST(JJA)

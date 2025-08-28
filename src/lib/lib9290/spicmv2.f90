@@ -13,7 +13,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE HMAT_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
@@ -26,13 +26,13 @@
 !-----------------------------------------------
       INTEGER, INTENT(IN) :: N
       INTEGER, INTENT(IN) :: M
-      REAL(DOUBLE), DIMENSION(N,M), INTENT(IN) :: B
-      REAL(DOUBLE), DIMENSION(N,M), INTENT(INOUT) :: C
+      real(real64), DIMENSION(N,M), INTENT(IN) :: B
+      real(real64), DIMENSION(N,M), INTENT(INOUT) :: C
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: IBEG, ICOL, IEND, NELC, IV
-      REAL(DOUBLE) :: DIAG, DL
+      real(real64) :: DIAG, DL
 !-----------------------------------------------
 !
 !

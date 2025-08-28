@@ -19,7 +19,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, TENTH, ONE, TWO, THREE, EPS
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
@@ -29,13 +29,13 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      REAL(DOUBLE), INTENT(IN)  :: Q, QM, SM, C, CM
-      REAL(DOUBLE), INTENT(OUT) :: A
+      real(real64), INTENT(IN)  :: Q, QM, SM, C, CM
+      real(real64), INTENT(OUT) :: A
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER                    :: IE, IIQ, IIC
-      REAL(DOUBLE), DIMENSION(2) :: GC
+      real(real64), DIMENSION(2) :: GC
 !-----------------------------------------------
       GC(1)=ONE
       GC(2)=-ONE

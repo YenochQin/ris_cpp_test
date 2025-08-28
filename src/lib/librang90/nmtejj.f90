@@ -47,21 +47,27 @@
          JG=LG(J)
          IF(JG == 0)RETURN
          JJ=JP
-    2    IF(INN-MT(JJ))3,1,3
-    3    JJ=JJ+1
-         IF(JJ > JG)RETURN
-         GO TO 2
-    1    NMTEJJ=JJ
+         DO WHILE (JJ <= JG)
+            IF (INN == MT(JJ)) THEN
+               NMTEJJ=JJ
+               RETURN
+            END IF
+            JJ=JJ+1
+         END DO
+         RETURN
       ELSEIF(J == 9) THEN
         IF(MAX0(NK,ND) < 3) THEN
           JP=1
           JG=6
           JJ=JP
-    6     IF(INN-MT9(JJ))4,5,4
-    4     JJ=JJ+1
-          IF(JJ > JG)RETURN
-          GO TO 6
-    5     NMTEJJ=JJ+300
+          DO WHILE (JJ <= JG)
+             IF (INN == MT9(JJ)) THEN
+                NMTEJJ=JJ+300
+                RETURN
+             END IF
+             JJ=JJ+1
+          END DO
+          RETURN
         ELSE
           PRINT*, "ERROR in FUNCTION NMTEJJ"
           STOP
@@ -71,11 +77,14 @@
         JP=LP3(IL)
         JG=LG3(IL)
         JJ=JP
-   22   IF(INN-MT11(JJ))23,21,23
-   23   JJ=JJ+1
-        IF(JJ > JG)RETURN
-        GO TO 22
-   21   NMTEJJ=JJ
+        DO WHILE (JJ <= JG)
+           IF (INN == MT11(JJ)) THEN
+              NMTEJJ=JJ
+              RETURN
+           END IF
+           JJ=JJ+1
+        END DO
+        RETURN
       ENDIF
       RETURN
       END FUNCTION NMTEJJ

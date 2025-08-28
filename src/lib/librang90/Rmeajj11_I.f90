@@ -2,9 +2,9 @@
       INTERFACE
 !
       SUBROUTINE RMEAJJ11(J1,J2,LL,S)
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER,      INTENT(IN)  :: J1, J2, LL
-      REAL(DOUBLE), INTENT(OUT) :: S
+      real(real64), INTENT(OUT) :: S
       END SUBROUTINE
       END INTERFACE
       END MODULE

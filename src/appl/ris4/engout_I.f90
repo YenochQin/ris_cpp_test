@@ -4,9 +4,9 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  11/02/17
       SUBROUTINE engout (EAV, E, JTOT, IPAR, ILEV, NN, MODE)
-      USE vast_kind_param,ONLY: DOUBLE
-      REAL(DOUBLE), INTENT(IN) :: EAV
-      REAL(DOUBLE), DIMENSION(NN), INTENT(IN) :: E
+      use iso_fortran_env, only: real64, int32, int64, real128
+      real(real64), INTENT(IN) :: EAV
+      real(real64), DIMENSION(NN), INTENT(IN) :: E
       INTEGER, DIMENSION(NN), INTENT(IN) :: JTOT
       INTEGER, DIMENSION(NN), INTENT(IN) :: IPAR
       INTEGER, DIMENSION(NN), INTENT(IN) :: ILEV

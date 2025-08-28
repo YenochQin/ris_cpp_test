@@ -25,7 +25,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  BYTE
+      use iso_fortran_env, only: real64, int32, int64, int8, real128
       USE IOUNIT_C
       IMPLICIT NONE
 !-----------------------------------------------
@@ -33,7 +33,7 @@
 !-----------------------------------------------
       INTEGER, INTENT(IN) :: IUNPKD
       INTEGER, INTENT(IN) :: ISUBSH
-      INTEGER(BYTE), DIMENSION(*), INTENT(INOUT) :: IPACKD
+      integer(int8), DIMENSION(*), INTENT(INOUT) :: IPACKD
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

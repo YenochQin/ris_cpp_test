@@ -8,7 +8,7 @@
 !====================================================================
 !    KEYORB: Is a packing parameter defined by a packing algorithm.
 !            This is the largest integer for which KEYORB**4 < 2^31
-!            (the largest positive  INTEGER*4)
+!            (the largest positive integer(int32))
 !    NNNP:   Number  of points in the radial grid
 !    NNN1:   = NNNP+10
 !    NNNW    Maximum number or orbitals (previously 120). An n=10

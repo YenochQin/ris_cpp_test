@@ -20,19 +20,19 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      REAL(DOUBLE), INTENT(IN) :: F
-      REAL(DOUBLE), INTENT(OUT) :: S2F
-      REAL(DOUBLE), INTENT(OUT) :: S3F
+      real(real64), INTENT(IN) :: F
+      real(real64), INTENT(OUT) :: S2F
+      real(real64), INTENT(OUT) :: S3F
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: N
-      REAL(DOUBLE) :: FASE, EN, OBN, ENF, TERM2, TERM3, S2LAST
+      real(real64) :: FASE, EN, OBN, ENF, TERM2, TERM3, S2LAST
 !-----------------------------------------------
 !
       N = 0

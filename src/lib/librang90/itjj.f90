@@ -15,7 +15,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: HALF
       USE ribojj_C
       USE ribojj9_C
@@ -33,8 +33,8 @@
       INTEGER,      INTENT(OUT)               :: KG1, ITP, ITG
       INTEGER,      INTENT(IN),  DIMENSION(7) :: IK, ID
       INTEGER,      INTENT(OUT), DIMENSION(7) :: IBT
-      REAL(DOUBLE), INTENT(IN),  DIMENSION(3) :: BK, BD
-      REAL(DOUBLE), INTENT(OUT), DIMENSION(3) :: BT
+      real(real64), INTENT(IN),  DIMENSION(3) :: BK, BD
+      real(real64), INTENT(OUT), DIMENSION(3) :: BT
 !      DIMENSION ID(7),IK(7),IBT(7),BT(3),BD(3),BK(3)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s

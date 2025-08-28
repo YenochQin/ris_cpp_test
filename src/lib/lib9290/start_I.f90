@@ -4,14 +4,14 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE start (IORB, ITYPE, P0, P, Q0, Q)
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,   ONLY: NNNP
       INTEGER, INTENT(IN) :: IORB
       INTEGER, INTENT(IN) :: ITYPE
-      REAL(DOUBLE), INTENT(IN) :: P0
-      REAL(DOUBLE), DIMENSION(NNNP), INTENT(INOUT) :: P
-      REAL(DOUBLE), INTENT(OUT) :: Q0
-      REAL(DOUBLE), DIMENSION(NNNP), INTENT(INOUT) :: Q
+      real(real64), INTENT(IN) :: P0
+      real(real64), DIMENSION(NNNP), INTENT(INOUT) :: P
+      real(real64), INTENT(OUT) :: Q0
+      real(real64), DIMENSION(NNNP), INTENT(INOUT) :: Q
 !VAST.../CNC6/ CNC6C(IN)
 !VAST.../DEF1/ Z(IN)
 !VAST.../DEF2/ C(IN)

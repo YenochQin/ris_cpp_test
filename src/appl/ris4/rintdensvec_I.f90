@@ -2,10 +2,10 @@
       INTERFACE
 !...Translated by Gediminas Gaigalas 11/18/19
       SUBROUTINE rintdensvec (I, J, DINT1VEC, NRNUC)
-      USE vast_kind_param,  ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,    ONLY: NNNW
       USE grid_C,           ONLY: N
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW,N), INTENT(OUT) :: DINT1VEC
+      real(real64), DIMENSION(NNNW,NNNW,N), INTENT(OUT) :: DINT1VEC
       INTEGER, INTENT(IN) :: I
       INTEGER, INTENT(IN) :: J
       INTEGER, INTENT(IN) :: NRNUC

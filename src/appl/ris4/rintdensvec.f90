@@ -18,7 +18,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param,  ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,    ONLY: NNNW
       USE def_C,            ONLY: pi
       USE grid_C
@@ -30,7 +30,7 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW,N), INTENT(OUT) :: DINT1VEC
+      real(real64), DIMENSION(NNNW,NNNW,N), INTENT(OUT) :: DINT1VEC
       INTEGER  :: I, J
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s

@@ -17,7 +17,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param,  ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,    ONLY: NNN1
       USE def_C
       USE grid_C
@@ -34,14 +34,14 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      REAL(DOUBLE), INTENT(OUT) :: VALNMSK123, VALNMSK1
+      real(real64), INTENT(OUT) :: VALNMSK123, VALNMSK1
       INTEGER, INTENT(IN) :: J
       INTEGER, INTENT(IN) :: K
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      REAL(DOUBLE), DIMENSION(NNN1) :: PA, PB, QA, QB
-      REAL(DOUBLE) :: A1, A2, PIECE1, PIECE2, PIECE3, PIECE4
+      real(real64), DIMENSION(NNN1) :: PA, PB, QA, QB
+      real(real64) :: A1, A2, PIECE1, PIECE2, PIECE3, PIECE4
       INTEGER :: L, KAP1, KAP2, I, L1, L2, J1, J2, L2_TILDA
 !-----------------------------------------------
 !

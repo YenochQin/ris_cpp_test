@@ -71,7 +71,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
@@ -97,14 +97,14 @@
       INTEGER  :: NLOOPS
 !      INTEGER, INTENT(INOUT) :: IERR
       INTEGER  :: IERR
-      REAL(DOUBLE)  :: CRITE
-      REAL(DOUBLE)  :: CRITC
-      REAL(DOUBLE)  :: CRITR
+      real(real64)  :: CRITE
+      real(real64)  :: CRITC
+      real(real64)  :: CRITR
       LOGICAL  :: HIEND
       INTEGER  :: IREV(*)
       INTEGER  :: ISELEC(LIM)
       INTEGER  :: IWORK(IIWSZ)
-      REAL(DOUBLE)  :: WORK(IWRSZ)
+      real(real64)  :: WORK(IWRSZ)
       real(kind(0.0d0)) :: ddot
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
@@ -499,7 +499,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
@@ -512,15 +512,15 @@
       INTEGER , INTENT(IN) :: LIM
       INTEGER , INTENT(IN) :: KPASS
       INTEGER , INTENT(IN) :: NNCV
-      REAL(DOUBLE)  :: BASIS(N*LIM)
-      REAL(DOUBLE)  :: AB(N*LIM)
-      REAL(DOUBLE) , INTENT(OUT) :: S(LIM*(LIM + 1)/2)
+      real(real64)  :: BASIS(N*LIM)
+      real(real64)  :: AB(N*LIM)
+      real(real64) , INTENT(OUT) :: S(LIM*(LIM + 1)/2)
       real(kind(0.0d0)) :: ddot
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: IDSTART, ISSTART, IV, IBSTART, IBV
-      REAL(DOUBLE) :: SS
+      real(real64) :: SS
 !-----------------------------------------------
 !-----------------------------------------------------------------------
 !   on entry
@@ -589,7 +589,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64
 !     USE MPI_C,           ONLY: MYID
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
@@ -614,31 +614,31 @@
       INTEGER, INTENT(IN) :: MAXITER
       INTEGER, INTENT(INOUT) :: NLOOPS
       INTEGER, INTENT(INOUT) :: IERR
-      REAL(DOUBLE)  :: CRITE
-      REAL(DOUBLE)  :: CRITC
-      REAL(DOUBLE)  :: CRITR
+      real(real64)  :: CRITE
+      real(real64)  :: CRITC
+      real(real64)  :: CRITR
       LOGICAL, INTENT(IN) :: HIEND
       INTEGER, INTENT(OUT) :: IREV(*)
       INTEGER  :: ISELEC(NEIG)
       INTEGER  :: ISCRA2(5*LIM)
       INTEGER  :: INCV(LIM)
       INTEGER  :: ICV(NUME + 1)
-      REAL(DOUBLE)  :: EIGVAL(LIM)
-      REAL(DOUBLE)  :: BASIS(N*LIM)
-      REAL(DOUBLE)  :: ORTHOBASIS(N*LIM + NOC*N)
-      REAL(DOUBLE)  :: AB(N*LIM)
-      REAL(DOUBLE)  :: S(LIM*(LIM + 1)/2)
-      REAL(DOUBLE)  :: TEMPS(LIM*(LIM + 1)/2)
-      REAL(DOUBLE)  :: SVEC(LIM*LIM)
-      REAL(DOUBLE)  :: SCRA1(8*LIM)
-      REAL(DOUBLE)  :: OLDVAL(NUME + 1)
+      real(real64)  :: EIGVAL(LIM)
+      real(real64)  :: BASIS(N*LIM)
+      real(real64)  :: ORTHOBASIS(N*LIM + NOC*N)
+      real(real64)  :: AB(N*LIM)
+      real(real64)  :: S(LIM*(LIM + 1)/2)
+      real(real64)  :: TEMPS(LIM*(LIM + 1)/2)
+      real(real64)  :: SVEC(LIM*LIM)
+      real(real64)  :: SCRA1(8*LIM)
+      real(real64)  :: OLDVAL(NUME + 1)
       real(kind(0.0d0)) :: ddot
       real::slamch
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: REST, I, KPASS, NNCV, IFIND, NFOUND, INFO, NEWSTART
-      REAL(DOUBLE) :: TOL
+      real(real64) :: TOL
       LOGICAL :: FIRST, DONE
 
       SAVE FIRST, DONE, REST, I, KPASS, NNCV, IFIND, TOL, NFOUND, INFO, &
@@ -863,7 +863,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
@@ -884,11 +884,11 @@
       INTEGER  :: LIM
       LOGICAL, INTENT(IN) :: HIEND
       INTEGER, INTENT(OUT) :: IREV(*)
-      REAL(DOUBLE)  :: SCRA1(*)
-      REAL(DOUBLE)  :: ORTHOBASIS(N*(NOC + LIM))
-      REAL(DOUBLE)  :: BASIS(N*LIM)
-      REAL(DOUBLE)  :: AB(N*LIM)
-      REAL(DOUBLE)  :: S(*)
+      real(real64)  :: SCRA1(*)
+      real(real64)  :: ORTHOBASIS(N*(NOC + LIM))
+      real(real64)  :: BASIS(N*LIM)
+      real(real64)  :: AB(N*LIM)
+      real(real64)  :: S(*)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
@@ -967,7 +967,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
@@ -980,9 +980,9 @@
       INTEGER  :: N
       INTEGER  :: K
       INTEGER  :: M
-      REAL(DOUBLE)  :: C(K*M)
-      REAL(DOUBLE)  :: TEMP(M)
-      REAL(DOUBLE)  :: B(N*K)
+      real(real64)  :: C(K*M)
+      real(real64)  :: TEMP(M)
+      real(real64)  :: B(N*K)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
@@ -1028,7 +1028,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64
 !     USE MPI_C,           ONLY: MYID
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
@@ -1043,23 +1043,23 @@
       INTEGER , INTENT(IN) :: MBLOCK
       INTEGER  :: KPASS
       INTEGER , INTENT(INOUT) :: NNCV
-      REAL(DOUBLE) , INTENT(IN) :: CRITR
+      real(real64) , INTENT(IN) :: CRITR
       LOGICAL , INTENT(OUT) :: DONE
       INTEGER , INTENT(INOUT) :: INCV(NUME)
       INTEGER , INTENT(OUT) :: ICV(NUME)
-      REAL(DOUBLE)  :: SVEC(LIM*NUME)
-      REAL(DOUBLE) , INTENT(IN) :: EIGVAL(LIM)
-      REAL(DOUBLE) , INTENT(IN) :: OLDVAL(NUME)
-      REAL(DOUBLE)  :: AB(N*LIM)
-      REAL(DOUBLE)  :: BASIS(N*LIM)
-      REAL(DOUBLE) , INTENT(INOUT) :: SCRA1(LIM)
-      REAL(DOUBLE) , INTENT(OUT) :: EPSIL(LIM)
+      real(real64)  :: SVEC(LIM*NUME)
+      real(real64) , INTENT(IN) :: EIGVAL(LIM)
+      real(real64) , INTENT(IN) :: OLDVAL(NUME)
+      real(real64)  :: AB(N*LIM)
+      real(real64)  :: BASIS(N*LIM)
+      real(real64) , INTENT(INOUT) :: SCRA1(LIM)
+      real(real64) , INTENT(OUT) :: EPSIL(LIM)
        real(kind(0.0d0)) :: ddot
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: NEWSTART, NADDED, ICVC, LIMADD, ICUR, I, INDX
-      REAL(DOUBLE) :: SQRES, GAPLOW, GAP, GAPUP, DL, RES, RHSEPS
+      real(real64) :: SQRES, GAPLOW, GAP, GAPUP, DL, RES, RHSEPS
 !-----------------------------------------------
 !-----------------------------------------------------------------------
 !   on entry
@@ -1195,7 +1195,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
@@ -1209,12 +1209,12 @@
       INTEGER  :: NUME
       INTEGER  :: KPASS
 !CFF   ... add dimensionto SCRA1
-      REAL(DOUBLE)  :: SCRA1(NUME)
-      REAL(DOUBLE)  :: BASIS(N*KPASS)
-      REAL(DOUBLE)  :: AB(N*KPASS)
-      REAL(DOUBLE)  :: S((KPASS*(KPASS + 1))/2)
-      REAL(DOUBLE)  :: SVEC(KPASS*NUME)
-      REAL(DOUBLE) , INTENT(IN) :: EIGVAL(KPASS)
+      real(real64)  :: SCRA1(NUME)
+      real(real64)  :: BASIS(N*KPASS)
+      real(real64)  :: AB(N*KPASS)
+      real(real64)  :: S((KPASS*(KPASS + 1))/2)
+      real(real64)  :: SVEC(KPASS*NUME)
+      real(real64) , INTENT(IN) :: EIGVAL(KPASS)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
@@ -1284,7 +1284,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  DOUBLE
+      use iso_fortran_env, only: real64
 !     USE MPI_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
@@ -1298,21 +1298,21 @@
       INTEGER , INTENT(IN) :: NUME
       INTEGER , INTENT(IN) :: NEIG
       INTEGER , INTENT(INOUT) :: NNCV
-      REAL(DOUBLE) , INTENT(IN) :: CRITE
-      REAL(DOUBLE) , INTENT(IN) :: CRITC
+      real(real64) , INTENT(IN) :: CRITE
+      real(real64) , INTENT(IN) :: CRITC
       INTEGER , INTENT(IN) :: ISELEC(NEIG)
       INTEGER , INTENT(OUT) :: ICV(NUME)
       INTEGER , INTENT(INOUT) :: IND(NEIG)
       INTEGER , INTENT(OUT) :: INCV(NEIG)
-      REAL(DOUBLE) , INTENT(IN) :: SVEC(KPASS*NUME)
-      REAL(DOUBLE) , INTENT(IN) :: EIGVAL(NUME)
-      REAL(DOUBLE)  :: ROWLAST(NEIG)
-      REAL(DOUBLE) , INTENT(IN) :: OLDVAL(NUME)
+      real(real64) , INTENT(IN) :: SVEC(KPASS*NUME)
+      real(real64) , INTENT(IN) :: EIGVAL(NUME)
+      real(real64)  :: ROWLAST(NEIG)
+      real(real64) , INTENT(IN) :: OLDVAL(NUME)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: NNCE, I, IVAL, ICNT, ICUR, L, INDX, ITEMP
-      REAL(DOUBLE) :: TMAX, TEMP
+      real(real64) :: TMAX, TEMP
       LOGICAL :: DONE
       integer :: idamax
 !-----------------------------------------------
@@ -1427,7 +1427,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY:  double
+      use iso_fortran_env, only: real64
 !     USE mpi_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
@@ -1442,14 +1442,14 @@
       integer  :: n
       integer , intent(in) :: kp
       integer  :: new
-      real(double)  :: scra(new)
-      real(double)  :: b((kp + new)*n)
+      real(real64)  :: scra(new)
+      real(real64)  :: b((kp + new)*n)
       real(kind(0.0d0)) :: ddot
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: i, newstart, kcur, k, jcur, j, mm
-      real(double) :: dnm
+      real(real64) :: dnm
 !-----------------------------------------------
 
 !

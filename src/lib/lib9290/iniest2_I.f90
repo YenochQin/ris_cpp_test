@@ -4,12 +4,12 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE iniest2 (NMAX, NCF, NIV, BASIS, HMX, JCOL, IROW)
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER, INTENT(IN) :: NMAX
       INTEGER, INTENT(IN) :: NCF
       INTEGER, INTENT(IN) :: NIV
-      REAL(DOUBLE), DIMENSION(*) :: BASIS
-      REAL(DOUBLE), DIMENSION(*), INTENT(IN) :: HMX
+      real(real64), DIMENSION(*) :: BASIS
+      real(real64), DIMENSION(*), INTENT(IN) :: HMX
       INTEGER, DIMENSION(0:*), INTENT(IN) :: JCOL
       INTEGER, DIMENSION(*), INTENT(IN) :: IROW
 !VAST...Calls: ALLOC, DINIT, DSPEVX, DCOPY, DALLOC

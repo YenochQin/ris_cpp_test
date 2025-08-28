@@ -11,7 +11,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO, TENTH, HALF, TWO, EPS
       USE ribojj_C
       USE ribojj9_C
@@ -32,16 +32,16 @@
 !-----------------------------------------------
       INTEGER,      INTENT(IN)               :: K1
       INTEGER,      INTENT(IN), DIMENSION(7) :: IK, ID
-      REAL(DOUBLE), INTENT(IN)               :: QM1, QM2
-      REAL(DOUBLE), INTENT(IN), DIMENSION(3) :: BK, BD
-      REAL(DOUBLE), INTENT(OUT)              :: WW
+      real(real64), INTENT(IN)               :: QM1, QM2
+      real(real64), INTENT(IN), DIMENSION(3) :: BK, BD
+      real(real64), INTENT(OUT)              :: WW
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: KK1,IQ,IQM,IE,IT,ITK,ITD,ITP,ITP1,ITG,ITG1,IBTT
       INTEGER,      DIMENSION(7) :: IBT
-      REAL(DOUBLE)               :: ENQP, D1, SI1, W
-      REAL(DOUBLE), DIMENSION(3) :: BT
+      real(real64)               :: ENQP, D1, SI1, W
+      real(real64), DIMENSION(3) :: BT
 !-----------------------------------------------
       WW=ZERO
       IF(IZAS1(ID(7),BD(3),IK(7),BK(3)) == 0)RETURN

@@ -4,14 +4,14 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE dmerge (N, DB, DC, IDY, DA, DCONST, DL)
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER, INTENT(IN) :: N
-      REAL(DOUBLE), DIMENSION(*), INTENT(IN) :: DB
-      REAL(DOUBLE), DIMENSION(*), INTENT(INOUT) :: DC
+      real(real64), DIMENSION(*), INTENT(IN) :: DB
+      real(real64), DIMENSION(*), INTENT(INOUT) :: DC
       INTEGER, DIMENSION(N), INTENT(IN) :: IDY
-      REAL(DOUBLE), DIMENSION(N), INTENT(IN) :: DA
-      REAL(DOUBLE), INTENT(IN) :: DCONST
-      REAL(DOUBLE), INTENT(OUT) :: DL
+      real(real64), DIMENSION(N), INTENT(IN) :: DA
+      real(real64), INTENT(IN) :: DCONST
+      real(real64), INTENT(OUT) :: DL
       END SUBROUTINE
       END INTERFACE
       END MODULE

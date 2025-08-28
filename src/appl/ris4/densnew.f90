@@ -25,7 +25,7 @@ SUBROUTINE DENSNEW(DOIT,DINT1,DINT2,DINT3,DINT4,DINT5,DINT6,DINT7)
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param,  ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE parameter_def,    ONLY: KEYORB, NNNW, NNNP
       USE debug_C
       USE decide_C
@@ -55,7 +55,7 @@ SUBROUTINE DENSNEW(DOIT,DINT1,DINT2,DINT3,DINT4,DINT5,DINT6,DINT7)
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      REAL(DOUBLE), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT1, DINT2, &
+      real(real64), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT1, DINT2, &
                                                         DINT3, DINT4, &
                                                         DINT5, DINT6, &
                                                         DINT7
@@ -67,10 +67,10 @@ SUBROUTINE DENSNEW(DOIT,DINT1,DINT2,DINT3,DINT4,DINT5,DINT6,DINT7)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      REAL(DOUBLE), DIMENSION(NNNW) :: TSHELL, TSHELL_S
-      REAL(DOUBLE), DIMENSION(:), pointer :: EMT1, EMT2, EMT3, EMT4,   &
+      real(real64), DIMENSION(NNNW) :: TSHELL, TSHELL_S
+      real(real64), DIMENSION(:), pointer :: EMT1, EMT2, EMT3, EMT4,   &
                                              EMT5, EMT6
-      REAL(DOUBLE) :: ELEMNT1, ELEMNT2, ELEMNT3, ELEMNT4, ELEMNT5,     &
+      real(real64) :: ELEMNT1, ELEMNT2, ELEMNT3, ELEMNT4, ELEMNT5,     &
                       ELEMNT6, ELEMNT7, CONTRI1, CONTRI2, CONTRI3,     &
                       CONTRI4, CONTRI5, CONTRI6, CONTRI7
       LOGICAL :: VSH, NUCDE, SMSSH, YES

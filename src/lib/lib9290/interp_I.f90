@@ -4,15 +4,15 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE interp (XARR, YARR, NARR, XVAL, YVAL, ACCY)
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER MXORD
       PARAMETER (MXORD = 11)
-      REAL(DOUBLE), DIMENSION(NARR), INTENT(IN) :: XARR
-      REAL(DOUBLE), DIMENSION(NARR), INTENT(IN) :: YARR
+      real(real64), DIMENSION(NARR), INTENT(IN) :: XARR
+      real(real64), DIMENSION(NARR), INTENT(IN) :: YARR
       INTEGER, INTENT(IN) :: NARR
-      REAL(DOUBLE), INTENT(IN) :: XVAL
-      REAL(DOUBLE), INTENT(OUT) :: YVAL
-      REAL(DOUBLE), INTENT(IN) :: ACCY
+      real(real64), INTENT(IN) :: XVAL
+      real(real64), INTENT(OUT) :: YVAL
+      real(real64), INTENT(IN) :: ACCY
 !...This routine performs I/O.
       END SUBROUTINE
       END INTERFACE

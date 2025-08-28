@@ -2,9 +2,9 @@
       INTERFACE
 !
       SUBROUTINE C1E0SM(Q,QM,C,CM,A)
-      USE vast_kind_param, ONLY:  DOUBLE
-      REAL(DOUBLE), INTENT(IN)  :: Q, QM, C, CM
-      REAL(DOUBLE), INTENT(OUT) :: A
+      use iso_fortran_env, only: real64, int32, int64, real128
+      real(real64), INTENT(IN)  :: Q, QM, C, CM
+      real(real64), INTENT(OUT) :: A
       END SUBROUTINE
       END INTERFACE
       END MODULE

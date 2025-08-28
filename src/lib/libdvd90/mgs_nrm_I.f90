@@ -4,12 +4,12 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       SUBROUTINE mgs_nrm (N, KP, NEW, SCRA, B)
-      USE vast_kind_param,ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       INTEGER, INTENT(IN) :: N
       INTEGER, INTENT(IN) :: KP
       INTEGER, INTENT(IN) :: NEW
-      REAL(DOUBLE), DIMENSION(NEW), INTENT(IN) :: SCRA
-      REAL(DOUBLE), DIMENSION((KP + NEW)*N), INTENT(INOUT) :: B
+      real(real64), DIMENSION(NEW), INTENT(IN) :: SCRA
+      real(real64), DIMENSION((KP + NEW)*N), INTENT(INOUT) :: B
 !VAST...Calls: DGEMV, DDOT, DSCAL
       END SUBROUTINE
       END INTERFACE

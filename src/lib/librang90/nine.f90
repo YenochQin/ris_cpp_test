@@ -19,7 +19,7 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE vast_kind_param, ONLY: DOUBLE
+      use iso_fortran_env, only: real64, int32, int64, real128
       USE CONS_C,          ONLY: ZERO
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
@@ -34,12 +34,12 @@
       INTEGER  :: J1, J2, J3, L1, L2, L3, K1, K2, K3
       INTEGER, INTENT(IN)  :: I
       INTEGER, INTENT(OUT) :: INN
-      REAL(DOUBLE)  :: AA
+      real(real64)  :: AA
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       INTEGER :: N1, N2, N3, N4, N5, N6, MAX_, MIN_, IX
-      REAL(DOUBLE) :: S1, S2, S3, X
+      real(real64) :: S1, S2, S3, X
 !-----------------------------------------------
       IF (I == 1) THEN
          INN = 0
