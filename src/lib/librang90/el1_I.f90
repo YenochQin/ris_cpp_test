@@ -1,8 +1,8 @@
-      MODULE el1_I
-      INTERFACE
+      module el1_I
+      interface
 !
-      SUBROUTINE EL1(JJA,JJB,JA,JB,IIRE,ICOLBREI)
-      INTEGER, INTENT(IN) :: JJA,JJB,JA,JB,IIRE,ICOLBREI
-      END SUBROUTINE
-      END INTERFACE
-      END MODULE
+      subroutine EL1(JJA,JJB,JA,JB,IIRE,ICOLBREI)
+      integer, intent(in) :: JJA,JJB,JA,JB,IIRE,ICOLBREI
+      end subroutine
+      end interface
+      end module

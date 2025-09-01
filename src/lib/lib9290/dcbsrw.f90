@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE DCBSRW(N, KAPPA, Z, E, RG0, RG, RF, MTP)
+      subroutine DCBSRW(N, KAPPA, Z, E, RG0, RG, RF, MTP)
 !                                                                      *
 !   This subroutine computes the  Dirac-Coulomb  bound-state orbital   *
 !   radial wavefunction.   Equations (13.5) and (13.5') of  Akhiezer   *
@@ -34,30 +34,30 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE parameter_def, ONLY: NNNP
-      USE DEF_C ,          ONLY: C, ACCY
-      USE GRID_C, ONLY: R, NTP=>N
-      USE TATB_C, ONLY: TA, TB
+      use parameter_def, only: NNNP
+      use DEF_C ,          only: C, ACCY
+      use GRID_C, only: R, NTP=>N
+      use TATB_C, only: TA, TB
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE cgamma_I
+      use cgamma_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: N
-      INTEGER, INTENT(IN) :: KAPPA
-      INTEGER, INTENT(OUT) :: MTP
-      real(real64), INTENT(IN) :: Z
-      real(real64), INTENT(OUT) :: E
-      real(real64), INTENT(OUT) :: RG0
-      real(real64), DIMENSION(NNNP), INTENT(INOUT) :: RG
-      real(real64), DIMENSION(NNNP), INTENT(OUT) :: RF
+      integer, intent(in) :: N
+      integer, intent(in) :: KAPPA
+      integer, intent(out) :: MTP
+      real(real64), intent(in) :: Z
+      real(real64), intent(out) :: E
+      real(real64), intent(out) :: RG0
+      real(real64), dimension(NNNP), INTENT(INOUT) :: RG
+      real(real64), dimension(NNNP), intent(out) :: RF
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: K, NR, NRFAC, I, IORDR1, IORDR2
+      integer :: K, NR, NRFAC, I, IORDR1, IORDR2
       real(real64) :: ALFA, FN, FKAPPA, FK, FNR, ZALFA, GAMMA, TWOGP1, BIGN, &
          EPS, ARGR, ARGI, RGAMM1, DUMMY, RGAMM2, FAC, FG, FF, FACN, A, AN1, AN2&
          , B, BN, FDEN, BIGNMK, RHO, RHON, F1, F2, OVLFAC, CUTOFF
@@ -67,39 +67,39 @@
 !
 !   Ensure that the principal quantum number is physical
 !
-      IF (N <= 0) THEN
+      if (N <= 0) then
          WRITE (*, 300)
          WRITE (*, 301) N
          STOP
-      ENDIF
+      endif
 !
 !   Ensure that the angular quantum number is physical
 !
-      IF (KAPPA == 0) THEN
+      if (KAPPA == 0) then
          WRITE (*, 300)
          WRITE (*, 302)
          STOP
-      ELSE IF (KAPPA == N) THEN
+      else if (KAPPA == N) then
          WRITE (*, 300)
          WRITE (*, 303) KAPPA, N
          STOP
-      ELSE IF (ABS(KAPPA) > N) THEN
+      else if (ABS(KAPPA) > N) then
          WRITE (*, 300)
          WRITE (*, 303) KAPPA, N
          STOP
-      ENDIF
+      endif
 !
 !   Ensure that the charge is physical
 !
-      IF (Z <= 0.0D00) THEN
+      if (Z <= 0.0D00) then
          WRITE (*, 300)
          WRITE (*, 304) Z
          STOP
-      ELSE IF (Z > C) THEN
+      else if (Z > C) then
          WRITE (*, 300)
          WRITE (*, 305) Z, C
          STOP
-      ENDIF
+      endif
 !
 !   Atomic units
 !
@@ -143,7 +143,7 @@
 !   Ensure that the slope of the large-component function is
 !   positive at the origin
 !
-      IF (KAPPA > 0) FAC = -FAC
+      if (KAPPA > 0) FAC = -FAC
 !
       FG = FAC*SQRT(1.0D00 + EPS)
       FF = FAC*SQRT(1.0D00 - EPS)
@@ -152,13 +152,13 @@
 !   functions  F (-NR+1,2*GAMMA+1;RHO)  and  F (-NR,2*GAMMA+1;RHO)
 !   in the workspace arrays  TA  and  TB , respectively
 !
-      IF (NR == 0) THEN
+      if (NR == 0) then
          IORDR1 = 0
          IORDR2 = 0
-      ELSE
+      else
          IORDR1 = NR - 1
          IORDR2 = NR
-      ENDIF
+      endif
 !
       FAC = 1.0D00
       FACN = 1.0D00
@@ -172,8 +172,8 @@
     2 CONTINUE
       K = K + 1
       FDEN = 1.0D00/(FACN*BN)
-      IF (K <= IORDR1) TA(K) = AN1*FDEN
-      IF (K <= IORDR2) THEN
+      if (K <= IORDR1) TA(K) = AN1*FDEN
+      if (K <= IORDR2) then
          TB(K) = AN2*FDEN
          A = A + 1.0D00
          AN1 = AN1*(A + 1.0D00)
@@ -183,7 +183,7 @@
          FAC = FAC + 1.0D00
          FACN = FACN*FAC
          GO TO 2
-      ENDIF
+      endif
 !
 !   Now tabulate the function over the entire grid
 !
@@ -199,12 +199,12 @@
          F2 = 1.0D00
     3    CONTINUE
          K = K + 1
-         IF (K <= IORDR1) F1 = F1 + TA(K)*RHON
-         IF (K <= IORDR2) THEN
+         if (K <= IORDR1) F1 = F1 + TA(K)*RHON
+         if (K <= IORDR2) then
             F2 = F2 + TB(K)*RHON
             RHON = RHON*RHO
             GO TO 3
-         ENDIF
+         endif
          F1 = FNR*F1
          F2 = BIGNMK*F2
          OVLFAC = EXP((-0.5D00*RHO))*RHO**GAMMA
@@ -220,20 +220,20 @@
       MTP = NTP + 1
     5 CONTINUE
       MTP = MTP - 1
-!      IF (ABS(RG(MTP)) < CUTOFF) THEN
-      IF ((ABS(RG(MTP)) < CUTOFF).OR.(ABS(R(MTP)) > 1.D+50)) THEN ! JE: APPLY BOX (R<1.D+50)
+!      if (ABS(RG(MTP)) < CUTOFF) then
+      if ((ABS(RG(MTP)) < CUTOFF).OR.(ABS(R(MTP)) > 1.D+50)) then ! JE: APPLY BOX (R<1.D+50)
          RG(MTP) = 0.0D00
          RF(MTP) = 0.0D00
          GO TO 5
-      ENDIF
+      endif
 !
-      IF (MTP == NTP) WRITE (*, 306) NTP, RG(NTP), CUTOFF
+      if (MTP == NTP) WRITE (*, 306) NTP, RG(NTP), CUTOFF
 !
 !   Compute the coefficient of R**GAMMA at the origin
 !
       RG0 = FG*FAC**GAMMA*(FNR - BIGNMK)
 !
-      RETURN
+      return
 !
   300 FORMAT('DCBSRW:')
   301 FORMAT(' Principal quantum number is ',1I3)
@@ -242,9 +242,9 @@
          ' principal quantum number (',1I3,')')
   304 FORMAT(' Nuclear charge (',3P,1D16.7,') is too small')
   305 FORMAT(' Nuclear charge (',3P,1D16.7,') exceeds C (',1D16.7,')')
-  306 FORMAT(/,/,/,' ***** Warning in SUBROUTINE DCBSRW *****'/,/,&
+  306 FORMAT(/,/,/,' ***** Warning in subroutine DCBSRW *****'/,/,&
          ' Radial grid of insufficient extent:'/,' P(',1I4,') = ',1P,1D10.3,&
          ', Exceeds cutoff (',1D10.3,')')
-      RETURN
+      return
 !
-      END SUBROUTINE DCBSRW
+      end subroutine DCBSRW

@@ -1,10 +1,10 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE EILE(JA,JB,JC,JAA,JBB,JCC)
+      subroutine EILE(JA,JB,JC,JAA,JBB,JCC)
 !                                                                  *
 !     ------------  SECTION METWO    SUBPROGRAM 02  ------------   *
 !                                                                  *
-!     NO SUBROUTINE CALLED                                         *
+!     NO subroutine CALLED                                         *
 !                                                                  *
 !   Written by G. Gaigalas,                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -16,17 +16,17 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN)  :: JA, JB, JC
-      INTEGER, INTENT(OUT) :: JAA, JBB, JCC
+      integer, intent(in)  :: JA, JB, JC
+      integer, intent(out) :: JAA, JBB, JCC
 !-----------------------------------------------
       JAA=JA
       JCC=JA
-      IF(JAA > JB)JAA=JB
-      IF(JCC < JB)JCC=JB
-      IF(JAA > JC)JAA=JC
-      IF(JCC < JC)JCC=JC
-      IF((JA > JAA).AND.(JA < JCC))JBB=JA
-      IF((JB > JAA).AND.(JB < JCC))JBB=JB
-      IF((JC > JAA).AND.(JC < JCC))JBB=JC
-      RETURN
-      END SUBROUTINE EILE
+      if(JAA > JB)JAA=JB
+      if(JCC < JB)JCC=JB
+      if(JAA > JC)JAA=JC
+      if(JCC < JC)JCC=JC
+      if((JA > JAA).AND.(JA < JCC))JBB=JA
+      if((JB > JAA).AND.(JB < JCC))JBB=JB
+      if((JC > JAA).AND.(JC < JCC))JBB=JC
+      return
+      end subroutine EILE

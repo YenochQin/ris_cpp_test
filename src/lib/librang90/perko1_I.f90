@@ -1,11 +1,11 @@
-      MODULE perko1_I
-      INTERFACE
+      module perko1_I
+      interface
 !
-      SUBROUTINE PERKO1(JA,BK,IK,BD,ID)
+      subroutine PERKO1(JA,BK,IK,BD,ID)
       use iso_fortran_env, only: real64, int32, int64, real128
-      INTEGER,      INTENT(IN)                :: JA
-      INTEGER,      INTENT(OUT), DIMENSION(7) :: IK, ID
-      real(real64), INTENT(OUT), DIMENSION(3) :: BK, BD
-      END SUBROUTINE
-      END INTERFACE
-      END MODULE
+      integer,      intent(in)                :: JA
+      integer,      intent(out), dimension(7) :: IK, ID
+      real(real64), intent(out), dimension(3) :: BK, BD
+      end subroutine
+      end interface
+      end module

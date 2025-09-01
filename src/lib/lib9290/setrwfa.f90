@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE SETRWFA(NAME)
+      subroutine SETRWFA(NAME)
 !                                                                      *
 !   Open, check, load data from and close the  .rwf  file.             *
 !                                                                      *
@@ -17,51 +17,51 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE IOUNIT_C
+      use IOUNIT_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE openfl_I
-      USE lodrwf_I
+      use openfl_I
+      use lodrwf_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      CHARACTER (LEN = *), INTENT(IN) :: NAME
+      character (LEN = *), intent(in) :: NAME
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: IERR, IOS
-      CHARACTER :: G92RWF*6
+      integer :: IERR, IOS
+      character :: G92RWF*6
 
 
       CALL OPENFL (23, NAME, 'UNFORMATTED', 'OLD', IERR)
-      IF (IERR == 1) THEN
+      if (IERR == 1) then
          WRITE (ISTDE, *) 'Error when opening', NAME(1:LEN_TRIM(NAME))
          STOP
-      ENDIF
+      endif
 !
 !   Check the file; if not as expected, stop.
 !
       READ (23, IOSTAT=IOS) G92RWF
-      IF (IOS/=0 .OR. G92RWF/='G92RWF') THEN
+      if (IOS/=0 .OR. G92RWF/='G92RWF') then
          WRITE (ISTDE, *) 'This is not a Radial WaveFunction File;'
          CLOSE(23)
          STOP
-      ENDIF
+      endif
 !
 !   Attempt to load the radial wavefunctions; if this fails, stop
 !
       CALL LODRWF (IERR)
 
-      IF (IERR /= 0) THEN
+      if (IERR /= 0) then
          WRITE (ISTDE, *) 'Radial wavefunctions defined in CSL file', &
             ' not found in Radial WaveFunction File'
          CLOSE(23)
          STOP
-      ENDIF
+      endif
 
       CLOSE(23)
 
-      RETURN
-      END SUBROUTINE SETRWFA
+      return
+      end subroutine SETRWFA

@@ -1,10 +1,10 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE RECOP00(NS,JA1,JA2,KA,IAT)
+      subroutine RECOP00(NS,JA1,JA2,KA,IAT)
 !                                                                  *
 !   ---------------  SECTION REC    SUBPROGRAM 06  --------------  *
 !                                                                  *
-!     SUBROUTINE CALLED:  DIAGA1,DIAGA2,DIAGA3                     *
+!     subroutine CALLED:  DIAGA1,DIAGA2,DIAGA3                     *
 !                                                                  *
 !   Written by  G. Gaigalas                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -14,70 +14,70 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE m_C,             ONLY: NPEEL, JJC1, JJC2, JLIST, JJQ1, JJQ2
+      use m_C,             only: NPEEL, JJC1, JJC2, JLIST, JJQ1, JJQ2
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE ittk_I
+      use ittk_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN)  :: NS, JA1, JA2, KA
-      INTEGER, INTENT(OUT) :: IAT
+      integer, intent(in)  :: NS, JA1, JA2, KA
+      integer, intent(out) :: IAT
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: I, ISKR, IJ1, J, JI, JJ, NPEELGG, KK, LK, LD
+      integer :: I, ISKR, IJ1, J, JI, JJ, NPEELGG, KK, LK, LD
 !-----------------------------------------------
       IAT=1
-      IF(NPEEL == 1 .AND. NS == -1)RETURN
+      if(NPEEL == 1 .AND. NS == -1)return
       IAT=0
-      IF(NS == -1) THEN
+      if(NS == -1) then
          NPEELGG = NPEEL
-      ELSE
+      else
          NPEELGG = NS
-      END IF
-      IF(NPEELGG > 1) THEN
+      END if
+      if(NPEELGG > 1) then
         LK=JJC1(NPEELGG-1)-1
         LD=JJC2(NPEELGG-1)-1
-      ELSE IF(NPEELGG == 1) THEN
+      else if(NPEELGG == 1) then
         LK=JJC1(NPEELGG)-1
         LD=JJC2(NPEELGG)-1
-      ELSE
+      else
         PRINT*, "ERROR in RECOP00"
         STOP
-      END IF
-      IF(ITTK(LK,LD,2*KA) == 0)RETURN
+      END if
+      if(ITTK(LK,LD,2*KA) == 0)return
       IAT=1
-      IF(NPEEL == 1)RETURN
+      if(NPEEL == 1)return
       DO I=1,NPEEL
-        IF(JA1 /= I) THEN
-          IF(JA2 /= I) THEN
+        if(JA1 /= I) then
+          if(JA2 /= I) then
             IJ1=JLIST(I)
-            IF(JJQ1(1,IJ1) /= JJQ2(1,IJ1))IAT=0
-            IF(JJQ1(2,IJ1) /= JJQ2(2,IJ1))IAT=0
-            IF(JJQ1(3,IJ1) /= JJQ2(3,IJ1))IAT=0
-          ENDIF
-        ENDIF
+            if(JJQ1(1,IJ1) /= JJQ2(1,IJ1))IAT=0
+            if(JJQ1(2,IJ1) /= JJQ2(2,IJ1))IAT=0
+            if(JJQ1(3,IJ1) /= JJQ2(3,IJ1))IAT=0
+          endif
+        endif
       END DO
-      IF(IAT == 0)RETURN
-      IF(NPEELGG <= 2)RETURN
-      IF(JA1 <= 2)RETURN
+      if(IAT == 0)return
+      if(NPEELGG <= 2)return
+      if(JA1 <= 2)return
       DO J=3,JA1
         JJ=J-2
-        IF(JJC1(JJ) /= JJC2(JJ))IAT=0
-        IF(IAT == 0)RETURN
+        if(JJC1(JJ) /= JJC2(JJ))IAT=0
+        if(IAT == 0)return
       END DO
       ISKR=NPEELGG-JA2
-      IF(ISKR > 0) THEN
+      if(ISKR > 0) then
         DO JI=1,ISKR
           KK=JA2-2+JI
           LK=JJC1(KK)-1
           LD=JJC2(KK)-1
-          IF(ITTK(LK,LD,2*KA) == 0)IAT=0
-          IF(IAT == 0)RETURN
+          if(ITTK(LK,LD,2*KA) == 0)IAT=0
+          if(IAT == 0)return
         END DO
-      ENDIF
-      RETURN
-      END SUBROUTINE RECOP00
+      endif
+      return
+      end subroutine RECOP00

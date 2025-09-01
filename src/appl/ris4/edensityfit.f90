@@ -1,7 +1,7 @@
 !***********************************************************************
 !                                                                      *
-SUBROUTINE EDENSITYFIT(XVEC,YVEC,Z,PAR,NRNUC,F,RHO,RES)
-!SUBROUTINE EDENSITYFIT(XVEC,YVEC,Z,PAR,NPARFIT,                  &
+subroutine EDENSITYFIT(XVEC,YVEC,Z,PAR,NRNUC,F,RHO,RES)
+!subroutine EDENSITYFIT(XVEC,YVEC,Z,PAR,NPARFIT,                  &
 !                                                DRMS,P,F,RHO,RES,NRNUC)
 
 !     Fits polynomial b1 + b2r^2 b3r^3 + b4r^4 to (r,rho) electron     *
@@ -13,8 +13,8 @@ SUBROUTINE EDENSITYFIT(XVEC,YVEC,Z,PAR,NRNUC,F,RHO,RES)
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE def_C,            ONLY: PI,FMTOAU,CCMS,AUCM
-      USE parameter_def,    ONLY: NNNP, NNN1
+      use def_C,            only: PI,FMTOAU,CCMS,AUCM
+      use parameter_def,    only: NNNP, NNN1
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
@@ -22,28 +22,28 @@ SUBROUTINE EDENSITYFIT(XVEC,YVEC,Z,PAR,NRNUC,F,RHO,RES)
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64), DIMENSION(NNN1) :: XVEC
-      real(real64), DIMENSION(NNNP) :: YVEC
-!GG      real(real64), DIMENSION(NNNP) :: XVEC, YVEC
-      real(real64), DIMENSION(5) :: P
-      real(real64), DIMENSION(6) :: F
-      real(real64), DIMENSION(2) :: PAR
+      real(real64), dimension(NNN1) :: XVEC
+      real(real64), dimension(NNNP) :: YVEC
+!GG      real(real64), dimension(NNNP) :: XVEC, YVEC
+      real(real64), dimension(5) :: P
+      real(real64), dimension(6) :: F
+      real(real64), dimension(2) :: PAR
       real(real64) :: Z, DRMS, RHO, RES
-      INTEGER      :: NRNUC, NPARFIT
+      integer      :: NRNUC, NPARFIT
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      real(real64), DIMENSION(NNN1) :: X
-      real(real64), DIMENSION(NNNP) :: Y, W, DY
-!GG      real(real64), DIMENSION(NNNP) :: X, Y, W, DY
-      real(real64), DIMENSION(3,3)  :: M, MI, C, CI
-      real(real64), DIMENSION(4)    :: DR, DR2
-      real(real64), DIMENSION(3)    :: RM, PM, B, DF2
-      real(real64), DIMENSION(2)    :: PARF, PARF2
+      real(real64), dimension(NNN1) :: X
+      real(real64), dimension(NNNP) :: Y, W, DY
+!GG      real(real64), dimension(NNNP) :: X, Y, W, DY
+      real(real64), dimension(3,3)  :: M, MI, C, CI
+      real(real64), dimension(4)    :: DR, DR2
+      real(real64), dimension(3)    :: RM, PM, B, DF2
+      real(real64), dimension(2)    :: PARF, PARF2
       real(real64) :: MDET, CDET, AU2FM, NORM, CONST, CONST2, A0
       real(real64) :: A1, A2, FDSUM, FO90, R2,DR4,DR6, DE, DEN, dDEN
       real(real64) :: dDEN2, DX2, DY2, X2, Y2
-      INTEGER :: I, INUC, NMIN, NMAX, NR
+      integer :: I, INUC, NMIN, NMAX, NR
 !-----------------------------------------------
 !
       AU2FM = 1.D0/FMTOAU                ! Bohr radius in fm
@@ -56,7 +56,7 @@ SUBROUTINE EDENSITYFIT(XVEC,YVEC,Z,PAR,NRNUC,F,RHO,RES)
       ! DETERMINE FIRST POINT BEYOND FO90 IN GRID CALLED NR
       ! DETERMINE FIRST POINT WHERE GRID IS RELIABLE CALLED NMIN
       ! SINCE FIRST FEW DATA POINTS IN DENSITY ARE NOT RELIABLE DUE TO DIVISION WITH SMALL
-      ! R^2 VALUES (STAGGERING IS SEEN), NMIN IS THE FIRST POINT TO BE USED IN THE SUBSEQUENT LEAST SQUARES FIT
+      ! R^2 VALUES (STAGGERING IS SEEN), NMIN IS THE FIRST POINT TO BE useD IN THE SUBSEQUENT LEAST SQUARES FIT
 
       NMIN = 10
 
@@ -172,7 +172,7 @@ SUBROUTINE EDENSITYFIT(XVEC,YVEC,Z,PAR,NRNUC,F,RHO,RES)
       F(3) = 2.0d0*PI/21.0d0*Z*P(3)*CONST
       F(4) = 2.0d0*PI/36.0d0*Z*P(4)*CONST
 
-!    DETERMINE AVERAGE POINT DISCREPANCY PARAMETER
+!    DETERMINE AVERAGE POINT DISCREPANCY parameter
       RES = 0.0d0
       DO I=NMIN,NMAX
          Y(I) = Y(I)*AU2FM**3.0d0*NORM+RHO
@@ -184,9 +184,9 @@ SUBROUTINE EDENSITYFIT(XVEC,YVEC,Z,PAR,NRNUC,F,RHO,RES)
       RES = sqrt(RES/(NMAX-NMIN+1))
       RES = RES/RHO*1000.0d0    ! In per mille of RHO
 
-!     BELOW WE APPROXIMATE THE IS ENERGY. DIFFERENCE IN RADIAL MOMENTS ARE CALUCLATED BETWEEN THE
-!     CURRENT DISTRIBTUION (PARF) AND WITH A DISTRIBUTION WITH A R^2 1 FM LARGER. THE DIFFERNCE
-!     IN RADIAL MOMENTS ARE THEN MULTIPLIED WITH THE ELECTRONIC FACTORS.
+!     BELOW WE APPROXIMATE THE IS ENERGY. DifFERENCE IN RADIAL MOMENTS ARE CALUCLATED BETWEEN THE
+!     CURRENT DISTRIBTUION (PARF) AND WITH A DISTRIBUTION WITH A R^2 1 FM LARGER. THE DifFERNCE
+!     IN RADIAL MOMENTS ARE then MULTIPLIED WITH THE ELECTRONIC FACTORS.
 
       PARF(1) = PAR(1)*AU2FM    ! 50% FALL OFF RADIUS C
       PARF(2) = PAR(2)*AU2FM    ! SKIN THICKNESS a. 10% TO 90% FALL OFF DISTANCE t = 4.0*ln(3)*a
@@ -221,6 +221,6 @@ SUBROUTINE EDENSITYFIT(XVEC,YVEC,Z,PAR,NRNUC,F,RHO,RES)
       END DO
       F(6) = FDSUM              ! IS ENERGY IN GHZ / FM^2
 
-      RETURN
+      return
 
-      END SUBROUTINE EDENSITYFIT
+      end subroutine EDENSITYFIT

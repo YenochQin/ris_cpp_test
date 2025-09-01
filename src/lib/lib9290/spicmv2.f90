@@ -1,5 +1,5 @@
 !***********************************************************************
-      SUBROUTINE SPICMV2(N, M, B, C)
+      subroutine SPICMV2(N, M, B, C)
 !
 !  Modified from the mpi version spicmvmpi.f by simply removing things
 !  required by mpi communication.
@@ -14,24 +14,24 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE HMAT_C
+      use HMAT_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE dinit_I
-!      USE dmerge_I
+      use dinit_I
+!      use dmerge_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: N
-      INTEGER, INTENT(IN) :: M
-      real(real64), DIMENSION(N,M), INTENT(IN) :: B
-      real(real64), DIMENSION(N,M), INTENT(INOUT) :: C
+      integer, intent(in) :: N
+      integer, intent(in) :: M
+      real(real64), dimension(N,M), intent(in) :: B
+      real(real64), dimension(N,M), INTENT(INOUT) :: C
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: IBEG, ICOL, IEND, NELC, IV
+      integer :: IBEG, ICOL, IEND, NELC, IV
       real(real64) :: DIAG, DL
 !-----------------------------------------------
 !
@@ -56,5 +56,5 @@
          IBEG = IEND + 1
       END DO
 
-      RETURN
-      END SUBROUTINE SPICMV2
+      return
+      end subroutine SPICMV2

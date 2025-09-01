@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE RMEW7BJJ(J1,J2,K1,K2,COEF)
+      subroutine RMEW7BJJ(J1,J2,K1,K2,COEF)
 !                                                                  *
 !   Written by  G. Gaigalas                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -12,27 +12,27 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO
-      USE ribojj_C
+      use CONS_C,          only: ZERO
+      use ribojj_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE rumtjj_I
+      use rumtjj_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER,      INTENT(IN)  :: J1, J2, K1, K2
-      real(real64), INTENT(OUT) :: COEF
+      integer,      intent(in)  :: J1, J2, K1, K2
+      real(real64), intent(out) :: COEF
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: LL, IQ1, LV1, IL1, IQ2, LV2, IL2, JI1, JI2, IFAZ, J, L
-      INTEGER, DIMENSION(6)  :: IPR1
-      INTEGER, DIMENSION(8)  :: IPR2
-      INTEGER, DIMENSION(21) :: I12PS,I12PV,I03PS,I03PV,I14PS, &
+      integer :: LL, IQ1, LV1, IL1, IQ2, LV2, IL2, JI1, JI2, ifAZ, J, L
+      integer, dimension(6)  :: IPR1
+      integer, dimension(8)  :: IPR2
+      integer, dimension(21) :: I12PS,I12PV,I03PS,I03PV,I14PS, &
       I14PV,I05PS,I05PV,I16PS,I16PV,I07PS,I07PV
-      INTEGER, DIMENSION(36) :: I12AS,I12AV,I03AS,I03AV,I14AS, &
+      integer, dimension(36) :: I12AS,I12AV,I03AS,I03AV,I14AS, &
       I14AV,I05AS,I05AV,I16AS,I16AV,I07AS,I07AV
 !-----------------------------------------------
       DATA IPR1/0,5,9,12,14,15/
@@ -91,115 +91,115 @@
       LL = 7
       CALL RUMTJJ(J1,LL,IQ1,LV1,IL1)
       CALL RUMTJJ(J2,LL,IQ2,LV2,IL2)
-      IF(J1 > J2) THEN
+      if(J1 > J2) then
         JI1=J2
         JI2=J1
-        IFAZ=IL2-IL1+IQ2-IQ1
-        ELSE
+        ifAZ=IL2-IL1+IQ2-IQ1
+        else
           JI1=J1
           JI2=J2
-          IFAZ=4
-      ENDIF
-      IF(J1 > 17) THEN
+          ifAZ=4
+      endif
+      if(J1 > 17) then
         JI1=JI1-17
         JI2=JI2-17
         J=IPR2(JI1)+JI2
         L=2
-      ELSE
+      else
         JI1=JI1-11
         JI2=JI2-11
         L=1
         J=IPR1(JI1)+JI2
-      ENDIF
-      IF(K1 == 1 .AND. K2 == 2) THEN
-        IF(L == 1) THEN
-           IF(I12PS(J) >= 0) THEN
+      endif
+      if(K1 == 1 .AND. K2 == 2) then
+        if(L == 1) then
+           if(I12PS(J) >= 0) then
               COEF=DSQRT(DBLE(I12PS(J))/DBLE(I12PV(J)))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I12PS(J))/DBLE(I12PV(J)))
-           ENDIF
-        ELSE
-           IF(I12AS(J) >= 0) THEN
+           endif
+        else
+           if(I12AS(J) >= 0) then
               COEF=DSQRT(DBLE(I12AS(J))/DBLE(I12AV(J)))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I12AS(J))/DBLE(I12AV(J)))
-           ENDIF
-        ENDIF
-      ELSEIF(K1 == 0 .AND. K2 == 3) THEN
-        IF(L == 1) THEN
-           IF(I03PS(J) >= 0) THEN
+           endif
+        endif
+      elseif(K1 == 0 .AND. K2 == 3) then
+        if(L == 1) then
+           if(I03PS(J) >= 0) then
               COEF=DSQRT(DBLE(I03PS(J))/DBLE(I03PV(J)))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I03PS(J))/DBLE(I03PV(J)))
-           ENDIF
-        ELSE
-           IF(I03AS(J) >= 0) THEN
+           endif
+        else
+           if(I03AS(J) >= 0) then
               COEF=DSQRT(DBLE(I03AS(J))/DBLE(I03AV(J)))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I03AS(J))/DBLE(I03AV(J)))
-           ENDIF
-        ENDIF
-      ELSEIF(K1 == 1 .AND. K2 == 4) THEN
-        IF(L == 1) THEN
-           IF(I14PS(J) >= 0) THEN
+           endif
+        endif
+      elseif(K1 == 1 .AND. K2 == 4) then
+        if(L == 1) then
+           if(I14PS(J) >= 0) then
               COEF=DSQRT(DBLE(I14PS(J))/DBLE(I14PV(J)))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I14PS(J))/DBLE(I14PV(J)))
-           ENDIF
-        ELSE
-           IF(I14AS(J) >= 0) THEN
+           endif
+        else
+           if(I14AS(J) >= 0) then
               COEF=DSQRT(DBLE(I14AS(J))/DBLE(I14AV(J)))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I14AS(J))/DBLE(I14AV(J)))
-           ENDIF
-        ENDIF
-      ELSEIF(K1 == 0 .AND. K2 == 5) THEN
-        IF(L == 1) THEN
-           IF(I05PS(J) >= 0) THEN
+           endif
+        endif
+      elseif(K1 == 0 .AND. K2 == 5) then
+        if(L == 1) then
+           if(I05PS(J) >= 0) then
               COEF=DSQRT(DBLE(I05PS(J))/DBLE(I05PV(J)))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I05PS(J))/DBLE(I05PV(J)))
-           ENDIF
-        ELSE
-           IF(I05AS(J) >= 0) THEN
+           endif
+        else
+           if(I05AS(J) >= 0) then
               COEF=DSQRT(DBLE(I05AS(J))/DBLE(I05AV(J)))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I05AS(J))/DBLE(I05AV(J)))
-           ENDIF
-        ENDIF
-      ELSEIF(K1 == 1 .AND. K2 == 6) THEN
-        IF(L == 1) THEN
-           IF(I16PS(J) >= 0) THEN
+           endif
+        endif
+      elseif(K1 == 1 .AND. K2 == 6) then
+        if(L == 1) then
+           if(I16PS(J) >= 0) then
               COEF=DSQRT(DBLE(I16PS(J))/DBLE(I16PV(J)))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I16PS(J))/DBLE(I16PV(J)))
-           ENDIF
-        ELSE
-           IF(I16AS(J) >= 0) THEN
+           endif
+        else
+           if(I16AS(J) >= 0) then
               COEF=DSQRT(DBLE(I16AS(J))/DBLE(I16AV(J)))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I16AS(J))/DBLE(I16AV(J)))
-           ENDIF
-        ENDIF
-      ELSEIF(K1 == 0 .AND. K2 == 7) THEN
-        IF(L == 1) THEN
-           IF(I07PS(J) >= 0) THEN
+           endif
+        endif
+      elseif(K1 == 0 .AND. K2 == 7) then
+        if(L == 1) then
+           if(I07PS(J) >= 0) then
               COEF=DSQRT(DBLE(I07PS(J))/DBLE(I07PV(J)))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I07PS(J))/DBLE(I07PV(J)))
-           ENDIF
-        ELSE
-           IF(I07AS(J) >= 0) THEN
+           endif
+        else
+           if(I07AS(J) >= 0) then
               COEF=DSQRT(DBLE(I07AS(J))/DBLE(I07AV(J)))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I07AS(J))/DBLE(I07AV(J)))
-           ENDIF
-        ENDIF
-      ELSE
+           endif
+        endif
+      else
         WRITE(0,'(A,4I5)') ' J1 J2 = ',J1,J2
         WRITE(0,'(A)') ' ERROR IN SUB. RMEW7JJ '
         STOP
-      ENDIF
-      IF(MOD(IFAZ,4) /= 0)COEF=-COEF
-      RETURN
+      endif
+      if(MOD(ifAZ,4) /= 0)COEF=-COEF
+      return
       END

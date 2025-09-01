@@ -1,9 +1,9 @@
-      MODULE rint_sms2_I
-      INTERFACE
+      module rint_sms2_I
+      interface
 !...Translated by Gediminas Gaigalas 11/18/19
-      REAL(KIND(0.0D0)) FUNCTION rint_sms2 (I, J)
-      INTEGER, INTENT(IN) :: I
-      INTEGER, INTENT(IN) :: J
+      real(real64) FUNCTION rint_sms2 (I, J)
+      integer, intent(in) :: I
+      integer, intent(in) :: J
       END FUNCTION
-      END INTERFACE
-      END MODULE
+      end interface
+      end module

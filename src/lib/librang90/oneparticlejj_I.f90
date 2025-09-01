@@ -1,14 +1,14 @@
-      MODULE oneparticlejj_I
-      INTERFACE
+      module oneparticlejj_I
+      interface
 !
-      SUBROUTINE ONEPARTICLEJJ(KA,IOPAR,JA,JB,IA1,IA2,VSHELL)
+      subroutine ONEPARTICLEJJ(KA,IOPAR,JA,JB,IA1,IA2,VSHELL)
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE parameter_def,   ONLY:  NNNW
-!GG      INTEGER NNNW
-!GG      PARAMETER (NNNW = 214)
-      INTEGER, INTENT(IN)  :: KA,IOPAR,JA,JB
-      INTEGER, INTENT(OUT) :: IA1,IA2
-      real(real64), DIMENSION(NNNW), INTENT(OUT) :: VSHELL
-      END SUBROUTINE
-      END INTERFACE
-      END MODULE
+      use parameter_def,   only:  NNNW
+!GG      integer NNNW
+!GG      parameter (NNNW = 214)
+      integer, intent(in)  :: KA,IOPAR,JA,JB
+      integer, intent(out) :: IA1,IA2
+      real(real64), dimension(NNNW), intent(out) :: VSHELL
+      end subroutine
+      end interface
+      end module

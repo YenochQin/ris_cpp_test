@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE INTERP(XARR, YARR, NARR, XVAL, YVAL, ACCY)
+      subroutine INTERP(XARR, YARR, NARR, XVAL, YVAL, ACCY)
 !                                                                      *
 !   This routine returns  YVAL  given a value  XVAL by interpolating   *
 !   using a pair of arrays XARR(1:NARR), YARR(1:NARR), that tabulate   *
@@ -24,26 +24,26 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: NARR
-      real(real64), INTENT(IN) :: XVAL
-      real(real64), INTENT(OUT) :: YVAL
-      real(real64), INTENT(IN) :: ACCY
-      real(real64), DIMENSION(NARR), INTENT(IN) :: XARR
-      real(real64), DIMENSION(NARR), INTENT(IN) :: YARR
+      integer, intent(in) :: NARR
+      real(real64), intent(in) :: XVAL
+      real(real64), intent(out) :: YVAL
+      real(real64), intent(in) :: ACCY
+      real(real64), dimension(NARR), intent(in) :: XARR
+      real(real64), dimension(NARR), intent(in) :: YARR
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
-      INTEGER, PARAMETER :: MXORD = 11
+      integer, parameter :: MXORD = 11
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: NRSTLO, NRSTHI, K, LLO, LHI, LLR, IROW, LOCNXT, ILIROK, ILDIAG&
+      integer :: NRSTLO, NRSTHI, K, LLO, LHI, LLR, IROW, LOCNXT, ILIROK, ILDIAG&
          , ILOTHR, IBEST
-      real(real64), DIMENSION(MXORD) :: DX, X, EST
-      real(real64), DIMENSION((MXORD*(MXORD + 1))/2) :: POLY
-      real(real64) :: DIFF, DIFFT, DEBEB, DEBE
-      LOGICAL :: SET
-      LOGICAL, DIMENSION(2*MXORD + 2) :: USED
+      real(real64), dimension(MXORD) :: DX, X, EST
+      real(real64), dimension((MXORD*(MXORD + 1))/2) :: POLY
+      real(real64) :: DifF, DifFT, DEBEB, DEBE
+      logical :: SET
+      logical, dimension(2*MXORD + 2) :: useD
 !-----------------------------------------------
 !
 !
@@ -56,32 +56,32 @@
 !
 !   Determine the nearest two XARR entries bounding XVAL
 !
-      IF (XVAL < XARR(1)) THEN
+      if (XVAL < XARR(1)) then
          NRSTLO = 1
          NRSTHI = 1
          WRITE (*, 300)
-      ELSE IF (XVAL > XARR(NARR)) THEN
+      else if (XVAL > XARR(NARR)) then
          NRSTLO = NARR
          NRSTHI = NARR
          WRITE (*, 300)
-      ELSE
+      else
          K = 0
     1    CONTINUE
          K = K + 1
-         IF (XARR(K) < XVAL) THEN
+         if (XARR(K) < XVAL) then
             NRSTLO = K
             GO TO 1
-         ELSE
+         else
             NRSTHI = K
-         ENDIF
-      ENDIF
+         endif
+      endif
 !
 !   Clear relevant piece of use-indicator array
 !
       LLO = MAX(NRSTLO - MXORD,1)
       LHI = MIN(NRSTHI + MXORD,NARR)
       LLR = LLO - 1
-      USED(LLO-LLR:LHI-LLR) = .FALSE.
+      useD(LLO-LLR:LHI-LLR) = .FALSE.
 !
 !   Determine next-nearest XARR entry
 !
@@ -90,35 +90,35 @@
          LHI = MIN(NRSTHI + IROW - 1,NARR)
          SET = .FALSE.
          DO K = LLO, LHI
-            IF (USED(K-LLR)) CYCLE
-            IF (.NOT.SET) THEN
-               DIFF = XARR(K) - XVAL
+            if (useD(K-LLR)) CYCLE
+            if (.NOT.SET) then
+               DifF = XARR(K) - XVAL
                LOCNXT = K
                SET = .TRUE.
-            ELSE
-               DIFFT = XARR(K) - XVAL
-               IF (ABS(DIFFT) < ABS(DIFF)) THEN
-                  DIFF = DIFFT
+            else
+               DifFT = XARR(K) - XVAL
+               if (ABS(DifFT) < ABS(DifF)) then
+                  DifF = DifFT
                   LOCNXT = K
-               ENDIF
-            ENDIF
+               endif
+            endif
          END DO
-         USED(LOCNXT-LLR) = .TRUE.
+         useD(LOCNXT-LLR) = .TRUE.
          X(IROW) = XARR(LOCNXT)
-         DX(IROW) = DIFF
+         DX(IROW) = DifF
 !
 !   Fill table for this row
 !
          DO K = 1, IROW
             ILIROK = ILOC(IROW,K)
-            IF (K == 1) THEN
+            if (K == 1) then
                POLY(ILIROK) = YARR(LOCNXT)
-            ELSE
+            else
                ILDIAG = ILOC(K - 1,K - 1)
                ILOTHR = ILOC(IROW,K - 1)
                POLY(ILIROK) = (POLY(ILDIAG)*DX(IROW)-POLY(ILOTHR)*DX(K-1))/(X(&
                   IROW)-X(K-1))
-            ENDIF
+            endif
          END DO
 !
 !   Pick off the diagonal element
@@ -142,35 +142,35 @@
 !ps In a consequence, DEBE becomes NaN, and in that case the condition
 !ps in the CYCLE statement (NaN >= number) is then evaluated to "false".
 !ps So, the CYCLE is not performed, what is incorrect.
-!ps To avoid this, the CYCLE was replaced with the IF / THEN / END IF
+!ps To avoid this, the CYCLE was replaced with the if / then / END if
 !ps (the condition was reversed).
-        !ps IF (DEBE >= DEBEB) CYCLE
+        !ps if (DEBE >= DEBEB) CYCLE
         !ps DEBEB = DEBE
         !ps IBEST = IROW
-        IF (DEBE < DEBEB) THEN
+        if (DEBE < DEBEB) then
             DEBEB = DEBE
             IBEST = IROW
-        END IF
+        END if
 
       END DO
       YVAL = EST(IBEST)
 !
-      IF (DEBEB > ACCY) WRITE (*, 301) DEBEB, ACCY
+      if (DEBEB > ACCY) WRITE (*, 301) DEBEB, ACCY
 !
-      RETURN
+      return
 !
   300 FORMAT('INTERP: Extrapolating, not interpolating.')
   301 FORMAT('INTERP: Accuracy of interpolation (',1P,1D10.3,') is',&
          ' below input criterion (',1D10.3,').')
-      RETURN
+      return
       CONTAINS
 
 
-      INTEGER FUNCTION ILOC (IND1, IND2)
-      INTEGER, INTENT(IN) :: IND1
-      INTEGER, INTENT(IN) :: IND2
+      integer FUNCTION ILOC (IND1, IND2)
+      integer, intent(in) :: IND1
+      integer, intent(in) :: IND2
       ILOC = (IND1*(IND1 - 1))/2 + IND2
-      RETURN
+      return
       END FUNCTION ILOC
 !
-      END SUBROUTINE INTERP
+      end subroutine INTERP

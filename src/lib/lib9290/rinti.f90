@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      REAL(KIND(0.0D0)) FUNCTION RINTI (J, K, MODE)
+      real(real64) FUNCTION RINTI (J, K, MODE)
 !                                                                      *
 !   The value of this  function is the one-electron integral I (J,K)   *
 !   for  orbitals  J, K. The analytical expression for this quantity   *
@@ -19,18 +19,18 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE DEBUG_C
-      USE DEF_C,           ONLY: C
-      USE GRID_C
-      USE NPOT_C,          ONLY: ZZ
-      USE ORB_C
-      USE TATB_C,          ONLY: TA, TB, MTP
-      USE WAVE_C,          ONLY: MF,PF,QF
+      use DEBUG_C
+      use DEF_C,           only: C
+      use GRID_C
+      use NPOT_C,          only: ZZ
+      use ORB_C
+      use TATB_C,          only: TA, TB, MTP
+      use WAVE_C,          only: MF,PF,QF
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE dpbdt_I
-      USE quad_I
+      use dpbdt_I
+      use quad_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   G l o b a l   P a r a m e t e r s
@@ -38,22 +38,22 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER  :: J
-      INTEGER  :: K
-      INTEGER, INTENT(IN) :: MODE
+      integer  :: J
+      integer  :: K
+      integer, intent(in) :: MODE
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: I
+      integer :: I
       real(real64) :: PIECE1, PIECE2, PIECE3, PIECE4
 !-----------------------------------------------
 !
 !   Stop if orbitals J and K have different kappa values
 !
-      IF (NAK(J) /= NAK(K)) THEN
+      if (NAK(J) /= NAK(K)) then
          WRITE (*, 300) NP(J), NH(J), NP(K), NH(K)
          STOP
-      ENDIF
+      endif
 !
       MTP = MAX(MF(J),MF(K))
 !
@@ -87,7 +87,7 @@
 !
 !   Contribution from nuclear potential only if MODE is 0
 !
-      IF (MODE == 0) THEN
+      if (MODE == 0) then
 !
          TA(1) = 0.D0
          DO I = 2, MTP
@@ -96,24 +96,24 @@
          CALL QUAD (PIECE4)
          PIECE4 = -PIECE4
 !
-      ELSE
+      else
          PIECE4 = 0.D0
-      ENDIF
+      endif
 !
       RINTI = PIECE1 + PIECE2 + PIECE3 + PIECE4
 !
 !   Debug printout
 !
-      IF (MODE==0 .AND. LDBPR(4)) WRITE (99, 301) NP(J), NH(J), NP(K), NH(K), &
+      if (MODE==0 .AND. LDBPR(4)) WRITE (99, 301) NP(J), NH(J), NP(K), NH(K), &
          RINTI
-      IF (MODE/=0 .AND. LDBPR(5)) WRITE (99, 302) NP(J), NH(J), NP(K), NH(K), &
+      if (MODE/=0 .AND. LDBPR(5)) WRITE (99, 302) NP(J), NH(J), NP(K), NH(K), &
          RINTI
 !
-      RETURN
+      return
 !
   300 FORMAT('RINTI: Attempt to calculate I(',1I2,1A2,',',1I2,1A2,')')
   301 FORMAT(/,' I (',1I2,1A2,',',1I2,1A2,') = ',1P,D19.12,/)
   302 FORMAT(/,' K (',1I2,1A2,',',1I2,1A2,') = ',1P,D19.12,/)
-      RETURN
+      return
 !
       END FUNCTION RINTI

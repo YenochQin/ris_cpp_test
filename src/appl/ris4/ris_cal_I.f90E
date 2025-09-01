@@ -1,0 +1,9 @@
+      MODULE ris_cal_I
+      interface
+!...Translated by Gediminas Gaigalas 11/18/19
+      subroutine ris_cal(NAME)
+      use iso_fortran_env, only: real64, int32, int64, real128
+      character*24, intent(in) :: NAME
+      end subroutine
+      end interface
+      end module

@@ -1,12 +1,12 @@
-      MODULE couple_C
+      module couple_C
       use iso_fortran_env, only: real64, int32, int64, real128
 !...Created by Pacific-Sierra Research 77to90  4.3E  06:33:54  12/28/06
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
-      INTEGER, PARAMETER :: MANGM = 60
-      INTEGER, PARAMETER :: MTRIAD = 12
-      INTEGER, DIMENSION(MANGM) :: J1
-      INTEGER, DIMENSION(MTRIAD,3) :: J2, J3
-      INTEGER :: MJA, NJA
-      LOGICAL, DIMENSION(MANGM) :: FREE
-      END MODULE couple_C
+      integer, parameter :: MANGM = 60
+      integer, parameter :: MTRIAD = 12
+      integer, dimension(MANGM) :: J1
+      integer, dimension(MTRIAD,3) :: J2, J3
+      integer :: MJA, NJA
+      logical, dimension(MANGM) :: FREE
+      end module couple_C

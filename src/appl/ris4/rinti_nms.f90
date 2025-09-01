@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-       SUBROUTINE RINTI_NMS (J,K,VALNMSK123,VALNMSK1)
+       subroutine RINTI_NMS (J,K,VALNMSK123,VALNMSK1)
 !                                                                      *
 !   The value of this  function is the one-electron integral I (J,K)   *
 !   for  orbitals  J, K. The analytical expression for this quantity   *
@@ -18,31 +18,31 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE parameter_def,    ONLY: NNN1
-      USE def_C
-      USE grid_C
-      USE wave_C
-      USE orb_C
-      USE tatb_C
-      USE debug_C
+      use parameter_def,    only: NNN1
+      use def_C
+      use grid_C
+      use wave_C
+      use orb_C
+      use tatb_C
+      use debug_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE dpbdt_I
-      USE quad_I
+      use dpbdt_I
+      use quad_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64), INTENT(OUT) :: VALNMSK123, VALNMSK1
-      INTEGER, INTENT(IN) :: J
-      INTEGER, INTENT(IN) :: K
+      real(real64), intent(out) :: VALNMSK123, VALNMSK1
+      integer, intent(in) :: J
+      integer, intent(in) :: K
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      real(real64), DIMENSION(NNN1) :: PA, PB, QA, QB
+      real(real64), dimension(NNN1) :: PA, PB, QA, QB
       real(real64) :: A1, A2, PIECE1, PIECE2, PIECE3, PIECE4
-      INTEGER :: L, KAP1, KAP2, I, L1, L2, J1, J2, L2_TILDA
+      integer :: L, KAP1, KAP2, I, L1, L2, J1, J2, L2_TILDA
 !-----------------------------------------------
 !
 !
@@ -56,25 +56,25 @@
 !
 !   Stop if orbitals J and K have different kappa values
 !
-      IF (KAP1 .NE. KAP2) THEN
+      if (KAP1 .NE. KAP2) then
          WRITE (*,300) NP(J),NH(J),NP(K),NH(K)
          STOP
-      ENDIF
+      endif
 !
 !   Determine the l quantum numbers
 !
-      IF (KAP1 .GT. 0) THEN
+      if (KAP1 .GT. 0) then
          L1 =  KAP1
-      ELSE
+      else
          L1 = -KAP1-1
-      ENDIF
+      endif
 !
-      IF (KAP2 .GT. 0) THEN
+      if (KAP2 .GT. 0) then
          L2 =  KAP2
-      ELSE
+      else
          L2 = -KAP2-1
-      ENDIF
-      IF (L1 .NE. L2) RETURN
+      endif
+      if (L1 .NE. L2) return
 !
 !   Determine the j quantum numbers and l_2 tilda
 !
@@ -128,7 +128,7 @@
       CALL QUAD (PIECE3)
       PIECE3 = -2.0*Z*PIECE3/(C*H)
 !
-      IF (KAP2 .NE. 1) THEN
+      if (KAP2 .NE. 1) then
         TA(1) = 0.0D00
         DO 4 I = 2,MTP
            TA(I) = RP(I)                                               &
@@ -137,23 +137,23 @@
     4   CONTINUE
         CALL QUAD (PIECE4)
         PIECE4 = -PIECE4*Z*(DBLE (KAP2)-1.0)/C
-      ELSE
+      else
         PIECE4 = 0.0D00
-      END IF
+      END if
       VALNMSK1 = 0.5*(PIECE1+PIECE2)
       VALNMSK123 = 0.5*(PIECE1+PIECE2+PIECE3+PIECE4)
 !
 !   Debug printout
 !
 !C*      LDBPR(5)=.TRUE.
-      IF (LDBPR(5))                                                    &
+      if (LDBPR(5))                                                    &
          WRITE (99,302) NP(J),NH(J),NP(K),NH(K),VALNMSK123
 !
-!C*      RETURN
+!C*      return
 !
   300 FORMAT ('RINTI_NMS: Attempt to calculate I(',                    &
                1I2,1A2,',',1I2,1A2,')')
   302 FORMAT (/' K (',1I2,1A2,',',1I2,1A2,') = ',1PD19.12)
 !
-      RETURN
-      END SUBROUTINE RINTI_NMS
+      return
+      end subroutine RINTI_NMS

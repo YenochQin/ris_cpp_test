@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE FACTT
+      subroutine FACTT
 !                                                                      *
 !   Calculates the logs  of factorials required by the Racah coeffi-   *
 !   cient routine DRACAH.                                              *
@@ -16,7 +16,7 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE FACTS_C
+      use FACTS_C
       IMPLICIT NONE
 !-----------------------------------------------
 !   G l o b a l   P a r a m e t e r s
@@ -24,7 +24,7 @@
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: I
+      integer :: I
       real(real64) :: X
 !-----------------------------------------------
 !
@@ -48,5 +48,5 @@
          X = X + 1.0D00
       END DO
 !
-      RETURN
-      END SUBROUTINE FACTT
+      return
+      end subroutine FACTT

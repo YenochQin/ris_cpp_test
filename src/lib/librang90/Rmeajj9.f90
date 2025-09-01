@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE RMEAJJ9(IT,LQ,J,ITS,LQS,J1S,COEF)
+      subroutine RMEAJJ9(IT,LQ,J,ITS,LQS,J1S,COEF)
 !                                                                  *
 !   Written by  G. Gaigalas                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -12,18 +12,18 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO
+      use CONS_C,          only: ZERO
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER,      INTENT(IN)  :: IT, LQ, J, ITS, LQS, J1S
-      real(real64), INTENT(OUT) :: COEF
+      integer,      intent(in)  :: IT, LQ, J, ITS, LQS, J1S
+      real(real64), intent(out) :: COEF
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: JT, JTS
-      INTEGER, DIMENSION(20) :: IDS3,IDS4,IDS5,IDS6,IDS7,IDV7,IDS8,&
+      integer :: JT, JTS
+      integer, dimension(20) :: IDS3,IDS4,IDS5,IDS6,IDS7,IDV7,IDS8,&
       IDV8,IDS9,IDS10,IDS11,IDV11,IDS12,IDV12,IDS13,IDV13,IDS14,   &
       IDS15,IDV15,IDS16,IDV16,IDS17,IDV17,IDS18,IDV18
 !-----------------------------------------------
@@ -76,114 +76,114 @@
       DATA IDV18/13*1,323,2*17,3553,437,19,253/
 !
       COEF=ZERO
-      IF(IT < ITS) THEN
+      if(IT < ITS) then
         JT=IT-25
         JTS=ITS-45
-      ELSE
+      else
         JT=ITS-25
         JTS=IT-45
-      ENDIF
-      IF(JTS == 1) THEN
-        IF(JT == 7) COEF=-DSQRT(DBLE(60))
-      ELSEIF(JTS == 2) THEN
-        IF(JT == 8) COEF=-DSQRT(DBLE(12))
-        IF(JT == 9) COEF=-DSQRT(DBLE(8))
-      ELSEIF(JTS == 3)THEN
+      endif
+      if(JTS == 1) then
+        if(JT == 7) COEF=-DSQRT(DBLE(60))
+      elseif(JTS == 2) then
+        if(JT == 8) COEF=-DSQRT(DBLE(12))
+        if(JT == 9) COEF=-DSQRT(DBLE(8))
+      elseif(JTS == 3)then
         COEF=-DSQRT(DBLE(IDS3(JT))/DBLE(33))
-      ELSEIF(JTS == 4)THEN
-        IF(IDS4(JT) >= 0) THEN
+      elseif(JTS == 4)then
+        if(IDS4(JT) >= 0) then
            COEF=DSQRT(DBLE(IDS4(JT))/DBLE(3003))
-        ELSE
+        else
            COEF=-DSQRT(-DBLE(IDS4(JT))/DBLE(3003))
-        ENDIF
-      ELSEIF(JTS == 5)THEN
-        IF(IDS5(JT) >= 0) THEN
+        endif
+      elseif(JTS == 5)then
+        if(IDS5(JT) >= 0) then
            COEF=DSQRT(DBLE(IDS5(JT))/DBLE(715))
-        ELSE
+        else
            COEF=-DSQRT(-DBLE(IDS5(JT))/DBLE(715))
-        ENDIF
-      ELSEIF(JTS == 6)THEN
-        IF(IDS6(JT) >= 0) THEN
+        endif
+      elseif(JTS == 6)then
+        if(IDS6(JT) >= 0) then
            COEF=DSQRT(DBLE(IDS6(JT))/DBLE(143))
-        ELSE
+        else
            COEF=-DSQRT(-DBLE(IDS6(JT))/DBLE(143))
-        ENDIF
-      ELSEIF(JTS == 7)THEN
-        IF(IDS7(JT) >= 0) THEN
+        endif
+      elseif(JTS == 7)then
+        if(IDS7(JT) >= 0) then
            COEF=DSQRT(DBLE(IDS7(JT))/DBLE(IDV7(JT)))
-        ELSE
+        else
            COEF=-DSQRT(-DBLE(IDS7(JT))/DBLE(IDV7(JT)))
-        ENDIF
-      ELSEIF(JTS == 8)THEN
-        IF(IDS8(JT) >= 0) THEN
+        endif
+      elseif(JTS == 8)then
+        if(IDS8(JT) >= 0) then
            COEF=DSQRT(DBLE(IDS8(JT))/DBLE(IDV8(JT)))
-        ELSE
+        else
            COEF=-DSQRT(-DBLE(IDS8(JT))/DBLE(IDV8(JT)))
-        ENDIF
-      ELSEIF(JTS == 9)THEN
-        IF(IDS9(JT) >= 0) THEN
+        endif
+      elseif(JTS == 9)then
+        if(IDS9(JT) >= 0) then
            COEF=DSQRT(DBLE(IDS9(JT))/DBLE(325))
-        ELSE
+        else
            COEF=-DSQRT(-DBLE(IDS9(JT))/DBLE(325))
-        ENDIF
-      ELSEIF(JTS == 10)THEN
-        IF(IDS10(JT) >= 0) THEN
+        endif
+      elseif(JTS == 10)then
+        if(IDS10(JT) >= 0) then
            COEF=DSQRT(DBLE(IDS10(JT))/DBLE(165))
-        ELSE
+        else
            COEF=-DSQRT(-DBLE(IDS10(JT))/DBLE(165))
-        ENDIF
-      ELSEIF(JTS == 11)THEN
-        IF(IDS11(JT) >= 0) THEN
+        endif
+      elseif(JTS == 11)then
+        if(IDS11(JT) >= 0) then
            COEF=DSQRT(DBLE(IDS11(JT))/DBLE(IDV11(JT)))
-        ELSE
+        else
            COEF=-DSQRT(-DBLE(IDS11(JT))/DBLE(IDV11(JT)))
-        ENDIF
-      ELSEIF(JTS == 12)THEN
-        IF(IDS12(JT) >= 0) THEN
+        endif
+      elseif(JTS == 12)then
+        if(IDS12(JT) >= 0) then
            COEF=DSQRT(DBLE(IDS12(JT))/DBLE(IDV12(JT)))
-        ELSE
+        else
            COEF=-DSQRT(-DBLE(IDS12(JT))/DBLE(IDV12(JT)))
-        ENDIF
-      ELSEIF(JTS == 13)THEN
-        IF(IDS13(JT) >= 0) THEN
+        endif
+      elseif(JTS == 13)then
+        if(IDS13(JT) >= 0) then
            COEF=DSQRT(DBLE(IDS13(JT))/DBLE(IDV13(JT)))
-        ELSE
+        else
            COEF=-DSQRT(-DBLE(IDS13(JT))/DBLE(IDV13(JT)))
-        ENDIF
-      ELSEIF(JTS == 14)THEN
-        IF(IDS14(JT) >= 0) THEN
+        endif
+      elseif(JTS == 14)then
+        if(IDS14(JT) >= 0) then
            COEF=DSQRT(DBLE(IDS14(JT))/DBLE(715))
-        ELSE
+        else
            COEF=-DSQRT(-DBLE(IDS14(JT))/DBLE(715))
-        ENDIF
-      ELSEIF(JTS == 15)THEN
-        IF(IDS15(JT) >= 0) THEN
+        endif
+      elseif(JTS == 15)then
+        if(IDS15(JT) >= 0) then
            COEF=DSQRT(DBLE(IDS15(JT))/DBLE(IDV15(JT)))
-        ELSE
+        else
            COEF=-DSQRT(-DBLE(IDS15(JT))/DBLE(IDV15(JT)))
-        ENDIF
-      ELSEIF(JTS == 16)THEN
-        IF(IDS16(JT) >= 0) THEN
+        endif
+      elseif(JTS == 16)then
+        if(IDS16(JT) >= 0) then
            COEF=DSQRT(DBLE(IDS16(JT))/DBLE(IDV16(JT)))
-        ELSE
+        else
            COEF=-DSQRT(-DBLE(IDS16(JT))/DBLE(IDV16(JT)))
-        ENDIF
-      ELSEIF(JTS == 17)THEN
-        IF(IDS17(JT) >= 0) THEN
+        endif
+      elseif(JTS == 17)then
+        if(IDS17(JT) >= 0) then
            COEF=DSQRT(DBLE(IDS17(JT))/DBLE(IDV17(JT)))
-        ELSE
+        else
            COEF=-DSQRT(-DBLE(IDS17(JT))/DBLE(IDV17(JT)))
-        ENDIF
-      ELSEIF(JTS == 18)THEN
-        IF(IDS18(JT) >= 0) THEN
+        endif
+      elseif(JTS == 18)then
+        if(IDS18(JT) >= 0) then
            COEF=DSQRT(DBLE(IDS18(JT))/DBLE(IDV18(JT)))
-        ELSE
+        else
            COEF=-DSQRT(-DBLE(IDS18(JT))/DBLE(IDV18(JT)))
-        ENDIF
-      ELSE
+        endif
+      else
         WRITE(0,'(A,4I5)') ' IT ITS JT JTS= ',IT,ITS,JT,JTS
         WRITE(0,'(A)') ' ERROR IN SUB. RMEAJJ9 '
         STOP
-      ENDIF
-      RETURN
-      END SUBROUTINE RMEAJJ9
+      endif
+      return
+      end subroutine RMEAJJ9

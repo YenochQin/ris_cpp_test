@@ -1,10 +1,10 @@
-      MODULE angdata_I
-      INTERFACE
+      module angdata_I
+      interface
 !...Translated by Gediminas Gaigalas 11/18/19
-      SUBROUTINE angdata (NAME,AVAIL,WHICHONE)
-      CHARACTER (LEN = 24), INTENT(IN) :: NAME
-      LOGICAL, INTENT(OUT) :: AVAIL
-      INTEGER, INTENT(IN)  :: WHICHONE
-      END SUBROUTINE
-      END INTERFACE
-      END MODULE
+      subroutine angdata (NAME,AVAIL,WHICHONE)
+      character (LEN = 24), intent(in) :: NAME
+      logical, intent(out) :: AVAIL
+      integer, intent(in)  :: WHICHONE
+      end subroutine
+      end interface
+      end module

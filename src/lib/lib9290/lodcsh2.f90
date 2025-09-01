@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE LODCSH2(NFILE, NCORE, JB)
+      subroutine LODCSH2(NFILE, NCORE, JB)
 !
 ! IMPORTANT:
 ! ==========
@@ -33,56 +33,56 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE parameter_def,   ONLY: NNNW
-      USE DEBUG_C
-      USE DEF_C
-      USE ORB_C, ncfblock => ncf
-      USE STAT_C
-      USE TERMS_C,         only: jtab, ntab
-      USE IOUNIT_C
+      use parameter_def,   only: NNNW
+      use DEBUG_C
+      use DEF_C
+      use ORB_C, ncfblock => ncf
+      use STAT_C
+      use TERMS_C,         only: jtab, ntab
+      use IOUNIT_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE prsrcn_I
-      USE parsjl_I
-      USE pack_I
-      USE convrt_I
-      USE iq_I
-      USE jqs_I
-      USE jcup_I
+      use prsrcn_I
+      use parsjl_I
+      use pack_I
+      use convrt_I
+      use iq_I
+      use jqs_I
+      use jcup_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: NFILE
-      INTEGER  :: NCORE
-      INTEGER, INTENT(IN) :: JB
+      integer, intent(in) :: NFILE
+      integer  :: NCORE
+      integer, intent(in) :: JB
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
-      INTEGER, PARAMETER :: LOADALL = -119
-      CHARACTER*7, PARAMETER :: MYNAME = 'LODCSH2'
-      INTEGER, PARAMETER :: NW2 = 2*NNNW
+      integer, parameter :: LOADALL = -119
+      character*7, parameter :: MYNAME = 'LODCSH2'
+      integer, parameter :: NW2 = 2*NNNW
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER, DIMENSION(NNNW) :: IOCC
-      INTEGER, DIMENSION(NW2) :: IQSUB
-      INTEGER, DIMENSION(NNNW) :: JX
-      INTEGER :: NCORP1, NREC, NCF, NPEEL, I, J
-      INTEGER :: IOS, IERR, LOC, NQS, ISPARC, NJX, IOC, IPTY
-      INTEGER :: NQSN, NJXN, NPEELN, NOPEN, JLAST, ILAST, IOCCI
-      INTEGER :: NKJI, IFULLI, NU, JSUB, IQT, NBEG, NEND
-      INTEGER :: LENTH, JXN, JPI, NCOREL, IQGG
-      LOGICAL :: EMPTY, FULL
-      CHARACTER :: STR*256, RECL
+      integer, dimension(NNNW) :: IOCC
+      integer, dimension(NW2) :: IQSUB
+      integer, dimension(NNNW) :: JX
+      integer :: NCORP1, NREC, NCF, NPEEL, I, J
+      integer :: IOS, IERR, LOC, NQS, ISPARC, NJX, IOC, IPTY
+      integer :: NQSN, NJXN, NPEELN, NOPEN, JLAST, ILAST, IOCCI
+      integer :: NKJI, ifULLI, NU, JSUB, IQT, NBEG, NEND
+      integer :: LENTH, JXN, JPI, NCOREL, IQGG
+      logical :: EMPTY, FULL
+      character :: STR*256, RECL
 !-----------------------------------------------
 !
-      IF (JB /= LOADALL) THEN
+      if (JB /= LOADALL) then
          WRITE (6, *) 'Loading CSF File for block ', JB
-      ELSE
+      else
          WRITE (6, *) 'Loading CSF File for ALL blocks '
-      ENDIF
+      endif
 
       NCORP1 = NCORE + 1
       NPEEL = NW - NCORE
@@ -115,43 +115,43 @@
       READ (NFILE, '(A)', IOSTAT=IOS) STR
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! This IF...READ makes the routine load the entire file (all blocks)
+! This if...READ makes the routine load the entire file (all blocks)
 ! by ignoring the end-of-block mark
 
-      IF (IOS .EQ. 0 .AND. str(1:2) .EQ. ' *' .AND. jb .EQ. LOADALL) &
+      if (IOS .EQ. 0 .AND. str(1:2) .EQ. ' *' .AND. jb .EQ. LOADALL) &
         READ (nfile, '(A)', IOSTAT = IOS) str
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-      IF (IOS==0 .AND. STR(1:2)/=' *') THEN
+      if (IOS==0 .AND. STR(1:2)/=' *') then
 !
 !   Read in the occupations (q) of the peel shells; stop with a
 !   message if an error occurs
 !
          CALL PRSRCN (STR, NCORE, IOCC, IERR)
-         IF (IERR /= 0) GO TO 28
+         if (IERR /= 0) GO TO 28
 !
 !   Read the J_sub and v quantum numbers
 !
          READ (nfile,'(A)',IOSTAT = IOS) str
-         IF (IOS /= 0) THEN
+         if (IOS /= 0) then
             WRITE (ISTDE, *) MYNAME//': Expecting subshell quantum', &
                ' number specification;'
             GO TO 27
-         ENDIF
+         endif
          LOC = LEN_TRIM(STR)
          CALL PARSJL (1, NCORE, STR, LOC, IQSUB, NQS, IERR)
-         IF (IERR /= 0) GO TO 27
+         if (IERR /= 0) GO TO 27
 !
 !   Read the X, J, and (sign of) P quantum numbers
 !
          READ (nfile,'(A)',IOSTAT = IOS) str
-         IF (IOS /= 0) THEN
+         if (IOS /= 0) then
             WRITE (ISTDE, *) MYNAME//': Expecting intermediate ', &
                'and final angular momentum'
             WRITE (ISTDE, *) 'quantum number and final parity ', &
                'specification;'
             GO TO 26
-         ENDIF
+         endif
 !
 !   Zero out the arrays that store packed integers
 !
@@ -166,19 +166,19 @@
 !
          LOC = LEN_TRIM(STR)
          RECL = STR(LOC:LOC)
-         IF (RECL == '+') THEN
+         if (RECL == '+') then
             ISPARC = 1
-         ELSE IF (RECL == '-') THEN
+         else if (RECL == '-') then
             ISPARC = -1
-         ELSE
+         else
             WRITE (ISTDE, *) MYNAME//': Incorrect parity ', &
                             'specification;'
             GO TO 26
-         ENDIF
+         endif
          LOC = LOC - 1
 !
          CALL PARSJL (2, NCORE, STR, LOC, JX, NJX, IERR)
-         IF (IERR /= 0) GO TO 26
+         if (IERR /= 0) GO TO 26
 !
 !   Set the occupation and subshell quantum number array elements
 !   in IQ, JQS for the core subshells
@@ -207,107 +207,107 @@
             IOCCI = IOCC(I)
             NPEELN = NPEELN + IOCCI
             NKJI = NKJ(I)
-            IFULLI = NKJI + 1
+            ifULLI = NKJI + 1
             EMPTY = IOCCI == 0
-            IF (.NOT.EMPTY) IOC = IOC + 1
-            FULL = IOCCI == IFULLI
-            IF (EMPTY .OR. FULL) THEN
+            if (.NOT.EMPTY) IOC = IOC + 1
+            FULL = IOCCI == ifULLI
+            if (EMPTY .OR. FULL) then
                NU = 0
                JSUB = 0
-            ELSE
+            else
                IPTY = IPTY + NKL(I)*IOCCI
-               IF (NKJI /= 7) THEN
+               if (NKJI /= 7) then
                   NQSN = NQSN + 1
-                  IF (NQSN > NQS) THEN
+                  if (NQSN > NQS) then
                      WRITE (ISTDE, *) MYNAME//': Too few subshell ', &
                         'quantum numbers specified;'
                      GO TO 26
-                  ENDIF
+                  endif
                   NU = 0
                   JSUB = IQSUB(NQSN)
-               ELSE
-                  IF (IOCCI /= 4) THEN
+               else
+                  if (IOCCI /= 4) then
                      NQSN = NQSN + 1
-                     IF (NQSN > NQS) THEN
+                     if (NQSN > NQS) then
                         WRITE (ISTDE, *) MYNAME//': Too few subshell ', &
                            'quantum numbers specified;'
                         GO TO 26
-                     ENDIF
+                     endif
                      NU = 0
                      JSUB = IQSUB(NQSN)
-                  ELSE
+                  else
                      NQSN = NQSN + 1
-                     IF (NQSN > NQS) THEN
+                     if (NQSN > NQS) then
                         WRITE (ISTDE, *) MYNAME//': Too few subshell ', &
                            'quantum numbers specified;'
                         GO TO 26
-                     ENDIF
+                     endif
                      JSUB = IQSUB(NQSN)
-                     IF (JSUB==4 .OR. JSUB==8) THEN
+                     if (JSUB==4 .OR. JSUB==8) then
                         NU = JSUB/2
                         NQSN = NQSN + 1
-                        IF (NQSN > NQS) THEN
+                        if (NQSN > NQS) then
                            WRITE (ISTDE, *) MYNAME//': Too few subshell', &
                               ' quantum numbers specified;'
                            GO TO 26
-                        ENDIF
+                        endif
                         JSUB = IQSUB(NQSN)
-                     ELSE
+                     else
                         NU = 0
-                     ENDIF
-                  ENDIF
-               ENDIF
-               IQT = MIN(IOCCI,IFULLI - IOCCI)
-               LOC = (IFULLI - 2)/2
+                     endif
+                  endif
+               endif
+               IQT = MIN(IOCCI,ifULLI - IOCCI)
+               LOC = (ifULLI - 2)/2
                LOC = (LOC*(LOC + 1))/2 + IQT
                NBEG = JTAB(LOC+1) + 1
                NEND = JTAB(LOC+2)
                DO J = NBEG, NEND, 3
-                  IF (NTAB(J+2) /= JSUB + 1) CYCLE
-                  IF (NU == 0) THEN
+                  if (NTAB(J+2) /= JSUB + 1) CYCLE
+                  if (NU == 0) then
                      NU = NTAB(J)
                      GO TO 9
-                  ELSE
-                     IF (NTAB(J) == NU) GO TO 9
-                  ENDIF
+                  else
+                     if (NTAB(J) == NU) GO TO 9
+                  endif
                END DO
                CALL CONVRT (NP(I), STR, LENTH)
                WRITE (ISTDE, *) MYNAME//': Subshell quantum numbers ', &
                   'specified incorrectly for '//STR(1:LENTH)//NH(I)//&
                   ' subshell.'
                GO TO 26
-            ENDIF
+            endif
     9       CONTINUE
-            IF (.NOT.EMPTY .AND. .NOT.FULL) THEN
+            if (.NOT.EMPTY .AND. .NOT.FULL) then
                NOPEN = NOPEN + 1
-               IF (NOPEN > 1) THEN
-                  IF (JSUB == 0) THEN
+               if (NOPEN > 1) then
+                  if (JSUB == 0) then
                      JXN = JLAST
-                  ELSE
+                  else
                      ILAST = IOC
                      NJXN = NJXN + 1
-                     IF (NJXN > NJX) THEN
+                     if (NJXN > NJX) then
                         WRITE (ISTDE, *) MYNAME//': Too few intermediate', &
                            ' and final angular momentum', &
                            ' quantum numbers specified;'
                         GO TO 26
-                     ENDIF
+                     endif
                      JXN = JX(NJXN)
                      DO J = ABS(JLAST - JSUB), JLAST + JSUB, 2
-                        IF (JXN == J) GO TO 11
+                        if (JXN == J) GO TO 11
                      END DO
                      CALL CONVRT (NP(I), STR, LENTH)
                      WRITE (ISTDE, *) MYNAME//': coupling of '//STR(1:LENTH)//&
                         NH(I), ' subshell to previous subshells is incorrect.'
                      GO TO 26
-                  ENDIF
+                  endif
    11             CONTINUE
                   CALL PACK (JXN + 1, NOPEN - 1, JCUPA(1:NNNW,NCF))
                   JLAST = JXN
-               ELSE
+               else
                   JLAST = JSUB
-               ENDIF
-            ENDIF
+               endif
+            endif
             CALL PACK(IOCCI, I, IQA(1:NNNW,NCF))
             CALL PACK (NU, I, JQSA(1:NNNW,1,NCF))
             CALL PACK (0, I, JQSA(1:NNNW,2,NCF))
@@ -318,62 +318,62 @@
             CALL PACK (0, I, JCUPA(1:NNNW,NCF))
          END DO
 !
-         IF (NQSN /= NQS) THEN
+         if (NQSN /= NQS) then
             WRITE (ISTDE, *) MYNAME//': Too many subshell', &
                ' quantum numbers specified;'
             GO TO 26
-         ENDIF
+         endif
 !
-         IF (ILAST /= IOC) NJXN = NJXN + 1
-         IF (NJXN /= NJX) THEN
+         if (ILAST /= IOC) NJXN = NJXN + 1
+         if (NJXN /= NJX) then
             WRITE (ISTDE, *) MYNAME//': Too many intermediate', &
                ' and final angular momentum', ' quantum numbers specified;'
             GO TO 26
-         ENDIF
+         endif
 !
-         IF (JX(NJXN) /= JLAST) THEN
+         if (JX(NJXN) /= JLAST) then
             WRITE (ISTDE, *) MYNAME//': Final angular momentum', &
                ' incorrectly specified;'
             GO TO 26
-         ENDIF
+         endif
 !
          IPTY = (-1)**IPTY
-         IF (IPTY /= ISPARC) THEN
+         if (IPTY /= ISPARC) then
             WRITE (ISTDE, *) MYNAME//': Parity specified incorrectly;'
             GO TO 26
-         ENDIF
+         endif
 !
          JPI = (JLAST + 1)*IPTY
          CALL PACK (JPI, NNNW, JCUPA(1:NNNW,NCF))
 !
-         IF (NCF > 1) THEN
-            IF (NPEELN /= NPEEL) THEN
+         if (NCF > 1) then
+            if (NPEELN /= NPEEL) then
                WRITE (ISTDE, *) MYNAME//': Inconsistency in the number', &
                   ' of electrons.'
                GO TO 26
-            ENDIF
-         ELSE
+            endif
+         else
             NPEEL = NPEELN
-         ENDIF
+         endif
 !
 !   Check if this CSF was already in the list; stop with a
 !   message if this is the case
 !
-         IF (NCF > 1) THEN
+         if (NCF > 1) then
             DO J = 1, NCF - 1
                DO I = NCORP1, NW
-                  IF (IQ(I,J) /= IQ(I,NCF)) GO TO 17
-                  IF (JQS(1,I,J) /= JQS(1,I,NCF)) GO TO 17
-                  IF (JQS(2,I,J) /= JQS(2,I,NCF)) GO TO 17
-                  IF (JQS(3,I,J) /= JQS(3,I,NCF)) GO TO 17
+                  if (IQ(I,J) /= IQ(I,NCF)) GO TO 17
+                  if (JQS(1,I,J) /= JQS(1,I,NCF)) GO TO 17
+                  if (JQS(2,I,J) /= JQS(2,I,NCF)) GO TO 17
+                  if (JQS(3,I,J) /= JQS(3,I,NCF)) GO TO 17
                END DO
                DO I = 1, NOPEN - 1
-                  IF (JCUP(I,J) /= JCUP(I,NCF)) GO TO 17
+                  if (JCUP(I,J) /= JCUP(I,NCF)) GO TO 17
                END DO
             END DO
             WRITE (ISTDE, *) MYNAME//': Repeated CSF;'
             GO TO 26
-         ENDIF
+         endif
 !
 !   Successfully read a CSF; update NREC and read another CSF
 !
@@ -382,12 +382,12 @@
 
          GO TO 3
 !
-      ELSE                                       ! the record just read is either ' *' or EOF, marking
+      else                                       ! the record just read is either ' *' or EOF, marking
             ! the end of a block or end of the file
 !
 !   There is always at least one CSF
 !
-         IF (NCF == 1) THEN
+         if (NCF == 1) then
             DO I = 1, NCORE
                CALL PACK (NKJ(I) + 1, I, IQA(1:NNNW,1))
                CALL PACK (0, I, JQSA(1:NNNW,1,1))
@@ -396,25 +396,25 @@
             END DO
             CALL PACK (0, 1, JCUPA(1:NNNW,1))
             CALL PACK (1, NNNW, JCUPA(1:NNNW,1))
-         ELSE
+         else
             NCF = NCF - 1
-         ENDIF
+         endif
 !
-      ENDIF
+      endif
 
-      IF (NCF /= NCFBLOCK) THEN
+      if (NCF /= NCFBLOCK) then
          WRITE (ISTDE, *) MYNAME//': ncf=', NCF, 'ncfblock=', NCFBLOCK
          STOP
-      ENDIF
+      endif
 !
 !   Check if any subshell is empty; eliminate it from the
 !   list if this is the case; issue a message
 !
       I = NCORP1
    19 CONTINUE
-      IF (I <= NW) THEN
+      if (I <= NW) then
          DO J = 1, NCF
-            IF (IQ(I,J) /= 0) GO TO 23
+            if (IQ(I,J) /= 0) GO TO 23
          END DO
          CALL CONVRT (NP(I), STR, LENTH)
          WRITE (6, *) 'Subshell '//STR(1:LENTH)//NH(I)//' is empty', &
@@ -422,7 +422,7 @@
    23    CONTINUE
          I = I + 1
          GO TO 19
-      ENDIF
+      endif
 !
 !   Store the number of electrons in the COMMON variable
 !   This will act as a check now - it's been determined in lodcsh
@@ -430,12 +430,12 @@
       NCOREL = 0
       NCOREL = SUM(NKJ(:NCORE)+1)
 !      NELEC = NCOREL+NPEEL
-      IF (NCOREL + NPEEL /= NELEC) THEN
+      if (NCOREL + NPEEL /= NELEC) then
          WRITE (ISTDE, *) MYNAME//': nelec not equal to that in lodcsh'
          STOP
-      ENDIF
+      endif
       WRITE (6,*)'There are ',NCF,' relativistic CSFs... load complete;'
-      RETURN
+      return
 !
    26 CONTINUE
       BACKSPACE (NFILE)
@@ -452,4 +452,4 @@
       CLOSE(NFILE)
 
       STOP
-      END SUBROUTINE LODCSH2
+      end subroutine LODCSH2

@@ -1,6 +1,6 @@
 !***********************************************************************
 !
-      SUBROUTINE LODSTATE(IDBLK)
+      subroutine LODSTATE(IDBLK)
 !
 !   Print block info and ask ASF serial numbers for each block
 !
@@ -24,24 +24,24 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE memory_man
-      USE DEF_C
-      USE hblock_C
+      use memory_man
+      use DEF_C
+      use hblock_C
       use iounit_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE items_I
+      use items_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      CHARACTER (LEN = 8), DIMENSION(*) :: IDBLK
+      character (LEN = 8), dimension(*) :: IDBLK
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: J, I, JBLOCK, NCF, NCMINOLD, IERR, NTMP
-      CHARACTER :: STR*256
+      integer :: J, I, JBLOCK, NCF, NCMINOLD, IERR, NTMP
+      character :: STR*256
 !-----------------------------------------------
 !
 
@@ -73,8 +73,8 @@
 !        ...ncmin is both input and output parameters to items
          NCMINOLD = NCMIN
          CALL ITEMS (NCMIN, NCF, STR, IERR)
-         IF (NCMIN == 0) CALL DALLOC (ICCMIN, 'ICCMIN', 'LODSTATE' )
-         IF (IERR < 0) GO TO 234
+         if (NCMIN == 0) CALL DALLOC (ICCMIN, 'ICCMIN', 'LODSTATE' )
+         if (IERR < 0) GO TO 234
          NEVBLK(JBLOCK) = NCMIN - NCMINOLD
 
 !        ...Determine ncmaxblk
@@ -85,10 +85,10 @@
          NCMAXBLK(JBLOCK) = NTMP
       END DO
 
-      IF (NCMIN == 0) THEN
+      if (NCMIN == 0) then
          WRITE (ISTDE, *) 'At least one state should be selected'
          GO TO 123
-      ENDIF
+      endif
 
-      RETURN
-      END SUBROUTINE LODSTATE
+      return
+      end subroutine LODSTATE

@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE WW1(IK,BK,ID,BD,K2,QM1,QM2,QM3,QM4,WW)
+      subroutine WW1(IK,BK,ID,BD,K2,QM1,QM2,QM3,QM4,WW)
 !                                                                  *
 !   ---------------  SECTION SQ    SUBPROGRAM 25  --------------   *
 !                                                                  *
@@ -11,7 +11,7 @@
 !                                                    ++            *
 !                                                    -- B17 (2.4)  *
 !                                                                  *
-!     SUBROUTINE CALLED: ITJJ,IXJTIK,IZAS1,RUMTJJ,WJ1              *
+!     subroutine CALLED: ITJJ,IXJTIK,IZAS1,RUMTJJ,WJ1              *
 !                                                                  *
 !   Written by  G. Gaigalas                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -23,59 +23,59 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO, TENTH, TWO, EPS
+      use CONS_C,          only: ZERO, TENTH, TWO, EPS
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE izas1_I
-      USE itjj_I
-      USE rumtjj_I
-      USE ixjtik_I
-      USE wj1_I
+      use izas1_I
+      use itjj_I
+      use rumtjj_I
+      use ixjtik_I
+      use wj1_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER,      INTENT(IN)               :: K2
-      INTEGER,      INTENT(IN), DIMENSION(7) :: IK, ID
-      real(real64), INTENT(IN)               :: QM1, QM2, QM3, QM4
-      real(real64), INTENT(IN), DIMENSION(3) :: BK, BD
-      real(real64), INTENT(OUT)              :: WW
+      integer,      intent(in)               :: K2
+      integer,      intent(in), dimension(7) :: IK, ID
+      real(real64), intent(in)               :: QM1, QM2, QM3, QM4
+      real(real64), intent(in), dimension(3) :: BK, BD
+      real(real64), intent(out)              :: WW
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: KK2,KK6,IQ,IQM,IQ3,IQ4,IE,IE1,IT,ITP,ITG,IBTT
-      INTEGER, DIMENSION(7)      :: IBT
+      integer :: KK2,KK6,IQ,IQM,IQ3,IQ4,IE,IE1,IT,ITP,ITG,IBTT
+      integer, dimension(7)      :: IBT
       real(real64)               :: ENQP, D1, W
-      real(real64), DIMENSION(3) :: BT
+      real(real64), dimension(3) :: BT
 !-----------------------------------------------
       WW=ZERO
-      IF(ID(6) /= IK(6))RETURN
-      IF(IZAS1(ID(7),BD(3),IK(7),BK(3)) == 0)RETURN
+      if(ID(6) /= IK(6))return
+      if(IZAS1(ID(7),BD(3),IK(7),BK(3)) == 0)return
       ENQP=ZERO
       KK2=K2*2
       IQ3=QM3*TWO+QM3*TENTH
       IQ4=QM4*TWO+QM4*TENTH
       IQ=IQ3+IQ4
-      IF(ITJJ(IK,ID,0,BK,BD,IBT,BT,KK6,ITP,ITG,IQ) == 0)RETURN
+      if(ITJJ(IK,ID,0,BK,BD,IBT,BT,KK6,ITP,ITG,IQ) == 0)return
       IE1=KK2-IK(6)
       IQM=TWO*DABS(BT(3))+TENTH
       DO IT=ITP,ITG
         CALL RUMTJJ(IT,IBT(3),IBT(7),IBTT,IBT(6))
-        IF(IQM > IBT(7)) CYCLE
-        IF(IXJTIK(KK2,KK2,0,ID(6),IK(6),IBT(6)) == 0) CYCLE
+        if(IQM > IBT(7)) CYCLE
+        if(IXJTIK(KK2,KK2,0,ID(6),IK(6),IBT(6)) == 0) CYCLE
         IBT(1)=IT
         BT(2)=DBLE(IBT(6))/TWO
         BT(1)=DBLE(IBT(7))/TWO
         CALL WJ1(IK,BK,IBT,BT,K2,QM1,QM2,D1)
-        IF(DABS(D1) < EPS) CYCLE
+        if(DABS(D1) < EPS) CYCLE
         CALL WJ1(IBT,BT,ID,BD,K2,QM3,QM4,W)
-        IF(DABS(W) < EPS) CYCLE
+        if(DABS(W) < EPS) CYCLE
         D1=D1*W
         IE=IE1+IBT(6)
-        IF(((IE/4)*4) /= IE)D1=-D1
+        if(((IE/4)*4) /= IE)D1=-D1
         ENQP=ENQP+D1
       END DO
       WW=ENQP/DSQRT(DBLE(KK2+1)*(IK(6)+1))
-      RETURN
-      END SUBROUTINE WW1
+      return
+      end subroutine WW1

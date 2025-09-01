@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE ONESCALAR(JA,JB,IA1,IA2,VSHELL)
+      subroutine ONESCALAR(JA,JB,IA1,IA2,VSHELL)
 !                                                                  *
 !   The main program for evaluating the reduced matrix elements of *
 !   a one particle operator for configurations in jj-coupling.     *
@@ -18,45 +18,45 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE parameter_def,   ONLY:  NNNW
-      USE CONS_C
-      USE m_C
-      USE orb_C,   ONLY: NW, NAK
-      USE dumx_C,  ONLY: JLIS, JC1S, JC2S
+      use parameter_def,   only:  NNNW
+      use CONS_C
+      use m_C
+      use orb_C,   only: NW, NAK
+      use dumx_C,  only: JLIS, JC1S, JC2S
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE itrig_I
-      USE ichkq1_I
-      USE ichop_I
-      USE ispar_I
-      USE itjpo_I
-      USE setqna_I
-      USE onescalar1_I
-      USE onescalar2_I
+      use itrig_I
+      use ichkq1_I
+      use ichop_I
+      use ispar_I
+      use itjpo_I
+      use setqna_I
+      use onescalar1_I
+      use onescalar2_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN)       :: JA,JB
-      INTEGER, INTENT(OUT)      :: IA1,IA2
-      real(real64), INTENT(OUT) :: VSHELL(NNNW)
-!      DIMENSION VSHELL(NNNW)
-!      DIMENSION IS(2),KS(2)
+      integer, intent(in)       :: JA,JB
+      integer, intent(out)      :: IA1,IA2
+      real(real64), intent(out) :: VSHELL(NNNW)
+!      dimension VSHELL(NNNW)
+!      dimension IS(2),KS(2)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: KK,IOPAR,IJ,IDQ,JA1,JA2,NDQ,NS,ISH,I,II,I1,IM, &
+      integer :: KK,IOPAR,IJ,IDQ,JA1,JA2,NDQ,NS,ISH,I,II,I1,IM, &
                  JW,KS1,KS2,NX,NPEELM
-      INTEGER, DIMENSION(2) :: IS,KS
+      integer, dimension(2) :: IS,KS
       real(real64) ::  TCOEFF
 !-----------------------------------------------
       IA1 = 0
       KK = 1
       IOPAR = 1
-      IF(ITRIG(ITJPO (JA),ITJPO (JB),KK).EQ.0)RETURN
-      IF((IOPAR.NE.0).AND.(ISPAR(JA)*ISPAR(JB)*IOPAR.NE.1))RETURN
-      IF(ICHKQ1(JA,JB).EQ.0)RETURN
+      if(ITRIG(ITJPO (JA),ITJPO (JB),KK).EQ.0)return
+      if((IOPAR.NE.0).AND.(ISPAR(JA)*ISPAR(JB)*IOPAR.NE.1))return
+      if(ICHKQ1(JA,JB).EQ.0)return
 !
       CALL SETQNA (JA,JB)
 !
@@ -68,21 +68,21 @@
       IDQ = 0
       JA1 = 0
       JA2 = 0
-      IF (NPEEL .NE. 0) THEN
+      if (NPEEL .NE. 0) then
         DO JW = 1,NPEEL
           IJ = JLIST(JW)
           NDQ = NQ1(IJ)-NQ2(IJ)
-          IF (IABS (NDQ) .GT. 1) RETURN
-          IF (NDQ .GT. 0) THEN
+          if (IABS (NDQ) .GT. 1) return
+          if (NDQ .GT. 0) then
             JA1 = JW
             IDQ = IDQ+1
-          ELSEIF (NDQ .LT. 0) THEN
+          elseif (NDQ .LT. 0) then
             JA2 = JW
             IDQ = IDQ+1
-          ENDIF
+          endif
         END DO
 !
-        IF (IDQ .GT. 2) RETURN
+        if (IDQ .GT. 2) return
 !
 !   Evaluate the array VSHELL
 !
@@ -90,17 +90,17 @@
 !   if IDQ = 0, then loop over all shells by index ISH
 !   if IDQ = 2, then one orbital fixed on each side
         NS = NPEEL
-      ENDIF
+      endif
 !
-      IF (IDQ .EQ. 2) GOTO 19
+      if (IDQ .EQ. 2) GOTO 19
 !
 !   Loop over shells when IDQ = 0
       ISH = 0
-      IF (NPEEL .EQ. 0) GOTO 9
+      if (NPEEL .EQ. 0) GOTO 9
       DO I = 1,NPEEL
          JLIS(I) = JLIST(I)
       END DO
-      IF (NPEEL .EQ. 1) GOTO 9
+      if (NPEEL .EQ. 1) GOTO 9
       NPEELM = NPEEL-1
       DO I = 1,NPEELM
          JC1S(I) = JJC1(I)
@@ -109,29 +109,29 @@
 !
 !   If ISH .GT. NW, then loop is over and return
     9 ISH = ISH+1
-      IF (ISH .GT. NW) RETURN
-      IF (ICHOP (ISH,JA) .EQ. -1) GOTO 9
-      IF (ICHOP (ISH,JA) .EQ. 0) GOTO 16
+      if (ISH .GT. NW) return
+      if (ICHOP (ISH,JA) .EQ. -1) GOTO 9
+      if (ICHOP (ISH,JA) .EQ. 0) GOTO 16
 !
 !   Case one --- the ISH-th shell is in the core or in the peel and
 !   closed for both sides
       I = 1
-      IF (NPEEL.EQ.0) GOTO 15
+      if (NPEEL.EQ.0) GOTO 15
       DO I = 1,NPEEL
         IJ = JLIST(I)
-        IF (ISH .LT. IJ) GOTO 11
+        if (ISH .LT. IJ) GOTO 11
       END DO
       I = NPEEL+1
       GOTO 13
    11 IM = NPEEL-I+1
       DO II = 1,IM
          JLIST(NPEEL+2-II) = JLIST(NPEEL+1-II)
-         IF (NPEEL.EQ.II) GOTO 13
+         if (NPEEL.EQ.II) GOTO 13
          JJC1(NPEEL+1-II) = JJC1(NPEEL-II)
          JJC2(NPEEL+1-II) = JJC2(NPEEL-II)
       END DO
    13 CONTINUE
-      IF (I .LT. 3) GOTO 14
+      if (I .LT. 3) GOTO 14
       JJC1(I-1) = JJC1(I-2)
       JJC2(I-1) = JJC2(I-2)
       GOTO 15
@@ -149,7 +149,7 @@
    16 NS = NPEEL
       DO  JW = 1,NPEEL
         NX = ISH-JLIST(JW)
-        IF (NX.EQ.0) GOTO 18
+        if (NX.EQ.0) GOTO 18
       END DO
    18 JA1 = JW
       JA2 = JW
@@ -164,31 +164,31 @@
       KS2 = 2*IABS (NAK(IA2))
 !
 !   Check triangular condition for the active shells
-      IF (ITRIG (KS1,KS2,KK).EQ.1) GOTO 99
-      IF (IDQ .EQ. 2) RETURN
+      if (ITRIG (KS1,KS2,KK).EQ.1) GOTO 99
+      if (IDQ .EQ. 2) return
       GOTO 100
 !
 !   Set tables of quantum numbers of non-interacting spectator shells
    99 CONTINUE
 
-      IF (IDQ .EQ. 0) THEN
+      if (IDQ .EQ. 0) then
 !GG
 !GG   Cia orginalioje programoje yra klaida
 !GG
-        IF(JA .EQ. JB) THEN
+        if(JA .EQ. JB) then
           CALL ONESCALAR1(NS,JA,JB,JA1,JA2,TCOEFF)
-        ELSE
+        else
           TCOEFF = ZERO
-        END IF
-      ELSE IF (IDQ .EQ. 2) THEN
+        END if
+      else if (IDQ .EQ. 2) then
 !
 !   IDQ = 2 Case
 !
 !       Permutation factor for IDQ = 2
         CALL ONESCALAR2(JA,JB,JA1,JA2,TCOEFF)
         VSHELL(1) = TCOEFF
-        RETURN
-      END IF
+        return
+      END if
 !
 !   End of loop over parent states
 !
@@ -198,16 +198,16 @@
 !
 !   Loop over all shells when IDQ = 0
 100   CONTINUE
-      IF (NPEEL .EQ. 0) GOTO 9
+      if (NPEEL .EQ. 0) GOTO 9
       DO I = 1,NPEEL
          JLIST(I) = JLIS(I)
       END DO
-      IF (NPEEL .EQ. 1) GOTO 9
+      if (NPEEL .EQ. 1) GOTO 9
       NPEELM = NPEEL-1
       DO  I = 1,NPEELM
          JJC1(I)  = JC1S(I)
          JJC2(I)  = JC2S(I)
       END DO
       GOTO 9
-      RETURN
-      END SUBROUTINE ONESCALAR
+      return
+      end subroutine ONESCALAR

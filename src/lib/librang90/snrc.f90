@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE SNRC(IS, KAPS, KS, ND1, ND2, NE1, NE2, IBRD, IBRE)
+      subroutine SNRC(IS, KAPS, KS, ND1, ND2, NE1, NE2, IBRD, IBRE)
 !                                                                      *
 !   Determines the range of tensor rank NU for direct/exchange terms,  *
 !   and classifies the types of radial integral.                       *
@@ -32,19 +32,19 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(OUT) :: ND1
-      INTEGER, INTENT(OUT) :: ND2
-      INTEGER, INTENT(OUT) :: NE1
-      INTEGER, INTENT(OUT) :: NE2
-      INTEGER, INTENT(OUT) :: IBRD
-      INTEGER, INTENT(OUT) :: IBRE
-      INTEGER, INTENT(IN) :: IS(4)
-      INTEGER, INTENT(IN) :: KAPS(4)
-      INTEGER, INTENT(IN) :: KS(4)
+      integer, intent(out) :: ND1
+      integer, intent(out) :: ND2
+      integer, intent(out) :: NE1
+      integer, intent(out) :: NE2
+      integer, intent(out) :: IBRD
+      integer, intent(out) :: IBRE
+      integer, intent(in) :: IS(4)
+      integer, intent(in) :: KAPS(4)
+      integer, intent(in) :: KS(4)
 !----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: IAC, IAD, ND1A, ND2A, NE1A, NE2A
+      integer :: IAC, IAD, ND1A, ND2A, NE1A, NE2A
 !-----------------------------------------------
 !
       ND2 = 0
@@ -53,22 +53,22 @@
 !   2.0  Form limits for direct terms
 !
       IAC = 1
-      IF (KAPS(1)*KAPS(3) < 0) IAC = -1
+      if (KAPS(1)*KAPS(3) < 0) IAC = -1
       IAD = 1
-      IF (KAPS(2)*KAPS(4) < 0) IAD = -1
+      if (KAPS(2)*KAPS(4) < 0) IAD = -1
       ND1 = ABS(KS(1)-KS(3))/2 - 1
-      IF (IAC == (-1)) ND1 = ND1 + 1
-      IF (ND1 == (-1)) ND1 = 1
+      if (IAC == (-1)) ND1 = ND1 + 1
+      if (ND1 == (-1)) ND1 = 1
       ND1A = ABS(KS(2)-KS(4))/2 - 1
-      IF (IAD == (-1)) ND1A = ND1A + 1
-      IF (ND1A == (-1)) ND1A = 1
-      IF (MOD(ND1 - ND1A,2) /= 0) THEN
+      if (IAD == (-1)) ND1A = ND1A + 1
+      if (ND1A == (-1)) ND1A = 1
+      if (MOD(ND1 - ND1A,2) /= 0) then
          IBRD = -1
-      ELSE
+      else
          ND2 = ABS(KS(1)+KS(3))/2
-         IF (IAC == (-1)) ND2 = ND2 + 1
+         if (IAC == (-1)) ND2 = ND2 + 1
          ND2A = ABS(KS(2)+KS(4))/2
-         IF (IAD == (-1)) ND2A = ND2A + 1
+         if (IAD == (-1)) ND2A = ND2A + 1
          ND1 = MAX(ND1,ND1A)
          ND2 = MIN(ND2,ND2A)
          ND2 = (ND2 - ND1)/2 + 1
@@ -76,36 +76,36 @@
 !   2.1  Identify type of radial integrals
 !
          IBRD = 1
-         IF (IS(1)==IS(3) .AND. IS(2)/=IS(4) .OR. IS(1)/=IS(3) .AND. IS(2)==IS(&
+         if (IS(1)==IS(3) .AND. IS(2)/=IS(4) .OR. IS(1)/=IS(3) .AND. IS(2)==IS(&
             4)) IBRD = 2
-         IF (IS(1)==IS(3) .AND. IS(2)==IS(4)) IBRD = 3
-      ENDIF
+         if (IS(1)==IS(3) .AND. IS(2)==IS(4)) IBRD = 3
+      endif
 !
 !   3.0  Form limits for exchange terms
 !
-      IF (IS(1)==IS(2) .OR. IS(3)==IS(4)) THEN
+      if (IS(1)==IS(2) .OR. IS(3)==IS(4)) then
          IBRE = -1
-         RETURN
-      ENDIF
+         return
+      endif
       IAC = 1
-      IF (KAPS(1)*KAPS(4) < 0) IAC = -1
+      if (KAPS(1)*KAPS(4) < 0) IAC = -1
       IAD = 1
-      IF (KAPS(2)*KAPS(3) < 0) IAD = -1
+      if (KAPS(2)*KAPS(3) < 0) IAD = -1
       NE1 = IABS(KS(1)-KS(4))/2 - 1
-      IF (IAC == (-1)) NE1 = NE1 + 1
-      IF (NE1 == (-1)) NE1 = 1
+      if (IAC == (-1)) NE1 = NE1 + 1
+      if (NE1 == (-1)) NE1 = 1
       NE1A = ABS(KS(2)-KS(3))/2 - 1
-      IF (IAD == (-1)) NE1A = NE1A + 1
-      IF (NE1A == (-1)) NE1A = 1
-      IF (MOD(NE1 - NE1A,2) /= 0) THEN
+      if (IAD == (-1)) NE1A = NE1A + 1
+      if (NE1A == (-1)) NE1A = 1
+      if (MOD(NE1 - NE1A,2) /= 0) then
          IBRE = -1
-         RETURN
-      ENDIF
+         return
+      endif
 !
       NE2 = ABS(KS(1)+KS(4))/2
-      IF (IAC == (-1)) NE2 = NE2 + 1
+      if (IAC == (-1)) NE2 = NE2 + 1
       NE2A = ABS(KS(2)+KS(3))/2
-      IF (IAD == (-1)) NE2A = NE2A + 1
+      if (IAD == (-1)) NE2A = NE2A + 1
       NE1 = MAX(NE1,NE1A)
       NE2 = MIN(NE2,NE2A)
       NE2 = (NE2 - NE1)/2 + 1
@@ -113,9 +113,9 @@
 !   3.1  Identify type of radial integrals
 !
       IBRE = 1
-      IF (IS(1)==IS(4) .AND. IS(2)/=IS(3) .OR. IS(1)/=IS(4) .AND. IS(2)==IS(3)&
+      if (IS(1)==IS(4) .AND. IS(2)/=IS(3) .OR. IS(1)/=IS(4) .AND. IS(2)==IS(3)&
          ) IBRE = 2
-      IF (IS(1)==IS(3) .AND. IS(2)==IS(4)) IBRE = 4
-      RETURN
+      if (IS(1)==IS(3) .AND. IS(2)==IS(4)) IBRE = 4
+      return
 !
-      END SUBROUTINE SNRC
+      end subroutine SNRC

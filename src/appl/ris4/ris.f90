@@ -19,30 +19,30 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE default_C
-      USE iounit_C
-      USE debug_C,         ONLY: CUTOFF
+      use default_C
+      use iounit_C
+      use debug_C,         only: CUTOFF
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE getyn_I
-      USE setdbg_I
-      USE setmc_I
-      USE setcon_I
-      USE setsum_I
-      USE setcsla_I
-      USE getmixblock_I
-      USE strsum_I
-      USE factt_I
-      USE ris_cal_I
+      use getyn_I
+      use setdbg_I
+      use setmc_I
+      use setcon_I
+      use setsum_I
+      use setcsla_I
+      use getmixblock_I
+      use strsum_I
+      use factt_I
+      use ris_cal_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       real(real64) :: DR2
-      LOGICAL   :: YES
-      CHARACTER :: NAME*24
-      INTEGER :: K, NCI, ncore_not_used, NOPAR
+      logical   :: YES
+      character :: NAME*24
+      integer :: K, NCI, ncore_not_used, NOPAR
 !-----------------------------------------------
 !
 !   Matrix elements smaller than CUTOFF are not accumulated
@@ -57,28 +57,28 @@
       WRITE (ISTDE, *) 'Default settings?'
       YES = GETYN ()
       WRITE (ISTDE, *)
-      IF (YES) THEN
+      if (YES) then
          NDEF = 0
-      ELSE
+      else
          NDEF = 1
-      ENDIF
+      endif
 
     9 WRITE (ISTDE, *) 'Name of state'
       READ(*,'(A)') NAME
       K=INDEX(NAME,' ')
-      IF (K.EQ.1) THEN
+      if (K.EQ.1) then
          WRITE (ISTDE, *) 'Names may not start with a blank'
          GOTO 9
-      ENDIF
+      endif
       PRINT *
 
       WRITE (ISTDE, *) 'Mixing coefficients from a CI calc.?'
       YES = GETYN ()
-      IF (YES) THEN
+      if (YES) then
          NCI = 0
-      ELSE
+      else
          NCI = 1
-      ENDIF
+      endif
       WRITE (ISTDE, *)
 
 !
@@ -117,15 +117,15 @@
 !      YES = GETYN ()
 !      PRINT *
 
-!      IF (YES) THEN
+!      if (YES) then
          CALL GETMIXBLOCK(NAME,NCI)
-!      ELSE
-!         IF (NCI.EQ.0) THEN
+!      else
+!         if (NCI.EQ.0) then
 !            CALL GETMIXC(NAME)
-!         ELSE
+!         else
 !            CALL GETMIXA(NAME)
-!         ENDIF
-!      ENDIF
+!         endif
+!      endif
 !
 !   Append a summary of the inputs to the  .sum  file
 !

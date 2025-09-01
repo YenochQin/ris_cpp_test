@@ -8,11 +8,11 @@ eilute
 
 Buvo keiciama i
 
-         IF(JA .EQ. JB) THEN
+         if(JA .EQ. JB) then
            CALL ONESCALAR1(NS,JA,JB,JA1,JA2,TCOEFF)
-         ELSE
+         else
            TCOEFF = 0.0D 00
-         END IF
+         END if
 
  Tai reiskia, kad kai viendalialinis skaliarinis operatorius i
 veikia i i ta pati sluoksni, tai konfiguracijos turi buti tos
@@ -24,7 +24,7 @@ Panasiai, kaip paprogrameje rkco_gg.f
 ideti eilute
 
 CGG
-      IF(JA.NE.JB) RETURN
+      if(JA.NE.JB) return
 CGG
 
 Negalima skaiciuoti kamieno ir kamieno ir valentiniu dvidalelinio

@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE RMEW5JJ(J1,J2,K1,K2,COEF)
+      subroutine RMEW5JJ(J1,J2,K1,K2,COEF)
 !                                                                  *
 !   Written by  G. Gaigalas                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -12,20 +12,20 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO
-      USE ribojj_C
+      use CONS_C,          only: ZERO
+      use ribojj_C
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER,      INTENT(IN)  :: J1, J2, K1, K2
-      real(real64), INTENT(OUT) :: COEF
+      integer,      intent(in)  :: J1, J2, K1, K2
+      real(real64), intent(out) :: COEF
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER                 :: JI1, JI2
-      INTEGER, DIMENSION(6)   :: I00, I01
-      INTEGER, DIMENSION(3,3) :: I12P,I12A,I03P, &
+      integer                 :: JI1, JI2
+      integer, dimension(6)   :: I00, I01
+      integer, dimension(3,3) :: I12P,I12A,I03P, &
                        I03A,I14P,I14A,I05P,I05A
 !-----------------------------------------------
       DATA I00/54,12,30,12,30,54/
@@ -40,101 +40,101 @@
       DATA I05A/5*0,330,0,330,572/
 !
       COEF=ZERO
-      IF(IMPTJJ(J1) /= IMPTJJ(J2)) RETURN
-      IF(J1 < 6 .OR. J1 > 11) RETURN
-      IF(K1 == 0 .AND. K2 == 0) THEN
-        IF(J1 /= J2) RETURN
+      if(IMPTJJ(J1) /= IMPTJJ(J2)) return
+      if(J1 < 6 .OR. J1 > 11) return
+      if(K1 == 0 .AND. K2 == 0) then
+        if(J1 /= J2) return
         COEF=-DSQRT(DBLE(I00(J1-5)))
-      ELSEIF(K1 == 1 .AND. K2 == 0) THEN
-        IF(J1 /= J2) RETURN
-        IF(J1 == 6) THEN
+      elseif(K1 == 1 .AND. K2 == 0) then
+        if(J1 /= J2) return
+        if(J1 == 6) then
            COEF=-DSQRT(DBLE(48))
-        ELSEIF(J1 == 9) THEN
+        elseif(J1 == 9) then
            COEF=-DSQRT(DBLE(20))
-        ELSEIF(J1 == 10) THEN
+        elseif(J1 == 10) then
            COEF=-DSQRT(DBLE(10))
-        ELSEIF(J1 == 11) THEN
+        elseif(J1 == 11) then
            COEF=-DSQRT(DBLE(18))
-        ENDIF
-      ELSEIF(K1 == 0 .AND. K2 == 1) THEN
-        IF(J1 /= J2) RETURN
+        endif
+      elseif(K1 == 0 .AND. K2 == 1) then
+        if(J1 /= J2) return
         COEF=-DSQRT(DBLE(I01(J1-5))/DBLE(7))
-      ELSEIF(K1 == 1 .AND. K2 == 2) THEN
-        IF(J1 < 9) THEN
+      elseif(K1 == 1 .AND. K2 == 2) then
+        if(J1 < 9) then
            JI1=J1-5
            JI2=J2-5
-           IF(I12P(JI1,JI2) >= 0) THEN
+           if(I12P(JI1,JI2) >= 0) then
               COEF=DSQRT(DBLE(I12P(JI1,JI2))/DBLE(7))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I12P(JI1,JI2))/DBLE(7))
-           ENDIF
-        ELSE
+           endif
+        else
            JI1=J1-8
            JI2=J2-8
-           IF(I12A(JI1,JI2) >= 0) THEN
+           if(I12A(JI1,JI2) >= 0) then
               COEF=DSQRT(DBLE(I12A(JI1,JI2))/DBLE(49))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I12A(JI1,JI2))/DBLE(49))
-           ENDIF
-        ENDIF
-      ELSEIF(K1 == 0 .AND. K2 == 3) THEN
-        IF(J1 < 9) THEN
+           endif
+        endif
+      elseif(K1 == 0 .AND. K2 == 3) then
+        if(J1 < 9) then
            JI1=J1-5
            JI2=J2-5
-           IF(I03P(JI1,JI2) >= 0) THEN
+           if(I03P(JI1,JI2) >= 0) then
               COEF=DSQRT(DBLE(I03P(JI1,JI2))/DBLE(21))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I03P(JI1,JI2))/DBLE(21))
-           ENDIF
-        ELSE
+           endif
+        else
            JI1=J1-8
            JI2=J2-8
-           IF(I03A(JI1,JI2) >= 0) THEN
+           if(I03A(JI1,JI2) >= 0) then
               COEF=DSQRT(DBLE(I03A(JI1,JI2))/DBLE(7))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I03A(JI1,JI2))/DBLE(7))
-           ENDIF
-        ENDIF
-      ELSEIF(K1 == 1 .AND. K2 == 4) THEN
-        IF(J1 < 9) THEN
+           endif
+        endif
+      elseif(K1 == 1 .AND. K2 == 4) then
+        if(J1 < 9) then
            JI1=J1-5
            JI2=J2-5
-           IF(I14P(JI1,JI2) >= 0) THEN
+           if(I14P(JI1,JI2) >= 0) then
               COEF=DSQRT(DBLE(I14P(JI1,JI2))/DBLE(35))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I14P(JI1,JI2))/DBLE(35))
-           ENDIF
-        ELSE
+           endif
+        else
            JI1=J1-8
            JI2=J2-8
-           IF(I14A(JI1,JI2) >= 0) THEN
+           if(I14A(JI1,JI2) >= 0) then
               COEF=DSQRT(DBLE(I14A(JI1,JI2))/DBLE(49))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I14A(JI1,JI2))/DBLE(49))
-           ENDIF
-        ENDIF
-      ELSEIF(K1 == 0 .AND. K2 == 5) THEN
-        IF(J1 < 9) THEN
+           endif
+        endif
+      elseif(K1 == 0 .AND. K2 == 5) then
+        if(J1 < 9) then
            JI1=J1-5
            JI2=J2-5
-           IF(I05P(JI1,JI2) >= 0) THEN
+           if(I05P(JI1,JI2) >= 0) then
               COEF=DSQRT(DBLE(I05P(JI1,JI2))/DBLE(21))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I05P(JI1,JI2))/DBLE(21))
-           ENDIF
-        ELSE
+           endif
+        else
            JI1=J1-8
            JI2=J2-8
-           IF(I05A(JI1,JI2) >= 0) THEN
+           if(I05A(JI1,JI2) >= 0) then
               COEF=DSQRT(DBLE(I05A(JI1,JI2))/DBLE(7))
-           ELSE
+           else
               COEF=-DSQRT(-DBLE(I05A(JI1,JI2))/DBLE(7))
-           ENDIF
-        ENDIF
-      ELSE
+           endif
+        endif
+      else
          WRITE(0,'(A,4I5)') ' J1 J2 = ',J1,J2
          WRITE(0,'(A)') ' ERROR IN SUB. RMEW5JJ '
          STOP
-      ENDIF
-      RETURN
-      END SUBROUTINE RMEW5JJ
+      endif
+      return
+      end subroutine RMEW5JJ

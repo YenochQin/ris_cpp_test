@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      INTEGER FUNCTION JFAZE(I1,I2,I3,I4)
+      integer FUNCTION JFAZE(I1,I2,I3,I4)
 !                                                                  *
 !     ------------  SECTION METWO    SUBPROGRAM 20  -------------  *
 !                                                                  *
@@ -19,14 +19,14 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: I1, I2, I3, I4
+      integer, intent(in) :: I1, I2, I3, I4
 !-----------------------------------------------
       JFAZE=1
-      IF(I1 > I2)JFAZE=-JFAZE
-      IF(I1 > I3)JFAZE=-JFAZE
-      IF(I1 > I4)JFAZE=-JFAZE
-      IF(I2 > I3)JFAZE=-JFAZE
-      IF(I2 > I4)JFAZE=-JFAZE
-      IF(I3 > I4)JFAZE=-JFAZE
-      RETURN
+      if(I1 > I2)JFAZE=-JFAZE
+      if(I1 > I3)JFAZE=-JFAZE
+      if(I1 > I4)JFAZE=-JFAZE
+      if(I2 > I3)JFAZE=-JFAZE
+      if(I2 > I4)JFAZE=-JFAZE
+      if(I3 > I4)JFAZE=-JFAZE
+      return
       END FUNCTION JFAZE

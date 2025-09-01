@@ -1,10 +1,10 @@
-      MODULE c0t5s_I
-      INTERFACE
+      module c0t5s_I
+      interface
 !
-      SUBROUTINE C0T5S(Q, QM, SM, C, CM, A)
+      subroutine C0T5S(Q, QM, SM, C, CM, A)
       use iso_fortran_env, only: real64, int32, int64, real128
-      real(real64), INTENT(IN)  :: Q, QM, SM, C, CM
-      real(real64), INTENT(OUT) :: A
-      END SUBROUTINE
-      END INTERFACE
-      END MODULE
+      real(real64), intent(in)  :: Q, QM, SM, C, CM
+      real(real64), intent(out) :: A
+      end subroutine
+      end interface
+      end module

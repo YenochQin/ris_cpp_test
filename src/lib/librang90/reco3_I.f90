@@ -1,11 +1,11 @@
-      MODULE reco3_I
-      INTERFACE
+      module reco3_I
+      interface
 !
-      SUBROUTINE RECO3(JA1,JA2,JA3,K1,K2,KA,IRE,IAT,RECC)
+      subroutine RECO3(JA1,JA2,JA3,K1,K2,KA,IRE,IAT,RECC)
       use iso_fortran_env, only: real64, int32, int64, real128
-      INTEGER, INTENT(IN)       :: JA1,JA2,JA3,K1,K2,KA,IRE
-      INTEGER, INTENT(OUT)      :: IAT
-      real(real64), INTENT(OUT) :: RECC
-      END SUBROUTINE
-      END INTERFACE
-      END MODULE
+      integer, intent(in)       :: JA1,JA2,JA3,K1,K2,KA,IRE
+      integer, intent(out)      :: IAT
+      real(real64), intent(out) :: RECC
+      end subroutine
+      end interface
+      end module

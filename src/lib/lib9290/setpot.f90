@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE SETPOT(J, JP)
+      subroutine SETPOT(J, JP)
 !                                                                      *
 !   This  subroutine  sets  up the  arrays TF and TG for use by  the   *
 !   subprograms IN, OUT, and SBSTEP.                                   *
@@ -25,24 +25,24 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE IOUNIT_C
-      USE DEF_C
-      USE GRID_C
-      USE INT_C,           ONLY: TF, TG
-      USE ORB_C
-      USE POTE_C,          ONLY: YP
+      use IOUNIT_C
+      use DEF_C
+      use GRID_C
+      use INT_C,           only: TF, TG
+      use ORB_C
+      use POTE_C,          only: YP
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: J
-      INTEGER, INTENT(OUT) :: JP
+      integer, intent(in) :: J
+      integer, intent(out) :: JP
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: I
+      integer :: I
       real(real64) :: DMHB2C, ENERGY, ENEFAC, RPI, YPRPOR
-      LOGICAL :: NOTSET
+      logical :: NOTSET
 !-----------------------------------------------
 !
 !
@@ -67,18 +67,18 @@
          YPRPOR = YP(I)*RPOR(I)
          TF(I) = DMHB2C*(ENEFAC*RPI + YPRPOR)
          TG(I) = DMHB2C*(ENERGY*RPI - YPRPOR)
-         IF (.NOT.NOTSET) CYCLE
-         IF (ABS(SIGN(1.0D00,TG(I))+SIGN(1.0D00,TG(1))) >= ACCY) CYCLE
+         if (.NOT.NOTSET) CYCLE
+         if (ABS(SIGN(1.0D00,TG(I))+SIGN(1.0D00,TG(1))) >= ACCY) CYCLE
          JP = I
          NOTSET = .FALSE.
       END DO
 !
 !   Trap for inappropriate grid
 !
-      IF (JP == 0) THEN
+      if (JP == 0) then
          WRITE (ISTDE, *) 'SETPOT: Join set to NNNP/2 = ', nnnp/2
          JP = NNNP/2
-      ENDIF
+      endif
 !
-      RETURN
-      END SUBROUTINE SETPOT
+      return
+      end subroutine SETPOT

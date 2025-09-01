@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE SMSNEW(DOIT,VINT,VINT2)
+      subroutine SMSNEW(DOIT,VINT,VINT2)
 !                                                                      *
 !   This routine controls the main sequence of routine calls for the   *
 !   calculation  of the  sms parameter, the electron density at the    *
@@ -23,24 +23,24 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE parameter_def,    ONLY: KEYORB, NNNW
-      USE debug_C
-      USE prnt_C
-      USE orb_C
-      USE BUFFER_C
-      USE eigv_C
-      USE ris_C
+      use parameter_def,    only: KEYORB, NNNW
+      use debug_C
+      use prnt_C
+      use orb_C
+      use BUFFER_C
+      use eigv_C
+      use ris_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE alcbuf_I
-      USE itjpo_I
+      use alcbuf_I
+      use itjpo_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64), DIMENSION(NNNW,NNNW), INTENT(IN) :: VINT, VINT2
-      INTEGER, INTENT(IN) :: DOIT
+      real(real64), dimension(NNNW,NNNW), intent(in) :: VINT, VINT2
+      integer, intent(in) :: DOIT
 !-----------------------------------------------
 !  E x t e r n a l   F u n c t i o n s
 !-----------------------------------------------
@@ -48,18 +48,18 @@
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
-      INTEGER, PARAMETER :: KEY = KEYORB
+      integer, parameter :: KEY = KEYORB
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      CHARACTER*11 :: CNUM
-      CHARACTER*4  :: JLBL,LABJ,LABP
-      CHARACTER*2  :: CK
-      LOGICAL      :: GETYN,FIRSTT,VSH,NUCDE,SMSSH,YES
-      LOGICAL      :: LFORDR,LTRANS,LVP,LSE,LNMS,LSMS
+      character*11 :: CNUM
+      character*4  :: JLBL,LABJ,LABP
+      character*2  :: CK
+      logical      :: GETYN,FIRSTT,VSH,NUCDE,SMSSH,YES
+      logical      :: LFORDR,LTRANS,LVP,LSE,LNMS,LSMS
       real(real64) :: CONTRI, CONTRIK1, VCOEFF
-      INTEGER      :: I,J,K,LAB,LOC,IC,IR,ITJPOC,IIA,IIB,IIC,IID,INCOR
-      INTEGER      :: LCNUM
+      integer      :: I,J,K,LAB,LOC,IC,IR,ITJPOC,IIA,IIB,IIC,IID,INCOR
+      integer      :: LCNUM
 !-----------------------------------------------
 !
       INCOR = 1
@@ -91,14 +91,14 @@
 !
 !   Matrix elements are diagonal in J
 !
-          IF (ITJPO(IR) .EQ. ITJPOC) THEN
+          if (ITJPO(IR) .EQ. ITJPOC) then
             NVCOEF = 0
 !GG            CALL RKCO (IC,IR,COR,CORD,INCOR)
             CALL RKCO_GG (IC, IR, CORD, INCOR, 1)
 !
             DO 11 I = 1,NVCOEF
               VCOEFF = COEFF(I)
-              IF (ABS (VCOEFF) .GT. CUTOFF) THEN
+              if (ABS (VCOEFF) .GT. CUTOFF) then
                 IIA = LABEL(1,I)
                 IIB = LABEL(2,I)
                 IIC = LABEL(3,I)
@@ -107,18 +107,18 @@
 !
 !   Only K = 1   LABEL(5,I) .EQ. 1
 !
-                IF (LABEL(5,I) .EQ. 1) THEN
-                  IF (LDBPA(2)) THEN
+                if (LABEL(5,I) .EQ. 1) then
+                  if (LDBPA(2)) then
                     WRITE (99,309) K,IC,IR,                            &
                     NP(IIA),NH(IIA),NP(IIB),NH(IIB),                   &
                     NP(IIC),NH(IIC),NP(IID),NH(IID),VCOEFF
-                  ENDIF
-                  IF(DOIT.EQ.1) WRITE(51) IC,IR
+                  endif
+                  if(DOIT.EQ.1) WRITE(51) IC,IR
 !** Storage sequence
                   LAB  = ((IIA*KEY + IIC)*KEY+IIB)*KEY+IID
-                  IF(DOIT.EQ.1) THEN
+                  if(DOIT.EQ.1) then
                     WRITE(51) VCOEFF,LAB
-                  ENDIF
+                  endif
 !***
                   DO 10 J = 1,NVEC
                     LOC = (J-1)*NCF
@@ -132,30 +132,30 @@
                            * VINT (LABEL(2,I),LABEL(4,I))              &
                            + VINT2(LABEL(2,I),LABEL(4,I))              &
                            * VINT (LABEL(1,I),LABEL(3,I)) )/2.0D00
-                    IF (IR.NE.IC) THEN
+                    if (IR.NE.IC) then
                       CONTRI = 2.0D00 * CONTRI
                       CONTRIK1 = 2.0D00 * CONTRIK1
-                    ENDIF
+                    endif
                     SMSC1(J) = SMSC1(J) + CONTRIK1
                     SMSC2(J) = SMSC2(J) + CONTRI
    10             CONTINUE
-                ENDIF
-              ENDIF
+                endif
+              endif
    11       CONTINUE
-          ENDIF
+          endif
    12   CONTINUE
    13 CONTINUE
-      IF(DOIT.EQ.1) WRITE(51) -1
+      if(DOIT.EQ.1) WRITE(51) -1
 !
 ! Empty the buffer and close file
-      IF(DOIT.EQ.1) CLOSE(51)
+      if(DOIT.EQ.1) CLOSE(51)
 !
 !   Deallocate storage for the arrays in BUFFER
 !
       CALL ALCBUF (3)
-      RETURN
+      return
   309 FORMAT (' V^[(',1I2,')]_[',1I3,',',1I3,']',                      &
          ' (',1I2,1A2,',',1I2,1A2,';',                                 &
               1I2,1A2,',',1I2,1A2,') = ',1PD19.12)
 !
-      END SUBROUTINE SMSNEW
+      end subroutine SMSNEW

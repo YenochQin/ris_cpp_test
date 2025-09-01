@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      REAL(KIND(0.0D0)) FUNCTION RINT (I, J, K)
+      real(real64) FUNCTION RINT (I, J, K)
 !                                                                      *
 !   The value of RINT is an approximation to:                          *
 !                                                                      *
@@ -23,13 +23,13 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE GRID_C
-      USE TATB_C, ONLY: TA, MTP
-      USE WAVE_C
+      use GRID_C
+      use TATB_C, only: TA, MTP
+      use WAVE_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE quad_I
+      use quad_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   G l o b a l   P a r a m e t e r s
@@ -37,13 +37,13 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER  :: I
-      INTEGER  :: J
-      INTEGER, INTENT(IN) :: K
+      integer  :: I
+      integer  :: J
+      integer, intent(in) :: K
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: L
+      integer :: L
       real(real64) :: RESULT
 !-----------------------------------------------
 !
@@ -52,7 +52,7 @@
 !
       MTP = MIN(MF(I),MF(J))
 !
-!   Tabulate the integrand as required for SUBROUTINE QUAD; the
+!   Tabulate the integrand as required for subroutine QUAD; the
 !   value at the first tabulation point is arbitrary
 !
       TA(1) = 0.0D00
@@ -65,6 +65,6 @@
       CALL QUAD (RESULT)
       RINT = RESULT
 !
-      RETURN
+      return
 !
       END FUNCTION RINT

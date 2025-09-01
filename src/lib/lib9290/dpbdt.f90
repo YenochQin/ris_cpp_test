@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE DPBDT(J)
+      subroutine DPBDT(J)
 !-----------------------------------------------
 !                                                                      *
 !   This subroutine computes H times the derivative, with respect to   *
@@ -21,19 +21,19 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE GRID_C
-      USE LIC13_C
-      USE TATB_C, ONLY: TA, TB
-      USE WAVE_C
+      use GRID_C
+      use LIC13_C
+      use TATB_C, only: TA, TB
+      use WAVE_C
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER  :: J
+      integer  :: J
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: I, K, IROW, LOC
+      integer :: I, K, IROW, LOC
       real(real64) :: A1, A2, A3, A4, A5, A6, HDPBDT, HDQBDT, AIK
 !-----------------------------------------------
 !
@@ -99,5 +99,5 @@
          TA(I) = HDPBDT
          TB(I) = HDQBDT
       END DO
-      RETURN
-      END SUBROUTINE DPBDT
+      return
+      end subroutine DPBDT

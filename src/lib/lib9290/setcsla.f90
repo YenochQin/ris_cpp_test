@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE SETCSLA(NAME, NCORE)
+      subroutine SETCSLA(NAME, NCORE)
 !                                                                      *
 !   Open, check, load data from and close the  .csl  file. This file   *
 !   is always attached to stream 21.                                   *
@@ -17,26 +17,26 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE IOUNIT_C
+      use IOUNIT_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE openfl_I
-      USE lodcsl_I
+      use openfl_I
+      use lodcsl_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER  :: NCORE
-      CHARACTER (LEN = 24), INTENT(IN) :: NAME
+      integer  :: NCORE
+      character (LEN = 24), intent(in) :: NAME
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER   :: K, IERR, IOS
-      CHARACTER(LEN=3)   :: STATUS
-      CHARACTER(LEN=9)   :: FORM
-      CHARACTER(LEN=15)  :: RECORD
-      CHARACTER(LEN=256) :: FILNAM
+      integer   :: K, IERR, IOS
+      character(LEN=3)   :: STATUS
+      character(LEN=9)   :: FORM
+      character(LEN=15)  :: RECORD
+      character(LEN=256) :: FILNAM
 !-----------------------------------------------
 !
 !   The  .csl  file is FORMATTED; it must exist
@@ -48,18 +48,18 @@
 
 !
       CALL OPENFL (21, FILNAM, FORM, STATUS, IERR)
-      IF (IERR == 1) THEN
+      if (IERR == 1) then
          WRITE (ISTDE, *) 'Error when opening', FILNAM
          STOP
-      ENDIF
+      endif
 !
 !   Check the first record of the file; if not as expected, try again
 !
       READ (21, '(1A15)', IOSTAT=IOS) RECORD
-      IF (IOS/=0 .OR. RECORD(1:15)/='Core subshells:') THEN
+      if (IOS/=0 .OR. RECORD(1:15)/='Core subshells:') then
          WRITE (ISTDE, *) 'Not a Configuration Symmetry List File;'
          CLOSE(21)
-      ENDIF
+      endif
 !
 !   Load data from the  .csl  file
 !
@@ -69,5 +69,5 @@
 !
       CLOSE(21)
 !
-      RETURN
-      END SUBROUTINE SETCSLA
+      return
+      end subroutine SETCSLA

@@ -1,8 +1,8 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE GRACAH1(I,J,K,L,M,N,RAC)
+      subroutine GRACAH1(I,J,K,L,M,N,RAC)
 !                                                                  *
-!   SUBROUTINE TO CALCULATE RACAH COEFFICIENTS.                    *
+!   subroutine TO CALCULATE RACAH COEFFICIENTS.                    *
 !   THE ARGUMENTS I,J,K,L,M,N SHOULD BE TWICE THEIR ACTUAL VALUE.  *
 !   WRITTEN BY N. S. SCOTT                                         *
 !   Modified by C. Froese Fischer, March 11, 1988 to use table     *
@@ -18,36 +18,36 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO, ONE, TWO
-      USE FACTS_C
+      use CONS_C,          only: ZERO, ONE, TWO
+      use FACTS_C
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER , INTENT(IN) :: I
-      INTEGER , INTENT(IN) :: J
-      INTEGER , INTENT(IN) :: K
-      INTEGER , INTENT(IN) :: L
-      INTEGER , INTENT(IN) :: M
-      INTEGER , INTENT(IN) :: N
-      real(real64) , INTENT(OUT) :: RAC
+      integer , intent(in) :: I
+      integer , intent(in) :: J
+      integer , intent(in) :: K
+      integer , intent(in) :: L
+      integer , intent(in) :: M
+      integer , intent(in) :: N
+      real(real64) , intent(out) :: RAC
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: J1,J2,J3,J4,J5,J6,J7,NUMIN,NUMAX,ICOUNT,KK,KI
+      integer :: J1,J2,J3,J4,J5,J6,J7,NUMIN,NUMAX,ICOUNT,KK,KI
 !-----------------------------------------------
       J1 = I+J+M
       J2 = K+L+M
       J3 = I+K+N
       J4 = J+L+N
-      IF (MOD(J1,2) == 0  .AND.  MOD(J2,2) == 0   .AND. &
-          MOD(J3,2) == 0  .AND.  MOD(J4,2) == 0 )  THEN
+      if (MOD(J1,2) == 0  .AND.  MOD(J2,2) == 0   .AND. &
+          MOD(J3,2) == 0  .AND.  MOD(J4,2) == 0 )  then
           J1 = J1/2
           J2 = J2/2
           J3 = J3/2
           J4 = J4/2
-          IF (MAX(I,J,M) <= J1 .AND.  MAX(K,L,M) <= J2  .AND. &
-              MAX(I,K,N) <= J3 .AND.  MAX(J,L,N) <= J4  )  THEN
+          if (MAX(I,J,M) <= J1 .AND.  MAX(K,L,M) <= J2  .AND. &
+              MAX(I,K,N) <= J3 .AND.  MAX(J,L,N) <= J4  )  then
               J5 = (I+J+K+L)/2
               J6 = (I+L+M+N)/2
               J7 = (J+K+M+N)/2
@@ -69,12 +69,12 @@
                      GAM(J2+1-K)+GAM(J2+1-L)+GAM(J2+1-M)-GAM(J2+2) +  &
                      GAM(J3+1-I)+GAM(J3+1-K)+GAM(J3+1-N)-GAM(J3+2) +  &
                      GAM(J4+1-J)+GAM(J4+1-L)+GAM(J4+1-N)-GAM(J4+2))/TWO)
-              IF (MOD(J5+NUMIN,2) == 0) RAC = -RAC
-          ELSE
+              if (MOD(J5+NUMIN,2) == 0) RAC = -RAC
+          else
              RAC = ZERO
-          END IF
-      ELSE
+          END if
+      else
          RAC = ZERO
-      END IF
-      RETURN
+      END if
+      return
       END

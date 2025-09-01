@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE COUNT(FR, MTPFR, NNCFF, SGN)
+      subroutine COUNT(FR, MTPFR, NNCFF, SGN)
 !                                                                      *
 !   This subroutine counts the nodes in the radial function FR using   *
 !   the criteria  given by C Froese Fischer, Comp Phys Rep, 3 (1986)   *
@@ -18,23 +18,23 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE parameter_def,    ONLY: NNNP
-      USE COUN_C
-      USE DEF_C, ONLY: ACCY
-      USE GRID_C
+      use parameter_def,    only: NNNP
+      use COUN_C
+      use DEF_C, only: ACCY
+      use GRID_C
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: MTPFR
-      INTEGER, INTENT(OUT) :: NNCFF
-      real(real64), INTENT(OUT) :: SGN
-      real(real64), DIMENSION(NNNP), INTENT(IN) :: FR
+      integer, intent(in) :: MTPFR
+      integer, intent(out) :: NNCFF
+      real(real64), intent(out) :: SGN
+      real(real64), dimension(NNNP), intent(in) :: FR
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER, DIMENSION(NNNP) :: LCEXT
-      INTEGER :: NEXT, I, LOC, NSTPS
+      integer, dimension(NNNP) :: LCEXT
+      integer :: NEXT, I, LOC, NSTPS
       real(real64) :: EXT, EMX, ABFRI, TEST, THRESE, ABLCL
 !-----------------------------------------------
 !
@@ -49,16 +49,16 @@
       DO I = 2, MTPFR
          ABFRI = ABS(FR(I))
          TEST = ABS(SIGN(1.0D00,FR(I))+SIGN(1.0D00,FR(I-1)))
-         IF (TEST <= ACCY) THEN
+         if (TEST <= ACCY) then
             NEXT = NEXT + 1
             LCEXT(NEXT) = 0
             EXT = 0.0D00
-         ENDIF
-         IF (ABFRI > EXT) THEN
+         endif
+         if (ABFRI > EXT) then
             EXT = ABFRI
             LCEXT(NEXT) = I
-         ENDIF
-         IF (ABFRI <= EMX) CYCLE
+         endif
+         if (ABFRI <= EMX) CYCLE
          EMX = ABFRI
       END DO
 !
@@ -69,27 +69,27 @@
       THRESE = THRESH*EMX
     4 CONTINUE
       LOC = LOC + 1
-      IF (LOC <= NEXT) THEN
-         IF (LCEXT(LOC) == 0) THEN
+      if (LOC <= NEXT) then
+         if (LCEXT(LOC) == 0) then
             ABLCL = 0.0D00
-         ELSE
+         else
             ABLCL = ABS(FR(LCEXT(LOC)))
-         ENDIF
-         IF (ABLCL < THRESE) THEN
+         endif
+         if (ABLCL < THRESE) then
             NEXT = NEXT - 1
             NSTPS = NEXT - LOC
             LCEXT(LOC:NSTPS+LOC) = LCEXT(LOC+1:NSTPS+1+LOC)
             LOC = LOC - 1
-         ENDIF
+         endif
          GO TO 4
-      ENDIF
+      endif
 !
 !   Count changes of sign using the remaining oscillations
 !
       NNCFF = 0
       DO I = 2, NEXT
          TEST = ABS(SIGN(1.0D00,FR(LCEXT(I)))+SIGN(1.0D00,FR(LCEXT(I-1))))
-         IF (TEST > ACCY) CYCLE
+         if (TEST > ACCY) CYCLE
          NNCFF = NNCFF + 1
       END DO
 !
@@ -98,5 +98,5 @@
 !
       SGN = SIGN(1.0D00,FR(LCEXT(1)))
 !
-      RETURN
-      END SUBROUTINE COUNT
+      return
+      end subroutine COUNT

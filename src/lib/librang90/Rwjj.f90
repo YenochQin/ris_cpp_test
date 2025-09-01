@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE RWJJ(J,J1,J2,K1,K2,COEF)
+      subroutine RWJJ(J,J1,J2,K1,K2,COEF)
 !                                                                  *
 !   Written by  G. Gaigalas                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -12,35 +12,35 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C
-      USE ribojj_C
+      use CONS_C
+      use ribojj_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE rmew1jj_I
-      USE rmew3jj_I
-      USE rmew5jj_I
-      USE rmew7jj_I
+      use rmew1jj_I
+      use rmew3jj_I
+      use rmew5jj_I
+      use rmew7jj_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER,      INTENT(IN)  :: J, J1, J2, K1, K2
-      real(real64), INTENT(OUT) :: COEF
+      integer,      intent(in)  :: J, J1, J2, K1, K2
+      real(real64), intent(out) :: COEF
 !-----------------------------------------------
-      IF(J == 1) THEN
+      if(J == 1) then
          CALL RMEW1JJ(J1,J2,K1,K2,COEF)
-      ELSEIF(J == 3) THEN
+      elseif(J == 3) then
          CALL RMEW3JJ(J1,J2,K1,K2,COEF)
-      ELSEIF(J == 5) THEN
+      elseif(J == 5) then
          CALL RMEW5JJ(J1,J2,K1,K2,COEF)
-      ELSEIF(J == 7) THEN
+      elseif(J == 7) then
          CALL RMEW7JJ(J1,J2,K1,K2,COEF)
-!GG        ELSEIF(J.EQ.9) THEN
+!GG        elseif(J.EQ.9) then
 !GG          CALL SUWJJ(K1,K2,J,J1,J2,COEF)
-      ELSE
+      else
          WRITE(0,'(A,I5)') ' KLAIDA SUB. RWJJ J=',J
          STOP
-      ENDIF
-      RETURN
-      END SUBROUTINE RWJJ
+      endif
+      return
+      end subroutine RWJJ

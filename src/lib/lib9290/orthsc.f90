@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE ORTHSC
+      subroutine ORTHSC
 !                                                                      *
 !   This routine Schmidt orthogonalises radial wavefunctions.          *
 !                                                                      *
@@ -18,25 +18,25 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE parameter_def,   ONLY:  NNNW
-      USE DEBUG_C
-      USE DEF_C
-      USE GRID_C
-      USE ORB_C
-      USE WAVE_C, ONLY: PZ, MF, PF, QF
+      use parameter_def,   only:  NNNW
+      use DEBUG_C
+      use DEF_C
+      use GRID_C
+      use ORB_C
+      use WAVE_C, only: PZ, MF, PF, QF
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE rint_I
+      use rint_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER, DIMENSION(NNNW) :: J
-      INTEGER :: L, NAKL, KOUNT, MTP0, K, MTP, I
-      real(real64), DIMENSION(NNNW) :: OVLAP
+      integer, dimension(NNNW) :: J
+      integer :: L, NAKL, KOUNT, MTP0, K, MTP, I
+      real(real64), dimension(NNNW) :: OVLAP
       real(real64) :: EPS, OVRLAP, DNORM, FACTOR
-      LOGICAL :: CHANGED
+      logical :: CHANGED
 !-----------------------------------------------
 !
 !XHH
@@ -53,11 +53,11 @@
 !      DO 2 K = 1,NW-1
 !         NAKK = NAK(K)
 !         DO 1 L = K+1,NW
-!            IF (NAKK .EQ. NAK(L)) NOVL = NOVL+1
+!            if (NAKK .EQ. NAK(L)) NOVL = NOVL+1
 !    1    CONTINUE
 !    2 CONTINUE
 !
-!      IF (NOVL .EQ. 0) RETURN
+!      if (NOVL .EQ. 0) return
 !
       DO L = 2, NW
 !
@@ -72,7 +72,7 @@
 !
          DO K = 1, L - 1
 !
-            IF (NAK(K) /= NAKL) CYCLE
+            if (NAK(K) /= NAKL) CYCLE
 !XHH
             CHANGED = .TRUE.
 !
@@ -100,7 +100,7 @@
 !    This is in accordance with the original version which had the
 !    normalization etc within the inner K loop.
 
-         IF (CHANGED) THEN
+         if (CHANGED) then
             MTP = MTP0
 
             MF(L) = MTP
@@ -122,20 +122,20 @@
 !cjb Subscript out of range for array pf
            if ( MTP .GE. 1 ) then
 !cjb
-            IF (ABS(PF(MTP,L)) < EPS) THEN
+            if (ABS(PF(MTP,L)) < EPS) then
                PF(MTP,L) = 0.0D00
                QF(MTP,L) = 0.0D00
                GO TO 7
-            ELSE
+            else
                MF(L) = MTP
-            ENDIF
+            endif
 !cjb endif
            endif
-         ENDIF
-         IF (.NOT.(LDBPR(3) .AND. KOUNT>0)) CYCLE
+         endif
+         if (.NOT.(LDBPR(3) .AND. KOUNT>0)) CYCLE
 
 !XHH Moved ahead
-!            ENDIF
+!            endif
 !    8    CONTINUE
 !
 !   Print overlap information
@@ -148,11 +148,11 @@
 !
 !      KOUNT = 0
 !      DO k = 1, L
-!            IF (NAK(K) .EQ. NAKL) THEN
+!            if (NAK(K) .EQ. NAKL) then
 !               KOUNT = KOUNT+1
 !               OVLAP(KOUNT) = RINT (L,K,0)
 !               J(KOUNT) = K
-!            ENDIF
+!            endif
 !      ENDDO
 !      WRITE (*,301)
 !     :      (OVLAP(I),NP(L),NH(L),NP(J(I)),NH(J(I)),I = 1,KOUNT)
@@ -161,9 +161,9 @@
 !
       END DO
 !
-      RETURN
+      return
 !
   301 FORMAT(1P,5(2X,1D10.3,' = <',1I2,1A2,'|',1I2,1A2,'>'))
-      RETURN
+      return
 !
-      END SUBROUTINE ORTHSC
+      end subroutine ORTHSC

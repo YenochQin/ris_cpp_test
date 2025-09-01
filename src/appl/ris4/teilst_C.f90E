@@ -1,0 +1,6 @@
+      MODULE teilst_C
+!...Created by Charlotte Froese Fischer
+!                     Gediminas Gaigalas  11/02/17
+      integer :: NDTEA,NTEI,PINDTE,PVALTE
+      logical :: FIRSTT
+      end module teilst_C

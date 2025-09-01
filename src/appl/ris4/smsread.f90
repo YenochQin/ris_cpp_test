@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE SMSREAD(VINT,VINT2)
+      subroutine SMSREAD(VINT,VINT2)
 !
 !   Call(s) to: [LIB92]: ALCBUF                                        *
 !                                                                      *
@@ -11,31 +11,31 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE parameter_def,    ONLY: KEYORB, NNNW
-      USE prnt_C
-      USE ris_C
-      USE orb_C
-      USE eigv_C
-      USE BUFFER_C
-      USE debug_C,          ONLY: CUTOFF
+      use parameter_def,    only: KEYORB, NNNW
+      use prnt_C
+      use ris_C
+      use orb_C
+      use eigv_C
+      use BUFFER_C
+      use debug_C,          only: CUTOFF
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE alcbuf_I
+      use alcbuf_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64), DIMENSION(NNNW,NNNW), INTENT(IN) :: VINT, VINT2
+      real(real64), dimension(NNNW,NNNW), intent(in) :: VINT, VINT2
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
-      INTEGER, PARAMETER :: KEY = KEYORB
+      integer, parameter :: KEY = KEYORB
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       real(real64) :: CONTRI, CONTRIK1, COEFFSMS
-      INTEGER :: IC, IR, I, J, IIA, IIB, IIC, IID, LOC, LAB, IOS
+      integer :: IC, IR, I, J, IIA, IIB, IIC, IID, LOC, LAB, IOS
 !-----------------------------------------------
 !
       CALL ALCBUF (1)
@@ -43,7 +43,7 @@
       REWIND(51)
   16  READ (51,IOSTAT = IOS) IC,IR
 !C      WRITE(*,*) IC,IR
-      IF (IOS .EQ. 0) THEN
+      if (IOS .EQ. 0) then
 !cc        DO J = 1,NVEC
           READ(51) COEFFSMS,LAB
           IID = MOD (LAB, KEY)
@@ -61,16 +61,16 @@
                * COEFFSMS                                              &
                * ( VINT2(IIA,IIC)*VINT(IIB,IID)                        &
                + VINT2(IIB,IID)*VINT(IIA,IIC))/2.0D00
-          IF (IR.NE.IC) THEN
+          if (IR.NE.IC) then
             CONTRI = 2.0D00 * CONTRI
             CONTRIK1 = 2.0D00 * CONTRIK1
-          ENDIF
+          endif
           SMSC1(J) = SMSC1(J) + CONTRIK1
           SMSC2(J) = SMSC2(J) + CONTRI
         ENDDO
 
       GOTO 16
-      ENDIF
+      endif
       CALL ALCBUF (3)
-      RETURN
-      END SUBROUTINE SMSREAD
+      return
+      end subroutine SMSREAD

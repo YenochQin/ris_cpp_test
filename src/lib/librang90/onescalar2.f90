@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE ONESCALAR2(JJA,JJB,JA,JB,COEFF)
+      subroutine ONESCALAR2(JJA,JJB,JA,JB,COEFF)
 !                                                                  *
 !   --------------  SECTION METWO    SUBPROGRAM 06  -------------  *
 !                                                                  *
@@ -9,7 +9,7 @@
 !     CONFIGURATIONS:                               N'1 = N1 - 1   *
 !                                                   N'2 = N2 + 1   *
 !                                                                  *
-!     SUBROUTINE CALLED: COULOM,GG1222,ITREXG,IXJTIK,PERKO2,       *
+!     subroutine CALLED: COULOM,GG1222,ITREXG,IXJTIK,PERKO2,       *
 !                        RECO,RECO2,SIXJ,SPEAK                     *
 !                                                                  *
 !   Written by  G. Gaigalas                                        *
@@ -22,47 +22,47 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO, HALF, EPS
-      USE m_C
-      USE trk_C
+      use CONS_C,          only: ZERO, HALF, EPS
+      use m_C
+      use trk_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE recoonescalar_I
-      USE perko2_I
-      USE reco2_I
-      USE gg12_I
+      use recoonescalar_I
+      use perko2_I
+      use reco2_I
+      use gg12_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: JJA,JJB,JA,JB
-      real(real64), INTENT(OUT) :: COEFF
+      integer, intent(in) :: JJA,JJB,JA,JB
+      real(real64), intent(out) :: COEFF
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER      :: IAT,JAA,JBB,NN,IB1,II,INN,IFAZ
+      integer      :: IAT,JAA,JBB,NN,IB1,II,INN,ifAZ
       real(real64) :: QM1,QM2,REC,WW
 !-----------------------------------------------
       COEFF=ZERO
-      IF(JA == JB) RETURN
-      IF(JA < JB) THEN
+      if(JA == JB) return
+      if(JA < JB) then
         JAA=JA
         JBB=JB
-      ELSE
+      else
         JAA=JB
         JBB=JA
-      END IF
+      END if
       CALL RECOONESCALAR(-1,JAA,JBB,JBB,JBB,1,IAT)
-      IF(IAT == 0)RETURN
+      if(IAT == 0)return
       QM1=HALF
       QM2=-HALF
       CALL PERKO2(JA,JB,JA,JA,2)
-      IF(ID1(3) /= ID2(3)) RETURN
+      if(ID1(3) /= ID2(3)) return
       CALL RECO2(JAA,JBB,ID2(3),0,IAT,REC)
-      IF(IAT == 0)RETURN
+      if(IAT == 0)return
       CALL GG12(IK1,IK2,BK1,BK2,ID1,ID2,BD1,BD2,QM1,QM2,WW)
-      IF(DABS(WW) > EPS) THEN
+      if(DABS(WW) > EPS) then
          CALL RECO2(JAA,JBB,ID2(3),1,IAT,REC)
          COEFF=WW*REC*DSQRT(DBLE(ID1(3)+1))
          NN=0
@@ -71,15 +71,15 @@
            INN=JLIST(II)
            NN=NQ1(INN)+NN
          END DO
-         IF((NN/2)*2 == NN) COEFF=-COEFF
-!GG         IF(JA.GT.JB) COEFF=-COEFF
+         if((NN/2)*2 == NN) COEFF=-COEFF
+!GG         if(JA.GT.JB) COEFF=-COEFF
          COEFF=-COEFF
 !
 !     TRANSFORM FANO & RACAH PHASE CONVENTION
 !     TO CONDON & SHORTLEY PHASE CONVENTION
 !
-        IFAZ=IK1(5)*IK1(4)+IK2(5)*IK2(4)-ID1(5)*ID1(4)-ID2(5)*ID2(4)
-        IF((IFAZ/4)*4 /= IFAZ)COEFF=-COEFF
-      END IF
-      RETURN
-      END SUBROUTINE ONESCALAR2
+        ifAZ=IK1(5)*IK1(4)+IK2(5)*IK2(4)-ID1(5)*ID1(4)-ID2(5)*ID2(4)
+        if((ifAZ/4)*4 /= ifAZ)COEFF=-COEFF
+      END if
+      return
+      end subroutine ONESCALAR2

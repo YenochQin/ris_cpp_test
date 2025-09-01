@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE SETCON
+      subroutine SETCON
 !                                                                      *
 !   This  subprogram  sets the values of the fundamental and derived   *
 !   physical constants, and other useful constants.                    *
@@ -15,22 +15,22 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE DEBUG_C
-      USE DEF_C
+      use DEBUG_C
+      use DEF_C
       IMPLICIT NONE
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
-      real(real64), PARAMETER :: AINFCM = 0.52917721067D-08
-      real(real64), PARAMETER :: ALFAI  = 137.035999139D00
-      real(real64), PARAMETER :: CCMPS  = 2.99792458D10
-      real(real64), PARAMETER :: EESU   = 4.803204673D-10
-      real(real64), PARAMETER :: EMEG   = 9.10938356D-28
-      real(real64), PARAMETER :: EMEAMU = 5.48579909070D-04
-      real(real64), PARAMETER :: EMPAMU = 1.007276466879D00
-      real(real64), PARAMETER :: HBARES = 1.054571800D-27
-      real(real64), PARAMETER :: RINFEV = 13.605693009D00
-      real(real64), PARAMETER :: RINFK  = 109737.31568508D00
+      real(real64), parameter :: AINFCM = 0.52917721067D-08
+      real(real64), parameter :: ALFAI  = 137.035999139D00
+      real(real64), parameter :: CCMPS  = 2.99792458D10
+      real(real64), parameter :: EESU   = 4.803204673D-10
+      real(real64), parameter :: EMEG   = 9.10938356D-28
+      real(real64), parameter :: EMEAMU = 5.48579909070D-04
+      real(real64), parameter :: EMPAMU = 1.007276466879D00
+      real(real64), parameter :: HBARES = 1.054571800D-27
+      real(real64), parameter :: RINFEV = 13.605693009D00
+      real(real64), parameter :: RINFK  = 109737.31568508D00
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
@@ -110,12 +110,12 @@
 !
 !   Printouts
 !
-      IF (LDBPG(2)) WRITE (99, 300) AINFCM, ALFAI, CCMPS, EESU, EMEG, EMEAMU, &
+      if (LDBPG(2)) WRITE (99, 300) AINFCM, ALFAI, CCMPS, EESU, EMEG, EMEAMU, &
          EMPAMU, HBARES, RINFEV, RINFK
 !
-      RETURN
+      return
 !
-  300 FORMAT(/,'From SUBROUTINE SETCON:'/,' AINFCM (Bohr radius in cm): ',0P,1D&
+  300 FORMAT(/,'From subroutine SETCON:'/,' AINFCM (Bohr radius in cm): ',0P,1D&
          16.9,','/,' ALFAI (Inverse of the fine-structure constant): ',3P,1D&
          16.9,','/,' CCMPS (Speed of light in cm/s): ',1P,1D15.8,','/,&
          ' EESU (Electron charge in esu): ',1P,1D15.8,','/,&
@@ -125,6 +125,6 @@
          ' HBARES (Rationalized Planck constant in erg s): ',1P,1D15.8,','/,&
          ' RINFEV (Rydberg in eV): ',2P,1D15.8,','/,&
          ' RINFK (Rydberg in Kaysers): ',6P,1D17.10,'.')
-      RETURN
+      return
 !
-      END SUBROUTINE SETCON
+      end subroutine SETCON

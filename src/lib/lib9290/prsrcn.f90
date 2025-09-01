@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE PRSRCN(RECORD, NCORE, IOCCS, IERR)
+      subroutine PRSRCN(RECORD, NCORE, IOCCS, IERR)
 !                                                                      *
 !   READs and parses a string that specifies a configuration.          *
 !                                                                      *
@@ -14,25 +14,25 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE parameter_def, ONLY: NNNW
-      USE ORB_C
+      use parameter_def, only: NNNW
+      use ORB_C
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN)           :: NCORE
-      INTEGER, INTENT(OUT)          :: IERR
-      CHARACTER(LEN=256), INTENT(IN) :: RECORD
-      INTEGER, DIMENSION(NNNW), INTENT(OUT) :: IOCCS
+      integer, intent(in)           :: NCORE
+      integer, intent(out)          :: IERR
+      character(LEN=256), intent(in) :: RECORD
+      integer, dimension(NNNW), intent(out) :: IOCCS
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: I,ISTART,IEND,LENTH,IOS,NPI,J,ISHELL,IOSTRT,IOEND, &
+      integer :: I,ISTART,IEND,LENTH,IOS,NPI,J,ISHELL,IOSTRT,IOEND, &
          IOCCI,NKJI
-      CHARACTER(LEN=2) :: SYMI
-      CHARACTER(LEN=5) :: FORM
-      CHARACTER(LEN=1), DIMENSION(3) :: CNUM = (/'1', '2', '3'/)
-      CHARACTER :: RECI
+      character(LEN=2) :: SYMI
+      character(LEN=5) :: FORM
+      character(LEN=1), dimension(3) :: CNUM = (/'1', '2', '3'/)
+      character :: RECI
 !-----------------------------------------------
 !
 !   Initialise IOCCS for the peel subshells
@@ -45,33 +45,33 @@
       I = 1
     2 CONTINUE
       RECI = RECORD(I:I)
-      IF (RECI == '(') THEN
+      if (RECI == '(') then
          IEND = I - 1
     3    CONTINUE
          RECI = RECORD(IEND:IEND)
-         IF (RECI == ' ') THEN
+         if (RECI == ' ') then
             IEND = IEND - 1
             GO TO 3
-         ELSE IF (RECI == '-') THEN
+         else if (RECI == '-') then
             READ (RECORD(IEND-1:IEND), '(1A2)') SYMI
             IEND = IEND - 2
-         ELSE
+         else
             SYMI(2:2) = ' '
             READ (RECI, '(1A1)') SYMI(1:1)
             IEND = IEND - 1
-         ENDIF
+         endif
          LENTH = IEND - ISTART + 1
          FORM = '(1I'//CNUM(LENTH)//')'
          READ (RECORD(ISTART:IEND), FMT=FORM, IOSTAT=IOS) NPI
-         IF (IOS /= 0) THEN
+         if (IOS /= 0) then
             WRITE (6, *) 'PRSRCN: Principal quantum number ', RECORD(ISTART:&
                IEND)
             WRITE (6, *) ' could not be decoded.'
             IERR = 1
             GO TO 6
-         ENDIF
+         endif
          DO J = NCORE + 1, NW
-            IF (NP(J)/=NPI .OR. NH(J)/=SYMI) CYCLE
+            if (NP(J)/=NPI .OR. NH(J)/=SYMI) CYCLE
             ISHELL = J
             GO TO 5
          END DO
@@ -80,48 +80,48 @@
          GO TO 6
     5    CONTINUE
          IOSTRT = I + 1
-      ELSE IF (RECI == ')') THEN
+      else if (RECI == ')') then
          IOEND = I - 1
          LENTH = IOEND - IOSTRT + 1
          FORM = '(1I'//CNUM(LENTH)//')'
          READ (RECORD(IOSTRT:IOEND), FMT=FORM, IOSTAT=IOS) IOCCI
-         IF (IOS /= 0) THEN
+         if (IOS /= 0) then
             WRITE (6, *) 'PRSRCN: Occupation number ', RECORD(IOSTRT:IOEND)
             WRITE (6, *) ' could not be decoded.'
             IERR = 3
             GO TO 6
-         ENDIF
+         endif
          NKJI = NKJ(ISHELL)
-         IF (NKJI <= 7) THEN
-            IF (IOCCI<0 .OR. IOCCI>NKJ(ISHELL)+1) THEN
+         if (NKJI <= 7) then
+            if (IOCCI<0 .OR. IOCCI>NKJ(ISHELL)+1) then
                WRITE (6, *) 'PRSRCN: Occupation specified'
                WRITE (6, *) ' incorrectly for ', NP(ISHELL), NH(ISHELL)
                WRITE (6, *) ' subshell.'
                IERR = 4
                GO TO 6
-            ENDIF
-         ELSE
-            IF (IOCCI<0 .OR. IOCCI>2) THEN
+            endif
+         else
+            if (IOCCI<0 .OR. IOCCI>2) then
                WRITE (6, *) 'PRSRCN: Occupation specified'
                WRITE (6, *) ' incorrectly for ', NP(ISHELL), NH(ISHELL)
                WRITE (6, *) ' subshell.'
                IERR = 5
                GO TO 6
-            ENDIF
-         ENDIF
+            endif
+         endif
          IOCCS(ISHELL) = IOCCI
          ISTART = 0
-      ELSE
-         IF (ISTART == 0) ISTART = I
-      ENDIF
+      else
+         if (ISTART == 0) ISTART = I
+      endif
 !
-      IF (I < 256) THEN
+      if (I < 256) then
          I = I + 1
          GO TO 2
-      ENDIF
+      endif
 !
       IERR = 0
 !
     6 CONTINUE
-      RETURN
-      END SUBROUTINE PRSRCN
+      return
+      end subroutine PRSRCN

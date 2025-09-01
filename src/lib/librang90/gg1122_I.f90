@@ -1,11 +1,11 @@
-      MODULE GG1122_I
-      INTERFACE
+      module GG1122_I
+      interface
 !
-      SUBROUTINE GG1122(K1,K2,QM1,QM2,QM3,QM4,AA)
+      subroutine GG1122(K1,K2,QM1,QM2,QM3,QM4,AA)
       use iso_fortran_env, only: real64, int32, int64, real128
-      INTEGER,      INTENT(IN)               :: K1, K2
-      real(real64), INTENT(IN)               :: QM1, QM2, QM3, QM4
-      real(real64), INTENT(OUT)              :: AA
-      END SUBROUTINE
-      END INTERFACE
-      END MODULE
+      integer,      intent(in)               :: K1, K2
+      real(real64), intent(in)               :: QM1, QM2, QM3, QM4
+      real(real64), intent(out)              :: AA
+      end subroutine
+      end interface
+      end module

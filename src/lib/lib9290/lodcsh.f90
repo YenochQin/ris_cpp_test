@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE LODCSH(NFILE, NCORE)
+      subroutine LODCSH(NFILE, NCORE)
 !                                                                      *
 !   Loads the data from the  .csl  file. A number of checks are made   *
 !   to ensure correctness and consistency.                             *
@@ -24,28 +24,28 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE parameter_def,   ONLY: NNNW
-      USE DEF_C
-      USE ORB_C
-      USE TERMS_C
-      USE iounit_C
+      use parameter_def,   only: NNNW
+      use DEF_C
+      use ORB_C
+      use TERMS_C
+      use iounit_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE prsrsl_I
-      USE prsrcn_I
+      use prsrsl_I
+      use prsrcn_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER  :: NFILE
-      INTEGER  :: NCORE
+      integer  :: NFILE
+      integer  :: NCORE
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER, DIMENSION(NNNW) :: IOCC
-      INTEGER :: IQADUM, NPEEL, I, J, NPJ, NAKJ, IOS, IERR
-      CHARACTER :: STR*256
+      integer, dimension(NNNW) :: IOCC
+      integer :: IQADUM, NPEEL, I, J, NPJ, NAKJ, IOS, IERR
+      character :: STR*256
 !-----------------------------------------------
 !
 !   Entry message
@@ -76,7 +76,7 @@
          NPJ = NP(J)
          NAKJ = NAK(J)
          DO I = 1, NCORE
-            IF (NP(I)/=NPJ .OR. NAK(I)/=NAKJ) CYCLE
+            if (NP(I)/=NPJ .OR. NAK(I)/=NAKJ) CYCLE
             WRITE (ISTDE, *) 'lodcsh: The lists of core and', &
                ' peel subshells must form disjoint sets.'
             STOP
@@ -100,5 +100,5 @@
       NELEC = SUM(IOCC(NCORE+1:NW))
 !             Add the number of electrons in the core shells
       NELEC = NELEC + SUM(NKJ(:NCORE)+1)
-      RETURN
-      END SUBROUTINE LODCSH
+      return
+      end subroutine LODCSH

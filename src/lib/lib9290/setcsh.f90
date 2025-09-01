@@ -1,6 +1,6 @@
 !***********************************************************************
 !
-      SUBROUTINE SETCSH(NFILE, NAME, NCORE)
+      subroutine SETCSH(NFILE, NAME, NCORE)
 !
 !   Open, check the CSL file and load the load (via lodcsh) data from
 !   the header lines. It is designed to replace all kinds of "setcsl"
@@ -19,24 +19,24 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE IOUNIT_C
+      use IOUNIT_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE lodcsh_I
+      use lodcsh_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER  :: NFILE
-      INTEGER  :: NCORE
-      CHARACTER (LEN = *), INTENT(IN) :: NAME
+      integer  :: NFILE
+      integer  :: NCORE
+      character (LEN = *), intent(in) :: NAME
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: LENGTH, IOS
-      LOGICAL :: FOUND
-      CHARACTER :: RECORD*15
+      integer :: LENGTH, IOS
+      logical :: FOUND
+      character :: RECORD*15
 !-----------------------------------------------
 !
 !     ...Locals
@@ -44,36 +44,36 @@
       LENGTH = LEN_TRIM(NAME)
 
       INQUIRE(FILE=NAME, EXIST=FOUND)
-      IF (.NOT.FOUND) THEN
+      if (.NOT.FOUND) then
          WRITE (ISTDE, *) NAME(1:LENGTH), ' does not exist'
          STOP
-      ENDIF
+      endif
 
       INQUIRE(UNIT=NFILE, OPENED=FOUND)
-      IF (FOUND) THEN
+      if (FOUND) then
          WRITE (ISTDE, *) 'Unit ', NFILE, ' has been used elsewhere'
          STOP
-      ENDIF
+      endif
 
       OPEN(NFILE, FILE=NAME, STATUS='OLD', IOSTAT=IOS, POSITION='asis')
-      IF (IOS /= 0) THEN
+      if (IOS /= 0) then
          WRITE (ISTDE, *) 'Error when opening ', NAME
          STOP
-      ENDIF
+      endif
 !
 !   Check the first record of the file; if not as expected, try again
 !
       READ (NFILE, '(1A15)', IOSTAT=IOS) RECORD
 
-      IF (IOS/=0 .OR. RECORD(1:15)/='Core subshells:') THEN
+      if (IOS/=0 .OR. RECORD(1:15)/='Core subshells:') then
          WRITE (ISTDE, *) 'Not a Configuration Symmetry List File;'
          CLOSE(NFILE)
          STOP
-      ENDIF
+      endif
 !
 !   Load data from the  .csl  file
 !
       CALL LODCSH (NFILE, NCORE)
 
-      RETURN
-      END SUBROUTINE SETCSH
+      return
+      end subroutine SETCSH

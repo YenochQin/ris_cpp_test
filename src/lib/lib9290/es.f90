@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE ES(F, S2F, S3F)
+      subroutine ES(F, S2F, S3F)
 !                                                                      *
 !   Evaluate the sum of the series                                     *
 !                                                                      *
@@ -9,7 +9,7 @@
 !               k        n = 0                                         *
 !                                                                      *
 !   for k = 2, 3 to machine precision. This is a utility subroutine,   *
-!   called by SUBROUTINEs NUCPOT and NCHARG.                           *
+!   called by subroutines NUCPOT and NCHARG.                           *
 !                                                                      *
 !   Written by Farid A Parpia, at Oxford  Last revision: 28 Sep 1992   *
 !                                                                      *
@@ -25,13 +25,13 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64), INTENT(IN) :: F
-      real(real64), INTENT(OUT) :: S2F
-      real(real64), INTENT(OUT) :: S3F
+      real(real64), intent(in) :: F
+      real(real64), intent(out) :: S2F
+      real(real64), intent(out) :: S3F
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: N
+      integer :: N
       real(real64) :: FASE, EN, OBN, ENF, TERM2, TERM3, S2LAST
 !-----------------------------------------------
 !
@@ -62,5 +62,5 @@
          S3F = S3F + TERM3
       END DO
 !
-      RETURN
-      END SUBROUTINE ES
+      return
+      end subroutine ES

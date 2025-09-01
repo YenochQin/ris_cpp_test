@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE RMEAJJ(LL,IT,LQ,J,ITS,LQS,J1S,COEF)
+      subroutine RMEAJJ(LL,IT,LQ,J,ITS,LQS,J1S,COEF)
 !                                                                  *
 !   Written by  G. Gaigalas                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -12,26 +12,26 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO
-      USE ribojj_C
+      use CONS_C,          only: ZERO
+      use ribojj_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE rmeajj11_I
-      USE rmeajj9_I
+      use rmeajj11_I
+      use rmeajj9_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER,      INTENT(IN)  :: LL, IT, LQ, J, ITS, LQS, J1S
-      real(real64), INTENT(OUT) :: COEF
+      integer,      intent(in)  :: LL, IT, LQ, J, ITS, LQS, J1S
+      real(real64), intent(out) :: COEF
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: I1, I2, IE1,  JT, JTS
-      INTEGER, DIMENSION(1,2) :: IDS3, IDV3
-      INTEGER, DIMENSION(3,3) :: IDS5, IDV5
-      INTEGER, DIMENSION(6,8) :: IDS7, IDV7
+      integer :: I1, I2, IE1,  JT, JTS
+      integer, dimension(1,2) :: IDS3, IDV3
+      integer, dimension(3,3) :: IDS5, IDV5
+      integer, dimension(6,8) :: IDS7, IDV7
 !-----------------------------------------------
       DATA IDS3/12,20/
       DATA IDV3/1,1/
@@ -44,75 +44,75 @@
       91,1,13,2*5,2*1,2*7,1,11,1,3*11,3*1,143,77,91/
 !
       COEF=ZERO
-      IF(LL > 37) RETURN
-      IF(LL <= 9) THEN
-        IF(IT < 300) THEN
-          IF(IMPTJJ(IT) /= IMPNJJ(ITS)) RETURN
-          IF(IT < ITS) THEN
+      if(LL > 37) return
+      if(LL <= 9) then
+        if(IT < 300) then
+          if(IMPTJJ(IT) /= IMPNJJ(ITS)) return
+          if(IT < ITS) then
             JT=IT
             JTS=ITS
-          ELSE
+          else
             JT=ITS
             JTS=IT
-          ENDIF
-        ENDIF
-      ENDIF
-      IF(LL == 1) THEN
+          endif
+        endif
+      endif
+      if(LL == 1) then
         COEF=-2
-      ELSEIF(LL == 3)THEN
+      elseif(LL == 3)then
         I1=JT-2
         I2=JTS-3
         COEF=-DSQRT(DBLE(IDS3(I1,I2))/DBLE(IDV3(I1,I2)))
-      ELSEIF(LL == 5)THEN
+      elseif(LL == 5)then
         I1=JT-5
         I2=JTS-8
-        IF(IDS5(I1,I2) >= 0) THEN
+        if(IDS5(I1,I2) >= 0) then
           COEF=DSQRT(DBLE(IDS5(I1,I2))/DBLE(IDV5(I1,I2)))
-        ELSE
+        else
           COEF=-DSQRT(-DBLE(IDS5(I1,I2))/DBLE(IDV5(I1,I2)))
-        ENDIF
-      ELSEIF(LL == 7)THEN
+        endif
+      elseif(LL == 7)then
         I1=JT-11
         I2=JTS-17
-        IF(IDS7(I1,I2) >= 0) THEN
+        if(IDS7(I1,I2) >= 0) then
           COEF=DSQRT(DBLE(IDS7(I1,I2))/DBLE(IDV7(I1,I2)))
-        ELSE
+        else
           COEF=-DSQRT(-DBLE(IDS7(I1,I2))/DBLE(IDV7(I1,I2)))
-        ENDIF
-      ELSEIF(LL == 9) THEN
-        IF(IT > 300) THEN
-          IF(ITS < 300) THEN
+        endif
+      elseif(LL == 9) then
+        if(IT > 300) then
+          if(ITS < 300) then
             WRITE(6,'(A)') ' ERROR IN  RMEAJJ '
             STOP
-          ENDIF
-          IF(LL == J1S) THEN
+          endif
+          if(LL == J1S) then
             CALL RMEAJJ11(IT,ITS,LL,COEF)
-          ELSE
+          else
             CALL RMEAJJ11(ITS,IT,LL,COEF)
             IE1=LQ-LQS+J-J1S+LL-1
-            IF((IE1/4)*4 /= IE1)COEF=-COEF
-          ENDIF
-        ELSE
+            if((IE1/4)*4 /= IE1)COEF=-COEF
+          endif
+        else
           CALL RMEAJJ9(IT,LQ,J,ITS,LQS,J1S,COEF)
-          IF(IT > ITS) THEN
-            IF(MOD(LQ+J-LQS-J1S+LL-1,4) /= 0) COEF=-COEF
-          ENDIF
+          if(IT > ITS) then
+            if(MOD(LQ+J-LQS-J1S+LL-1,4) /= 0) COEF=-COEF
+          endif
           WRITE(0,'(A)') ' KLAIDA RMEAJJ SUB. '
           STOP
-        END IF
-      ELSE
-        IF(LL == J1S) THEN
+        END if
+      else
+        if(LL == J1S) then
           CALL RMEAJJ11(IT,ITS,LL,COEF)
-        ELSE
+        else
           CALL RMEAJJ11(ITS,IT,LL,COEF)
           IE1=LQ-LQS+J-J1S+LL-1
-          IF((IE1/4)*4 /= IE1)COEF=-COEF
-        END IF
-      ENDIF
-      IF(LL < 9) THEN
-        IF(IT > ITS) THEN
-          IF(MOD(LQ+J-LQS-J1S+LL-1,4) /= 0) COEF=-COEF
-        ENDIF
-      ENDIF
-      RETURN
-      END SUBROUTINE RMEAJJ
+          if((IE1/4)*4 /= IE1)COEF=-COEF
+        END if
+      endif
+      if(LL < 9) then
+        if(IT > ITS) then
+          if(MOD(LQ+J-LQS-J1S+LL-1,4) /= 0) COEF=-COEF
+        endif
+      endif
+      return
+      end subroutine RMEAJJ

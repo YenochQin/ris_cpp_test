@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE TALK(JA, JB, NU, IA, IB, IC, ID, ITYPE, COEF)
+      subroutine TALK(JA, JB, NU, IA, IB, IC, ID, ITYPE, COEF)
 !                                                                      *
 !   Print  coefficients  and  integral  parameters  if IBUG1 > 0 and   *
 !   write to disk.                                                     *
@@ -15,28 +15,28 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE parameter_def,   ONLY:  KEYORB
-      USE BUFFER_C
-      USE debug_C
-      USE orb_C
+      use parameter_def,   only:  KEYORB
+      use BUFFER_C
+      use debug_C
+      use orb_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE alcbuf_I
+      use alcbuf_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: JA, JB, NU, IA, IB, IC, ID, ITYPE
-      real(real64), INTENT(IN) :: COEF
+      integer, intent(in) :: JA, JB, NU, IA, IB, IC, ID, ITYPE
+      real(real64), intent(in) :: COEF
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
-      INTEGER, PARAMETER :: KEY = KEYORB
+      integer, parameter :: KEY = KEYORB
 !-----------------------------------------------
 !   Print coefficient if requested
 !
-      IF (IBUG1 /= 0) WRITE (99, 300) JA, JB, NP(IA), NH(IA), NP(IB), NH(IB), &
+      if (IBUG1 /= 0) WRITE (99, 300) JA, JB, NP(IA), NH(IA), NP(IB), NH(IB), &
          NP(IC), NH(IC), NP(ID), NH(ID), NU, ITYPE, COEF
 !
 !   Increment counter
@@ -45,7 +45,7 @@
 !
 !   Ensure that arrays are of adequate size; reallocate if necessary
 !
-      IF (NVCOEF > NBDIM) CALL ALCBUF (2)
+      if (NVCOEF > NBDIM) CALL ALCBUF (2)
 !
 !   Store integral indices and coefficient in COMMON/BUFFER/
 !
@@ -57,9 +57,9 @@
       LABEL(6,NVCOEF) = ITYPE
       COEFF(NVCOEF) = COEF
 !
-      RETURN
+      return
 !
   300 FORMAT(2(1X,1I2),4(1X,I2,A2),1X,1I2,1X,1I2,1X,1P,D19.12)
-      RETURN
+      return
 !
-      END SUBROUTINE TALK
+      end subroutine TALK

@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE GETSMD(NAME)
+      subroutine GETSMD(NAME)
 !                                                                      *
 !   Interactively determines the data governing the SMS problem.       *
 !                                                                      *
@@ -17,35 +17,35 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE parameter_def,    ONLY: NNNP
-      USE decide_C
-      USE def_C
-      USE default_C
-      USE foparm_C
-      USE grid_C
-      USE npar_C
-      USE npot_C
-      USE orb_C
-      USE wave_C
-      USE wfac_C
+      use parameter_def,    only: NNNP
+      use decide_C
+      use def_C
+      use default_C
+      use foparm_C
+      use grid_C
+      use npar_C
+      use npot_C
+      use orb_C
+      use wave_C
+      use wfac_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE getyn_I
-      USE setiso_I
-      USE setqic_I
-      USE radgrd_I
-      USE nucpot_I
-      USE setrwfa_I
+      use getyn_I
+      use setiso_I
+      use setqic_I
+      use radgrd_I
+      use nucpot_I
+      use setrwfa_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      CHARACTER, INTENT(IN) :: NAME*24
+      character, intent(in) :: NAME*24
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      LOGICAL :: YES
+      logical :: YES
 !-----------------------------------------------
 !
 !
@@ -56,56 +56,56 @@
 !   Determine the physical effects specifications
 !
 
-      IF (NDEF /= 0) THEN
+      if (NDEF /= 0) then
          WRITE (6, *) 'The physical speed of light in'
          WRITE (6, *) ' atomic units is', CVAC, ';'
          WRITE (6, *) ' revise this value?'
          YES = GETYN()
-         IF (YES) THEN
+         if (YES) then
             WRITE (6, *) 'Enter the revised value:'
             READ (5, *) C
-         ELSE
+         else
             C = CVAC
-         ENDIF
-      ELSE
+         endif
+      else
          C = CVAC
-      ENDIF
+      endif
 !
-      IF (NDEF /= 0) THEN
+      if (NDEF /= 0) then
 !
          WRITE (6, *) 'Treat contributions of some CSFs'
          WRITE (6, *) ' as first-order perturbations?'
          YES = GETYN()
-         IF (YES) THEN
+         if (YES) then
             LFORDR = .TRUE.
             WRITE (6, *) 'The contribution of CSFs'
             WRITE (6, *) ' 1 -- ICCUT will be treated'
             WRITE (6, *) ' variationally; the remainder'
             WRITE (6, *) ' perturbatively; enter ICCUT:'
             READ (5, *) ICCUT
-         ELSE
+         else
             LFORDR = .FALSE.
             ICCUT = 0
-         ENDIF
-      ELSE
+         endif
+      else
          LFORDR = .FALSE.
          ICCUT = 0
-      ENDIF
+      endif
 !
 !   Determine the parameters controlling the radial grid
 !
-      IF (NPARM == 0) THEN
+      if (NPARM == 0) then
          RNT = EXP((-65.0D00/16.0D00))/Z
          H = 0.5D00**4
          N = MIN(220,NNNP)
-      ELSE
+      else
 !CFF     .. should be Z-dependent
          RNT = 2.0D-06/Z
          H = 5.0D-02
          N = NNNP
-      ENDIF
+      endif
       HP = 0.0D00
-      IF (NDEF /= 0) THEN
+      if (NDEF /= 0) then
          WRITE (6, *) 'The default radial grid parameters'
          WRITE (6, *) ' for this case are:'
          WRITE (6, *) ' RNT = ', RNT, ';'
@@ -114,7 +114,7 @@
          WRITE (6, *) ' N = ', N, ';'
          WRITE (6, *) ' revise these values?'
          YES = GETYN()
-         IF (YES) THEN
+         if (YES) then
             WRITE (6, *) 'Enter RNT:'
             READ (5, *) RNT
             WRITE (6, *) 'Enter H:'
@@ -123,8 +123,8 @@
             READ (5, *) HP
             WRITE (6, *) 'Enter N:'
             READ (5, *) N
-         ENDIF
-      ENDIF
+         endif
+      endif
 !
 !   ACCY is an estimate of the accuracy of the numerical procedures
 !
@@ -147,5 +147,5 @@
 !      CALL SETRWFA(NAME)
       CALL SETRWFA (TRIM(NAME)//'.w')
 !
-      RETURN
-      END SUBROUTINE GETSMD
+      return
+      end subroutine GETSMD

@@ -1,6 +1,6 @@
 !***********************************************************************
 !
-      SUBROUTINE INIEST2(NMAX, NCF, NIV, BASIS, HMX, JCOL, IROW)
+      subroutine INIEST2(NMAX, NCF, NIV, BASIS, HMX, JCOL, IROW)
 !
 !  Serial version of iniestmpi.
 !  Structure of the input sparse matrix hmx:
@@ -19,22 +19,22 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE memory_man
+      use memory_man
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: NMAX
-      INTEGER, INTENT(IN) :: NCF
-      INTEGER  :: NIV
-      INTEGER, DIMENSION(0:*), INTENT(IN) :: JCOL
-      INTEGER, DIMENSION(*), INTENT(IN) :: IROW
-      real(real64), DIMENSION(*) :: BASIS
-      real(real64), DIMENSION(*), INTENT(IN) :: HMX
+      integer, intent(in) :: NMAX
+      integer, intent(in) :: NCF
+      integer  :: NIV
+      integer, dimension(0:*), intent(in) :: JCOL
+      integer, dimension(*), intent(in) :: IROW
+      real(real64), dimension(*) :: BASIS
+      real(real64), dimension(*), intent(in) :: HMX
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: NS, JOFFSPAR, J, JOFFNORM, IR, NFOUND, INFO, IERR
+      integer :: NS, JOFFSPAR, J, JOFFNORM, IR, NFOUND, INFO, IERR
 
       integer, dimension(:), pointer :: iwork,ifail
       real(real64), dimension(:), pointer :: ap, eigval,vec, work
@@ -62,10 +62,10 @@
       CALL ALLOC (vec, ns*niv, 'VEC', 'INIEST2')
       CALL ALLOC (work, 8*ns, 'WORK', 'INIEST2')
       CALL ALLOC (iwork, 8*ns, 'IWORK', 'INIEST2')
-      CALL ALLOC (ifail, ns, 'IFAIL', 'INIEST2')
+      CALL ALLOC (ifail, ns, 'ifAIL', 'INIEST2')
 
       CALL DSPEVX ('Vectors also', 'In a range', 'Upper triangular', NS, AP, &
-         -1., -1., 1, NIV, 0.D0, NFOUND, EIGVAL, VEC, NS, WORK, IWORK, IFAIL, &
+         -1., -1., 1, NIV, 0.D0, NFOUND, EIGVAL, VEC, NS, WORK, IWORK, ifAIL, &
          INFO)
       IERR = -ABS(INFO)
 
@@ -92,7 +92,7 @@
        CALL DALLOC (vec, 'VEC', 'INIEST2')
        CALL DALLOC (work, 'WORK', 'INIEST2')
        CALL DALLOC (iwork, 'IWORK', 'INIEST2')
-       CALL DALLOC (ifail, 'IFAIL', 'INIEST2')
+       CALL DALLOC (ifail, 'ifAIL', 'INIEST2')
 
-      RETURN
-      END SUBROUTINE INIEST2
+      return
+      end subroutine INIEST2

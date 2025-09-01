@@ -1,11 +1,11 @@
 !***********************************************************************
 !                                                                      *
-!JE   SUBROUTINE DENSNEW(DOIT,DINT1,DINT2,DINT3,DINT4,DINT5,DINT6,DINT7)
-       SUBROUTINE DENSNEW_SELTZ(DOIT,DINT1,DINT2,DINT3,                &
+!JE   subroutine DENSNEW(DOIT,DINT1,DINT2,DINT3,DINT4,DINT5,DINT6,DINT7)
+       subroutine DENSNEW_SELTZ(DOIT,DINT1,DINT2,DINT3,                &
                           DINT4,DINT5,DINT6,DINT7,                     &
                           DINT1VEC,DENS1VEC,NRNUC)
 !                                                                      *
-!   IF angular coefficients must be calculated                         *
+!   if angular coefficients must be calculated                         *
 !   This routine controls combines the radial and angular parts for the*
 !   calculation of the NMS parameter, the electron density at the      *
 !   origin and radial expectation values.
@@ -26,64 +26,64 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE parameter_def,    ONLY: KEYORB, NNNW, NNNP
-      USE blk_C
-      USE debug_C
-      USE decide_C
-      USE DEF_C
-      USE eigv_C
-      USE foparm_C
-      USE grid_C
-      USE JLABL_C
-      USE npar_C
-      USE orb_C
-      USE prnt_C
-      USE TEILST_C
-      USE BUFFER_C
-      USE ris_C
-      USE syma_C
-      USE prnt_C,           ONLY : NVEC
+      use parameter_def,    only: KEYORB, NNNW, NNNP
+      use blk_C
+      use debug_C
+      use decide_C
+      use DEF_C
+      use eigv_C
+      use foparm_C
+      use grid_C
+      use JLABL_C
+      use npar_C
+      use orb_C
+      use prnt_C
+      use TEILST_C
+      use BUFFER_C
+      use ris_C
+      use syma_C
+      use prnt_C,           only : NVEC
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE alcbuf_I
-      USE convrt_I
-      USE getyn_I
-      USE itjpo_I
-      USE onescalar_I
+      use alcbuf_I
+      use convrt_I
+      use getyn_I
+      use itjpo_I
+      use onescalar_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: DOIT, NRNUC
-      real(real64), DIMENSION(NNNW,NNNW), INTENT(IN) :: DINT1, DINT2, &
+      integer, intent(in) :: DOIT, NRNUC
+      real(real64), dimension(NNNW,NNNW), intent(in) :: DINT1, DINT2, &
                                                         DINT3, DINT4, &
                                                         DINT5, DINT6, &
                                                         DINT7
-      real(real64), DIMENSION(NVEC,NRNUC), INTENT(OUT)     :: DENS1VEC !  JE ADD
-      real(real64), DIMENSION(NNNW,NNNW,NRNUC), INTENT(IN) :: DINT1VEC !  JE ADD
+      real(real64), dimension(NVEC,NRNUC), intent(out)     :: DENS1VEC !  JE ADD
+      real(real64), dimension(NNNW,NNNW,NRNUC), intent(in) :: DINT1VEC !  JE ADD
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
-      INTEGER, PARAMETER :: KEY = KEYORB
+      integer, parameter :: KEY = KEYORB
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      real(real64), DIMENSION(NNNW) :: TSHELL, TSHELL_S
-      real(real64), DIMENSION(NRNUC) :: CONTRI1VEC, ELEMNT1VEC
-      real(real64), DIMENSION(:), pointer :: EMT1, EMT2, EMT3, EMT4,   &
+      real(real64), dimension(NNNW) :: TSHELL, TSHELL_S
+      real(real64), dimension(NRNUC) :: CONTRI1VEC, ELEMNT1VEC
+      real(real64), dimension(:), pointer :: EMT1, EMT2, EMT3, EMT4,   &
                                              EMT5, EMT6
       real(real64) :: ELEMNT1, ELEMNT2, ELEMNT3, ELEMNT4, ELEMNT5,     &
                       ELEMNT6, ELEMNT7, CONTRI1, CONTRI2, CONTRI3,     &
                       CONTRI4, CONTRI5, CONTRI6, CONTRI7
-      LOGICAL :: VSH, NUCDE, SMSSH, YES
-      CHARACTER :: CNUM*11, CK*2
-      INTEGER, DIMENSION(NNNW) :: IA_S
-      INTEGER :: KA, IOPAR, INCOR, IC, LCNUM, ITJPOC, IR, IA, IB, I, II, J
+      logical :: VSH, NUCDE, SMSSH, YES
+      character :: CNUM*11, CK*2
+      integer, dimension(NNNW) :: IA_S
+      integer :: KA, IOPAR, INCOR, IC, LCNUM, ITJPOC, IR, IA, IB, I, II, J
       Integer :: L, LOC, NCONTR, LAB
 !-----------------------------------------------
 !
-! DOIT: IF DOIT=1 angular coefficients will be stored after creation
+! DOIT: if DOIT=1 angular coefficients will be stored after creation
 ! DINT1 contain the density
 ! DINT2 contain the uncorrected NMS parameter: K^1_NMS
 ! DINT3 contain the expect. value <r>
@@ -123,7 +123,7 @@
 !
 !   Matrix elements are diagonal in J
 !
-          IF (ITJPO(IR) .EQ. ITJPOC) THEN
+          if (ITJPO(IR) .EQ. ITJPOC) then
 !
 !   Initialise the accumulator
 !
@@ -140,11 +140,11 @@
 !
            CALL ONESCALAR(IC,IR,IA,IB,TSHELL)
 !GG            CALL TNSRJJ (KA,IOPAR,IC,IR,IA,IB,TSHELL)
-            IF (IA .NE. 0) THEN
-              IF (IA .EQ. IB) THEN
+            if (IA .NE. 0) then
+              if (IA .EQ. IB) then
                     NCONTR = 0
                 DO 8 IA = 1,NW
-                  IF (ABS (TSHELL(IA)) .GT. CUTOFF) THEN
+                  if (ABS (TSHELL(IA)) .GT. CUTOFF) then
                     NCONTR = NCONTR + 1
                     TSHELL_S(NCONTR) = TSHELL(IA)
                     IA_S(NCONTR) = IA
@@ -159,19 +159,19 @@
                     ELEMNT5 = ELEMNT5 + DINT5(IA,IA)*TSHELL(IA)
                     ELEMNT6 = ELEMNT6 + DINT6(IA,IA)*TSHELL(IA)
                     ELEMNT7 = ELEMNT7 + DINT7(IA,IA)*TSHELL(IA)
-                  ENDIF
+                  endif
     8           CONTINUE
-                IF (DOIT.EQ.1) WRITE(50) IC,IR,NCONTR
+                if (DOIT.EQ.1) WRITE(50) IC,IR,NCONTR
                 DO I = 1,NCONTR
                   LAB = IA_S(I)*(KEY + 1)
-                  IF (DOIT.EQ.1) WRITE(50) TSHELL_S(I),LAB
+                  if (DOIT.EQ.1) WRITE(50) TSHELL_S(I),LAB
                 END DO
-              ELSE
-                IF (ABS (TSHELL(1)) .GT. CUTOFF) THEN
-                  IF (NAK(IA).EQ.NAK(IB)) THEN
-                    IF (DOIT.EQ.1) WRITE(50) IC,IR,1
+              else
+                if (ABS (TSHELL(1)) .GT. CUTOFF) then
+                  if (NAK(IA).EQ.NAK(IB)) then
+                    if (DOIT.EQ.1) WRITE(50) IC,IR,1
                     LAB = IA*KEY + IB
-                    IF (DOIT.EQ.1) WRITE(50) TSHELL(1),LAB
+                    if (DOIT.EQ.1) WRITE(50) TSHELL(1),LAB
                     ELEMNT1 = ELEMNT1 + DINT1(IA,IB)*TSHELL(1)
                     DO 23 L = 2,NRNUC                                   ! JE ADD
                       ELEMNT1VEC(L) = ELEMNT1VEC(L)+DINT1VEC(IA,IB,L)*& ! JE ADD
@@ -183,10 +183,10 @@
                     ELEMNT5 = ELEMNT5 + DINT5(IA,IB)*TSHELL(1)
                     ELEMNT6 = ELEMNT6 + DINT6(IA,IB)*TSHELL(1)
                     ELEMNT7 = ELEMNT7 + DINT7(IA,IB)*TSHELL(1)
-                  ENDIF
-                ENDIF
-              ENDIF
-            ENDIF
+                  endif
+                endif
+              endif
+            endif
             DO 9 J = 1,NVEC
               LOC = (J-1)*NCF
               CONTRI1 = EVEC(IC+LOC)*EVEC(IR+LOC)*ELEMNT1
@@ -197,7 +197,7 @@
               CONTRI5 = EVEC(IC+LOC)*EVEC(IR+LOC)*ELEMNT5
               CONTRI6 = EVEC(IC+LOC)*EVEC(IR+LOC)*ELEMNT6
               CONTRI7 = EVEC(IC+LOC)*EVEC(IR+LOC)*ELEMNT7
-              IF (IR.NE.IC) THEN
+              if (IR.NE.IC) then
                 CONTRI1 = 2.0D00 * CONTRI1
                 CONTRI1VEC(:) = 2.0D00 * CONTRI1VEC(:)                  ! JE ADD
                 CONTRI2 = 2.0D00 * CONTRI2
@@ -206,7 +206,7 @@
                 CONTRI5 = 2.0D00 * CONTRI5
                 CONTRI6 = 2.0D00 * CONTRI6
                 CONTRI7 = 2.0D00 * CONTRI7
-              ENDIF
+              endif
               DENS1(J) = DENS1(J) + CONTRI1
               DO 22 L = 2,NRNUC                                         ! JE ADD
                 DENS1VEC(J,L) = DENS1VEC(J,L) + CONTRI1VEC(L)           ! JE ADD
@@ -218,15 +218,15 @@
               DENS6(J) = DENS6(J) + CONTRI6
               DENS7(J) = DENS7(J) + CONTRI7
     9       CONTINUE
-          ENDIF
+          endif
    12   CONTINUE
    13 CONTINUE
-      IF (DOIT.EQ.1) WRITE(50) -1
+      if (DOIT.EQ.1) WRITE(50) -1
 !
 ! Empty the buffer and close file
-      IF (DOIT.EQ.1) CLOSE(50)
+      if (DOIT.EQ.1) CLOSE(50)
 !
 !   Deallocate storage for the arrays in BUFFER
       CALL ALCBUF (3)
-      RETURN
-      END SUBROUTINE DENSNEW_SELTZ
+      return
+      end subroutine DENSNEW_SELTZ

@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE COULOM(J1,J2,J3,J4,L1,L2,L3,L4,K,AA)
+      subroutine COULOM(J1,J2,J3,J4,L1,L2,L3,L4,K,AA)
 !                                                                  *
 !   --------------  SECTION METWO    SUBPROGRAM 01  ------------   *
 !                                                                  *
@@ -11,7 +11,7 @@
 !     (n l j T  n l j T ::r  / r  ( C   C )::n l j T  n l j T )    *
 !       1 1 1 1  2 2 2 2   <    >             3 3 3 3  4 4 4 4     *
 !                                                                  *
-!     SUBROUTINE CALLED:  CRE                                      *
+!     subroutine CALLED:  CRE                                      *
 !                                                                  *
 !   Written by G. Gaigalas,                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -23,32 +23,32 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY:  EPS, ZERO
+      use CONS_C,          only:  EPS, ZERO
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE ittk_I
-      USE cre_I
+      use ittk_I
+      use cre_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN)        :: J1,J2,J3,J4,L1,L2,L3,L4,K
-      real(real64), INTENT(OUT)  :: AA
+      integer, intent(in)        :: J1,J2,J3,J4,L1,L2,L3,L4,K
+      real(real64), intent(out)  :: AA
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: I, IFAZ
+      integer :: I, ifAZ
 !-----------------------------------------------
       AA=ZERO
-      IF(ITTK(L1,L3,K) == 0)RETURN
-      IF(ITTK(L2,L4,K) == 0)RETURN
+      if(ITTK(L1,L3,K) == 0)return
+      if(ITTK(L2,L4,K) == 0)return
       I=(2*K+1)/2
       AA=CRE (J1,I,J3)
-      IF(DABS(AA) < EPS)RETURN
+      if(DABS(AA) < EPS)return
       AA=AA*CRE (J2,I,J4)
-      IF(DABS(AA) < EPS)RETURN
-      IFAZ=L3-2*K-L1+L4-L2
-      IF((IFAZ/4)*4 /= IFAZ)AA=-AA
-      RETURN
-      END SUBROUTINE COULOM
+      if(DABS(AA) < EPS)return
+      ifAZ=L3-2*K-L1+L4-L2
+      if((ifAZ/4)*4 /= ifAZ)AA=-AA
+      return
+      end subroutine COULOM

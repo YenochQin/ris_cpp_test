@@ -1,6 +1,6 @@
 !**************************************************************************
 !
-      SUBROUTINE DMERGE(N, DB, DC, IDY, DA, DCONST, DL)
+      subroutine DMERGE(N, DB, DC, IDY, DA, DCONST, DL)
 !-----------------------------------------------
 !
 !  this merge version has the advantage of loading da(i)
@@ -18,17 +18,17 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER,      INTENT(IN)    :: N
-      real(real64), INTENT(IN)    :: DCONST
-      real(real64), INTENT(OUT)   :: DL
-      INTEGER, DIMENSION(N), INTENT(IN) :: IDY
-      real(real64), DIMENSION(*), INTENT(IN) :: DB
-      real(real64), DIMENSION(*), INTENT(INOUT) :: DC
-      real(real64), DIMENSION(N), INTENT(IN) :: DA
+      integer,      intent(in)    :: N
+      real(real64), intent(in)    :: DCONST
+      real(real64), intent(out)   :: DL
+      integer, dimension(N), intent(in) :: IDY
+      real(real64), dimension(*), intent(in) :: DB
+      real(real64), dimension(*), INTENT(INOUT) :: DC
+      real(real64), dimension(N), intent(in) :: DA
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: I
+      integer :: I
       real(real64) :: DSUM
 !-----------------------------------------------
 
@@ -39,5 +39,5 @@
       END DO
       DL = DSUM
 
-      RETURN
-      END SUBROUTINE DMERGE
+      return
+      end subroutine DMERGE

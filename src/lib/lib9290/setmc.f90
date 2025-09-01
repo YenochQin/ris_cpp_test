@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE SETMC
+      subroutine SETMC
 !                                                                      *
 !   This subprogram sets machine-dependent parameters.                 *
 !                                                                      *
@@ -16,8 +16,8 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE DEBUG_C
-      USE DEF_C
+      use DEBUG_C
+      use DEF_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
@@ -52,14 +52,14 @@
 !
 !   Debug printout
 !
-      IF (LDBPG(1)) WRITE (99, 300) TENMAX, EXPMAX, EXPMIN, PRECIS
+      if (LDBPG(1)) WRITE (99, 300) TENMAX, EXPMAX, EXPMIN, PRECIS
 !
-      RETURN
+      return
 !
-  300 FORMAT(/,'From SUBROUTINE SETMC:'/,' TENMAX (maximum exponent of 10): ',&
+  300 FORMAT(/,'From subroutine SETMC:'/,' TENMAX (maximum exponent of 10): ',&
          F5.0,/,' EXPMAX (maximum exponent of e): ',1P,1D19.12,/,&
          ' EXPMIN (minimum exponent of e): ',1D19.12,/,&
          ' PRECIS (machine precision): ',1D19.12)
-      RETURN
+      return
 !
-      END SUBROUTINE SETMC
+      end subroutine SETMC

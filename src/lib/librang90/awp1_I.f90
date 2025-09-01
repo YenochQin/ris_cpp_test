@@ -1,13 +1,13 @@
-      MODULE AWP1_I
-      INTERFACE
+      module AWP1_I
+      interface
 !
-      SUBROUTINE AWP1( IK, BK, ID, BD, K1, BK2, QM1, QM2, QM3, AW)
+      subroutine AWP1( IK, BK, ID, BD, K1, BK2, QM1, QM2, QM3, AW)
       use iso_fortran_env, only: real64, int32, int64, real128
-      INTEGER,      INTENT(IN)               :: K1
-      INTEGER,      INTENT(IN), DIMENSION(7) :: IK, ID
-      real(real64), INTENT(IN)               :: BK2, QM1, QM2, QM3
-      real(real64), INTENT(IN), DIMENSION(3) :: BK, BD
-      real(real64), INTENT(OUT)              :: AW
-      END SUBROUTINE
-      END INTERFACE
-      END MODULE
+      integer,      intent(in)               :: K1
+      integer,      intent(in), dimension(7) :: IK, ID
+      real(real64), intent(in)               :: BK2, QM1, QM2, QM3
+      real(real64), intent(in), dimension(3) :: BK, BD
+      real(real64), intent(out)              :: AW
+      end subroutine
+      end interface
+      end module

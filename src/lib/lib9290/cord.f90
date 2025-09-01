@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE CORD(JA, JB, JA1, IPCA, JB1)
+      subroutine CORD(JA, JB, JA1, IPCA, JB1)
 !-----------------------------------------------
 !                                                                      *
 !   Computes the MCP coefficients for contributions involving closed   *
@@ -20,13 +20,13 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE ORB_C
-      USE M_C
+      use ORB_C
+      use M_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE speak_I
-      USE clrx_I
+      use speak_I
+      use clrx_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   G l o b a l   P a r a m e t e r s
@@ -34,63 +34,63 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER  :: JA
-      INTEGER  :: JB
-      INTEGER, INTENT(IN) :: JA1
-      INTEGER, INTENT(IN) :: IPCA
-      INTEGER, INTENT(IN) :: JB1
+      integer  :: JA
+      integer  :: JB
+      integer, intent(in) :: JA1
+      integer, intent(in) :: IPCA
+      integer, intent(in) :: JB1
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
-      real(real64), PARAMETER :: EPS = 1.0D-10
+      real(real64), parameter :: EPS = 1.0D-10
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: IA1,IB1,NS,KAP1,J1,NQS1,NUMAX,NU,KAP2,J2,NQS2,NUMIN
+      integer :: IA1,IB1,NS,KAP1,J1,NQS1,NUMAX,NU,KAP2,J2,NQS2,NUMIN
       real(real64) :: X,CONST,GAM
 !-----------------------------------------------
 !
 !
 !   Set quantum numbers required.
 !
-      IF (IPCA == 2) THEN
+      if (IPCA == 2) then
          IA1 = KLIST(JA1)
-      ELSE
+      else
          IA1 = JLIST(JA1)
-      ENDIF
+      endif
       IB1 = KLIST(JB1)
 !
 !   Force IA1 to be greater than IB1
 !
-      IF (IA1 > IB1) THEN
+      if (IA1 > IB1) then
          NS = IA1
          IA1 = IB1
          IB1 = NS
-      ENDIF
+      endif
 !
       KAP1 = NAK(IA1)
       J1 = IABS(KAP1)
       NQS1 = NQ1(IA1)
 !
-      IF (IA1 == IB1) THEN
+      if (IA1 == IB1) then
 !
 !   Case when IA1 .EQ. IB1
 !
          X = DBLE(NQS1*(NQS1 - 1)/2)
          CALL SPEAK (JA, JB, IA1, IB1, IA1, IB1, 0, X)
          NUMAX = J1 + J1 - 2
-         IF (NUMAX <= 0) RETURN
+         if (NUMAX <= 0) return
          CONST = DBLE(NQS1*NQS1/2)
          DO NU = 2, NUMAX, 2
             GAM = CLRX(KAP1,NU,KAP1)
             X = -CONST*GAM*GAM
-            IF (ABS(X) < EPS) CYCLE
+            if (ABS(X) < EPS) CYCLE
             CALL SPEAK (JA, JB, IA1, IB1, IA1, IB1, NU, X)
          END DO
 !
 !   Case when IA1 .NE. IB1
 !
-      ELSE
+      else
 !
          KAP2 = NAK(IB1)
          J2 = ABS(KAP2)
@@ -99,15 +99,15 @@
          CALL SPEAK (JA, JB, IA1, IB1, IA1, IB1, 0, CONST)
          NUMIN = ABS(J1 - J2)
          NUMAX = J1 + J2 - 1
-         IF (KAP1*KAP2 < 0) NUMIN = NUMIN + 1
+         if (KAP1*KAP2 < 0) NUMIN = NUMIN + 1
          DO NU = NUMIN, NUMAX, 2
             GAM = CLRX(KAP1,NU,KAP2)
             X = -CONST*GAM*GAM
-            IF (ABS(X) < EPS) CYCLE
+            if (ABS(X) < EPS) CYCLE
             CALL SPEAK (JA, JB, IA1, IB1, IB1, IA1, NU, X)
          END DO
 !
-      ENDIF
+      endif
 !
-      RETURN
-      END SUBROUTINE CORD
+      return
+      end subroutine CORD

@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      REAL(KIND(0.0D0)) FUNCTION ARCTAN (ARG1, ARG2)
+      real(real64) FUNCTION ARCTAN (ARG1, ARG2)
 !-----------------------------------------------
 !                                                                      *
 !                   -1                                                 *
@@ -17,46 +17,46 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE DEF_C
+      use DEF_C
 !
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64), INTENT(IN) :: ARG1
-      real(real64), INTENT(IN) :: ARG2
+      real(real64), intent(in) :: ARG1
+      real(real64), intent(in) :: ARG2
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      LOGICAL, SAVE :: FIRST = .TRUE., INTRIN = .TRUE.
+      logical, SAVE :: FIRST = .TRUE., INTRIN = .TRUE.
 !-----------------------------------------------
 !
 !
 !   Determine whether the FORTRAN intrinsic function ATAN2 always
 !   returns a positive value
 !
-      IF (FIRST) THEN
+      if (FIRST) then
          ARCTAN = ATAN2(-1.0D00,-1.0D00)
-         IF (ARCTAN > 0.0D00) THEN
+         if (ARCTAN > 0.0D00) then
             INTRIN = .TRUE.
-         ELSE
+         else
             INTRIN = .FALSE.
-         ENDIF
+         endif
          FIRST = .FALSE.
-      ENDIF
+      endif
 !
 !   Use the intrinsic function if it passes the above test; otherwise
 !   add 2*PI to the negative values returned by the intrinsic function
 !
-      IF (INTRIN) THEN
+      if (INTRIN) then
          ARCTAN = ATAN2(ARG1,ARG2)
-      ELSE
-         IF (ARG1 >= 0.0D00) THEN
+      else
+         if (ARG1 >= 0.0D00) then
             ARCTAN = ATAN2(ARG1,ARG2)
-         ELSE
+         else
             ARCTAN = PI + PI + ATAN2(ARG1,ARG2)
-         ENDIF
-      ENDIF
+         endif
+      endif
 !
-      RETURN
+      return
       END FUNCTION ARCTAN

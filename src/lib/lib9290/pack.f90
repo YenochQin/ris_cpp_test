@@ -1,15 +1,15 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE PACK(IUNPKD, ISUBSH, IPACKD)
+      subroutine PACK(IUNPKD, ISUBSH, IPACKD)
 !                                                                      *
 !   Subshell occupation numbers and all angular momenta 2J+1 are not   *
 !   likely to exceed 127 in any application of the GRASP92 suite. It   *
-!   is, therefore, inefficient to allocate an entire INTEGER storage   *
+!   is, therefore, inefficient to allocate an entire integer storage   *
 !   cell to  any of these quantities --- a single  byte is adequate.   *
 !   Up to eight integers of magnitude less than or equal to  127 may   *
 !   be stored in one  64-bit cell, four in a 32-bit cell.  This idea   *
 !   is implemented in  the present subprogram.  IPACKD is assumed to   *
-!   be an INTEGER vector of at least NINT (NW/8) elements for 64-bit   *
+!   be an integer vector of at least NINT (NW/8) elements for 64-bit   *
 !   architectures, and NINT (NW/4) elements for 32-bit architectures.  *
 !   ISUBSH  is the subshell sequence number, IUNPKD its value.  LOC1   *
 !   is the element number;  LOC2 is one less than the byte number in   *
@@ -26,29 +26,29 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, int8, real128
-      USE IOUNIT_C
+      use IOUNIT_C
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: IUNPKD
-      INTEGER, INTENT(IN) :: ISUBSH
-      integer(int8), DIMENSION(*), INTENT(INOUT) :: IPACKD
+      integer, intent(in) :: IUNPKD
+      integer, intent(in) :: ISUBSH
+      integer(int8), dimension(*), INTENT(INOUT) :: IPACKD
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
 !
-      IF (ABS(IUNPKD) > 127) THEN
+      if (ABS(IUNPKD) > 127) then
          WRITE (ISTDE, *) 'PACK: Argument IUNPKD out of range.'
          STOP
-      ENDIF
+      endif
 !
-      IF (ISUBSH <= 0) THEN
+      if (ISUBSH <= 0) then
          WRITE (ISTDE, *) 'PACK: ISUBSH=', ISUBSH, ' less than 1'
          STOP
-      ENDIF
+      endif
 !
       IPACKD(ISUBSH) = IUNPKD
 !
-      RETURN
-      END SUBROUTINE PACK
+      return
+      end subroutine PACK

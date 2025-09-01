@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE WJ1(IK,BK,ID,BD,K2,QM1,QM2,WJ)
+      subroutine WJ1(IK,BK,ID,BD,K2,QM1,QM2,WJ)
 !                                                                  *
 !   ---------------  SECTION SQ    SUBPROGRAM 24  --------------   *
 !                                                                  *
@@ -12,7 +12,7 @@
 !                                           -- S5(1.47),(1.48),    *
 !                                                (1.49),(1.50).    *
 !                                                                  *
-!     SUBROUTINE CALLED: CLE0SM,C1E1SM,RWJJ                        *
+!     subroutine CALLED: CLE0SM,C1E1SM,RWJJ                        *
 !                                                                  *
 !   Written by  G. Gaigalas                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -24,79 +24,79 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO, TENTH, ONE, TWO, EPS
+      use CONS_C,          only: ZERO, TENTH, ONE, TWO, EPS
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE mes_I
-      USE w1jjg_I
-      USE cle0sm_I
-      USE c1e1sm_I
-      USE rwjj_I
+      use mes_I
+      use w1jjg_I
+      use cle0sm_I
+      use c1e1sm_I
+      use rwjj_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER,      INTENT(IN)               :: K2
-      INTEGER,      INTENT(IN), DIMENSION(7) :: IK, ID
-      real(real64), INTENT(IN)               :: QM1, QM2
-      real(real64), INTENT(IN), DIMENSION(3) :: BK, BD
-      real(real64), INTENT(OUT)              :: WJ
+      integer,      intent(in)               :: K2
+      integer,      intent(in), dimension(7) :: IK, ID
+      real(real64), intent(in)               :: QM1, QM2
+      real(real64), intent(in), dimension(3) :: BK, BD
+      real(real64), intent(out)              :: WJ
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER      :: K1, IQ, IQM2
+      integer      :: K1, IQ, IQM2
       real(real64) :: A, QQ, W, WK1
 !-----------------------------------------------
       WJ=ZERO
-      IF(ID(3) == 9) THEN
-        IF(MAX0(IK(4),ID(4)) < 3) THEN
-          IF(IK(1) < 300) CALL MES(56)
-          IF(ID(1) < 300) CALL MES(56)
+      if(ID(3) == 9) then
+        if(MAX0(IK(4),ID(4)) < 3) then
+          if(IK(1) < 300) CALL MES(56)
+          if(ID(1) < 300) CALL MES(56)
           IQM2=QM2+QM2+QM2*EPS
-          IF((ID(4)+IQM2) > 2) CALL MES(2)
+          if((ID(4)+IQM2) > 2) CALL MES(2)
           CALL W1JJG(K2,QM1,QM2,IK,BK,ID,BD,WJ)
-          RETURN
-        ELSE
+          return
+        else
           PRINT*, "ERROR in  WJ1"
           STOP
-        ENDIF
-      ELSEIF(ID(3) > 9) THEN
+        endif
+      elseif(ID(3) > 9) then
         IQM2=QM2+QM2+QM2*EPS
-        IF((ID(4)+IQM2) > 2) CALL MES(2)
+        if((ID(4)+IQM2) > 2) CALL MES(2)
         CALL W1JJG(K2,QM1,QM2,IK,BK,ID,BD,WJ)
-        RETURN
-      ENDIF
+        return
+      endif
       QQ=QM1+QM2
-      IF(DABS(QQ) >= EPS) THEN
-        IF(((K2/2)*2) /= K2)RETURN
+      if(DABS(QQ) >= EPS) then
+        if(((K2/2)*2) /= K2)return
         IQ=QQ+QQ*TENTH
-        IF((IK(4)-ID(4)-2*IQ) /= 0)RETURN
+        if((IK(4)-ID(4)-2*IQ) /= 0)return
         CALL C1E1SM(BD(1),BD(3),QQ,BK(1),BK(3),A)
-        IF(DABS(A) < EPS)RETURN
+        if(DABS(A) < EPS)return
         CALL RWJJ(IK(3),IK(1),ID(1),1,K2,W)
         WJ=A*W/DSQRT(TWO*BK(1)+ONE)
-      ELSE IF(IK(4) /= ID(4))THEN
-        RETURN
-      ELSE IF(K2 == 0) THEN
-        IF(ID(1) /= IK(1))RETURN
-        IF(QM1 < EPS) THEN
+      else if(IK(4) /= ID(4))then
+        return
+      else if(K2 == 0) then
+        if(ID(1) /= IK(1))return
+        if(QM1 < EPS) then
           A=DBLE(ID(3)+1-ID(4))
-        ELSE
+        else
           A=-DBLE(ID(4))
-        END IF
+        END if
         WJ=A*DSQRT(DBLE(IK(6)+1)/DBLE(IK(3)+1))
-      ELSE
+      else
         K1=1
-        IF(((K2/2)*2) /= K2)K1=0
+        if(((K2/2)*2) /= K2)K1=0
         WK1=DBLE(K1)
         CALL CLE0SM(BD(1),BD(3),WK1,BK(1),BK(3),A)
-        IF(DABS(A) < EPS)RETURN
+        if(DABS(A) < EPS)return
         CALL RWJJ(IK(3),IK(1),ID(1),K1,K2,W)
         A=A*W
         WJ=A/DSQRT(TWO*TWO*BK(1)+TWO)
-        IF(QM1 >= EPS)RETURN
-        IF(((K2/2)*2) /= K2)WJ=-WJ
-      END IF
-      RETURN
-      END SUBROUTINE WJ1
+        if(QM1 >= EPS)return
+        if(((K2/2)*2) /= K2)WJ=-WJ
+      END if
+      return
+      end subroutine WJ1

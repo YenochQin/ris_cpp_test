@@ -1,6 +1,6 @@
 !***********************************************************************
 !
-      SUBROUTINE CSLH(NAME, NCORE, NBLKIN, IDBLK)
+      subroutine CSLH(NAME, NCORE, NBLKIN, IDBLK)
 !  A container which calls setcsll to open, read <name> file to get
 !     nblock, ncfblk(), idblk(), ncftot.
 !  It then calls lib92/lodcsh to get
@@ -19,29 +19,29 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE memory_man
-      USE HBLOCK_C
-      USE DEF_C
-      USE ORB_C, NCFTOT=>NCF
+      use memory_man
+      use HBLOCK_C
+      use DEF_C
+      use ORB_C, NCFTOT=>NCF
 !
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE setcsll_I
-      USE lodcsh_I
+      use setcsll_I
+      use lodcsh_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER  :: NCORE
-      INTEGER  :: NBLKIN
-      CHARACTER  :: NAME*(*)
-      CHARACTER  :: IDBLK(*)*8
+      integer  :: NCORE
+      integer  :: NBLKIN
+      character  :: NAME*(*)
+      character  :: IDBLK(*)*8
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: IQADUM
-      INTEGER :: IERR
+      integer :: IQADUM
+      integer :: IERR
 !-----------------------------------------------
 !
 
@@ -56,5 +56,5 @@
       !..Load header of <name> file
       CALL LODCSH (21, NCORE)
 
-      RETURN
-      END SUBROUTINE CSLH
+      return
+      end subroutine CSLH

@@ -1,4 +1,4 @@
-      SUBROUTINE INIEST(N, NB, NIV, HMX, JCOL, IROW, BASIS, IBLOCK, JBLOCK)
+      subroutine INIEST(N, NB, NIV, HMX, JCOL, IROW, BASIS, IBLOCK, JBLOCK)
 !-----------------------------------------------------------------------
 !     Routine for providing initial estimates from the diagonal
 !     of the matrix. This way was used by Dvdson in atomic structure
@@ -13,32 +13,32 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE grasp_utilities_interfaces
+      use grasp_utilities_interfaces
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      !USE dinit_I
-      !USE dspevx_I
-      !USE vec_I
-      !USE dcopy_I
+      !use dinit_I
+      !use dspevx_I
+      !use vec_I
+      !use dcopy_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: N
-      INTEGER, INTENT(IN) :: NB
-      INTEGER  :: NIV
-      INTEGER, INTENT(IN) :: JBLOCK
-      INTEGER, INTENT(IN) :: JCOL(0:*)
-      INTEGER, INTENT(IN) :: IROW(*)
-      INTEGER, INTENT(IN) :: IBLOCK(*)
-      real(real64), INTENT(IN) :: HMX(*)
+      integer, intent(in) :: N
+      integer, intent(in) :: NB
+      integer  :: NIV
+      integer, intent(in) :: JBLOCK
+      integer, intent(in) :: JCOL(0:*)
+      integer, intent(in) :: IROW(*)
+      integer, intent(in) :: IBLOCK(*)
+      real(real64), intent(in) :: HMX(*)
       real(real64)  :: BASIS(*)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
 
-      INTEGER :: NS, ICOUNT, &
+      integer :: NS, ICOUNT, &
          J, ISTART, ISH, II, NFOUND, INFO, IERR, IC
       !real(real64) :: EIGVAL, WORK
 
@@ -49,7 +49,7 @@
 
 !-----------------------------------------------
 !     !pointer (iqap,ap(1)),(iqeig,eigval(1)),(iqvec,vec(1))
-!     !pointer (iqwork,work(1)),(iqiwork,iwork(1)),(iqif,IFAIL(1))
+!     !pointer (iqwork,work(1)),(iqiwork,iwork(1)),(iqif,ifAIL(1))
 !     !pointer (iqjsh,jsh(1))
 
 !******************************************************************
@@ -85,9 +85,9 @@
       if (ierr.ne.0) call mem_fail(6,5*NS,'iniest::iwork',ierr);
       IQIWORK=>iwork
 
-      !CALL ALLOC (IQIF, NS, 4)
+      !CALL ALLOC (IQif, NS, 4)
       allocate (ifail(ns),stat=ierr)
-      if (ierr.ne.0) call mem_fail(6,ns,'iniest::IFAIL',ierr);
+      if (ierr.ne.0) call mem_fail(6,ns,'iniest::ifAIL',ierr);
       iqif=>ifail
 
       !CALL ALLOC (IQJSH, NS, 4)
@@ -99,8 +99,8 @@
 
 !**** separate upper left block of size NS*NS
       DO J = 1, N
-         IF (ICOUNT >= NS) EXIT
-         IF (IBLOCK(J) /= JBLOCK) CYCLE
+         if (ICOUNT >= NS) EXIT
+         if (IBLOCK(J) /= JBLOCK) CYCLE
          ICOUNT = ICOUNT + 1
          JSH(ICOUNT) = J
          ISTART = JCOL(J-1) + 1
@@ -110,18 +110,18 @@
 !           print*, 'ic = ',icount, ' i=', irow(istart)-ish
          ISTART = ISTART + 1
 ! check the block structure for zero elements
-         IF (ISTART > JCOL(J)) GO TO 102
+         if (ISTART > JCOL(J)) GO TO 102
          ISH = ISH + COUNT(IBLOCK(IROW(ISTART-1):IROW(ISTART))/=JBLOCK)
-         IF (ISTART > JCOL(J)) GO TO 102
-         IF (IROW(ISTART) - ISH <= NS) GO TO 100
+         if (ISTART > JCOL(J)) GO TO 102
+         if (IROW(ISTART) - ISH <= NS) GO TO 100
 !           goto 100
   102    CONTINUE
       END DO
       CALL DSPEVX ('Vectors also', 'In a range', 'Lower triangular', NS, AP, &
-         -1., -1., 1, NIV, 0.D0, NFOUND, EIGVAL, VEC, NS, WORK, IWORK, IFAIL, &
+         -1., -1., 1, NIV, 0.D0, NFOUND, EIGVAL, VEC, NS, WORK, IWORK, ifAIL, &
          INFO)
       IERR = -ABS(INFO)
-      IF (IERR /= 0) WRITE (6, *) 'iniest ierr =', IERR
+      if (IERR /= 0) WRITE (6, *) 'iniest ierr =', IERR
 !           print '(D14.7,X,I2)', (eigval(i),i, i=1,NIV)
 
 !******************************************************************
@@ -146,8 +146,8 @@
       deallocate(vec) !CALL DALLOC (IQVEC)
       deallocate(work) !CALL DALLOC (IQWORK)
       deallocate(iwork) !CALL DALLOC (IQIWORK)
-      deallocate(ifail) !CALL DALLOC (IQIF)
+      deallocate(ifail) !CALL DALLOC (IQif)
       deallocate(jsh) !CALL DALLOC (IQJSH)
 
-      RETURN
-      END SUBROUTINE INIEST
+      return
+      end subroutine INIEST

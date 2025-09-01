@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE CLE0SM(Q,QM,S,C,CM,A)
+      subroutine CLE0SM(Q,QM,S,C,CM,A)
 !                                                                  *
 !     THIS PACKAGE DETERMINES THE VALUES OF FOLLOWING              *
 !                                                 ---         ---  *
@@ -20,36 +20,36 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO, TENTH, ONE, TWO, EPS
+      use CONS_C,          only: ZERO, TENTH, ONE, TWO, EPS
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE ittk_I
-      USE c1e0sm_I
+      use ittk_I
+      use c1e0sm_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64), INTENT(IN)  :: Q, QM, S, C, CM
-      real(real64), INTENT(OUT) :: A
+      real(real64), intent(in)  :: Q, QM, S, C, CM
+      real(real64), intent(out) :: A
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: IIQ, IIC, IIS
+      integer :: IIQ, IIC, IIS
 !-----------------------------------------------
       A=ZERO
       IIQ=TWO*Q+TENTH
       IIC=TWO*C+TENTH
       IIS=TWO*S+TENTH
-      IF(ITTK(IIQ,IIC,IIS).EQ.0)RETURN
-      IF(S.LT.EPS) THEN
-       IF((Q+TENTH).LT.DABS(QM))RETURN
-        IF((C+TENTH).LT.DABS(CM))RETURN
-        IF(DABS(Q-C).GT.EPS)RETURN
-        IF(DABS(QM-CM).GT.EPS)RETURN
+      if(ITTK(IIQ,IIC,IIS).EQ.0)return
+      if(S.LT.EPS) then
+       if((Q+TENTH).LT.DABS(QM))return
+        if((C+TENTH).LT.DABS(CM))return
+        if(DABS(Q-C).GT.EPS)return
+        if(DABS(QM-CM).GT.EPS)return
         A=ONE
-      ELSE
+      else
         CALL C1E0SM(Q,QM,C,CM,A)
-      END IF
-      RETURN
-      END SUBROUTINE CLE0SM
+      END if
+      return
+      end subroutine CLE0SM

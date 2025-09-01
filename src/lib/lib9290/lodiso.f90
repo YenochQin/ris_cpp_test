@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE LODISO
+      subroutine LODISO
 !                                                                      *
 !   Loads the data from the  .iso  file.                               *
 !                                                                      *
@@ -14,9 +14,9 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE DEF_C
-      USE NPAR_C
-      USE NSMDAT_C,        ONLY: SQN, DMOMNM, QMOMB
+      use DEF_C
+      use NPAR_C
+      use NSMDAT_C,        only: SQN, DMOMNM, QMOMB
       IMPLICIT NONE
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
@@ -38,13 +38,13 @@
       READ (22, *)
       READ (22, *) CPARM
 !
-      IF (A /= 0.D0) THEN
+      if (A /= 0.D0) then
          NPARM = 2
          PARM(1) = CPARM*FMTOAU
          PARM(2) = APARM*FMTOAU
-      ELSE
+      else
          NPARM = 0
-      ENDIF
+      endif
 !
 !   Nuclear mass
 !
@@ -52,11 +52,11 @@
       READ (22, *) EMNAMU
 
 !
-      IF (EMNAMU /= 0.D0) THEN
+      if (EMNAMU /= 0.D0) then
          EMN = EMNAMU/AUMAMU
-      ELSE
+      else
          EMN = 0.D0
-      ENDIF
+      endif
 
 
 !
@@ -81,5 +81,5 @@
 !     READ (22,*)
 !     READ (22,*) N
 
-      RETURN
-      END SUBROUTINE LODISO
+      return
+      end subroutine LODISO

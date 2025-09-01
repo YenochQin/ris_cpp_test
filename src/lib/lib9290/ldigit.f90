@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      LOGICAL FUNCTION LDIGIT (CST)
+      logical FUNCTION LDIGIT (CST)
 !                                                                      *
 !   .TRUE.  if  CST  is the ASCII representation of a decimal digit;   *
 !   .FALSE. otherwise.                                                 *
@@ -16,12 +16,12 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      CHARACTER , INTENT(IN) :: CST
+      character , intent(in) :: CST
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: I
-      CHARACTER, DIMENSION(0:9) :: CDGT
+      integer :: I
+      character, dimension(0:9) :: CDGT
 !-----------------------------------------------
 !
 !
@@ -29,12 +29,12 @@
       DATA CDGT/ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'/
 !
       DO I = 0, 9
-         IF (CST /= CDGT(I)) CYCLE
+         if (CST /= CDGT(I)) CYCLE
          LDIGIT = .TRUE.
          GO TO 2
       END DO
       LDIGIT = .FALSE.
 !
     2 CONTINUE
-      RETURN
+      return
       END FUNCTION LDIGIT

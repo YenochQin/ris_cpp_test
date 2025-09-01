@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      REAL(KIND(0.0D0)) FUNCTION RINTDENS (I, J)
+      real(real64) FUNCTION RINTDENS (I, J)
 !                                                                      *
 !   The value of RINTDENS is an approximation to:                      *
 !                                                                      *
@@ -20,23 +20,23 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE def_C,           ONLY: cvac, pi
-      USE grid_C
-      USE wave_C
+      use def_C,           only: cvac, pi
+      use grid_C
+      use wave_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE polint_I
+      use polint_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER  :: I, J
+      integer  :: I, J
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: L, II, NMIN
-      real(real64), DIMENSION(3) :: XA, YA
+      integer :: L, II, NMIN
+      real(real64), dimension(3) :: XA, YA
       real(real64) :: DENS
 !-----------------------------------------------
 !
@@ -51,5 +51,5 @@
       CALL POLINT (XA,YA,DENS)
       RINTDENS = DENS
 !
-      RETURN
+      return
       END FUNCTION RINTDENS

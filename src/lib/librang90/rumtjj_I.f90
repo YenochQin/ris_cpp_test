@@ -1,9 +1,9 @@
-      MODULE rumtjj_I
-      INTERFACE
+      module rumtjj_I
+      interface
 !
-      SUBROUTINE RUMTJJ(KNT,JJ,LQ,LV,L)
-      INTEGER, INTENT(IN)  :: JJ, KNT
-      INTEGER, INTENT(OUT) :: LQ, LV, L
-      END SUBROUTINE
-      END INTERFACE
-      END MODULE
+      subroutine RUMTJJ(KNT,JJ,LQ,LV,L)
+      integer, intent(in)  :: JJ, KNT
+      integer, intent(out) :: LQ, LV, L
+      end subroutine
+      end interface
+      end module

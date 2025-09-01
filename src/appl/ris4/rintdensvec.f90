@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE RINTDENSVEC (I,J,DINT1VEC,NRNUC)
+      subroutine RINTDENSVEC (I,J,DINT1VEC,NRNUC)
 !                                                                      *
 !   The value of DINT1VEC is an approximation to:                      *
 !                                                                      *
@@ -19,10 +19,10 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE parameter_def,    ONLY: NNNW
-      USE def_C,            ONLY: pi
-      USE grid_C
-      USE wave_C
+      use parameter_def,    only: NNNW
+      use def_C,            only: pi
+      use grid_C
+      use wave_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
@@ -30,12 +30,12 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64), DIMENSION(NNNW,NNNW,N), INTENT(OUT) :: DINT1VEC
-      INTEGER  :: I, J
+      real(real64), dimension(NNNW,NNNW,N), intent(out) :: DINT1VEC
+      integer  :: I, J
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: L, NRNUC
+      integer :: L, NRNUC
 !-----------------------------------------------
 !
       DO L = 2, NRNUC
@@ -43,5 +43,5 @@
                    (4.0D00*PI*R(L)*R(L))
       END DO
 !
-      RETURN
-      END SUBROUTINE RINTDENSVEC
+      return
+      end subroutine RINTDENSVEC

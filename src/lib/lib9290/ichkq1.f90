@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      INTEGER FUNCTION ICHKQ1 (JA, JB)
+      integer FUNCTION ICHKQ1 (JA, JB)
 !                                                                      *
 !   This routine is to check the occupation condition for one electron *
 !   operator.                                                          *
@@ -17,22 +17,22 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE DEBUG_C
-      USE ORB_C
+      use DEBUG_C
+      use ORB_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE iq_I
+      use iq_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER :: JA
-      INTEGER :: JB
+      integer :: JA
+      integer :: JB
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: K, I, I_IQA, I_IQB
+      integer :: K, I, I_IQA, I_IQB
 
 !-----------------------------------------------
 !
@@ -42,12 +42,12 @@
       DO I = 1, NW
          I_IQA = IQ(I,JA)
          I_IQB = IQ(I,JB)
-         IF (I_IQA == I_IQB) CYCLE
+         if (I_IQA == I_IQB) CYCLE
          K = K + 1
-         IF (K > 2) RETURN
-         IF (IABS(I_IQA - I_IQB) <= 1) CYCLE
-         RETURN
+         if (K > 2) return
+         if (IABS(I_IQA - I_IQB) <= 1) CYCLE
+         return
       END DO
-      IF (K==2 .OR. K==0) ICHKQ1 = 1
-      RETURN
+      if (K==2 .OR. K==0) ICHKQ1 = 1
+      return
       END FUNCTION ICHKQ1

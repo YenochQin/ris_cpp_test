@@ -1,10 +1,10 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE DIAGA1(JA1,KA,IRE,IAT,RECC)
+      subroutine DIAGA1(JA1,KA,IRE,IAT,RECC)
 !                                                                  *
 !   ---------------  SECTION REC    SUBPROGRAM 01  --------------  *
 !                                                                  *
-!     SUBROUTINE CALLED:  IXJTIK, SIXJ                             *
+!     subroutine CALLED:  IXJTIK, SIXJ                             *
 !                                                                  *
 !   Written by G. Gaigalas,                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -16,57 +16,57 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO
-      USE m_C,             ONLY: JLIST, JJQ1, JJQ2, JJC1, JJC2
+      use CONS_C,          only: ZERO
+      use m_C,             only: JLIST, JJQ1, JJQ2, JJC1, JJC2
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE ixjtik_I
-      USE sixj_I
+      use ixjtik_I
+      use sixj_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN)       :: JA1, KA, IRE
-!      INTEGER, INTENT(OUT)      :: IAT
-      INTEGER, INTENT(INOUT)      :: IAT
-      real(real64), INTENT(OUT) :: RECC
+      integer, intent(in)       :: JA1, KA, IRE
+!      integer, intent(out)      :: IAT
+      integer, INTENT(INOUT)      :: IAT
+      real(real64), intent(out) :: RECC
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: IJ1,IA1,IB1,K1,J1,IT1,IT1S,IFAZ,LL1
+      integer :: IJ1,IA1,IB1,K1,J1,IT1,IT1S,ifAZ,LL1
       real(real64) :: A1
 !-----------------------------------------------
       RECC = ZERO
       IJ1=JLIST(JA1)
       IA1=JJQ1(3,IJ1)-1
       IB1=JJQ2(3,IJ1)-1
-      IF(JA1 <= 2) THEN
+      if(JA1 <= 2) then
         LL1=JLIST(1)
-        IF(JA1 == 1)LL1=JLIST(2)
+        if(JA1 == 1)LL1=JLIST(2)
         J1=JJQ1(3,LL1)-1
         IT1=JJC1(1)-1
         IT1S=JJC2(1)-1
-      ELSE
+      else
         K1=JA1-2
         J1=JJC1(K1)-1
         K1=JA1-1
         IT1=JJC1(K1)-1
         IT1S=JJC2(K1)-1
-      END IF
-      IF(IRE /= 0) THEN
+      END if
+      if(IRE /= 0) then
         CALL SIXJ(KA,IB1,IA1,J1,IT1,IT1S,0,A1)
         A1=A1*DSQRT(DBLE((IA1+1)*(IT1S+1)))
-        IFAZ=J1+IT1+IB1+KA
-        IF((IFAZ/4)*4 /= IFAZ)A1=-A1
+        ifAZ=J1+IT1+IB1+KA
+        if((ifAZ/4)*4 /= ifAZ)A1=-A1
         RECC=A1
         IAT=1
-        IF(JA1 /= 1)RETURN
-        IFAZ=IA1+IB1+2*J1-IT1-IT1S
-        IF((IFAZ/4)*4 /= IFAZ)RECC=-RECC
-      ELSE
-        IF(IXJTIK(KA,IB1,IA1,J1,IT1,IT1S) == 0)RETURN
+        if(JA1 /= 1)return
+        ifAZ=IA1+IB1+2*J1-IT1-IT1S
+        if((ifAZ/4)*4 /= ifAZ)RECC=-RECC
+      else
+        if(IXJTIK(KA,IB1,IA1,J1,IT1,IT1S) == 0)return
         IAT=1
-      END IF
-      RETURN
-      END SUBROUTINE DIAGA1
+      END if
+      return
+      end subroutine DIAGA1

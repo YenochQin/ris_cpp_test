@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE YZK(K, I, J)
+      subroutine YZK(K, I, J)
 !                                                                      *
 !   This subroutine evaluates Hartree Y- and Z-functions:              *
 !                                                                      *
@@ -34,14 +34,14 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE parameter_def,   ONLY: NNN1
-      USE CNC_C,           ONLY: CNC5C
-      USE DEF_C,           ONLY: ACCY
-      USE GRID_C
-      USE NCC_C
-      USE ORB_C
-      USE TATB_C,          ONLY: ZK=>TA, YK=>TB, MTP
-      USE WAVE_C,          ONLY: MF , PF, QF
+      use parameter_def,   only: NNN1
+      use CNC_C,           only: CNC5C
+      use DEF_C,           only: ACCY
+      use GRID_C
+      use NCC_C
+      use ORB_C
+      use TATB_C,          only: ZK=>TA, YK=>TB, MTP
+      use WAVE_C,          only: MF , PF, QF
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
@@ -49,23 +49,23 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: K
-      INTEGER  :: I
-      INTEGER  :: J
+      integer, intent(in) :: K
+      integer  :: I
+      integer  :: J
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
-      INTEGER, PARAMETER :: KLIMIT = 20
-      INTEGER, PARAMETER :: KLIMIT1 = KLIMIT + 1
+      integer, parameter :: KLIMIT = 20
+      integer, parameter :: KLIMIT1 = KLIMIT + 1
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: II, MTPP1, MTPP3, MTPP4, KK, NP4
-      real(real64), DIMENSION(NNN1) :: RHOP
-      real(real64), DIMENSION(NNN1,KLIMIT) :: RTTK, RTTKM, RTTK1, RTTKM1
-      real(real64), DIMENSION(NNN1) :: RM, WK, TEMP
-      real(real64) :: SUM, RTMP, ZKLIM, DIF
-      LOGICAL, DIMENSION(0:KLIMIT) :: KCALC
+      integer :: II, MTPP1, MTPP3, MTPP4, KK, NP4
+      real(real64), dimension(NNN1) :: RHOP
+      real(real64), dimension(NNN1,KLIMIT) :: RTTK, RTTKM, RTTK1, RTTKM1
+      real(real64), dimension(NNN1) :: RM, WK, TEMP
+      real(real64) :: SUM, RTMP, ZKLIM, Dif
+      logical, dimension(0:KLIMIT) :: KCALC
 
       SAVE KCALC, RTTK, RTTKM, RTTK1, RTTKM1, RM
 !-----------------------------------------------
@@ -75,22 +75,22 @@
 !
       DATA KCALC/ KLIMIT1*.FALSE./
       !EQUIVALENCE (TA(1), ZK(1)), (TB(1), YK(1))
-      IF (.NOT.KCALC(K)) THEN
+      if (.NOT.KCALC(K)) then
          KCALC(K) = .TRUE.
-         IF (K > KLIMIT) THEN
+         if (K > KLIMIT) then
             WRITE (6, *) ' increase klimit in yzk.f '
             STOP
-         ENDIF
-         IF (K > 0) THEN
+         endif
+         if (K > 0) then
             RTTK(2:N,K) = R(2:N)**K
             RTTKM(2:N,K) = 1.D0/RTTK(2:N,K)
             RTTK1(2:N,K) = RTTK(2:N,K)*R(2:N)
             RTTKM1(2:N,K) = 1.D0/RTTK1(2:N,K)
             RM(2:N) = 1.D0/R(2:N)
-         ELSE
+         else
             RM(2:N) = 1.D0/R(2:N)
-         ENDIF
-      ENDIF
+         endif
+      endif
 !
 !   Determine maximum tabulation point as location beyond which
 !   RHOP  (see comment statements below) would be zero; determine
@@ -111,11 +111,11 @@
 !   Fill array TEMP with R**K * RHOP
 !
       TEMP(1) = 0.0D00
-      IF (K == 0) THEN
+      if (K == 0) then
          TEMP(2:MTP) = RHOP(2:MTP)
-      ELSE
+      else
          TEMP(2:MTP) = RTTK(2:MTP,K)*RHOP(2:MTP)
-      ENDIF
+      endif
 !
 !   Set an additional four points to zero
 !
@@ -151,40 +151,40 @@
 !   The Hartree-Fock Method for Atoms, John Wiley & Sons,
 !   New York, 1977, p 235.
 !
-      IF (K == 0) THEN
+      if (K == 0) then
 !
-         IF (I == J) THEN
+         if (I == J) then
             ZKLIM = 1.0D00
-         ELSE
+         else
             ZKLIM = 0.0D00
-         ENDIF
+         endif
 !
          DO KK = MTPP3, MTP, -1
-            DIF = ZK(KK) - ZKLIM
-            IF (ABS(DIF) <= ACCY) CYCLE
+            Dif = ZK(KK) - ZKLIM
+            if (ABS(Dif) <= ACCY) CYCLE
             ZK(KK:KK-((-2-KK)/(-4)-1)*4:(-4)) = ZK(KK:KK-((-2-KK)/(-4)-1)*4:&
-               (-4)) - DIF
+               (-4)) - Dif
          END DO
 !
-      ELSE
+      else
 !
          ZKLIM = ZK(MTPP3)
 !
-      ENDIF
+      endif
 !
 !   Tabulate  ZK  for entire internal grid
 !
-      IF (K == 0) THEN
+      if (K == 0) then
 !
          ZK(MTPP4:N) = ZKLIM
 !
-      ELSE
+      else
 !
          ZK(2:MTPP3) = ZK(2:MTPP3)*RTTKM(2:MTPP3,K)
 !
          ZK(MTPP4:N) = ZKLIM*RTTKM(MTPP4:N,K)
 !
-      ENDIF
+      endif
 !
 !   Start array WK / R**(K+1)
 !
@@ -195,11 +195,11 @@
 !   to avoid 0/0 case
 !
       TEMP(1) = 0.0D00
-      IF (K == 0) THEN
+      if (K == 0) then
          TEMP(2:MTP) = RHOP(2:MTP)*RM(2:MTP)
-      ELSE
+      else
          TEMP(2:MTP) = RHOP(2:MTP)*RTTKM1(2:MTP,K)
-      ENDIF
+      endif
 !
 !   Compute remainder of WK / R**(K+1): march in to the origin
 !
@@ -211,16 +211,16 @@
 !
 !   Compute WK
 !
-      IF (K == 0) THEN
+      if (K == 0) then
          WK(2:MTP) = WK(2:MTP)*R(2:MTP)
-      ELSE
+      else
          WK(2:MTP) = WK(2:MTP)*RTTK1(2:MTP,K)
-      ENDIF
+      endif
 !
 !   Assemble solution
 !
       YK(1) = 0.0D00
       YK(2:N) = ZK(2:N) + WK(2:N)
 !
-      RETURN
-      END SUBROUTINE YZK
+      return
+      end subroutine YZK

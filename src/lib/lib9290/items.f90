@@ -36,9 +36,9 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE memory_man
-      USE def_C, ONLY: ICCMIN
-      USE iounit_C
+      use memory_man
+      use def_C, only: ICCMIN
+      use iounit_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
@@ -50,7 +50,7 @@
       integer  :: ncmin
       integer, intent(in) :: ncf
       integer, intent(out) :: ierr
-      CHARACTER (LEN = *), INTENT(IN) :: RECORD
+      character (LEN = *), intent(in) :: RECORD
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

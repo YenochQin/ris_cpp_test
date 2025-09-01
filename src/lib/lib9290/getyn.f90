@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      LOGICAL FUNCTION GETYN ()
+      logical FUNCTION GETYN ()
 !                                                                      *
 !   This  subprogram reads a response on  the default input unit; the  *
 !   response must be either 'y' or 'n'. GETYN is .TRUE. if 'y' is en-  *
@@ -16,23 +16,23 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE IOUNIT_C,     ONLY: ISTDI, ISTDE
+      use IOUNIT_C,     only: ISTDI, ISTDE
       IMPLICIT NONE
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      CHARACTER (LEN = 1) :: RSPNS
+      character (LEN = 1) :: RSPNS
 !-----------------------------------------------
     1 CONTINUE
       READ (ISTDI, '(A)') RSPNS
-      IF (RSPNS == 'y' .OR. RSPNS == 'Y') THEN
+      if (RSPNS == 'y' .OR. RSPNS == 'Y') then
          GETYN = .TRUE.
-      ELSE IF (RSPNS == 'n' .OR. RSPNS == 'N') THEN
+      else if (RSPNS == 'n' .OR. RSPNS == 'N') then
          GETYN = .FALSE.
-      ELSE
+      else
          WRITE (ISTDE, *) 'Expecting <y><cr> or <n><cr> ...'
          GO TO 1
-      ENDIF
+      endif
 !
-      RETURN
+      return
       END FUNCTION GETYN

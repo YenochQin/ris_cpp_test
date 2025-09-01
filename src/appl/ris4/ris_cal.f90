@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE RIS_CAL (NAME)
+      subroutine RIS_CAL (NAME)
 !                                                                      *
 !   This routine controls the main sequence of routine calls for the   *
 !   calculation  of the MS parameters, the electron density at the     *
@@ -22,76 +22,76 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE parameter_def,    ONLY: NNNW
-      USE memory_man
-      USE debug_C
-      USE decide_c
-      USE def_C
-      USE grid_C
-      USE npar_C
-      USE prnt_C
-      USE syma_C
-      USE orb_C
-      USE teilst_C
-      USE buffer_C
-      USE ris_C
-      USE jlabl_C, LABJ=> JLBR, LABP=>JLBP
-      USE ris_C
-      USE eigv_C
+      use parameter_def,    only: NNNW
+      use memory_man
+      use debug_C
+      use decide_c
+      use def_C
+      use grid_C
+      use npar_C
+      use prnt_C
+      use syma_C
+      use orb_C
+      use teilst_C
+      use buffer_C
+      use ris_C
+      use jlabl_C, LABJ=> JLBR, LABP=>JLBP
+      use ris_C
+      use eigv_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE rintdens_I
-      USE rinti_I
-      USE rint_I
-      USE rintdensvec_I
-      USE rinti_nms_I
-      USE cre_I
-      USE vinti_I
-      USE rint_sms2_I
-      USE rint_sms3_I
-      USE angdata_I
-      USE getyn_I
-      USE densread_I
-      USE densnew_I
-      USE smsread_I
-      USE smsnew_I
-      USE edensityfit_I
+      use rintdens_I
+      use rinti_I
+      use rint_I
+      use rintdensvec_I
+      use rinti_nms_I
+      use cre_I
+      use vinti_I
+      use rint_sms2_I
+      use rint_sms3_I
+      use angdata_I
+      use getyn_I
+      use densread_I
+      use densnew_I
+      use smsread_I
+      use smsnew_I
+      use edensityfit_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      CHARACTER*24, INTENT(IN) :: NAME
-!      real(real64), INTENT(IN) :: DR2
-!      INTEGER, INTENT(IN)      :: NOPAR
+      character*24, intent(in) :: NAME
+!      real(real64), intent(in) :: DR2
+!      integer, intent(in)      :: NOPAR
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      real(real64), DIMENSION(:,:,:), pointer :: DINT1VEC
-      real(real64), DIMENSION(:,:), pointer   :: DENS1VEC
-      real(real64), DIMENSION(:), pointer     :: DENSFIT
-      real(real64), DIMENSION(:,:), pointer     :: FMAT
-      real(real64), DIMENSION(:), pointer     :: RHO
-      real(real64), DIMENSION(:), pointer     :: RES
+      real(real64), dimension(:,:,:), pointer :: DINT1VEC
+      real(real64), dimension(:,:), pointer   :: DENS1VEC
+      real(real64), dimension(:), pointer     :: DENSFIT
+      real(real64), dimension(:,:), pointer     :: FMAT
+      real(real64), dimension(:), pointer     :: RHO
+      real(real64), dimension(:), pointer     :: RES
 
 
-      real(real64), DIMENSION(NNNW)      :: TSHELL
-      real(real64), DIMENSION(NNNW,NNNW) :: VINT, VINT2
-      real(real64), DIMENSION(NNNW,NNNW) :: DINT1, DINT2, DINT3, &
+      real(real64), dimension(NNNW)      :: TSHELL
+      real(real64), dimension(NNNW,NNNW) :: VINT, VINT2
+      real(real64), dimension(NNNW,NNNW) :: DINT1, DINT2, DINT3, &
                                             DINT4, DINT5, DINT6, &
                                             DINT7
       real(real64) :: AU2FM, RCRE, HzSMSu, HzNMSu, FO90
-      CHARACTER*11 :: CNUM
-      CHARACTER*2  :: CK
-      LOGICAL :: VSH, NUCDE, SMSSH, YES, YES2, AVAIL_TB, AVAIL_OB
-      INTEGER :: I, J, L, ncount1, DOIT_OB, DOIT_TB, NRNUC
+      character*11 :: CNUM
+      character*2  :: CK
+      logical :: VSH, NUCDE, SMSSH, YES, YES2, AVAIL_TB, AVAIL_OB
+      integer :: I, J, L, ncount1, DOIT_OB, DOIT_TB, NRNUC
 !-----------------------------------------------
 !
 
 !
 !   Matrix elements smaller than CUTOFF are not accumulated
 !
-!      PARAMETER (CUTOFF = 1.0D-10)
+!      parameter (CUTOFF = 1.0D-10)
 
       write(*,*) '-------------------------------'
       write(*,*) 'RIS_CAL: Execution Begins ...'
@@ -102,10 +102,10 @@
       !PARM(1) - Fermi parameter c
       !PARM(2) - Fermi parameter a
       DO I=1,NNNP
-         IF(R(I+1).GT.FO90.AND.R(I).LE.FO90) THEN
+         if(R(I+1).GT.FO90.AND.R(I).LE.FO90) then
             NRNUC = I+1
             exit
-         END IF
+         END if
       END DO
 
 
@@ -154,25 +154,25 @@
 !
 !   Calculate all integrals needed for the volume shift calc.
 !
-      !      IF (VSH) THEN
+      !      if (VSH) then
 
       write(*,*) ' Compute higher order field shift electronic factors?'
       YES2 = GETYN ()
 
       DO 5 I = 1,NW
         DO 4 J = 1,NW
-          IF (NAK(I).EQ.NAK(J)) THEN
+          if (NAK(I).EQ.NAK(J)) then
             DINT1(I,J) = RINTDENS(I,J)
             !GG                 DINT2(I,J) = RINTI(I,J,1)
-            IF(YES2) THEN
+            if(YES2) then
                CALL RINTDENSVEC(I,J,DINT1VEC,NRNUC)
-            END IF
+            END if
             CALL RINTI_NMS(I,J,DINT2(I,J),DINT7(I,J))
             DINT3(I,J) = RINT(I,J,1)
             DINT4(I,J) = RINT(I,J,2)
             DINT5(I,J) = RINT(I,J,-1)
             DINT6(I,J) = RINT(I,J,-2)
-          ELSE
+          else
             DINT1(I,J) = 0.0D00
             DINT1VEC(I,J,:) = 0.0D00
             DINT2(I,J) = 0.0D00
@@ -181,34 +181,34 @@
             DINT5(I,J) = 0.0D00
             DINT6(I,J) = 0.0D00
             DINT7(I,J) = 0.0D00
-          ENDIF
+          endif
     4   CONTINUE
     5 CONTINUE
-!      ENDIF
+!      endif
 !
 !   Calculate and save the Vinti integrals
 !
-!      IF (SMSSH) THEN
+!      if (SMSSH) then
       DO 7 I = 1,NW
         DO 6 J = 1,NW
-          IF (I.NE.J) THEN
+          if (I.NE.J) then
             RCRE = CRE(NAK(I),1,NAK(J))
-            IF (DABS(RCRE) .GT. CUTOFF) THEN
+            if (DABS(RCRE) .GT. CUTOFF) then
               VINT  (I,J) = VINTI(I,J)
               VINT2(I,J) = VINT(I,J)                                   &
                          + RINT_SMS2(I,J)/RCRE                         &
                          + RINT_SMS3(I,J)
-            ELSE
+            else
              VINT (I,J) = 0.0D00
              VINT2(I,J) = 0.0D00
-            ENDIF
-          ELSE
+            endif
+          else
             VINT (I,J) = 0.0D00
             VINT2(I,J) = 0.0D00
-          ENDIF
+          endif
     6   CONTINUE
     7 CONTINUE
-!      ENDIF
+!      endif
 !
 !   See if the appropriate angular data is available. If so,
 !   then read the angular files and perform the calculation.
@@ -218,92 +218,92 @@
       DOIT_TB = 0
       CALL ANGDATA(NAME,AVAIL_OB,1)
       CALL ANGDATA(NAME,AVAIL_TB,2)
-      IF ((.NOT. AVAIL_OB) .AND. (.NOT. AVAIL_TB)) THEN
+      if ((.NOT. AVAIL_OB) .AND. (.NOT. AVAIL_TB)) then
         PRINT *,' Save ang. coefficients of one- and two-body op.?'
         YES = GETYN ()
         PRINT *
-!C        IF(.NOT. YES) THEN
-!C          PRINT *,' Save ang. coefficients of one-body op. ONLY?'
+!C        if(.NOT. YES) then
+!C          PRINT *,' Save ang. coefficients of one-body op. only?'
 !C          YES = GETYN ()
 !C          PRINT *
-!C          IF(.NOT. YES) THEN
-!C            PRINT *,' Save ang. coefficients of two-body op. ONLY?'
+!C          if(.NOT. YES) then
+!C            PRINT *,' Save ang. coefficients of two-body op. only?'
 !C            YES = GETYN ()
 !C            PRINT *
-!C            IF(YES) DOIT_TB = 1
-!C          ELSE
+!C            if(YES) DOIT_TB = 1
+!C          else
 !C            DOIT_OB = 1
-!C          ENDIF
-!C        ELSE
-       IF(YES) THEN
+!C          endif
+!C        else
+       if(YES) then
           DOIT_OB = 1
           DOIT_TB = 1
-        ENDIF
-      ELSEIF (.NOT. AVAIL_OB) THEN
+        endif
+      elseif (.NOT. AVAIL_OB) then
         PRINT *,' Save ang. coefficients of one-body op. ?'
         YES = GETYN ()
         PRINT *
-        IF(YES) DOIT_OB = 1
-      ELSEIF (.NOT. AVAIL_TB) THEN
+        if(YES) DOIT_OB = 1
+      elseif (.NOT. AVAIL_TB) then
         PRINT *,' Save ang. coefficients of two-body op. ?'
         YES = GETYN ()
         PRINT *
-        IF(YES) DOIT_TB = 1
-      ENDIF
-      IF (AVAIL_OB) THEN
+        if(YES) DOIT_TB = 1
+      endif
+      if (AVAIL_OB) then
         J = INDEX(NAME,' ')
         OPEN(UNIT=50,FILE = NAME(1:J-1)//'.IOB',STATUS='UNKNOWN'       &
             ,FORM='UNFORMATTED')
 !    Read angular data from file and compute matrix elements
-        IF(YES2) THEN
+        if(YES2) then
            CALL DENSREAD_SELTZ(DINT1,DINT2,DINT3, & ! JE ADD
                 DINT4,DINT5,DINT6, & ! JE ADD
                 DINT7,DINT1VEC,DENS1VEC,NRNUC) ! JE ADD
-        ELSE
+        else
            CALL DENSREAD(DINT1,DINT2,DINT3,DINT4,DINT5,DINT6,DINT7)
-        END IF
+        END if
 
         !        CALL DENSREAD(DINT1,DINT2,DINT3,             &   ! JE ADD
         !                      DINT4,DINT5,DINT6,             &   ! JE ADD
         !                      DINT7,DINT1VEC,DENS1VEC)           ! JE ADD
-     ELSE
+     else
 !Check if the user wants to save one-body ang. coeff.
-        IF(DOIT_OB .EQ.1) THEN
+        if(DOIT_OB .EQ.1) then
           J = INDEX(NAME,' ')
           OPEN(UNIT=50,FILE = NAME(1:J-1)//'.IOB',STATUS='UNKNOWN'     &
             ,FORM='UNFORMATTED')
-        ENDIF
-        IF(YES2) THEN
+        endif
+        if(YES2) then
            CALL DENSNEW_SELTZ(DOIT_OB,DINT1,DINT2,DINT3, & ! JE ADD
                 DINT4,DINT5,DINT6,DINT7, & ! JE ADD
                 DINT1VEC,DENS1VEC,NRNUC) ! JE ADD
-        ELSE
+        else
            CALL DENSNEW(DOIT_OB,DINT1,DINT2,DINT3,DINT4, &
                 DINT5,DINT6,DINT7)
-        END IF
+        END if
 
 !        CALL NATORBNEW(NAME)                            ! JE ADD
 !        CALL DENSNEW(DOIT_OB,DINT1,DINT2,DINT3,     &   ! JE ADD
 !             DINT4,DINT5,DINT6,DINT7,               &   ! JE ADD
 !             DINT1VEC,DENS1VEC)                         ! JE ADD
-      ENDIF
+      endif
 !
 !
 !
-      IF (AVAIL_TB) THEN
+      if (AVAIL_TB) then
         J = INDEX(NAME,' ')
         OPEN(UNIT=51,FILE = NAME(1:J-1)//'.ITB',STATUS='UNKNOWN'       &
           ,FORM='UNFORMATTED')
         CALL SMSREAD(VINT,VINT2)
-      ELSE
+      else
 ! Check if the user wants to save two-body ang. coeff.
-        IF(DOIT_TB.EQ.1) THEN
+        if(DOIT_TB.EQ.1) then
           J = INDEX(NAME,' ')
           OPEN(UNIT=51,FILE = NAME(1:J-1)//'.ITB',STATUS='UNKNOWN'     &
              ,FORM='UNFORMATTED')
-        ENDIF
+        endif
          CALL SMSNEW(DOIT_TB,VINT,VINT2)
-      ENDIF
+      endif
 !
 !   Printouts
       !
@@ -322,7 +322,7 @@
          WRITE (24,313) IVEC(I),LABJ(IATJPO(I)),LABP((IASPAR(I)+3)/2), &
               DENS7(I),(DENS2(I)-DENS7(I)),DENS2(I)
          HzNMSu=DENS7(I)*AUMAMU*AUCM*CCMS
-!         if (dabs(HzNMSu) .LE. (10**8)) THEN
+!         if (dabs(HzNMSu) .LE. (10**8)) then
 !             WRITE (24,315) HzNMSu*(1.0D-06),
 !     :      (DENS2(I)-DENS7(I))*AUMAMU*AUCM*CCMS*(1.0D-06),
 !     :       DENS2(I)*AUMAMU*AUCM*CCMS*(1.0D-06)
@@ -339,7 +339,7 @@
          WRITE (24,313) IVEC(I),LABJ(IATJPO(I)),LABP((IASPAR(I)+3)/2), &
               SMSC1(I),SMSC2(I)-SMSC1(I),SMSC2(I)
          HzSMSu=SMSC1(I)*AUMAMU*AUCM*CCMS
-         if (dabs(HzSMSu) .LE. (10**8)) THEN
+         if (dabs(HzSMSu) .LE. (10**8)) then
             WRITE (24,315) HzSMSu*(1.0D-06), &
                  (SMSC2(I)-SMSC1(I))*AUMAMU*AUCM*CCMS*(1.0D-06), &
                  SMSC2(I)*AUMAMU*AUCM*CCMS*(1.0D-06)
@@ -349,7 +349,7 @@
                  SMSC2(I)*AUMAMU*AUCM*CCMS*(1.0D-09)
          endif
  14   CONTINUE
-      IF(YES2) THEN
+      if(YES2) then
          WRITE (24,307)
          DO 16 I = 1,NVEC
             CALL EDENSITYFIT(R,DENS1VEC(I,:),Z,PARM,NRNUC,FMAT(:,I),RHO(I),RES(I))  ! JE ADD
@@ -370,13 +370,13 @@
                  LABP((IASPAR(I)+3)/2),FMAT(5,I),FMAT(6,I)
  19      CONTINUE
          write(24,*)
-      ELSE
+      else
          WRITE (24,306)
          DO 36 I = 1,NVEC
             WRITE (24,303) IVEC(I),LABJ(IATJPO(I)), &
                  LABP((IASPAR(I)+3)/2),DENS1(I)
  36      CONTINUE
-      END IF
+      END if
 !     WRITE (24,309)
 !      DO 20 I = 1,NVEC
 !     WRITE (24,303) IVEC(I),LABJ(IATJPO(I)),LABP((IASPAR(I)+3)/2),
@@ -415,7 +415,7 @@
       write(*,*) '-------------------------------'
 
       CALL STOPTIME (ncount1, 'RIS_CAL')
-      RETURN
+      return
 !
 301   FORMAT (//' CUTOFF set to ',1PD22.15)
 302   FORMAT (//' Level  J Parity  Specific mass shift parameter')
@@ -470,5 +470,5 @@
 315   FORMAT (20X,3D20.10 ,2X,'(MHz u)')
 316   FORMAT (20X,3D20.10,2X,'(GHz u)')
       !
-      RETURN
-    END SUBROUTINE RIS_CAL
+      return
+    end subroutine RIS_CAL

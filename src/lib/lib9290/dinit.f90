@@ -1,4 +1,4 @@
-      SUBROUTINE DINIT(N, A, X, INCX)
+      subroutine DINIT(N, A, X, INCX)
 !     ==================================================================
 !
 !     PURPOSE ... INITIALIZES real(real64)           VECTOR TO
@@ -18,17 +18,17 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: N
-      INTEGER, INTENT(IN) :: INCX
-      real(real64), INTENT(IN) :: A
-      real(real64), DIMENSION(*), INTENT(OUT) :: X
+      integer, intent(in) :: N
+      integer, intent(in) :: INCX
+      real(real64), intent(in) :: A
+      real(real64), dimension(*), intent(out) :: X
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: XADDR, I
+      integer :: XADDR, I
 !-----------------------------------------------
 !
-      IF (INCX == 1) THEN
+      if (INCX == 1) then
 !
 !         ----------------------------------
 !         ... UNIT INCREMENT (STANDARD CASE)
@@ -36,19 +36,19 @@
 !
          X(:N) = A
 !
-      ELSE
+      else
 !
 !         ----------------------
 !         ... NON-UNIT INCREMENT
 !         ----------------------
 !
          XADDR = 1
-         IF (INCX < 0) XADDR = ((-N) + 1)*INCX + 1
+         if (INCX < 0) XADDR = ((-N) + 1)*INCX + 1
 !
          X(XADDR:(N-1)*INCX+XADDR:INCX) = A
 !
-      ENDIF
+      endif
 !
-      RETURN
+      return
 !
-      END SUBROUTINE DINIT
+      end subroutine DINIT

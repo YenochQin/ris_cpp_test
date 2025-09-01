@@ -175,12 +175,12 @@ MODULE eigv_C
   REAL(DOUBLE), DIMENSION(:), POINTER :: EVAL => NULL()
   REAL(DOUBLE), DIMENSION(:), POINTER :: EVEC => NULL()
   INTEGER, DIMENSION(:), POINTER      :: IVEC => NULL()
-END MODULE
+end module
 
 MODULE def_C
   INTEGER :: NELEC, NCF, NW
   REAL(DOUBLE) :: EAV
-END MODULE
+end module
 ```
 
 ### C++ (Encapsulated Data)

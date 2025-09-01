@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE RMEAJJ11(J1,J2,LL,S)
+      subroutine RMEAJJ11(J1,J2,LL,S)
 !                                                                  *
 !   Written by  G. Gaigalas                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -12,22 +12,22 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO, HALF, EPS
+      use CONS_C,          only: ZERO, HALF, EPS
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE rumtjj_I
-      USE c0t5s_I
+      use rumtjj_I
+      use c0t5s_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER,      INTENT(IN)  :: LL, J1, J2
-      real(real64), INTENT(OUT) :: S
+      integer,      intent(in)  :: LL, J1, J2
+      real(real64), intent(out) :: S
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER      :: LQ, LV, LQS, LVS, J, J1S, N, INN
+      integer      :: LQ, LV, LQS, LVS, J, J1S, N, INN
       real(real64) :: A1, A4, Q, QQ, QS, QM, QMS
 !-----------------------------------------------
       S=ZERO
@@ -40,10 +40,10 @@
       QM=-HALF*DBLE(HALF*(LL+1)-N)
       QMS=-HALF*DBLE(HALF*(LL+1)-(N-1))
       CALL C0T5S(QS,QMS,QQ,Q,QM,A4)
-      IF(DABS(A4) < EPS) RETURN
+      if(DABS(A4) < EPS) return
       A1=DBLE(N*(LQ+1)*(J+1))
       S=DSQRT(A1)/A4
       INN=-N-1
-      IF((INN/2)*2 /= INN)S=-S
-      RETURN
-      END SUBROUTINE RMEAJJ11
+      if((INN/2)*2 /= INN)S=-S
+      return
+      end subroutine RMEAJJ11

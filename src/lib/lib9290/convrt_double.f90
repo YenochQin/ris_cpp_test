@@ -1,9 +1,9 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE CONVRT_DOUBLE(INTNUM, CNUM, LENTH)
+      subroutine CONVRT_DOUBLE(INTNUM, CNUM, LENTH)
 !                                                                      *
-!   Converts the  INTEGER number  INTNUM  into the  CHARACTER string   *
-!   CNUM of length LENTH. INTEGER lengths of up to 64 bits are acco-   *
+!   Converts the  integer number  INTNUM  into the  character string   *
+!   CNUM of length LENTH. integer lengths of up to 64 bits are acco-   *
 !   modated.                                                           *
 !                                                                      *
 !   Written by G. Gaigalas,                                 May 2011   *
@@ -19,57 +19,57 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER,   INTENT(IN)    :: INTNUM
-      INTEGER,   INTENT(OUT)   :: LENTH
-      CHARACTER, INTENT(INOUT) :: CNUM*(*)
+      integer,   intent(in)    :: INTNUM
+      integer,   intent(out)   :: LENTH
+      character, INTENT(INOUT) :: CNUM*(*)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER                           :: INTNUMGG
-      CHARACTER(LEN=6)                  :: FORM
-      CHARACTER(LEN=2), DIMENSION(0:10) :: C1020
-      CHARACTER, DIMENSION(9)           :: C19
+      integer                           :: INTNUMGG
+      character(LEN=6)                  :: FORM
+      character(LEN=2), dimension(0:10) :: C1020
+      character, dimension(9)           :: C19
 !
       DATA C19 /'1','2','3','4','5','6','7','8','9'/
       DATA C1020 /'10','11','12','13','14','15','16','17','18','19','20'/
 !-----------------------------------------------
-      IF(mod(INTNUM,2) == 0) THEN
+      if(mod(INTNUM,2) == 0) then
          INTNUMGG = INTNUM/2
-      ELSE
+      else
          INTNUMGG = INTNUM
-      ENDIF
+      endif
 !
-      IF (INTNUMGG < 0) THEN
+      if (INTNUMGG < 0) then
          LENTH = LOG10(DBLE((-INTNUMGG))) + 2
-      ELSE IF (INTNUMGG == 0) THEN
+      else if (INTNUMGG == 0) then
          LENTH = 1
-      ELSE
+      else
          LENTH = LOG10(DBLE(INTNUMGG)) + 1
-      ENDIF
+      endif
 !
 !   Ensure that the length of CNUM as dimensioned is adequate;
 !   stop with an error message if it isn't
 !
-      IF (LENTH > LEN(CNUM)) THEN
+      if (LENTH > LEN(CNUM)) then
          WRITE (6, *) 'CONVRT_DOUBLE: Length of CNUM inadeuate.'
          ERROR STOP
-      ELSE
-         IF (LENTH <= 9) THEN
+      else
+         if (LENTH <= 9) then
             FORM = '(1I'//C19(LENTH)//')'
             WRITE (CNUM(1:LENTH), FORM(1:5)) INTNUMGG
-         ELSE
+         else
             FORM = '(1I'//C1020(LENTH-10)//')'
             WRITE (CNUM(1:LENTH), FORM(1:6)) INTNUMGG
-         ENDIF
-         IF(mod(INTNUM,2) /= 0) THEN
-            IF (LENTH+2 > LEN(CNUM)) THEN
+         endif
+         if(mod(INTNUM,2) /= 0) then
+            if (LENTH+2 > LEN(CNUM)) then
                WRITE (6, *) 'CONVRT_DOUBLE: Length of CNUM inadeuate.'
                ERROR STOP
-            ELSE
+            else
                CNUM(1:LENTH+2) = CNUM(1:LENTH)//'/2'
                LENTH = LENTH + 2
-            ENDIF
-         ENDIF
-      ENDIF
-      RETURN
-      END SUBROUTINE CONVRT_DOUBLE
+            endif
+         endif
+      endif
+      return
+      end subroutine CONVRT_DOUBLE

@@ -1,8 +1,8 @@
-      MODULE ncdist_C
+      module ncdist_C
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE parameter_def,   ONLY:  NNNP
+      use parameter_def,   only:  NNNP
 !...Created by Pacific-Sierra Research 77to90  4.3E  06:35:13  12/28/06
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
-      real(real64), DIMENSION(NNNP) :: ZDIST
-      END MODULE ncdist_C
+      real(real64), dimension(NNNP) :: ZDIST
+      end module ncdist_C

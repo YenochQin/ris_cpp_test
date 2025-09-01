@@ -1,11 +1,11 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE DRACAH(I, J, K, L, M, N, RAC)
+      subroutine DRACAH(I, J, K, L, M, N, RAC)
 !                                                                      *
-!   SUBROUTINE  to calculate Racah coefficients. The arguments I, J,   *
+!   subroutine  to calculate Racah coefficients. The arguments I, J,   *
 !   K, L, M, N should be twice their actual value. Works for integer   *
 !   and  half-integer  values of  angular momenta. The routine makes   *
-!   use of the GAM  array, thus  SUBROUTINE FACTT must be called be-   *
+!   use of the GAM  array, thus  subroutine FACTT must be called be-   *
 !   fore this routine is used.                                         *
 !                                                                      *
 !   Written by N S Scott                    Last update: 16 Oct 1992   *
@@ -17,35 +17,35 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE FACTS_C
+      use FACTS_C
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER , INTENT(IN) :: I
-      INTEGER , INTENT(IN) :: J
-      INTEGER , INTENT(IN) :: K
-      INTEGER , INTENT(IN) :: L
-      INTEGER , INTENT(IN) :: M
-      INTEGER , INTENT(IN) :: N
-      real(real64) , INTENT(OUT) :: RAC
+      integer , intent(in) :: I
+      integer , intent(in) :: J
+      integer , intent(in) :: K
+      integer , intent(in) :: L
+      integer , intent(in) :: M
+      integer , intent(in) :: N
+      real(real64) , intent(out) :: RAC
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: J1, J2, J3, J4, J5, J6, J7, NUMIN, NUMAX, ICOUNT, KK, KI
+      integer :: J1, J2, J3, J4, J5, J6, J7, NUMIN, NUMAX, ICOUNT, KK, KI
 !-----------------------------------------------
       J1 = I + J + M
       J2 = K + L + M
       J3 = I + K + N
       J4 = J + L + N
-      IF (2*MAX(MAX(I,J),M) - J1>0 .OR. MOD(J1,2)/=0) GO TO 2
-      IF (2*MAX(MAX(K,L),M) - J2>0 .OR. MOD(J2,2)/=0) GO TO 2
-      IF (2*MAX(MAX(I,K),N) - J3>0 .OR. MOD(J3,2)/=0) GO TO 2
-      IF (2*MAX(MAX(J,L),N) - J4>0 .OR. MOD(J4,2)/=0) GO TO 2
+      if (2*MAX(MAX(I,J),M) - J1>0 .OR. MOD(J1,2)/=0) GO TO 2
+      if (2*MAX(MAX(K,L),M) - J2>0 .OR. MOD(J2,2)/=0) GO TO 2
+      if (2*MAX(MAX(I,K),N) - J3>0 .OR. MOD(J3,2)/=0) GO TO 2
+      if (2*MAX(MAX(J,L),N) - J4>0 .OR. MOD(J4,2)/=0) GO TO 2
       GO TO 1
     2 CONTINUE
       RAC = 0.0D00
-      RETURN
+      return
 !
     1 CONTINUE
       J1 = J1/2
@@ -60,7 +60,7 @@
       RAC = 1.0D00
       ICOUNT = 0
 !
-      IF (NUMIN /= NUMAX) THEN
+      if (NUMIN /= NUMAX) then
          NUMIN = NUMIN + 1
 !
          DO KK = NUMIN, NUMAX
@@ -71,7 +71,7 @@
          END DO
 !
          NUMIN = NUMIN - 1
-      ENDIF
+      endif
       RAC = RAC*(-1.0D00)**(J5 + NUMIN + 1)*EXP((GAM(NUMIN+1)-GAM(NUMIN-J1)-GAM&
          (NUMIN-J2)-GAM(NUMIN-J3)-GAM(NUMIN-J4)-GAM(J5+2-NUMIN)-GAM(J6+2-NUMIN)&
          -GAM(J7+2-NUMIN))+(GAM(J1+1-I)+GAM(J1+1-J)+GAM(J1+1-M)-GAM(J1+2)+GAM(&
@@ -79,5 +79,5 @@
          J3+1-N)-GAM(J3+2)+GAM(J4+1-J)+GAM(J4+1-L)+GAM(J4+1-N)-GAM(J4+2))*&
          0.5D00)
 !
-      RETURN
-      END SUBROUTINE DRACAH
+      return
+      end subroutine DRACAH

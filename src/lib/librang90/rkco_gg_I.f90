@@ -1,10 +1,10 @@
-      MODULE rkco_GG_I
-      INTERFACE
+      module rkco_GG_I
+      interface
 !
-      SUBROUTINE RKCO_GG (JA,JB,CORD,INCOR,ICOLBREI)
+      subroutine RKCO_GG (JA,JB,CORD,INCOR,ICOLBREI)
       use iso_fortran_env, only: real64, int32, int64, real128
       EXTERNAL CORD
-      INTEGER, INTENT(IN) :: JA,JB,INCOR,ICOLBREI
-      END SUBROUTINE
-      END INTERFACE
-      END MODULE
+      integer, intent(in) :: JA,JB,INCOR,ICOLBREI
+      end subroutine
+      end interface
+      end module

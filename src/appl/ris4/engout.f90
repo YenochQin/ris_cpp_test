@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE ENGOUT(EAV, E, JTOT, IPAR, ILEV, NN, MODE)
+      subroutine ENGOUT(EAV, E, JTOT, IPAR, ILEV, NN, MODE)
 !                                                                      *
 !   This  subroutine prints  energy levels, splittings, and energies   *
 !   relative to the lowest in  Hartrees, Kaysers, and  eV, using the   *
@@ -20,23 +20,23 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE DEF_C, ONLY: AUCM, AUEV
-      USE JLABL_C
+      use DEF_C, only: AUCM, AUEV
+      use JLABL_C
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: NN
-      INTEGER, INTENT(IN) :: MODE
-      real(real64), INTENT(IN) :: EAV
-      INTEGER, INTENT(IN) :: JTOT(NN)
-      INTEGER, INTENT(IN) :: IPAR(NN)
-      INTEGER, INTENT(IN) :: ILEV(NN)
-      real(real64), INTENT(IN) :: E(NN)
+      integer, intent(in) :: NN
+      integer, intent(in) :: MODE
+      real(real64), intent(in) :: EAV
+      integer, intent(in) :: JTOT(NN)
+      integer, intent(in) :: IPAR(NN)
+      integer, intent(in) :: ILEV(NN)
+      real(real64), intent(in) :: E(NN)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER      :: J, I, IP
+      integer      :: J, I, IP
       real(real64) :: EAU, ECM, EEV
 !-----------------------------------------------
 !
@@ -54,11 +54,11 @@
 !          WRITE (24, 302) I, LABJ(JTOT(J)), LABP(IP), EAU, ECM, EEV
       END DO
 !
-      IF (NN > 1) THEN
+      if (NN > 1) then
 !
 !   Energy separations
 !
-         IF (MODE==1 .OR. MODE==3) THEN
+         if (MODE==1 .OR. MODE==3) then
             WRITE (24, 303)
             WRITE (24, 301)
             DO J = 2, NN
@@ -70,11 +70,11 @@
                WRITE (24, 302) I, JLBR(JTOT(J)), JLBP(IP), EAU, ECM, EEV
 !               WRITE (24, 302) I, LABJ(JTOT(J)), LABP(IP), EAU, ECM, EEV
             END DO
-         ENDIF
+         endif
 !
 !   Energies relative to level 1
 !
-         IF (MODE==2 .OR. MODE==3) THEN
+         if (MODE==2 .OR. MODE==3) then
             WRITE (24, 304)
             WRITE (24, 301)
             DO J = 2, NN
@@ -86,17 +86,17 @@
                WRITE (24, 302) I, JLBR(JTOT(J)), JLBP(IP), EAU, ECM, EEV
 !               WRITE (24, 302) I, LABJ(JTOT(J)), LABP(IP), EAU, ECM, EEV
             END DO
-         ENDIF
+         endif
 !
-      ENDIF
+      endif
 !
-      RETURN
+      return
 !
   300 FORMAT(/,'Eigenenergies:')
   301 FORMAT(/,'Level  J Parity',7X,'Hartrees',14X,'Kaysers',16X,'eV'/)
   302 FORMAT(1I3,2X,2A4,1P,3D22.14)
   303 FORMAT(/,'Energy of each level relative to immediately lower',' level:')
   304 FORMAT(/,'Energy of each level relative to lowest level:')
-      RETURN
+      return
 !
-      END SUBROUTINE ENGOUT
+      end subroutine ENGOUT

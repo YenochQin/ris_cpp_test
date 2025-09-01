@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE NINE(J1,J2,J3,L1,L2,L3,K1,K2,K3,I,INN,AA)
+      subroutine NINE(J1,J2,J3,L1,L2,L3,K1,K2,K3,I,INN,AA)
 !
 !                                                                  *
 !     THIS PACKAGE DETERMINES THE VALUES OF 9j COEFFICIENT         *
@@ -20,42 +20,42 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO
+      use CONS_C,          only: ZERO
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE ittk_I
-      USE nine0_I
-      USE sixj_I
+      use ittk_I
+      use nine0_I
+      use sixj_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER  :: J1, J2, J3, L1, L2, L3, K1, K2, K3
-      INTEGER, INTENT(IN)  :: I
-      INTEGER, INTENT(OUT) :: INN
+      integer  :: J1, J2, J3, L1, L2, L3, K1, K2, K3
+      integer, intent(in)  :: I
+      integer, intent(out) :: INN
       real(real64)  :: AA
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: N1, N2, N3, N4, N5, N6, MAX_, MIN_, IX
+      integer :: N1, N2, N3, N4, N5, N6, MAX_, MIN_, IX
       real(real64) :: S1, S2, S3, X
 !-----------------------------------------------
-      IF (I == 1) THEN
+      if (I == 1) then
          INN = 0
-         IF (ITTK(J1,J2,J3) == 0) RETURN
-         IF (ITTK(L1,L2,L3) == 0) RETURN
-         IF (ITTK(K1,K2,K3) == 0) RETURN
-         IF (ITTK(J1,L1,K1) == 0) RETURN
-         IF (ITTK(J2,L2,K2) == 0) RETURN
-         IF (ITTK(J3,L3,K3) == 0) RETURN
+         if (ITTK(J1,J2,J3) == 0) return
+         if (ITTK(L1,L2,L3) == 0) return
+         if (ITTK(K1,K2,K3) == 0) return
+         if (ITTK(J1,L1,K1) == 0) return
+         if (ITTK(J2,L2,K2) == 0) return
+         if (ITTK(J3,L3,K3) == 0) return
          INN = 1
-         RETURN
-      ENDIF
-      IF (J1*J2*J3*L1*L2*L3*K1*K2*K3 == 0) THEN
+         return
+      endif
+      if (J1*J2*J3*L1*L2*L3*K1*K2*K3 == 0) then
          INN = 1
          CALL NINE0 (J1, J2, J3, L1, L2, L3, K1, K2, K3, AA)
-      ELSE
+      else
          N1 = IABS(J1 - K3)
          N2 = IABS(L3 - J2)
          N3 = IABS(L1 - K2)
@@ -77,9 +77,9 @@
             CALL SIXJ (L1, L2, L3, J2, IX, K2, 0, S2)
             CALL SIXJ (K1, K2, K3, IX, J1, L1, 0, S3)
             X = S1*S2*S3*DBLE(IX + 1)
-            IF (MOD(IX,2) /= 0) X = -X
+            if (MOD(IX,2) /= 0) X = -X
             AA = X + AA
          END DO
-      ENDIF
-      RETURN
-      END SUBROUTINE NINE
+      endif
+      return
+      end subroutine NINE

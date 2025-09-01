@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      INTEGER FUNCTION NMTEJJ(I2Q,I2J,J,NK,ND)
+      integer FUNCTION NMTEJJ(I2Q,I2J,J,NK,ND)
 !                                                                  *
 !     ------------  SECTION METWO    SUBPROGRAM 21  -------------  *
 !                                                                  *
@@ -16,20 +16,20 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE mtjj_C
-      USE mtjj2_C
+      use mtjj_C
+      use mtjj2_C
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: I2Q, I2J, J, NK, ND
-!      DIMENSION LP(9),LG(9),LP3(27),LG3(27)
+      integer, intent(in) :: I2Q, I2J, J, NK, ND
+!      dimension LP(9),LG(9),LP3(27),LG3(27)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER                :: I2V, INN, IL, JP, JG, JJ
-      INTEGER, DIMENSION(9)  :: LP, LG
-      INTEGER, DIMENSION(27) :: LP3, LG3
+      integer                :: I2V, INN, IL, JP, JG, JJ
+      integer, dimension(9)  :: LP, LG
+      integer, dimension(27) :: LP3, LG3
 !-----------------------------------------------
       DATA LP/1,0,3,0,6,0,12,0,26/
       DATA LG/2,0,5,0,11,0,25,0,63/
@@ -38,53 +38,53 @@
       DATA LG3/7,0,15,0,24,0,34,0,45,0,57,0,70,0,84,0,99,0,115,0,&
       132,0,150,0,169,0,189/
       NMTEJJ=0
-      IF(J > 37)RETURN
+      if(J > 37)return
       I2V=J+1-2*I2Q
       INN=(I2Q*100+I2V)*100+I2J
-      IF(J < 9) THEN
+      if(J < 9) then
          JP=LP(J)
-         IF(JP == 0)RETURN
+         if(JP == 0)return
          JG=LG(J)
-         IF(JG == 0)RETURN
+         if(JG == 0)return
          JJ=JP
          DO WHILE (JJ <= JG)
-            IF (INN == MT(JJ)) THEN
+            if (INN == MT(JJ)) then
                NMTEJJ=JJ
-               RETURN
-            END IF
+               return
+            END if
             JJ=JJ+1
          END DO
-         RETURN
-      ELSEIF(J == 9) THEN
-        IF(MAX0(NK,ND) < 3) THEN
+         return
+      elseif(J == 9) then
+        if(MAX0(NK,ND) < 3) then
           JP=1
           JG=6
           JJ=JP
           DO WHILE (JJ <= JG)
-             IF (INN == MT9(JJ)) THEN
+             if (INN == MT9(JJ)) then
                 NMTEJJ=JJ+300
-                RETURN
-             END IF
+                return
+             END if
              JJ=JJ+1
           END DO
-          RETURN
-        ELSE
+          return
+        else
           PRINT*, "ERROR in FUNCTION NMTEJJ"
           STOP
-        END IF
-      ELSE
+        END if
+      else
         IL=J-10
         JP=LP3(IL)
         JG=LG3(IL)
         JJ=JP
         DO WHILE (JJ <= JG)
-           IF (INN == MT11(JJ)) THEN
+           if (INN == MT11(JJ)) then
               NMTEJJ=JJ
-              RETURN
-           END IF
+              return
+           END if
            JJ=JJ+1
         END DO
-        RETURN
-      ENDIF
-      RETURN
+        return
+      endif
+      return
       END FUNCTION NMTEJJ

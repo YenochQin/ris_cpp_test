@@ -1,11 +1,11 @@
 !*******************************************************************
 !                                                                  *
-      INTEGER FUNCTION ITTK (I, J, K)
+      integer FUNCTION ITTK (I, J, K)
 !                                                                  *
 !     CHESKED TRIANGULAR CONDITIONS FOR   I/2, J/2, K/2.           *
 !     I+J>=K, I+K>=J, J+K>=I,                                      *
 !     I/2+J/2+K/2 - WHOLE NUMBER                                   *
-!     ITTK=1 -   IF NOT SATISFY                                    *
+!     ITTK=1 -   if NOT SATISFY                                    *
 !     ITTK=0 -   IN OVER CASES                                     *
 !                                                                  *
 !   Written by G. Gaigalas,                                        *
@@ -19,12 +19,12 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: I, J, K
+      integer, intent(in) :: I, J, K
 !-----------------------------------------------
       ITTK = 0
-      IF (IABS(I - J) > K) RETURN
-      IF (I + J < K) RETURN
-      IF (MOD(I + J + K,2) /= 0) RETURN
+      if (IABS(I - J) > K) return
+      if (I + J < K) return
+      if (MOD(I + J + K,2) /= 0) return
       ITTK = 1
-      RETURN
+      return
       END FUNCTION ITTK

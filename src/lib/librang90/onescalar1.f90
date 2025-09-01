@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE ONESCALAR1(NS,JJA,JJB,JA,JB,COEFF)
+      subroutine ONESCALAR1(NS,JJA,JJB,JA,JB,COEFF)
 !                                                                  *
 !   --------------  SECTION METWO    SUBPROGRAM 03  -------------  *
 !                                                                  *
@@ -8,7 +8,7 @@
 !     OF ONE PARTICLE OPERATOR IN CASE :           N'1 = N1        *
 !                                                  N'2 = N2        *
 !                                                                  *
-!      SUBROUTINE CALLED:                                          *
+!      subroutine CALLED:                                          *
 !                                                                  *
 !   Written by  G. Gaigalas                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -20,44 +20,44 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO, HALF, ONE, EPS
-      USE trk_C
+      use CONS_C,          only: ZERO, HALF, ONE, EPS
+      use trk_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE recoonescalar_I
-      USE perko2_I
-      USE wj1_I
+      use recoonescalar_I
+      use perko2_I
+      use wj1_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN)       :: NS,JJA,JJB,JA,JB
-      real(real64), INTENT(OUT) :: COEFF
+      integer, intent(in)       :: NS,JJA,JJB,JA,JB
+      real(real64), intent(out) :: COEFF
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER      :: IAT
+      integer      :: IAT
       real(real64) :: WJ,QM1,QM2,RECOUPL
 !-----------------------------------------------
 !
 !     THE CASE 1111   + + - -
 !
       COEFF=ZERO
-      IF(JA == JB) THEN
-        IF(JJA /= JJB) THEN
+      if(JA == JB) then
+        if(JJA /= JJB) then
           CALL RECOONESCALAR(NS,JA,JA,JA,JA,0,IAT)
-          IF(IAT == 0)RETURN
-        END IF
+          if(IAT == 0)return
+        END if
         CALL PERKO2(JA,JA,JA,JA,1)
         QM1=HALF
         QM2=-HALF
         CALL WJ1(IK1,BK1,ID1,BD1,0,QM1,QM2,WJ)
-        IF(DABS(WJ) > EPS) THEN
+        if(DABS(WJ) > EPS) then
            RECOUPL=ONE/DSQRT(DBLE(IK1(6)+1))
            COEFF=WJ*RECOUPL*DSQRT(DBLE(ID1(3)+1))
            COEFF=-COEFF
-        END IF
-      END IF
-      RETURN
-      END SUBROUTINE ONESCALAR1
+        END if
+      END if
+      return
+      end subroutine ONESCALAR1

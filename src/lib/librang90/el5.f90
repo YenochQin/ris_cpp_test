@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE EL5(JJA,JJB,JA,JB,JC,JD,ICOLBREI)
+      subroutine EL5(JJA,JJB,JA,JB,JC,JD,ICOLBREI)
 !                                                                  *
 !   --------------  SECTION METWO    SUBPROGRAM 11  -------------  *
 !                                                                  *
@@ -10,7 +10,7 @@
 !                                           N'3 = N3 (+-) 1        *
 !                                           N'4 = N4 (+-) 1        *
 !                                                                  *
-!      SUBROUTINE CALLED: EL51,EL52,EL53                           *
+!      subroutine CALLED: EL51,EL52,EL53                           *
 !                                                                  *
 !   Written by  G. Gaigalas                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -21,36 +21,36 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE m_C,          ONLY: NPEEL
+      use m_C,          only: NPEEL
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE el51_I
-      USE el52_I
-      USE el53_I
+      use el51_I
+      use el52_I
+      use el53_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: JJA,JJB,JA,JB,JC,JD,ICOLBREI
+      integer, intent(in) :: JJA,JJB,JA,JB,JC,JD,ICOLBREI
 !-----------------------------------------------
-      IF(NPEEL <= 3)RETURN
-      IF(JB < JC) THEN
+      if(NPEEL <= 3)return
+      if(JB < JC) then
         CALL EL51(JJA,JJB,JA,JB,JC,JD,1,ICOLBREI)
-      ELSE IF(JA > JD.AND.JB > JD) THEN
+      else if(JA > JD.AND.JB > JD) then
         CALL EL51(JJA,JJB,JC,JD,JA,JB,2,ICOLBREI)
-      ELSE IF(JB > JC.AND.JB < JD.AND.JA < JC) THEN
+      else if(JB > JC.AND.JB < JD.AND.JA < JC) then
         CALL EL52(JJA,JJB,JA,JC,JB,JD,1,ICOLBREI)
-      ELSE IF(JB > JC.AND.JB > JD.AND.JA > JC) THEN
+      else if(JB > JC.AND.JB > JD.AND.JA > JC) then
         CALL EL52(JJA,JJB,JC,JA,JD,JB,2,ICOLBREI)
-      ELSE IF(JB > JC.AND.JB > JD.AND.JA < JC) THEN
+      else if(JB > JC.AND.JB > JD.AND.JA < JC) then
         CALL EL53(JJA,JJB,JA,JC,JD,JB,1,ICOLBREI)
-      ELSE IF(JB > JC.AND.JB < JD.AND.JA > JC) THEN
+      else if(JB > JC.AND.JB < JD.AND.JA > JC) then
         CALL EL53(JJA,JJB,JC,JA,JB,JD,2,ICOLBREI)
-      ELSE
+      else
         WRITE(99,100)
         STOP
-      END IF
-      RETURN
+      END if
+      return
   100 FORMAT(5X,'ERRO IN EL5 ')
-      END SUBROUTINE EL5
+      end subroutine EL5

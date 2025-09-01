@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      MODULE trk_C
+      module trk_C
 !                                                                  *
 !   ---------------  SECTION SQJJ  SUBPROGRAM 22  --------------   *
 !                                                                  *
@@ -14,6 +14,6 @@
       use iso_fortran_env, only: real64, int32, int64, real128
 !
       IMPLICIT NONE
-      INTEGER, DIMENSION(7)      :: ID1,ID2,IK1,IK2,ID3,ID4,IK3,IK4
-      real(real64), DIMENSION(3) :: BD1,BD2,BK1,BK2,BD3,BD4,BK3,BK4
-      END MODULE trk_C
+      integer, dimension(7)      :: ID1,ID2,IK1,IK2,ID3,ID4,IK3,IK4
+      real(real64), dimension(3) :: BD1,BD2,BK1,BK2,BD3,BD4,BK3,BK4
+      end module trk_C

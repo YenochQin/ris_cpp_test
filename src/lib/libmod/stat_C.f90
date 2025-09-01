@@ -1,7 +1,7 @@
 !
 !***********************************************************************
 !                                                                      *
-      MODULE stat_C
+      module stat_C
 !
 !***********************************************************************
 !                                                                      *
@@ -9,8 +9,8 @@
 !...Created by Pacific-Sierra Research 77to90  4.3E  07:21:55   1/ 6/07
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
-      INTEGER, DIMENSION(:,:,:), pointer :: jqsar
-      integer(int8), DIMENSION(:,:,:), pointer :: jqsa
-      INTEGER, DIMENSION(:,:), pointer :: jcupar
-      integer(int8), DIMENSION(:,:), pointer :: jcupa
-      END MODULE stat_C
+      integer, dimension(:,:,:), pointer :: jqsar
+      integer(int8), dimension(:,:,:), pointer :: jqsa
+      integer, dimension(:,:), pointer :: jcupar
+      integer(int8), dimension(:,:), pointer :: jcupa
+      end module stat_C

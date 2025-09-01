@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE SIXJ5(J,K,L,M,N,ITIK,SI)
+      subroutine SIXJ5(J,K,L,M,N,ITIK,SI)
 !                                                                  *
 !     THIS PACKAGE DETERMINES THE VALUES OF 6j COEFFICIENT         *
 !                                                                  *
@@ -18,57 +18,57 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO, ONE, TWO
+      use CONS_C,          only: ZERO, ONE, TWO
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE ixjtik_I
+      use ixjtik_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER                   :: J, K, L, M, N
-      INTEGER, INTENT(IN)       :: ITIK
-      real(real64), INTENT(OUT) :: SI
+      integer                   :: J, K, L, M, N
+      integer, intent(in)       :: ITIK
+      real(real64), intent(out) :: SI
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER      :: I1
+      integer      :: I1
       real(real64) :: AS, A, B, C, AKA
 !-----------------------------------------------
       SI = ZERO
-      IF (ITIK /= 0) THEN
+      if (ITIK /= 0) then
 !
 !     CHESKED TRIANGULAR CONDITIONS
 !
-         IF (IXJTIK(J,K,L,M,N,1) == 0) RETURN
-      ENDIF
+         if (IXJTIK(J,K,L,M,N,1) == 0) return
+      endif
       I1 = (J + K + L)/2
       AS = DBLE(I1)
       A = DBLE(L)
       B = DBLE(K)
       C = DBLE(J)
       AKA = ONE
-      IF (MOD(I1,2) /= 0) AKA = -AKA
-      IF (K < M) THEN
-         IF (J < N) THEN
+      if (MOD(I1,2) /= 0) AKA = -AKA
+      if (K < M) then
+         if (J < N) then
 !              M > K,  J < N.
             SI = -AKA*DSQRT((AS + TWO)*(AS - A + ONE)/((B + ONE)*(B + TWO)*(C&
                 + ONE)*(C + TWO)))
-         ELSE IF (J > N) THEN
+         else if (J > N) then
 !              M > K,  J > N.
             SI = AKA*DSQRT((AS - C + ONE)*(AS - B)/((B + ONE)*(B + TWO)*C*(C + &
                ONE)))
-         ENDIF
-      ELSE IF (K > M) THEN
-         IF (J < N) THEN
+         endif
+      else if (K > M) then
+         if (J < N) then
 !             M < K,  J < N.
             SI = AKA*DSQRT((AS - C)*(AS - B + ONE)/(B*(B + ONE)*(C + ONE)*(C + &
                TWO)))
-         ELSE IF (J > N) THEN
+         else if (J > N) then
 !             M < K,  J > N.
             SI = AKA*DSQRT((AS + ONE)*(AS - A)/(B*(B + ONE)*C*(C + ONE)))
-         ENDIF
-      ENDIF
-      RETURN
-      END SUBROUTINE SIXJ5
+         endif
+      endif
+      return
+      end subroutine SIXJ5

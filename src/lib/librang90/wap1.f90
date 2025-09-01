@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE WAP1(IK,BK,ID,BD,K1,BK2,QM1,QM2,QM3,WA)
+      subroutine WAP1(IK,BK,ID,BD,K1,BK2,QM1,QM2,QM3,WA)
 !                                                                  *
 !   ---------------  SECTION SQ    SUBPROGRAM 23  --------------   *
 !                                                                  *
@@ -11,7 +11,7 @@
 !                                                    ++            *
 !                                                    -- B17 (2.3)  *
 !                                                                  *
-!     SUBROUTINE CALLED: C0T5S,ITJJ3,IXJTIK,IZAS1,RUMTJJ,SIXJ,     *
+!     subroutine CALLED: C0T5S,ITJJ3,IXJTIK,IZAS1,RUMTJJ,SIXJ,     *
 !                        RMEAJJ,WJ1                                *
 !                                                                  *
 !   Written by  G. Gaigalas                                        *
@@ -24,70 +24,70 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO, TENTH, TWO, EPS
+      use CONS_C,          only: ZERO, TENTH, TWO, EPS
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE mes_I
-      USE wap1jjg_I
-      USE izas1_I
-      USE itjj3_I
-      USE rumtjj_I
-      USE ixjtik_I
-      USE c0T5S_I
-      USE rmeajj_I
-      USE wj1_I
-      USE sixj_I
+      use mes_I
+      use wap1jjg_I
+      use izas1_I
+      use itjj3_I
+      use rumtjj_I
+      use ixjtik_I
+      use c0T5S_I
+      use rmeajj_I
+      use wj1_I
+      use sixj_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER,      INTENT(IN)               :: K1
-      INTEGER,      INTENT(IN), DIMENSION(7) :: IK, ID
-      real(real64), INTENT(IN)               :: BK2, QM1, QM2, QM3
-      real(real64), INTENT(IN), DIMENSION(3) :: BK, BD
-      real(real64), INTENT(OUT)              :: WA
+      integer,      intent(in)               :: K1
+      integer,      intent(in), dimension(7) :: IK, ID
+      real(real64), intent(in)               :: BK2, QM1, QM2, QM3
+      real(real64), intent(in), dimension(3) :: BK, BD
+      real(real64), intent(out)              :: WA
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: KK1, KK2, IE, IQ3, IQM, IT, ITP, ITG, IBTT
-      INTEGER,      DIMENSION(7) :: IBT
+      integer :: KK1, KK2, IE, IQ3, IQM, IT, ITP, ITG, IBTT
+      integer,      dimension(7) :: IBT
       real(real64)               :: ENQP, D1, S, SI, W
-      real(real64), DIMENSION(3) :: BT
+      real(real64), dimension(3) :: BT
 !-----------------------------------------------
       WA=ZERO
-      IF(ID(3) == 9) THEN
-        IF(MAX0(IK(4),ID(4)) < 3) THEN
-          IF(IK(1) < 300) CALL MES(55)
-          IF(ID(1) < 300) CALL MES(55)
+      if(ID(3) == 9) then
+        if(MAX0(IK(4),ID(4)) < 3) then
+          if(IK(1) < 300) CALL MES(55)
+          if(ID(1) < 300) CALL MES(55)
           CALL WAP1JJG(K1,BK2,QM1,QM2,QM3,IK,BK,ID,BD,WA)
-          RETURN
-        ENDIF
-      ELSEIF(ID(3) > 9) THEN
+          return
+        endif
+      elseif(ID(3) > 9) then
         CALL WAP1JJG(K1,BK2,QM1,QM2,QM3,IK,BK,ID,BD,WA)
-        RETURN
-      ENDIF
-      IF(IZAS1(ID(7),BD(3),IK(7),BK(3)) == 0)RETURN
+        return
+      endif
+      if(IZAS1(ID(7),BD(3),IK(7),BK(3)) == 0)return
       ENQP=ZERO
       KK1=K1*2
       IQ3=QM3*TWO
       KK2=BK2+BK2+TENTH*BK2
-      IF(ITJJ3(IK,ID,KK2,BK,BD,IBT,BT,ITP,ITG,IQ3) == 0)RETURN
+      if(ITJJ3(IK,ID,KK2,BK,BD,IBT,BT,ITP,ITG,IQ3) == 0)return
       IQM=TWO*DABS(BT(3))+TENTH
       DO IT=ITP,ITG
         CALL RUMTJJ(IT,IBT(3),IBT(7),IBTT,IBT(6))
-        IF(IQM > IBT(7)) CYCLE
-        IF(IXJTIK(KK1,IK(3),KK2,ID(6),IK(6),IBT(6)) == 0) CYCLE
+        if(IQM > IBT(7)) CYCLE
+        if(IXJTIK(KK1,IK(3),KK2,ID(6),IK(6),IBT(6)) == 0) CYCLE
         IBT(1)=IT
         BT(2)=DBLE(IBT(6))/TWO
         BT(1)=DBLE(IBT(7))/TWO
         CALL C0T5S(BD(1),BD(3),QM3,BT(1),BT(3),D1)
-        IF(DABS(D1) < EPS) CYCLE
+        if(DABS(D1) < EPS) CYCLE
         CALL RMEAJJ(ID(3),IBT(1),IBT(7),IBT(6),ID(1),ID(7),ID(6),S)
-        IF(DABS(S) < EPS) CYCLE
+        if(DABS(S) < EPS) CYCLE
         D1=D1*S
         CALL WJ1(IK,BK,IBT,BT,K1,QM1,QM2,W)
-        IF(DABS(W) < EPS) CYCLE
+        if(DABS(W) < EPS) CYCLE
         D1=D1*W
         CALL SIXJ(KK1,IK(3),KK2,ID(6),IK(6),IBT(6),0,SI)
         D1=D1*SI/DSQRT(DBLE(IBT(7)+1))
@@ -95,6 +95,6 @@
       END DO
       WA=ENQP*DSQRT(DBLE(KK2+1))
       IE=KK2+IK(6)+ID(6)+2
-      IF(((IE/4)*4) /= IE)WA=-WA
-      RETURN
-      END SUBROUTINE WAP1
+      if(((IE/4)*4) /= IE)WA=-WA
+      return
+      end subroutine WAP1

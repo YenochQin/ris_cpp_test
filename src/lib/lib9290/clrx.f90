@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      REAL(KIND(0.0D0)) FUNCTION CLRX (KAPPAA, K, KAPPAB)
+      real(real64) FUNCTION CLRX (KAPPAA, K, KAPPAB)
 !                                                                      *
 !   The value of CLRX is the 3-j symbol:                               *
 !                                                                      *
@@ -26,16 +26,16 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE FACTS_C
+      use FACTS_C
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: KAPPAA, K, KAPPAB
+      integer, intent(in) :: KAPPAA, K, KAPPAB
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: KA, KB, KAPKB, KABKP, KAMKB, KBMKA
+      integer :: KA, KB, KAPKB, KABKP, KAMKB, KBMKA
       real(real64) :: EXPTRM
 !-----------------------------------------------
 !
@@ -47,7 +47,7 @@
 !
 !   Perform the triangularity check
 !
-      IF (ABS(KA - KB)<=K .AND. KA+KB-1>=K) THEN
+      if (ABS(KA - KB)<=K .AND. KA+KB-1>=K) then
 !
 !   Triangularity satisfied; compute the 3j coefficient
 !
@@ -68,54 +68,54 @@
 !
 !   The remainder depends on the parity of KA+KB+K
 !
-         IF (MOD(KABKP,2) == 0) THEN
+         if (MOD(KABKP,2) == 0) then
 !
 !   Computation for even parity case
 !
 !   Include the phase factor: a minus sign if necessary
 !
-            IF (MOD(3*KABKP/2,2) == 0) THEN
+            if (MOD(3*KABKP/2,2) == 0) then
                CLRX = 1.0D00
-            ELSE
+            else
                CLRX = -1.0D00
-            ENDIF
+            endif
 !
 !   Include the contribution from the factorials
 !
             EXPTRM = EXPTRM + GAM((KABKP+2)/2) - GAM((KAPKB-K)/2) - GAM((KAMKB+&
                K+2)/2) - GAM((KBMKA+K+2)/2)
 !
-         ELSE
+         else
 !
 !   Computation for odd parity case
 !
 !   Include the phase factor: a minus sign if necessary
 !
-            IF (MOD((3*KABKP - 1)/2,2) == 0) THEN
+            if (MOD((3*KABKP - 1)/2,2) == 0) then
                CLRX = 1.0D00
-            ELSE
+            else
                CLRX = -1.0D00
-            ENDIF
+            endif
 !
 !   Include the contribution from the factorials
 !
             EXPTRM = EXPTRM + GAM((KABKP+1)/2) - GAM((KAPKB-K+1)/2) - GAM((&
                KAMKB+K+1)/2) - GAM((KBMKA+K+1)/2)
 !
-         ENDIF
+         endif
 !
 !   Final assembly
 !
          CLRX = CLRX*EXP(EXPTRM)
 !
-      ELSE
+      else
 !
 !   Triangularity violated; set the coefficient to zero
 !
          CLRX = 0.0D00
 !
-      ENDIF
+      endif
 !
-      RETURN
+      return
 !
       END FUNCTION CLRX

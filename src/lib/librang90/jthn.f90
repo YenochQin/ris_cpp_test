@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      INTEGER FUNCTION JTHN(K,N,I)
+      integer FUNCTION JTHN(K,N,I)
 !                                                                  *
 !   Written by G. Gaigalas,                                        *
 !   Vanderbilt University,  Nashville               October  1996  *
@@ -13,21 +13,21 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       IMPLICIT NONE
-      INTEGER, INTENT(IN) :: I, N, K
+      integer, intent(in) :: I, N, K
 !-----------------------------------------------
-      IF(N == 1) THEN
+      if(N == 1) then
         JTHN=MOD(K,I)
-      ELSEIF(N == 2) THEN
+      elseif(N == 2) then
         JTHN=MOD(K/I,I)
-      ELSEIF(N == 3) THEN
+      elseif(N == 3) then
         JTHN=MOD(K/(I*I),I)
-      ELSEIF(N == 4) THEN
+      elseif(N == 4) then
         JTHN=MOD(K/(I*I*I),I)
-      ELSEIF(N == 5) THEN
+      elseif(N == 5) then
         JTHN=MOD(K/(I*I*I*I),I)
-      ELSE
+      else
         WRITE(6,'(A)') ' ERROR IN JTHN '
         STOP
-      ENDIF
-      RETURN
+      endif
+      return
       END FUNCTION JTHN

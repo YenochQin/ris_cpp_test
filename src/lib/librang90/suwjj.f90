@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE SUWJJ(K1,K2,LL,J1,J2,SUW)
+      subroutine SUWJJ(K1,K2,LL,J1,J2,SUW)
 !                                                                  *
 !                 (k1 k2)                                          *
 !     ( j QJ ::: W      ::: j QJ )                                 *
@@ -15,31 +15,31 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO, EPS
-      USE ribojj_C
+      use CONS_C,          only: ZERO, EPS
+      use ribojj_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE rumtjj_I
-      USE ixjtik_I
-      USE rmeajj_I
-      USE sixj_I
+      use rumtjj_I
+      use ixjtik_I
+      use rmeajj_I
+      use sixj_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER,      INTENT(IN)  :: K1, K2, J1, J2
-      INTEGER,      INTENT(OUT) :: LL
-      real(real64), INTENT(OUT) :: SUW
+      integer,      intent(in)  :: K1, K2, J1, J2
+      integer,      intent(out) :: LL
+      real(real64), intent(out) :: SUW
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: KK1,KK2,I,IP,IG,L2Q1,L2V1,L2J1,L2Q2,L2V2,L2J2, &
+      integer :: KK1,KK2,I,IP,IG,L2Q1,L2V1,L2J1,L2Q2,L2V2,L2J2, &
                  L2QI,L2VI,L2JI
       real(real64) :: COEF1, COEF2, S, SI1, SI2
 !-----------------------------------------------
       SUW=ZERO
-      IF(IMPTJJ(J1) /= IMPTJJ(J2)) RETURN
+      if(IMPTJJ(J1) /= IMPTJJ(J2)) return
       S=ZERO
       CALL RUMTJJ(J1,LL,L2Q1,L2V1,L2J1)
       KK1=K1*2
@@ -49,21 +49,21 @@
       CALL RUMTJJ(J2,LL,L2Q2,L2V2,L2J2)
       DO I=IP,IG
         CALL RUMTJJ(I,LL,L2QI,L2VI,L2JI)
-        IF(IXJTIK(LL,LL,KK2,L2J2,L2J1,L2JI) /= 0) THEN
-          IF(IXJTIK(1,1,KK1,L2Q2,L2Q1,L2QI) /= 0) THEN
+        if(IXJTIK(LL,LL,KK2,L2J2,L2J1,L2JI) /= 0) then
+          if(IXJTIK(1,1,KK1,L2Q2,L2Q1,L2QI) /= 0) then
             CALL RMEAJJ(LL,J1,L2Q1,L2J1,I,L2QI,L2JI,COEF1)
-            IF(DABS(COEF1) > EPS) THEN
+            if(DABS(COEF1) > EPS) then
               CALL RMEAJJ(LL,I,L2QI,L2JI,J2,L2Q2,L2J2,COEF2)
-              IF(DABS(COEF2) > EPS) THEN
+              if(DABS(COEF2) > EPS) then
                 CALL SIXJ(LL,LL,KK2,L2J2,L2J1,L2JI,0,SI1)
                 CALL SIXJ(1,1,KK1,L2Q2,L2Q1,L2QI,0,SI2)
                 S=S+SI1*SI2*COEF1*COEF2
-              ENDIF
-            ENDIF
-          ENDIF
-        ENDIF
+              endif
+            endif
+          endif
+        endif
       END DO
       SUW=S*DSQRT(DBLE((KK1+1)*(KK2+1)))
-      IF(MOD(L2Q1+L2J1+L2Q2+L2J2+KK1+KK2,4) /= 0)SUW=-SUW
-      RETURN
-      END SUBROUTINE SUWJJ
+      if(MOD(L2Q1+L2J1+L2Q2+L2J2+KK1+KK2,4) /= 0)SUW=-SUW
+      return
+      end subroutine SUWJJ

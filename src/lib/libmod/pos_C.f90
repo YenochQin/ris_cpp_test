@@ -1,10 +1,10 @@
-      MODULE pos_C
+      module pos_C
       use iso_fortran_env, only: real64, int32, int64, real128
 !...Created by Pacific-Sierra Research 77to90  4.3E  06:38:40  12/28/06
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
-      INTEGER :: NCFTOT, NVECSIZ
-      INTEGER, DIMENSION(:), pointer :: ncfpast
-      INTEGER, DIMENSION(:), pointer :: ncminpast, nevecpast
+      integer :: NCFTOT, NVECSIZ
+      integer, dimension(:), pointer :: ncfpast
+      integer, dimension(:), pointer :: ncminpast, nevecpast
 
-      END MODULE pos_C
+      end module pos_C

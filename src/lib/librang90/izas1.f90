@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      INTEGER FUNCTION IZAS1(IB,QB,IK,QK)
+      integer FUNCTION IZAS1(IB,QB,IK,QK)
 !                                                                  *
 !   Written by G. Gaigalas,                                        *
 !   Vilnius,  Lithuania                             March    1995  *
@@ -13,25 +13,25 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: TENTH, TWO
+      use CONS_C,          only: TENTH, TWO
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER,      INTENT(IN) :: IB, IK
-      real(real64), INTENT(IN) :: QB, QK
+      integer,      intent(in) :: IB, IK
+      real(real64), intent(in) :: QB, QK
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: IQB, IQK
+      integer :: IQB, IQK
 !-----------------------------------------------
       IZAS1=0
       IQB=TWO*DABS(QB)+TENTH
-      IF(IQB > IB)RETURN
-      IF(MOD(IB+IQB,2) /= 0)RETURN
+      if(IQB > IB)return
+      if(MOD(IB+IQB,2) /= 0)return
       IQK=TWO*DABS(QK)+TENTH
-      IF(IQK > IK)RETURN
-      IF(MOD(IK+IQK,2) /= 0)RETURN
+      if(IQK > IK)return
+      if(MOD(IK+IQK,2) /= 0)return
       IZAS1=1
-      RETURN
+      return
       END  FUNCTION IZAS1

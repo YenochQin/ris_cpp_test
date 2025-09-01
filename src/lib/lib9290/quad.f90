@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE QUAD(RESULT)
+      subroutine QUAD(RESULT)
 !                                                                      *
 !   The argument result is an approximation  to the integral of F(R)   *
 !   from  zero  to  infinity,  where the values of RP(I)*F(R(I)) are   *
@@ -30,19 +30,19 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE DEF_C
-      USE GRID_C
-      USE NCC_C
-      USE TATB_C, ONLY: TA, MTP
+      use DEF_C
+      use GRID_C
+      use NCC_C
+      use TATB_C, only: TA, MTP
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64) , INTENT(OUT) :: RESULT
+      real(real64) , intent(out) :: RESULT
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: MTPM1, I, IP1, LOC
+      integer :: MTPM1, I, IP1, LOC
       real(real64) :: TAI, TAIP1, QUOTT, FRIP1, FRI, RATIO, RIP1, RI, SIGMA
 !-----------------------------------------------
 !
@@ -53,13 +53,13 @@
       DO I = 2, MTPM1
 !
          TAI = TA(I)
-         IF (ABS(TAI) <= 0.D0) CYCLE
+         if (ABS(TAI) <= 0.D0) CYCLE
 !
          IP1 = I + 1
          TAIP1 = TA(IP1)
          QUOTT = TAIP1/TAI
 !
-         IF (QUOTT <= 0.D0) CYCLE
+         if (QUOTT <= 0.D0) CYCLE
 !
 !   Exponent from fit
 !
@@ -84,13 +84,13 @@
          RESULT = RESULT + C1*TAI
          RESULT = RESULT + SUM(C2*(TA(IP1:MTP:4)+TA(IP1+2:MTP+2:4))+C3*TA(IP1+1&
             :MTP+1:4)+C4*TA(IP1+3:MTP+3:4))
-         IF (MOD(MTP - I,4) == 0) RESULT = RESULT - C1*TA(MTP)
+         if (MOD(MTP - I,4) == 0) RESULT = RESULT - C1*TA(MTP)
 !
 !   Test of result's accuracy; `decomment' to activate
 !
 !              ESTDER = 10.0D 00*RI*FRI
 !              RATIO = ABS (ESTDER/RESULT)
-!              IF (RATIO .GT. ACCY) PRINT (*,300) RATIO
+!              if (RATIO .GT. ACCY) PRINT (*,300) RATIO
 !
          GO TO 4
 !
@@ -101,10 +101,10 @@
       RESULT = 0.D0
 !
     4 CONTINUE
-      RETURN
+      return
 !
   300 FORMAT(/,'QUAD: Estimated accuracy is ',1P,D10.3,/,&
          ' Decrease RNT or improve input data conditioning to',' ameliorate.'/)
-      RETURN
+      return
 !
-      END SUBROUTINE QUAD
+      end subroutine QUAD

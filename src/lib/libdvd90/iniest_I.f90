@@ -1,7 +1,7 @@
-      MODULE iniest_I
-      INTERFACE
+      module iniest_I
+      interface
 !
-      SUBROUTINE INIEST(N, NB, NIV, HMX, JCOL, IROW, BASIS, IBLOCK, JBLOCK)
+      subroutine INIEST(N, NB, NIV, HMX, JCOL, IROW, BASIS, IBLOCK, JBLOCK)
 !************************************************************************
 !...Translated by Pacific-Sierra Research 77to90  4.3E  14:04:58   1/ 3/07
 !...Modified by Charlotte Froese Fischer
@@ -10,15 +10,15 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      INTEGER, INTENT(IN) :: N
-      INTEGER, INTENT(IN) :: NB
-      INTEGER  :: NIV
-      INTEGER, INTENT(IN) :: JBLOCK
-      INTEGER, INTENT(IN) :: JCOL(0:*)
-      INTEGER, INTENT(IN) :: IROW(*)
-      INTEGER, INTENT(IN) :: IBLOCK(*)
-      real(real64), INTENT(IN) :: HMX(*)
+      integer, intent(in) :: N
+      integer, intent(in) :: NB
+      integer  :: NIV
+      integer, intent(in) :: JBLOCK
+      integer, intent(in) :: JCOL(0:*)
+      integer, intent(in) :: IROW(*)
+      integer, intent(in) :: IBLOCK(*)
+      real(real64), intent(in) :: HMX(*)
       real(real64)  :: BASIS(*)
-      END SUBROUTINE
-      END INTERFACE
-      END MODULE
+      end subroutine
+      end interface
+      end module

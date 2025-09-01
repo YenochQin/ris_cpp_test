@@ -1,10 +1,10 @@
-      MODULE oneparticlejj1_I
-      INTERFACE
+      module oneparticlejj1_I
+      interface
 !
-      SUBROUTINE ONEPARTICLEJJ1(NS,KA,JJA,JJB,JA,JB,COEFF)
+      subroutine ONEPARTICLEJJ1(NS,KA,JJA,JJB,JA,JB,COEFF)
       use iso_fortran_env, only: real64, int32, int64, real128
-      INTEGER, INTENT(IN) :: NS,KA,JJA,JJB,JA,JB
-      real(real64), INTENT(OUT) :: COEFF
-      END SUBROUTINE
-      END INTERFACE
-      END MODULE
+      integer, intent(in) :: NS,KA,JJA,JJB,JA,JB
+      real(real64), intent(out) :: COEFF
+      end subroutine
+      end interface
+      end module

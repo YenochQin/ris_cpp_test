@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE RMEW1JJ(J1,J2,K1,K2,COEF)
+      subroutine RMEW1JJ(J1,J2,K1,K2,COEF)
 !                                                                  *
 !   Written by  G. Gaigalas                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -12,35 +12,35 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO
-      USE ribojj_C
+      use CONS_C,          only: ZERO
+      use ribojj_C
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER,      INTENT(IN)  :: J1, J2, K1, K2
-      real(real64), INTENT(OUT) :: COEF
+      integer,      intent(in)  :: J1, J2, K1, K2
+      real(real64), intent(out) :: COEF
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER, DIMENSION(2) :: I10, I01
+      integer, dimension(2) :: I10, I01
 !-----------------------------------------------
       DATA I01/6,0/
       DATA I10/0,6/
 !
       COEF=ZERO
-      IF(IMPTJJ(J1) /= IMPTJJ(J2)) RETURN
-      IF(J1 > 2) RETURN
-      IF(K1 == 0 .AND. K2 == 0) THEN
+      if(IMPTJJ(J1) /= IMPTJJ(J2)) return
+      if(J1 > 2) return
+      if(K1 == 0 .AND. K2 == 0) then
         COEF=-DSQRT(DBLE(2))
-      ELSEIF(K1 == 1 .AND. K2 == 0) THEN
+      elseif(K1 == 1 .AND. K2 == 0) then
         COEF=-DSQRT(DBLE(I10(J1)))
-      ELSEIF(K1 == 0 .AND. K2 == 1) THEN
+      elseif(K1 == 0 .AND. K2 == 1) then
         COEF=-DSQRT(DBLE(I01(J1)))
-      ELSE
+      else
         WRITE(0,'(A,4I5)') ' J1 J2 = ',J1,J2
         WRITE(0,'(A)') ' ERROR IN SUB. RMEW1JJ '
         STOP
-      ENDIF
-      RETURN
-      END SUBROUTINE RMEW1JJ
+      endif
+      return
+      end subroutine RMEW1JJ

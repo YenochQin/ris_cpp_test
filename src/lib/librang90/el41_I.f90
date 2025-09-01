@@ -1,10 +1,10 @@
-      MODULE el41_I
-      INTERFACE
+      module el41_I
+      interface
 !
-      SUBROUTINE EL41(JJJA,JJJB,JA,JB,JC,IREZ,JJA,JJB,JJC,JJD,    &
+      subroutine EL41(JJJA,JJJB,JA,JB,JC,IREZ,JJA,JJB,JJC,JJD,    &
                                                           ICOLBREI)
-      INTEGER, INTENT(IN) :: JJJA,JJJB,JA,JB,JC,IREZ,JJA,JJB, &
+      integer, intent(in) :: JJJA,JJJB,JA,JB,JC,IREZ,JJA,JJB, &
                              JJC,JJD,ICOLBREI
-      END SUBROUTINE
-      END INTERFACE
-      END MODULE
+      end subroutine
+      end interface
+      end module

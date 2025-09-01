@@ -1,12 +1,12 @@
-      MODULE bess_C
+      module bess_C
       use iso_fortran_env, only: real64, int32, int64, real128
 
-      USE parameter_def,   ONLY:  NNNP
+      use parameter_def,   only:  NNNP
 !...Created by Pacific-Sierra Research 77to90  4.3E  06:33:54  12/28/06
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
-      real(real64), DIMENSION(2) :: WIJ
-      real(real64), DIMENSION(2,2,NNNP) :: BESSJ, BESSN
-      real(real64), DIMENSION(NNNP,3) :: BJ
-      real(real64), DIMENSION(NNNP) :: TC, TD
-      END MODULE bess_C
+      real(real64), dimension(2) :: WIJ
+      real(real64), dimension(2,2,NNNP) :: BESSJ, BESSN
+      real(real64), dimension(NNNP,3) :: BJ
+      real(real64), dimension(NNNP) :: TC, TD
+      end module bess_C

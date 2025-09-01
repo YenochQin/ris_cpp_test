@@ -1,7 +1,7 @@
 !
 !***********************************************************************
 !                                                                      *
-      MODULE jj2lsj_C
+      module jj2lsj_C
 !                                                                      *
 !     This module contains the (numerical) values of the subshell      *
 !     terms in LS-coupling and in it are define some global variables  *
@@ -444,4 +444,4 @@
       subshell_term_LS(9, 0,17,32, 0),                    &
       subshell_term_LS(9, 0,17,34, 2),                    &
       subshell_term_LS(9, 0,17,36, 0) /)
-      END MODULE jj2lsj_C
+      end module jj2lsj_C

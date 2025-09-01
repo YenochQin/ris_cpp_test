@@ -1,8 +1,8 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE ALCBUF(MODE)
+      subroutine ALCBUF(MODE)
 !                                                                      *
-!   The arrays in  MODULE BUFFER_C are allocated (MODE = 1), realloca-   *
+!   The arrays in  module BUFFER_C are allocated (MODE = 1), realloca-   *
 !   ted (MODE = 2), and deallocated (MODE = 3) in this routine.        *
 !                                                                      *
 !   Call(s) to: [LIB92]: ALLOC, DALLOC, RALLOC.                        *
@@ -19,17 +19,17 @@
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE memory_man
-      use buffer_C,       ONLY: LABEL, COEFF, NBDIM
+      use memory_man
+      use buffer_C,       only: LABEL, COEFF, NBDIM
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: MODE
+      integer, intent(in) :: MODE
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: NEWSIZ, IERR
+      integer :: NEWSIZ, IERR
 !
 !
       SELECT CASE (MODE)
@@ -66,6 +66,6 @@
 !
       END SELECT
 !
-      RETURN
+      return
 !
-      END SUBROUTINE ALCBUF
+      end subroutine ALCBUF

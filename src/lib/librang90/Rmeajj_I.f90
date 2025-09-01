@@ -1,10 +1,10 @@
-      MODULE rmeajj_I
-      INTERFACE
+      module rmeajj_I
+      interface
 !
-      SUBROUTINE RMEAJJ(LL,IT,LQ,J,ITS,LQS,J1S,COEF)
+      subroutine RMEAJJ(LL,IT,LQ,J,ITS,LQS,J1S,COEF)
       use iso_fortran_env, only: real64, int32, int64, real128
-      INTEGER,      INTENT(IN)  :: LL, IT, LQ, J, ITS, LQS, J1S
-      real(real64), INTENT(OUT) :: COEF
-      END SUBROUTINE
-      END INTERFACE
-      END MODULE
+      integer,      intent(in)  :: LL, IT, LQ, J, ITS, LQS, J1S
+      real(real64), intent(out) :: COEF
+      end subroutine
+      end interface
+      end module

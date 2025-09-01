@@ -1,7 +1,7 @@
 
 !***************************************************************************
 
-      SUBROUTINE GDVD(OP, N, LIM, DIAG, ILOW, IHIGH, ISELEC, NIV, MBLOCK, CRITE&
+      subroutine GDVD(OP, N, LIM, DIAG, ILOW, IHIGH, ISELEC, NIV, MBLOCK, CRITE&
          , CRITC, CRITR, ORTHO, MAXITER, WORK, IWRSZ, IWORK, IIWSZ, HIEND, &
          NLOOPS, NMV, IERR)
 !      Written by M. Saparov
@@ -19,38 +19,38 @@
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      !USE op_I
-      USE dvdson_I
+      !use op_I
+      use dvdson_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER  :: N
-      INTEGER  :: LIM
-      INTEGER  :: ILOW
-      INTEGER  :: IHIGH
-      INTEGER  :: NIV
-      INTEGER  :: MBLOCK
-      INTEGER  :: MAXITER
-      INTEGER  :: IWRSZ
-      INTEGER  :: IIWSZ
-      INTEGER  :: NLOOPS
-      INTEGER, INTENT(OUT) :: NMV
-      INTEGER  :: IERR
+      integer  :: N
+      integer  :: LIM
+      integer  :: ILOW
+      integer  :: IHIGH
+      integer  :: NIV
+      integer  :: MBLOCK
+      integer  :: MAXITER
+      integer  :: IWRSZ
+      integer  :: IIWSZ
+      integer  :: NLOOPS
+      integer, intent(out) :: NMV
+      integer  :: IERR
       real(real64)  :: CRITE
       real(real64)  :: CRITC
       real(real64)  :: CRITR
       real(real64)  :: ORTHO
-      LOGICAL  :: HIEND
-      INTEGER  :: ISELEC(LIM)
-      INTEGER  :: IWORK(IIWSZ)
-      real(real64), DIMENSION(N), INTENT(INOUT) :: DIAG
+      logical  :: HIEND
+      integer  :: ISELEC(LIM)
+      integer  :: IWORK(IIWSZ)
+      real(real64), dimension(N), INTENT(INOUT) :: DIAG
       real(real64)  :: WORK(IWRSZ)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER, DIMENSION(7) :: IREV
-      INTEGER :: NOC, IRC, NB, IW1, IW2, IW3, IIW, IIN, IW4, ICUR, I, INDX, J
+      integer, dimension(7) :: IREV
+      integer :: NOC, IRC, NB, IW1, IW2, IW3, IIW, IIN, IW4, ICUR, I, INDX, J
       real(real64) :: VALUE, OVALUE, RNORM, EPSIL
 !
 !**********************************************************************
@@ -65,11 +65,11 @@
 !***********************************************************************
 ! Initial estimates
 !
-      IF (NIV == 0) THEN
+      if (NIV == 0) then
          WRITE (6, *) 'GDVD Error : No initial estimate!!!'
          IERR = -1000
-         RETURN
-      ENDIF
+         return
+      endif
 
       !ttt=etime_(tarray)
       NMV = 0
@@ -90,7 +90,7 @@
       IIN = IREV(6)
       IW4 = IREV(7)
 
-      IF (IRC == 1) THEN
+      if (IRC == 1) then
 !********* ..Preconditioning. Solve NB times(M work(iw2)=work(iw1))
 !          ..Results always on work(iw2)
 
@@ -115,11 +115,11 @@
 !-------------
 !* Choice of Diagonal preconditioning
             DO J = 1, N
-               IF (ABS(DIAG(J)) > 1.0D-06) THEN
+               if (ABS(DIAG(J)) > 1.0D-06) then
                   WORK(IW2+ICUR+J-1) = WORK(IW1+ICUR+J-1)/DIAG(J)
-               ELSE
+               else
                   WORK(IW2+ICUR+J-1) = WORK(IW1+ICUR+J-1)*1.0D06
-               ENDIF
+               endif
             END DO
 !*-------------
 !* e.g: For No preconditioner: Lanczos
@@ -134,14 +134,14 @@
          GO TO 99
 
 !*********
-      ELSE IF (IRC==2 .OR. IRC==3) THEN
+      else if (IRC==2 .OR. IRC==3) then
 !********* ..Matrix-vector multiply.
          CALL OP (N, NB, WORK(IW1), WORK(IW2))
          NMV = NMV + NB
 
          GO TO 99
-      ENDIF
+      endif
 ! * * * * End of Reverse Communication * * * * * * * * * * * * * * * * *
 
-      RETURN
-      END SUBROUTINE GDVD
+      return
+      end subroutine GDVD

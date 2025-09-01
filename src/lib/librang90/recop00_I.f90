@@ -1,10 +1,10 @@
-      MODULE recop00_I
-      INTERFACE
+      module recop00_I
+      interface
 !
-      SUBROUTINE RECOP00(NS,JA1,JA2,KA,IAT)
+      subroutine RECOP00(NS,JA1,JA2,KA,IAT)
       use iso_fortran_env, only: real64, int32, int64, real128
-      INTEGER, INTENT(IN)  :: NS, JA1, JA2, KA
-      INTEGER, INTENT(OUT) :: IAT
-      END SUBROUTINE
-      END INTERFACE
-      END MODULE
+      integer, intent(in)  :: NS, JA1, JA2, KA
+      integer, intent(out) :: IAT
+      end subroutine
+      end interface
+      end module

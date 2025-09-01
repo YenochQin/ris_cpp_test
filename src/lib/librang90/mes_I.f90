@@ -1,8 +1,8 @@
-      MODULE mes_I
-      INTERFACE
+      module mes_I
+      interface
 !
-      SUBROUTINE MES(I)
-      INTEGER, INTENT(IN) :: I
-      END SUBROUTINE
-      END INTERFACE
-      END MODULE
+      subroutine MES(I)
+      integer, intent(in) :: I
+      end subroutine
+      end interface
+      end module

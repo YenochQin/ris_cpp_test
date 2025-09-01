@@ -1,11 +1,11 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE SETQIC
+      subroutine SETQIC
 !                                                                      *
-!   This  subroutine sets up the coefficients for SUBROUTINEs DPBDT,   *
+!   This  subroutine sets up the coefficients for subroutines DPBDT,   *
 !   QUAD, RINTI, START, YZK, ZKF.                                      *
 !                                                                      *
-!   No SUBROUTINES called.                                             *
+!   No subroutineS called.                                             *
 !                                                                      *
 !   Written by Farid A Parpia, at Oxford    Last update: 05 Oct 1992   *
 !                                                                      *
@@ -17,22 +17,22 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CNC_C
-      USE GRID_C
-      USE LIC13_C, A13=>A
-      USE NCC_C
-      USE SBC_C
+      use CNC_C
+      use GRID_C
+      use LIC13_C, A13=>A
+      use NCC_C
+      use SBC_C
       IMPLICIT NONE
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: I, J
-      real(real64), DIMENSION(13,13) :: B13
-      real(real64), DIMENSION(6) :: CG
-      real(real64), DIMENSION(5,2:5) :: C5NUM
-      real(real64), DIMENSION(6,2:6) :: C6NUM
+      integer :: I, J
+      real(real64), dimension(13,13) :: B13
+      real(real64), dimension(6) :: CG
+      real(real64), dimension(5,2:5) :: C5NUM
+      real(real64), dimension(6,2:6) :: C6NUM
       real(real64) :: B13DEN, DENOM, C5DEN, C6DEN, FACTOR
-      LOGICAL :: FIRST
+      logical :: FIRST
 !-----------------------------------------------
 !
 !
@@ -150,7 +150,7 @@
 !   Do this initialization once per run only
 !   Do this initialization once per run only
 !
-      IF (FIRST) THEN
+      if (FIRST) then
 !
 !   Thirteen-point coefficients for DPBDT
 !
@@ -163,7 +163,7 @@
 !
          FIRST = .FALSE.
 !
-      ENDIF
+      endif
 !
 !   Sienkiewicz-Baylis coefficients for SBSTEP
 !
@@ -197,6 +197,6 @@
     7 CONTINUE
 !
 !
-      RETURN
+      return
 !
-      END SUBROUTINE SETQIC
+      end subroutine SETQIC

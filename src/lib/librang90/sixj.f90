@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE SIXJ(I,J,K,L,M,N,ITIK,SI)
+      subroutine SIXJ(I,J,K,L,M,N,ITIK,SI)
 !                                                                  *
 !     THIS PACKAGE DETERMINES THE VALUES OF 6j COEFFICIENT         *
 !                                                                  *
@@ -18,206 +18,206 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO, ONE
+      use CONS_C,          only: ZERO, ONE
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE ixjtik_I
-      USE sixj5_I
-      USE sixj1_I
-      USE sixj35_I
-      USE sixj2_I
-!      USE gracah1_I
-      USE dracah_I
-      USE sixj3_I
-      USE sixj4_I
+      use ixjtik_I
+      use sixj5_I
+      use sixj1_I
+      use sixj35_I
+      use sixj2_I
+!      use gracah1_I
+      use dracah_I
+      use sixj3_I
+      use sixj4_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER             :: I, J, K, L, M, N
-      INTEGER, INTENT(IN) :: ITIK
+      integer             :: I, J, K, L, M, N
+      integer, intent(in) :: ITIK
       real(real64)        :: SI
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: IFA
-      real(real64), DIMENSION(0:4,0:4,0:4,0:4,0:4,0:4) :: RACA
+      integer :: ifA
+      real(real64), dimension(0:4,0:4,0:4,0:4,0:4,0:4) :: RACA
       real(real64) :: UNDEF, A
-      LOGICAL :: SAVE
+      logical :: SAVE
 !-----------------------------------------------
       DATA RACA/ 15625*1.D-20/
       DATA UNDEF/ 1.D-20/
       SI = ZERO
-      IF (ITIK /= 0) THEN
+      if (ITIK /= 0) then
 !
 !     CHESKED TRIANGULAR CONDITIONS
 !
-         IF (IXJTIK(I,J,K,L,M,N) == 0) RETURN
-      ENDIF
+         if (IXJTIK(I,J,K,L,M,N) == 0) return
+      endif
       SAVE = .FALSE.
-      IF (MAX0(I,J,K,L,M,N) <= 4) THEN
+      if (MAX0(I,J,K,L,M,N) <= 4) then
          SI = RACA(I,J,K,L,M,N)
-         IF (SI == UNDEF) THEN
+         if (SI == UNDEF) then
             SAVE = .TRUE.
-         ELSE
-            RETURN
-         ENDIF
-      ENDIF
+         else
+            return
+         endif
+      endif
 !
 !     CALCULATED IN CASE WHEN ONE OF PERAMETERS EQUAL 0
 !
-      IF (I*J*K*L*M*N == 0) THEN
-         IF (I == 0) THEN
+      if (I*J*K*L*M*N == 0) then
+         if (I == 0) then
             A = DBLE((M + 1)*(K + 1))
-            IFA = L + M + K
-         ELSE IF (J == 0) THEN
+            ifA = L + M + K
+         else if (J == 0) then
             A = DBLE((L + 1)*(K + 1))
-            IFA = I + M + N
-         ELSE IF (K == 0) THEN
+            ifA = I + M + N
+         else if (K == 0) then
             A = DBLE((I + 1)*(L + 1))
-            IFA = I + M + N
-         ELSE IF (L == 0) THEN
+            ifA = I + M + N
+         else if (L == 0) then
             A = DBLE((J + 1)*(K + 1))
-            IFA = I + J + K
-         ELSE IF (M == 0) THEN
+            ifA = I + J + K
+         else if (M == 0) then
             A = DBLE((I + 1)*(K + 1))
-            IFA = I + J + K
-         ELSE
+            ifA = I + J + K
+         else
             A = DBLE((I + 1)*(J + 1))
-            IFA = I + J + K
-         ENDIF
+            ifA = I + J + K
+         endif
          SI = ONE/DSQRT(A)
-         IF (MOD(IFA,4) /= 0) SI = -SI
+         if (MOD(ifA,4) /= 0) SI = -SI
 !
 !     THE CASE 1/2
 !
-      ELSE IF (MIN0(I,J,K,L,M,N) == 1) THEN
-         IF (I == 1) THEN
+      else if (MIN0(I,J,K,L,M,N) == 1) then
+         if (I == 1) then
             CALL SIXJ5 (M, K, L, J, N, 0, SI)
-         ELSE IF (J == 1) THEN
+         else if (J == 1) then
             CALL SIXJ5 (I, N, M, L, K, 0, SI)
-         ELSE IF (K == 1) THEN
+         else if (K == 1) then
             CALL SIXJ5 (I, M, N, L, J, 0, SI)
-         ELSE IF (L == 1) THEN
+         else if (L == 1) then
             CALL SIXJ5 (J, K, I, M, N, 0, SI)
-         ELSE IF (M == 1) THEN
+         else if (M == 1) then
             CALL SIXJ5 (I, K, J, L, N, 0, SI)
-         ELSE
+         else
             CALL SIXJ5 (I, J, K, L, M, 0, SI)
-         ENDIF
+         endif
 !
 !     THE CASE 1
 !
-      ELSE IF (MIN0(I,J,K,L,M,N) == 2) THEN
-         IF (I == 2) THEN
+      else if (MIN0(I,J,K,L,M,N) == 2) then
+         if (I == 2) then
             CALL SIXJ1 (M, K, L, J, N, 0, SI)
-         ELSE IF (J == 2) THEN
+         else if (J == 2) then
             CALL SIXJ1 (I, N, M, L, K, 0, SI)
-         ELSE IF (K == 2) THEN
+         else if (K == 2) then
             CALL SIXJ1 (I, M, N, L, J, 0, SI)
-         ELSE IF (L == 2) THEN
+         else if (L == 2) then
             CALL SIXJ1 (J, K, I, M, N, 0, SI)
-         ELSE IF (M == 2) THEN
+         else if (M == 2) then
             CALL SIXJ1 (I, K, J, L, N, 0, SI)
-         ELSE
+         else
             CALL SIXJ1 (I, J, K, L, M, 0, SI)
-         ENDIF
+         endif
 !
 !     THE CASE 3/2
 !
-      ELSE IF (MIN0(I,J,K,L,M,N) == 3) THEN
-         IF (I == 3) THEN
+      else if (MIN0(I,J,K,L,M,N) == 3) then
+         if (I == 3) then
             CALL SIXJ35 (M, K, L, J, N, 0, SI)
-         ELSE IF (J == 3) THEN
+         else if (J == 3) then
             CALL SIXJ35 (I, N, M, L, K, 0, SI)
-         ELSE IF (K == 3) THEN
+         else if (K == 3) then
             CALL SIXJ35 (I, M, N, L, J, 0, SI)
-         ELSE IF (L == 3) THEN
+         else if (L == 3) then
             CALL SIXJ35 (J, K, I, M, N, 0, SI)
-         ELSE IF (M == 3) THEN
+         else if (M == 3) then
             CALL SIXJ35 (I, K, J, L, N, 0, SI)
-         ELSE
+         else
             CALL SIXJ35 (I, J, K, L, M, 0, SI)
-         ENDIF
+         endif
 !
 !     THE CASE 2
 !
-      ELSE IF (MIN0(I,J,K,L,M,N) == 4) THEN
-         IF (I == 4) THEN
+      else if (MIN0(I,J,K,L,M,N) == 4) then
+         if (I == 4) then
             CALL SIXJ2 (M, K, L, J, N, 0, SI)
-         ELSE IF (J == 4) THEN
+         else if (J == 4) then
             CALL SIXJ2 (I, N, M, L, K, 0, SI)
-         ELSE IF (K == 4) THEN
+         else if (K == 4) then
             CALL SIXJ2 (I, M, N, L, J, 0, SI)
-         ELSE IF (L == 4) THEN
+         else if (L == 4) then
             CALL SIXJ2 (J, K, I, M, N, 0, SI)
-         ELSE IF (M == 4) THEN
+         else if (M == 4) then
             CALL SIXJ2 (I, K, J, L, N, 0, SI)
-         ELSE
+         else
             CALL SIXJ2 (I, J, K, L, M, 0, SI)
-         ENDIF
+         endif
 !
 !     THE CASE 5/2
 !
-      ELSE IF (MIN0(I,J,K,L,M,N) == 5) THEN
+      else if (MIN0(I,J,K,L,M,N) == 5) then
          CALL DRACAH (I, J, M, L, K, N, SI)
-         IF (MOD(I + J + M + L,4) /= 0) SI = -SI
+         if (MOD(I + J + M + L,4) /= 0) SI = -SI
 !
 !     CASES 3
 !
-      ELSE IF (MIN0(I,J,K,L,M,N) == 6) THEN
-         IF (I == 6) THEN
+      else if (MIN0(I,J,K,L,M,N) == 6) then
+         if (I == 6) then
             CALL SIXJ3 (M, K, L, J, N, 0, SI)
-         ELSE IF (J == 6) THEN
+         else if (J == 6) then
             CALL SIXJ3 (I, N, M, L, K, 0, SI)
-         ELSE IF (K == 6) THEN
+         else if (K == 6) then
             CALL SIXJ3 (I, M, N, L, J, 0, SI)
-         ELSE IF (L == 6) THEN
+         else if (L == 6) then
             CALL SIXJ3 (J, K, I, M, N, 0, SI)
-         ELSE IF (M == 6) THEN
+         else if (M == 6) then
             CALL SIXJ3 (I, K, J, L, N, 0, SI)
-         ELSE
+         else
             CALL SIXJ3 (I, J, K, L, M, 0, SI)
-         ENDIF
+         endif
 !
 !     THE CASE 7/2
 !
-      ELSE IF (MIN0(I,J,K,L,M,N) == 7) THEN
+      else if (MIN0(I,J,K,L,M,N) == 7) then
          CALL DRACAH (I, J, M, L, K, N, SI)
-         IF (MOD(I + J + M + L,4) /= 0) SI = -SI
+         if (MOD(I + J + M + L,4) /= 0) SI = -SI
 !
 !     CASES 4
 !
-      ELSE IF (MIN0(I,J,K,L,M,N) == 8) THEN
-         IF (I == 8) THEN
+      else if (MIN0(I,J,K,L,M,N) == 8) then
+         if (I == 8) then
             CALL SIXJ4 (M, K, L, J, N, 0, SI)
-         ELSE IF (J == 8) THEN
+         else if (J == 8) then
             CALL SIXJ4 (I, N, M, L, K, 0, SI)
-         ELSE IF (K == 8) THEN
+         else if (K == 8) then
             CALL SIXJ4 (I, M, N, L, J, 0, SI)
-         ELSE IF (L == 8) THEN
+         else if (L == 8) then
             CALL SIXJ4 (J, K, I, M, N, 0, SI)
-         ELSE IF (M == 8) THEN
+         else if (M == 8) then
             CALL SIXJ4 (I, K, J, L, N, 0, SI)
-         ELSE
+         else
             CALL SIXJ4 (I, J, K, L, M, 0, SI)
-         ENDIF
+         endif
 !
 !     THE CASE 9/2
 !
-      ELSE IF (MIN0(I,J,K,L,M,N) == 9) THEN
+      else if (MIN0(I,J,K,L,M,N) == 9) then
          CALL DRACAH (I, J, M, L, K, N, SI)
-         IF (MOD(I + J + M + L,4) /= 0) SI = -SI
+         if (MOD(I + J + M + L,4) /= 0) SI = -SI
 !
 !     CALCULATED OTHER CASES
 !
-      ELSE
+      else
        CALL DRACAH(I,J,M,L,K,N,SI)
 !         CALL GRACAH1 (I, J, M, L, K, N, SI)
 !        CALL GRACAH(I,J,M,L,K,N,SI)
-         IF (MOD(I + J + M + L,4) /= 0) SI = -SI
-      ENDIF
-      IF (SAVE) RACA(I,J,K,L,M,N) = SI
-      RETURN
-      END SUBROUTINE SIXJ
+         if (MOD(I + J + M + L,4) /= 0) SI = -SI
+      endif
+      if (SAVE) RACA(I,J,K,L,M,N) = SI
+      return
+      end subroutine SIXJ

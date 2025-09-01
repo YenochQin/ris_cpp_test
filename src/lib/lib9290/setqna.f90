@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE SETQNA(JA, JB)
+      subroutine SETQNA(JA, JB)
 !                                                                      *
 !   This generates the  arrays  defining  the quantum numbers of the   *
 !   states involved in the  matrix  element  linking  configurations   *
@@ -18,25 +18,25 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE M_C
-      USE ORB_C,           ONLY: NCF, NW
+      use M_C
+      use ORB_C,           only: NCF, NW
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE iq_I
-      USE jqs_I
-      USE ichop_I
-      USE jcup_I
+      use iq_I
+      use jqs_I
+      use ichop_I
+      use jcup_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER  :: JA
-      INTEGER  :: JB
+      integer  :: JA
+      integer  :: JB
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: J, K, JCNT, JCNTOP, JW1, JW2, JW
+      integer :: J, K, JCNT, JCNTOP, JW1, JW2, JW
 !-----------------------------------------------
 !
 !
@@ -59,19 +59,19 @@
       NPEEL = 0
       NCORE = 0
       DO J = 1, NW
-         IF (ICHOP(J,JA)==(-1) .AND. ICHOP(J,JB)==(-1)) CYCLE
-         IF (ICHOP(J,JA)==1 .AND. ICHOP(J,JB)==1) THEN
+         if (ICHOP(J,JA)==(-1) .AND. ICHOP(J,JB)==(-1)) CYCLE
+         if (ICHOP(J,JA)==1 .AND. ICHOP(J,JB)==1) then
             NCORE = NCORE + 1
             KLIST(NCORE) = J
-         ELSE
+         else
             NPEEL = NPEEL + 1
             JLIST(NPEEL) = J
-         ENDIF
+         endif
       END DO
 !
 !   Return if not more than one shell is open
 !
-      IF (NPEEL <= 1) RETURN
+      if (NPEEL <= 1) return
 !
 !   Set arrays of coupling angular momenta interpolating closed
 !   shells where necessary. Left hand side first ...
@@ -80,32 +80,32 @@
       JCNTOP = 0
       JW1 = JLIST(1)
       JW2 = JLIST(2)
-      IF (ICHOP(JW1,JA) /= 0) THEN
+      if (ICHOP(JW1,JA) /= 0) then
          JJC1(1) = JQS(3,JW2,JA)
-         IF (ICHOP(JW2,JA) == 0) JCNTOP = 1
-      ELSE
+         if (ICHOP(JW2,JA) == 0) JCNTOP = 1
+      else
          JCNTOP = 1
-         IF (ICHOP(JW2,JA) == 0) THEN
+         if (ICHOP(JW2,JA) == 0) then
             JJC1(1) = JCUP(JCNT,JA)
             JCNT = JCNT + 1
-         ELSE
+         else
             JJC1(1) = JQS(3,JW1,JA)
-         ENDIF
-      ENDIF
+         endif
+      endif
 !
       DO J = 3, NPEEL
          JW = JLIST(J)
-         IF (ICHOP(JW,JA) /= 0) THEN
+         if (ICHOP(JW,JA) /= 0) then
             JJC1(J-1) = JJC1(J-2)
-         ELSE
-            IF (JCNTOP /= 0) THEN
+         else
+            if (JCNTOP /= 0) then
                JJC1(J-1) = JCUP(JCNT,JA)
                JCNT = JCNT + 1
-            ELSE
+            else
                JJC1(J-1) = JQS(3,JW,JA)
-            ENDIF
+            endif
             JCNTOP = JCNTOP + 1
-         ENDIF
+         endif
       END DO
 !
 !   ... and repeat for right hand side
@@ -114,33 +114,33 @@
       JCNTOP = 0
       JW1 = JLIST(1)
       JW2 = JLIST(2)
-      IF (ICHOP(JW1,JB) /= 0) THEN
+      if (ICHOP(JW1,JB) /= 0) then
          JJC2(1) = JQS(3,JW2,JB)
-         IF (ICHOP(JW2,JB) == 0) JCNTOP = 1
-      ELSE
+         if (ICHOP(JW2,JB) == 0) JCNTOP = 1
+      else
          JCNTOP = 1
-         IF (ICHOP(JW2,JB) == 0) THEN
+         if (ICHOP(JW2,JB) == 0) then
             JJC2(1) = JCUP(JCNT,JB)
             JCNT = JCNT + 1
-         ELSE
+         else
             JJC2(1) = JQS(3,JW1,JB)
-         ENDIF
-      ENDIF
+         endif
+      endif
 !
       DO J = 3, NPEEL
          JW = JLIST(J)
-         IF (ICHOP(JW,JB) /= 0) THEN
+         if (ICHOP(JW,JB) /= 0) then
             JJC2(J-1) = JJC2(J-2)
-         ELSE
-            IF (JCNTOP /= 0) THEN
+         else
+            if (JCNTOP /= 0) then
                JJC2(J-1) = JCUP(JCNT,JB)
                JCNT = JCNT + 1
-            ELSE
+            else
                JJC2(J-1) = JQS(3,JW,JB)
-            ENDIF
+            endif
             JCNTOP = JCNTOP + 1
-         ENDIF
+         endif
       END DO
 !
-      RETURN
-      END SUBROUTINE SETQNA
+      return
+      end subroutine SETQNA

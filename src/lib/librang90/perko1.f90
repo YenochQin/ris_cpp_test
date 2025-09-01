@@ -1,13 +1,13 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE PERKO1(JA,BK,IK,BD,ID)
+      subroutine PERKO1(JA,BK,IK,BD,ID)
 !                                                                  *
 !     ------------  SECTION METWO    SUBPROGRAM 22  -------------  *
 !                                                                  *
-!     INTERFACE BETWEEN "GRASP" AND BOLCK "SQ"                     *
+!     interface BETWEEN "GRASP" AND BOLCK "SQ"                     *
 !                                               (FOR ONE SHELL)    *
 !                                                                  *
-!     NO SUBROUTINE CALLED                                         *
+!     NO subroutine CALLED                                         *
 !                                                                  *
 !   Written by  G. Gaigalas                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -19,25 +19,25 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: HALF
-      USE m_C,             ONLY: JLIST, NQ1, NQ2, JJQ1, JJQ2
-      USE orb_C,           ONLY: NP, NAK
+      use CONS_C,          only: HALF
+      use m_C,             only: JLIST, NQ1, NQ2, JJQ1, JJQ2
+      use orb_C,           only: NP, NAK
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE nmtejj_I
+      use nmtejj_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER,      INTENT(IN)                :: JA
-      INTEGER,      INTENT(OUT), DIMENSION(7) :: IK, ID
-      real(real64), INTENT(OUT), DIMENSION(3) :: BK, BD
-!      DIMENSION BK(3),IK(7),BD(3),ID(7)
+      integer,      intent(in)                :: JA
+      integer,      intent(out), dimension(7) :: IK, ID
+      real(real64), intent(out), dimension(3) :: BK, BD
+!      dimension BK(3),IK(7),BD(3),ID(7)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: IJ
+      integer :: IJ
 !-----------------------------------------------
       IJ=JLIST(JA)
       IK(2)=NP(IJ)
@@ -60,5 +60,5 @@
       BD(3)=-HALF*DBLE(IABS(NAK(IJ))-ID(4))
       IK(1)=NMTEJJ(IK(7),IK(6),IK(3),ID(4),IK(4))
       ID(1)=NMTEJJ(ID(7),ID(6),ID(3),ID(4),IK(4))
-      RETURN
-      END SUBROUTINE PERKO1
+      return
+      end subroutine PERKO1

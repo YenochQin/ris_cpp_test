@@ -16,8 +16,8 @@
       integer, intent(in) :: n
       integer  :: incx
       integer  :: incy
-      INTEGER, DIMENSION(*), INTENT(IN) :: IX
-      INTEGER, DIMENSION(*), INTENT(OUT) :: IY
+      integer, dimension(*), intent(in) :: IX
+      integer, dimension(*), intent(out) :: IY
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

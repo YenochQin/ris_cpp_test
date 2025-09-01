@@ -1,727 +1,727 @@
-MODULE memory_man
+module memory_man
    use iso_fortran_env, only: int32, int64, int8, real64
-   INTERFACE alloc
-      MODULE PROCEDURE alloc_0i, alloc_1i, alloc_2i, alloc_3i,     &
+   interface alloc
+      module PROCEDURE alloc_0i, alloc_1i, alloc_2i, alloc_3i,     &
                                  alloc_1iL,                        &
                        alloc_1r, alloc_2r,                         &
                        alloc_1rL,                                  &
                        alloc_0b, alloc_1b, alloc_2b, alloc_3b,     &
                        alloc_1c
-   END INTERFACE
+   end interface
 
-   INTERFACE ralloc
-      MODULE PROCEDURE ralloc_0i, ralloc_1i, ralloc_2i, ralloc_3i, &
+   interface ralloc
+      module PROCEDURE ralloc_0i, ralloc_1i, ralloc_2i, ralloc_3i, &
                        ralloc_1r, ralloc_2r,                       &
                        ralloc_0b, ralloc_1b, ralloc_2b, ralloc_3b, &
                        ralloc_1c
-   END INTERFACE ralloc
+   end interface ralloc
 
-   INTERFACE dalloc
-      MODULE PROCEDURE dalloc_1i, dalloc_2i, dalloc_3i,            &
+   interface dalloc
+      module PROCEDURE dalloc_1i, dalloc_2i, dalloc_3i,            &
                        dalloc_1r, dalloc_2r,                       &
                        dalloc_1b, dalloc_2b, dalloc_3b,            &
                        dalloc_1c
-   END INTERFACE
+   end interface
 
    CONTAINS
-   SUBROUTINE alloc_0i(p, first, last, var, sub )
+   subroutine alloc_0i(p, first, last, var, sub )
      IMPLICIT NONE
-     INTEGER, POINTER, DIMENSION(:) :: p
-     INTEGER, INTENT(IN) :: first, last
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error
+     integer, pointer, dimension(:) :: p
+     integer, intent(in) :: first, last
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error
 
 !    write(777,*) "0i first, last, var, sub",first, last, var,"  ", sub
      nullify(p)
-     IF (ASSOCIATED(p)) then
+     if (ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' already allocated'
         STOP
-     ELSE
+     else
         allocate(p(first:last),STAT=error)
-        IF (error/= 0) then
+        if (error/= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,2I15)') 'Number of elements requested: ',first, last
         STOP
-        END IF
-     END IF
-   END SUBROUTINE alloc_0i
+        END if
+     END if
+   end subroutine alloc_0i
 
-   SUBROUTINE alloc_1i(p, n, var, sub)
+   subroutine alloc_1i(p, n, var, sub)
      IMPLICIT NONE
-     INTEGER, POINTER, DIMENSION(:) :: p
-     INTEGER, INTENT(IN) :: n
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error
+     integer, pointer, dimension(:) :: p
+     integer, intent(in) :: n
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error
 
 !    write(777,*) "1i n, var, sub",n, var,"  ", sub
      nullify(p)
-     IF (ASSOCIATED(p)) then
+     if (ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' already allocated'
         STOP
-     ELSE
+     else
         allocate(p(n),STAT=error)
-        IF (error/= 0) then
+        if (error/= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15)') 'Number of elements requested: ',n
         STOP
-        END IF
-     END IF
-   END SUBROUTINE alloc_1i
+        END if
+     END if
+   end subroutine alloc_1i
 
-   SUBROUTINE alloc_2i(p, n1, n2, var, sub)
+   subroutine alloc_2i(p, n1, n2, var, sub)
      IMPLICIT NONE
-     INTEGER, POINTER, DIMENSION(:,:) :: p
-     INTEGER, INTENT(IN) :: n1, n2
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error
+     integer, pointer, dimension(:,:) :: p
+     integer, intent(in) :: n1, n2
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error
 
 !    write(777,*) "2i n1, n2, var, sub",n1, n2, var,"  ", sub
      nullify(p)
-     IF (ASSOCIATED(p)) then
+     if (ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' already allocated'
         STOP
-     ELSE
+     else
         allocate(p(n1,n2),STAT=error)
-        IF (error /= 0) then
+        if (error /= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15,I15)') 'Number of elements requested: ',n1,n2
         STOP
-        END IF
-     END IF
-   END SUBROUTINE alloc_2i
+        END if
+     END if
+   end subroutine alloc_2i
 
-   SUBROUTINE alloc_3i(p, n1, n2, n3, var, sub)
+   subroutine alloc_3i(p, n1, n2, n3, var, sub)
      IMPLICIT NONE
-     INTEGER, POINTER, DIMENSION(:,:,:) :: p
-     INTEGER, INTENT(IN) :: n1, n2, n3
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error
+     integer, pointer, dimension(:,:,:) :: p
+     integer, intent(in) :: n1, n2, n3
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error
 
 !    write(777,*) "3i n1, n2, n3, var, sub",n1, n2, n3, var,"  ", sub
      nullify(p)
-     IF (ASSOCIATED(p)) then
+     if (ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' already allocated'
         STOP
-     ELSE
+     else
         allocate(p(n1,n2,n3),STAT=error)
-        IF (error /= 0) then
+        if (error /= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,3I15)') 'Number of elements requested: ',n1,n2,n3
         STOP
-        END IF
-     END IF
-   END SUBROUTINE alloc_3i
+        END if
+     END if
+   end subroutine alloc_3i
 
-   SUBROUTINE alloc_1iL(p, n, var, sub)
+   subroutine alloc_1iL(p, n, var, sub)
      IMPLICIT NONE
-     INTEGER, POINTER, DIMENSION(:) :: p
-     integer(int64), INTENT(IN) :: n
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error
+     integer, pointer, dimension(:) :: p
+     integer(int64), intent(in) :: n
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error
 
 !    write(777,*) "1iL n, var, sub",n, var,"  ", sub
      nullify(p)
-     IF (ASSOCIATED(p)) then
+     if (ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' already allocated'
         STOP
-     ELSE
+     else
         allocate(p(n),STAT=error)
-        IF (error/= 0) then
+        if (error/= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15)') 'Number of elements requested: ',n
         STOP
-        END IF
-     END IF
-   END SUBROUTINE alloc_1iL
+        END if
+     END if
+   end subroutine alloc_1iL
 
-   SUBROUTINE alloc_1r(p, n, var, sub)
+   subroutine alloc_1r(p, n, var, sub)
      IMPLICIT NONE
-     real(real64), POINTER, DIMENSION(:) :: p
-     INTEGER, INTENT(IN) :: n
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error
+     real(real64), pointer, dimension(:) :: p
+     integer, intent(in) :: n
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error
 
 !    write(777,*) "1r n, var, sub",n, var,"  ", sub
      nullify(p)
-     IF (ASSOCIATED(p)) then
+     if (ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' already allocated'
         STOP
-     ELSE
+     else
         allocate(p(n),STAT=error)
-        IF (error /= 0) then
+        if (error /= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15)') 'Number of elements requested: ',n
         STOP
-        END IF
-     END IF
-   END SUBROUTINE alloc_1r
+        END if
+     END if
+   end subroutine alloc_1r
 
-   SUBROUTINE alloc_2r(p, n1, n2, var, sub)
+   subroutine alloc_2r(p, n1, n2, var, sub)
      IMPLICIT NONE
-     REAL(real64), POINTER, DIMENSION(:,:) :: p
-     INTEGER, INTENT(IN) :: n1, n2
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error
+     REAL(real64), pointer, dimension(:,:) :: p
+     integer, intent(in) :: n1, n2
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error
 
 !    write(777,*) "2r n1, n2, var, sub",n1, n2, var,"  ", sub
      nullify(p)
-     IF (ASSOCIATED(p)) then
+     if (ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' already allocated'
         STOP
-     ELSE
+     else
         allocate(p(n1,n2),STAT=error)
-        IF (error /= 0) then
+        if (error /= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15,I15)') 'Number of elements requested: ',n1, n2
         STOP
-        END IF
-     END IF
-   END SUBROUTINE alloc_2r
+        END if
+     END if
+   end subroutine alloc_2r
 
-   SUBROUTINE alloc_1rL(p, n, var, sub)
+   subroutine alloc_1rL(p, n, var, sub)
      IMPLICIT NONE
-     real(real64), POINTER, DIMENSION(:) :: p
-     integer(int64), INTENT(IN) :: n
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error
+     real(real64), pointer, dimension(:) :: p
+     integer(int64), intent(in) :: n
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error
 
 !    write(777,*) "1rL n, var, sub",n, var,"  ", sub
      nullify(p)
-     IF (ASSOCIATED(p)) then
+     if (ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' already allocated'
         STOP
-     ELSE
+     else
         allocate(p(n),STAT=error)
-        IF (error /= 0) then
+        if (error /= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15)') 'Number of elements requested: ',n
         STOP
-        END IF
-     END IF
-   END SUBROUTINE alloc_1rL
+        END if
+     END if
+   end subroutine alloc_1rL
 
-   SUBROUTINE alloc_0b(p, first, last, var, sub )
+   subroutine alloc_0b(p, first, last, var, sub )
      IMPLICIT NONE
-     integer(int8), POINTER, DIMENSION(:) :: p
-     INTEGER, INTENT(IN) :: first, last
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error
+     integer(int8), pointer, dimension(:) :: p
+     integer, intent(in) :: first, last
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error
 
 !    write(777,*) "0b first, last, var, sub",first, last, var,"  ", sub
      nullify(p)
-     IF (ASSOCIATED(p)) then
+     if (ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' already allocated'
         STOP
-     ELSE
+     else
         allocate(p(first:last),STAT=error)
-        IF (error/= 0) then
+        if (error/= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,2I15)') 'Number of elements requested: ',first, last
         STOP
-        END IF
-     END IF
-   END SUBROUTINE alloc_0b
+        END if
+     END if
+   end subroutine alloc_0b
 
-   SUBROUTINE alloc_1b(p, n, var, sub)
+   subroutine alloc_1b(p, n, var, sub)
      IMPLICIT NONE
-     integer(int8), POINTER, DIMENSION(:) :: p
-     INTEGER, INTENT(IN) :: n
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error
+     integer(int8), pointer, dimension(:) :: p
+     integer, intent(in) :: n
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error
 
 !    write(777,*) "1b n, var, sub",n, var, "  ", sub
      nullify(p)
-     IF (ASSOCIATED(p)) then
+     if (ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' already allocated'
         STOP
-     ELSE
+     else
         allocate(p(n),STAT=error)
-        IF (error/= 0) then
+        if (error/= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15)') 'Number of elements requested: ',n
         STOP
-        END IF
-     END IF
-   END SUBROUTINE alloc_1b
+        END if
+     END if
+   end subroutine alloc_1b
 
-   SUBROUTINE alloc_2b(p, n1, n2, var, sub)
+   subroutine alloc_2b(p, n1, n2, var, sub)
      IMPLICIT NONE
-     integer(int8), POINTER, DIMENSION(:,:) :: p
-     INTEGER, INTENT(IN) :: n1, n2
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error
+     integer(int8), pointer, dimension(:,:) :: p
+     integer, intent(in) :: n1, n2
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error
 
 !     write(777,*) "2b n1, n2, var, sub",n1, n2, var, "  ", sub
      nullify(p)
-     IF (ASSOCIATED(p)) then
+     if (ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' already allocated'
         STOP
-     ELSE
+     else
         allocate(p(n1,n2),STAT=error)
-        IF (error /= 0) then
+        if (error /= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15,I15)') 'Number of elements requested: ',n1,n2
         STOP
-        END IF
-     END IF
-   END SUBROUTINE alloc_2b
+        END if
+     END if
+   end subroutine alloc_2b
 
-   SUBROUTINE alloc_3b(p, n1, n2, n3, var, sub)
+   subroutine alloc_3b(p, n1, n2, n3, var, sub)
      IMPLICIT NONE
-     integer(int8), POINTER, DIMENSION(:,:,:) :: p
-     INTEGER, INTENT(IN) :: n1, n2, n3
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error
+     integer(int8), pointer, dimension(:,:,:) :: p
+     integer, intent(in) :: n1, n2, n3
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error
 
 !    write(777,*) "3b n1, n2, n3, var, sub",n1, n2, n3, var, "  ", sub
      nullify(p)
-     IF (ASSOCIATED(p)) then
+     if (ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' already allocated'
         STOP
-     ELSE
+     else
         allocate(p(n1,n2,n3),STAT=error)
-        IF (error /= 0) then
+        if (error /= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,3I15)') 'Number of elements requested: ',n1,n2,n3
         STOP
-        END IF
-     END IF
-   END SUBROUTINE alloc_3b
+        END if
+     END if
+   end subroutine alloc_3b
 
-   SUBROUTINE alloc_1c(p, n, var, sub)
+   subroutine alloc_1c(p, n, var, sub)
      IMPLICIT NONE
-!CFF     CHARACTER(LEN=256), POINTER, DIMENSION(:) :: p
-     CHARACTER(LEN=*), POINTER, DIMENSION(:) :: p
-     INTEGER, INTENT(IN) :: n
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error
+!CFF     character(LEN=256), pointer, dimension(:) :: p
+     character(LEN=*), pointer, dimension(:) :: p
+     integer, intent(in) :: n
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error
 
 !    write(777,*) "1c n, var, sub",n, var, "  ", sub
-     IF (ASSOCIATED(p)) then
+     if (ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' already allocated'
         STOP
-     ELSE
+     else
         allocate(p(n),STAT=error)
-        IF (error/= 0) then
+        if (error/= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15)') 'Number of elements requested: ',n
         STOP
-        END IF
-     END IF
-   END SUBROUTINE alloc_1c
+        END if
+     END if
+   end subroutine alloc_1c
 
-   SUBROUTINE dalloc_1i(p, var, sub)
+   subroutine dalloc_1i(p, var, sub)
      IMPLICIT NONE
-     INTEGER, POINTER, DIMENSION(:) :: p
-     CHARACTER(LEN=*) :: var, sub
+     integer, pointer, dimension(:) :: p
+     character(LEN=*) :: var, sub
 !    write(777,*) "dalloc_1i var, sub",var, "  ", sub
-     IF (ASSOCIATED(p)) THEN
+     if (ASSOCIATED(p)) then
         DEALLOCate (p)
-     ELSE
+     else
         Write(6,'(T10,A,A,A,A,A)') ' DALLOC:  Variable ',trim(var), &
                    ' in subroutine ', trim(sub),  ' not allocated'
-     END IF
-   END SUBROUTINE dalloc_1i
+     END if
+   end subroutine dalloc_1i
 
-   SUBROUTINE dalloc_2i(p, var, sub)
+   subroutine dalloc_2i(p, var, sub)
      IMPLICIT NONE
-     INTEGER, POINTER, DIMENSION(:,:) :: p
-     CHARACTER(LEN=*) :: var, sub
+     integer, pointer, dimension(:,:) :: p
+     character(LEN=*) :: var, sub
 !    write(777,*) "dalloc_2i var, sub",var, "  ", sub
-     IF (ASSOCIATED(p)) THEN
+     if (ASSOCIATED(p)) then
         DEALLOCate (p)
-     ELSE
+     else
         Write(6,'(T10,A,A,A,A,A)') ' DALLOC:  Variable ',trim(var), &
                    ' in subroutine ', trim(sub),  ' not allocated'
-     END IF
-   END SUBROUTINE dalloc_2i
+     END if
+   end subroutine dalloc_2i
 
-   SUBROUTINE dalloc_3i(p, var, sub)
+   subroutine dalloc_3i(p, var, sub)
      IMPLICIT NONE
-     INTEGER, POINTER, DIMENSION(:,:,:) :: p
-     CHARACTER(LEN=*) :: var, sub
+     integer, pointer, dimension(:,:,:) :: p
+     character(LEN=*) :: var, sub
 !     write(777,*) "dalloc_3i var, sub",var, "  ", sub
-     IF (ASSOCIATED(p)) THEN
+     if (ASSOCIATED(p)) then
         DEALLOCate (p)
-     ELSE
+     else
         Write(6,'(T10,A,A,A,A,A)') ' DALLOC:  Variable ',trim(var), &
                    ' in subroutine ', trim(sub),  ' not allocated'
-     END IF
-   END SUBROUTINE dalloc_3i
+     END if
+   end subroutine dalloc_3i
 
-   SUBROUTINE dalloc_1r(p, var, sub)
+   subroutine dalloc_1r(p, var, sub)
      IMPLICIT NONE
-     REAL(real64), POINTER, DIMENSION(:) :: p
-     CHARACTER(LEN=*) :: var, sub
+     REAL(real64), pointer, dimension(:) :: p
+     character(LEN=*) :: var, sub
 !    write(777,*) "dalloc_1r var, sub",var, "  ", sub
-     IF (ASSOCIATED(p)) THEN
+     if (ASSOCIATED(p)) then
         DEALLOCate (p)
-     ELSE
+     else
         Write(6,'(T10,A,A,A,A,A)') ' DALLOC:  Variable ',trim(var), &
                    ' in subroutine ', trim(sub),  ' not allocated'
-     END IF
-   END SUBROUTINE dalloc_1r
+     END if
+   end subroutine dalloc_1r
 
-   SUBROUTINE dalloc_2r(p, var, sub)
+   subroutine dalloc_2r(p, var, sub)
      IMPLICIT NONE
-     REAL(real64), POINTER, DIMENSION(:,:) :: p
-     CHARACTER(LEN=*) :: var, sub
+     REAL(real64), pointer, dimension(:,:) :: p
+     character(LEN=*) :: var, sub
 !    write(777,*) "dalloc_2r var, sub",var, "  ", sub
-     IF (ASSOCIATED(p)) THEN
+     if (ASSOCIATED(p)) then
         DEALLOCate (p)
-     ELSE
+     else
         Write(6,'(T10,A,A,A,A,A)') ' DALLOC:  Variable ',trim(var), &
                    ' in subroutine ', trim(sub),  ' not allocated'
-     END IF
-   END SUBROUTINE dalloc_2r
+     END if
+   end subroutine dalloc_2r
 
-   SUBROUTINE dalloc_1b(p, var, sub)
+   subroutine dalloc_1b(p, var, sub)
      IMPLICIT NONE
-     integer(int8), POINTER, DIMENSION(:) :: p
-     CHARACTER(LEN=*) :: var, sub
+     integer(int8), pointer, dimension(:) :: p
+     character(LEN=*) :: var, sub
 !    write(777,*) "dalloc_1b var, sub",var, "  ", sub
-     IF (ASSOCIATED(p)) THEN
+     if (ASSOCIATED(p)) then
         DEALLOCate (p)
-     ELSE
+     else
         Write(6,'(T10,A,A,A,A,A)') ' DALLOC:  Variable ',trim(var), &
                    ' in subroutine ', trim(sub),  ' not allocated'
-     END IF
-   END SUBROUTINE dalloc_1b
+     END if
+   end subroutine dalloc_1b
 
-   SUBROUTINE dalloc_2b(p, var, sub)
+   subroutine dalloc_2b(p, var, sub)
      IMPLICIT NONE
-     integer(int8), POINTER, DIMENSION(:,:) :: p
-     CHARACTER(LEN=*) :: var, sub
+     integer(int8), pointer, dimension(:,:) :: p
+     character(LEN=*) :: var, sub
 !    write(777,*) "dalloc_2b var, sub",var, "  ", sub
-     IF (ASSOCIATED(p)) THEN
+     if (ASSOCIATED(p)) then
         DEALLOCate (p)
-     ELSE
+     else
         Write(6,'(T10,A,A,A,A,A)') ' DALLOC:  Variable ',trim(var), &
                    ' in subroutine ', trim(sub),  ' not allocated'
-     END IF
-   END SUBROUTINE dalloc_2b
+     END if
+   end subroutine dalloc_2b
 
-   SUBROUTINE dalloc_3b(p, var, sub)
+   subroutine dalloc_3b(p, var, sub)
      IMPLICIT NONE
-     integer(int8), POINTER, DIMENSION(:,:,:) :: p
-     CHARACTER(LEN=*) :: var, sub
+     integer(int8), pointer, dimension(:,:,:) :: p
+     character(LEN=*) :: var, sub
 !    write(777,*) "dalloc_3b var, sub",var, "  ", sub
-     IF (ASSOCIATED(p)) THEN
+     if (ASSOCIATED(p)) then
         DEALLOCate (p)
-     ELSE
+     else
         Write(6,'(T10,A,A,A,A,A)') ' DALLOC:  Variable ',trim(var), &
                    ' in subroutine ', trim(sub),  ' not allocated'
-     END IF
-   END SUBROUTINE dalloc_3b
+     END if
+   end subroutine dalloc_3b
 
-   SUBROUTINE dalloc_1c(p, var, sub)
+   subroutine dalloc_1c(p, var, sub)
      IMPLICIT NONE
-     CHARACTER(LEN=256), POINTER, DIMENSION(:) :: p
-     CHARACTER(LEN=*) :: var, sub
+     character(LEN=256), pointer, dimension(:) :: p
+     character(LEN=*) :: var, sub
 !    write(777,*) "dalloc_1c var, sub",var, "  ", sub
-     IF (ASSOCIATED(p)) THEN
+     if (ASSOCIATED(p)) then
         DEALLOCate (p)
-     ELSE
+     else
         Write(6,'(T10,A,A,A,A,A)') ' DALLOC:  Variable ',trim(var), &
                    ' in subroutine ', trim(sub),  ' not allocated'
-     END IF
-   END SUBROUTINE dalloc_1c
+     END if
+   end subroutine dalloc_1c
 
 
-   SUBROUTINE ralloc_0i(p, first, last, var, sub)
+   subroutine ralloc_0i(p, first, last, var, sub)
      IMPLICIT NONE
-     INTEGER, POINTER, DIMENSION(:) :: p, pnew
-     INTEGER, INTENT(IN) :: first, last
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error, nold
+     integer, pointer, dimension(:) :: p, pnew
+     integer, intent(in) :: first, last
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error, nold
 !    write(777,*) "ralloc_0i first, last, var, sub",first, last,var, "  ", sub
-     IF (.NOT.  ASSOCIATED(p)) then
+     if (.NOT.  ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' not already allocated'
         STOP
-     ELSE
+     else
         allocate(pnew(first:last),STAT=error)
-        IF (error/= 0) then
+        if (error/= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to reallocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15)') 'Elements requested for range: ', &
                             first, ' to ', last
         STOP
-        END IF
+        END if
         nold = MIN(SIZE(p), last+1) - 1
         pnew(first:nold) = p(first:nold)
         DEALLOCATE(p)
         p => pnew
-     END IF
-   END SUBROUTINE ralloc_0i
+     END if
+   end subroutine ralloc_0i
 
 
-   SUBROUTINE ralloc_1i(p, n, var, sub)
+   subroutine ralloc_1i(p, n, var, sub)
      IMPLICIT NONE
-     INTEGER, POINTER, DIMENSION(:) :: p, pnew
-     INTEGER, INTENT(IN) :: n
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error, nold
+     integer, pointer, dimension(:) :: p, pnew
+     integer, intent(in) :: n
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error, nold
 !    write(777,*) "ralloc_1i n, var, sub",n, var, "  ", sub
-     IF (.NOT.  ASSOCIATED(p)) then
+     if (.NOT.  ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' not already allocated'
         STOP
-     ELSE
+     else
         allocate(pnew(n),STAT=error)
-        IF (error/= 0) then
+        if (error/= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to reallocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15)') 'Number of elements requested: ',n
         STOP
-        END IF
+        END if
         nold = MIN(SIZE(p),n)
         pnew(1:nold) = p(1:nold)
         DEALLOCATE(p)
         p => pnew
-     END IF
-   END SUBROUTINE ralloc_1i
+     END if
+   end subroutine ralloc_1i
 
-   SUBROUTINE ralloc_2i(p, n1, n2, var, sub)
+   subroutine ralloc_2i(p, n1, n2, var, sub)
      IMPLICIT NONE
-     INTEGER, POINTER, DIMENSION(:,:) :: p, pnew
-     INTEGER, INTENT(IN) :: n1, n2
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error, n1_old, n2_old
+     integer, pointer, dimension(:,:) :: p, pnew
+     integer, intent(in) :: n1, n2
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error, n1_old, n2_old
 
 !    write(777,*) "ralloc_2i n1, n2, var, sub",n1, n2, var, "  ", sub
-     IF (.NOT. ASSOCIATED(p)) then
+     if (.NOT. ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' not already allocated'
         STOP
-     ELSE
+     else
         allocate(pnew(n1,n2),STAT=error)
-        IF (error /= 0) then
+        if (error /= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15,I15)') 'Number of elements requested: ',n1,n2
         STOP
-        END IF
+        END if
         n1_old = MIN(SIZE(p, DIM=1),n1)
         n2_old = MIN(SIZE(p, DIM=2),n2)
         pnew(1:n1_old, 1:n2_old) = p(1:n1_old, 1:n2_old)
         DEALLOCATE(p)
         p => pnew
-     END IF
-   END SUBROUTINE ralloc_2i
+     END if
+   end subroutine ralloc_2i
 
-   SUBROUTINE ralloc_3i(p, n1, n2, n3, var, sub)
+   subroutine ralloc_3i(p, n1, n2, n3, var, sub)
      IMPLICIT NONE
-     INTEGER, POINTER, DIMENSION(:,:,:) :: p, pnew
-     INTEGER, INTENT(IN) :: n1, n2, n3
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error, n1_old, n2_old, n3_old
+     integer, pointer, dimension(:,:,:) :: p, pnew
+     integer, intent(in) :: n1, n2, n3
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error, n1_old, n2_old, n3_old
 
 !    write(777,*) "ralloc_3i var, sub",var, "  ", sub
-     IF (.NOT. ASSOCIATED(p)) then
+     if (.NOT. ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' not already allocated'
         STOP
-     ELSE
+     else
         allocate(pnew(n1,n2,n3),STAT=error)
-        IF (error /= 0) then
+        if (error /= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15,I15)') 'Number of elements requested: ',n1,n2,n3
         STOP
-        END IF
+        END if
         n1_old = MIN(SIZE(p, DIM=1),n1)
         n2_old = MIN(SIZE(p, DIM=2),n2)
         n3_old = MIN(SIZE(p, DIM=3),n3)
         pnew(1:n1_old, 1:n2_old, 1:n3_old) = p(1:n1_old, 1:n2_old, 1:n3_old)
         DEALLOCATE(p)
         p => pnew
-     END IF
-   END SUBROUTINE ralloc_3i
+     END if
+   end subroutine ralloc_3i
 
-   SUBROUTINE ralloc_1r(p, n, var, sub)
+   subroutine ralloc_1r(p, n, var, sub)
      IMPLICIT NONE
-     real(real64), POINTER, DIMENSION(:) :: p, pnew
-     INTEGER, INTENT(IN) :: n
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error, nold
+     real(real64), pointer, dimension(:) :: p, pnew
+     integer, intent(in) :: n
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error, nold
 
 !    write(777,*) "ralloc_1r n, var, sub",n, var, "  ", sub
-     IF (.NOT. ASSOCIATED(p)) then
+     if (.NOT. ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' not already allocated'
         STOP
-     ELSE
+     else
         allocate(pnew(n),STAT=error)
-        IF (error /= 0) then
+        if (error /= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15)') 'Number of elements requested: ',n
         STOP
-        END IF
+        END if
         nold = MIN(SIZE(p),n)
         pnew(1:nold) = p(1:nold)
         DEALLOCATE(p)
         p => pnew
-     END IF
-   END SUBROUTINE ralloc_1r
+     END if
+   end subroutine ralloc_1r
 
-   SUBROUTINE ralloc_2r(p, n1, n2, var, sub)
+   subroutine ralloc_2r(p, n1, n2, var, sub)
      IMPLICIT NONE
-     REAL(real64), POINTER, DIMENSION(:,:) :: p, pnew
-     INTEGER, INTENT(IN) :: n1, n2
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error, n1_old, n2_old
+     REAL(real64), pointer, dimension(:,:) :: p, pnew
+     integer, intent(in) :: n1, n2
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error, n1_old, n2_old
 
 !    write(777,*) "ralloc_2r n1, n2, var, sub",n1, n2, var, "  ", sub
-     IF (.NOT. ASSOCIATED(p)) then
+     if (.NOT. ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' not already allocated'
         STOP
-     ELSE
+     else
         allocate(pnew(n1,n2),STAT=error)
-        IF (error /= 0) then
+        if (error /= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15,I15)') 'Number of elements requested: ',n1, n2
         STOP
-        END IF
+        END if
         n1_old = MIN(SIZE(p, DIM=1),n1)
         n2_old = MIN(SIZE(p, DIM=2),n2)
         pnew(1:n1_old, 1:n2_old) = p(1:n1_old, 1:n2_old)
         DEALLOCATE(p)
         p => pnew
-     END IF
-   END SUBROUTINE ralloc_2r
+     END if
+   end subroutine ralloc_2r
 
-   SUBROUTINE ralloc_0b(p, first, last, var, sub)
+   subroutine ralloc_0b(p, first, last, var, sub)
      IMPLICIT NONE
-     integer(int8), POINTER, DIMENSION(:) :: p, pnew
-     INTEGER, INTENT(IN) :: first, last
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error, nold
+     integer(int8), pointer, dimension(:) :: p, pnew
+     integer, intent(in) :: first, last
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error, nold
 !    write(777,*) "ralloc_0b var, sub",var, "  ", sub
-     IF (.NOT.  ASSOCIATED(p)) then
+     if (.NOT.  ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' not already allocated'
         STOP
-     ELSE
+     else
         allocate(pnew(first:last),STAT=error)
-        IF (error/= 0) then
+        if (error/= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to reallocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15)') 'Elements requested for range: ', &
                             first, ' to ', last
         STOP
-        END IF
+        END if
         nold = MIN(SIZE(p), last+1) - 1
         pnew(first:nold) = p(first:nold)
         DEALLOCATE(p)
         p => pnew
-     END IF
-   END SUBROUTINE ralloc_0b
+     END if
+   end subroutine ralloc_0b
 
-   SUBROUTINE ralloc_1b(p, n, var, sub)
+   subroutine ralloc_1b(p, n, var, sub)
      IMPLICIT NONE
-     integer(int8), POINTER, DIMENSION(:) :: p, pnew
-     INTEGER, INTENT(IN) :: n
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error, nold
+     integer(int8), pointer, dimension(:) :: p, pnew
+     integer, intent(in) :: n
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error, nold
 !    write(777,*) "ralloc_1b var, sub",var, "  ", sub
-     IF (.NOT.  ASSOCIATED(p)) then
+     if (.NOT.  ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' not already allocated'
         STOP
-     ELSE
+     else
         allocate(pnew(n),STAT=error)
-        IF (error/= 0) then
+        if (error/= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to reallocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15)') 'Number of elements requested: ',n
         STOP
-        END IF
+        END if
         nold = MIN(SIZE(p),n)
         pnew(1:nold) = p(1:nold)
         DEALLOCATE(p)
         p => pnew
-     END IF
-   END SUBROUTINE ralloc_1b
+     END if
+   end subroutine ralloc_1b
 
-   SUBROUTINE ralloc_2b(p, n1, n2, var, sub)
+   subroutine ralloc_2b(p, n1, n2, var, sub)
      IMPLICIT NONE
-     integer(int8), POINTER, DIMENSION(:,:) :: p, pnew
-     INTEGER, INTENT(IN) :: n1, n2
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error, n1_old, n2_old
+     integer(int8), pointer, dimension(:,:) :: p, pnew
+     integer, intent(in) :: n1, n2
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error, n1_old, n2_old
 
 !    write(777,*) "ralloc_2b var, sub",var, "  ", sub
-     IF (.NOT. ASSOCIATED(p)) then
+     if (.NOT. ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' not already allocated'
         STOP
-     ELSE
+     else
         allocate(pnew(n1,n2),STAT=error)
-        IF (error /= 0) then
+        if (error /= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15,I15)') 'Number of elements requested: ',n1,n2
         STOP
-        END IF
+        END if
         n1_old = MIN(SIZE(p, DIM=1),n1)
         n2_old = MIN(SIZE(p, DIM=2),n2)
         pnew(1:n1_old, 1:n2_old) = p(1:n1_old, 1:n2_old)
         DEALLOCATE(p)
         p => pnew
-     END IF
-   END SUBROUTINE ralloc_2b
+     END if
+   end subroutine ralloc_2b
 
-   SUBROUTINE ralloc_3b(p, n1, n2, n3, var, sub)
+   subroutine ralloc_3b(p, n1, n2, n3, var, sub)
      IMPLICIT NONE
-     integer(int8), POINTER, DIMENSION(:,:,:) :: p, pnew
-     INTEGER, INTENT(IN) :: n1, n2, n3
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error, n1_old, n2_old, n3_old, i
-!     INTEGER :: error, n1_old, n2_old, n3_old
+     integer(int8), pointer, dimension(:,:,:) :: p, pnew
+     integer, intent(in) :: n1, n2, n3
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error, n1_old, n2_old, n3_old, i
+!     integer :: error, n1_old, n2_old, n3_old
 
 !    write(777,*) "ralloc_3b var, sub",var, "  ", sub
-     IF (.NOT. ASSOCIATED(p)) then
+     if (.NOT. ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' not already allocated'
         STOP
-     ELSE
+     else
         allocate(pnew(n1,n2,n3),STAT=error)
-        IF (error /= 0) then
+        if (error /= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15,I15)') 'Number of elements requested: ',n1,n2,n3
         STOP
-        END IF
+        END if
         n1_old = MIN(SIZE(p, DIM=1),n1)
         n2_old = MIN(SIZE(p, DIM=2),n2)
         n3_old = MIN(SIZE(p, DIM=3),n3)
@@ -731,34 +731,34 @@ MODULE memory_man
 !        pnew(1:n1_old, 1:n2_old, 1:n3_old) = p(1:n1_old, 1:n2_old, 1:n3_old)
         DEALLOCATE(p)
         p => pnew
-     END IF
-   END SUBROUTINE ralloc_3b
+     END if
+   end subroutine ralloc_3b
 
-   SUBROUTINE ralloc_1c(p, n, var, sub)
+   subroutine ralloc_1c(p, n, var, sub)
      IMPLICIT NONE
-     CHARACTER(LEN=256), POINTER, DIMENSION(:) :: p, pnew
-     INTEGER, INTENT(IN) :: n
-     CHARACTER(LEN=*), INTENT(IN) :: var, sub
-     INTEGER :: error, nold
+     character(LEN=256), pointer, dimension(:) :: p, pnew
+     integer, intent(in) :: n
+     character(LEN=*), intent(in) :: var, sub
+     integer :: error, nold
 
 !    write(777,*) "ralloc_1c var, sub",var, "  ", sub
-     IF (.NOT. ASSOCIATED(p)) then
+     if (.NOT. ASSOCIATED(p)) then
         Write(6,'(T10,A,A,A,A,A)') 'Variable ',trim(var),' in subroutine ', &
                                 trim(sub),  ' not already allocated'
         STOP
-     ELSE
+     else
         allocate(pnew(n),STAT=error)
-        IF (error /= 0) then
+        if (error /= 0) then
           Write(6,'(T10,A,A,A,A)') 'Unable to allocate ',trim(var), &
                         ' in subroutine ', trim(sub)
           Write(6, '(T10,A,I15)') 'Number of elements requested: ',n
         STOP
-        END IF
+        END if
         nold = MIN(SIZE(p),n)
         pnew(1:nold) = p(1:nold)
         DEALLOCATE(p)
         p => pnew
-     END IF
-   END SUBROUTINE ralloc_1c
+     END if
+   end subroutine ralloc_1c
 
-END MODULE memory_man
+end module memory_man

@@ -1,0 +1,79 @@
+!***********************************************************************
+!                                                                      *
+      subroutine SIGMA_2 (IPAR,I1,I2,APART)
+!                                                                      *
+!   This  routine computes                                             *
+!   [-kappa_a || sigma^(2) ||kappa_b] if IPAR = 1                      *
+!   <-kappa_a || sigma^(2) ||kappa_b> if IPAR = 2                      *
+!                                                                      *
+!                                                                      *
+!   Written by  G. Gaigalas                                            *
+!                                      Last revision:  11 Aprel 2019   *
+!                                                                      *
+!***********************************************************************
+!
+!-----------------------------------------------
+!   M o d u l e s
+!-----------------------------------------------
+      use iso_fortran_env, only: real64, int32, int64, real128
+      use orb_C,           ONLY: NP, NAK
+!-----------------------------------------------
+!   I n t e r f a c e   B l o c k s
+!-----------------------------------------------
+      use dracah_I
+      IMPLICIT NONE
+!-----------------------------------------------
+!   D u m m y   A r g u m e n t s
+!-----------------------------------------------
+      integer, intent(in) :: IPAR, I1, I2
+      real(real64), intent(out) :: APART
+!-----------------------------------------------
+!   L o c a l   V a r i a b l e s
+!-----------------------------------------------
+      integer :: L1, L2, KAP1, KAP2, J1, J2, L2_TILDA
+      real(real64) :: RAC
+!-----------------------------------------------
+!
+!   Set KAP1 and KAP2
+!
+      KAP1 = NAK(I1)
+      KAP2 = NAK(I2)
+!
+!   Determine the l quantum numbers
+!
+      if (KAP1 > 0) then
+         L1 =  KAP1
+      else
+         L1 = -KAP1-1
+      endif
+!
+      if (KAP2 > 0) then
+         L2 =  KAP2
+      else
+         L2 = -KAP2-1
+      endif
+!
+!   Determine the j quantum numbers and l_2 tilda
+!
+      J1 = IABS(NAK(I1))*2-1
+      J2 = IABS(NAK(I2))*2-1
+      L2_TILDA = J2 - L2
+      if (L2_TILDA == L1) then
+!
+!   Determine the Racah W coefficients.
+!
+         CALL DRACAH (1,J1,1,J2,2*L1,2,RAC)
+         if (MOD(1+J1+1+J2,4) == 0) RAC=-RAC
+         APART =  RAC*DSQRT(6.0D00*(J2+1))
+      else
+         APART = 0.0D00
+      END if
+!
+!   Determine the phase factori
+!
+      if(MOD(2*L1+1+J1+2,4) == 0) APART=-APART
+      if(IPAR == 2) then
+         APART = DSQRT(DBLE(J1+1))*APART
+      END if
+      return
+      end subroutine SIGMA_2

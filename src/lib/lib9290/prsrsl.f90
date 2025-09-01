@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE PRSRSL(NFILE, ID)
+      subroutine PRSRSL(NFILE, ID)
 !                                                                      *
 !   READs and parses a list of subshell labels on unit NFILE to load   *
 !   COMMON  blocks  /ORB4/,  /ORB5/, and /ORB10/; the value of NW in   *
@@ -19,30 +19,30 @@
 !-----------------------------------------------
 !   M o d u l e s
 !-----------------------------------------------
-      USE parameter_def, ONLY: NNNW
-      USE IOUNIT_C
-      USE ORB_C
+      use parameter_def, only: NNNW
+      use IOUNIT_C
+      use ORB_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE convrt_I
+      use convrt_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER , INTENT(IN) :: NFILE
-      INTEGER , INTENT(IN) :: ID
+      integer , intent(in) :: NFILE
+      integer , intent(in) :: ID
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: ISTART, I, IEND, IOS, II, IIB2, LTEGER
-      LOGICAL :: NEWREC
-      CHARACTER(LEN=1)   :: RECI
-      CHARACTER(LEN=2)   :: CTEGER, SYM
-      CHARACTER(LEN=6)   :: FORM
-!      CHARACTER(LEN=500) :: RECORD, RECORD2
-      CHARACTER(LEN=1000) :: RECORD, RECORD2
-      CHARACTER(LEN=2), DIMENSION(19) :: SYMLST
+      integer :: ISTART, I, IEND, IOS, II, IIB2, LTEGER
+      logical :: NEWREC
+      character(LEN=1)   :: RECI
+      character(LEN=2)   :: CTEGER, SYM
+      character(LEN=6)   :: FORM
+!      character(LEN=500) :: RECORD, RECORD2
+      character(LEN=1000) :: RECORD, RECORD2
+      character(LEN=2), dimension(19) :: SYMLST
 !
       DATA SYMLST/ 's ', 'p-', 'p ', 'd-', 'd ', 'f-', 'f ', 'g-', 'g ', 'h-', &
          'h ', 'i-', 'i ', 'k-', 'k ', 'l-', 'l ', 'm-', 'm'/
@@ -53,14 +53,14 @@
 !
       NEWREC = .FALSE.
       READ (NFILE, '(A)') RECORD
-      IF (ID == 2) THEN
+      if (ID == 2) then
          READ (NFILE, '(A)') RECORD2
-         IF (RECORD2(1:3) == 'CSF') THEN
+         if (RECORD2(1:3) == 'CSF') then
             BACKSPACE (UNIT=NFILE)
-         ELSE
+         else
             NEWREC = .TRUE.
-         ENDIF
-      ENDIF
+         endif
+      endif
 !
 !   Parse RECORD from left to right
 !
@@ -68,79 +68,79 @@
       I = 1
     1 CONTINUE
       RECI = RECORD(I:I)
-      IF (RECI/=' ' .AND. RECI/=',') THEN
-         IF (ISTART == 0) ISTART = I
-      ELSE
-         IF (ISTART /= 0) THEN
+      if (RECI/=' ' .AND. RECI/=',') then
+         if (ISTART == 0) ISTART = I
+      else
+         if (ISTART /= 0) then
             IEND = I - 1
             RECI = RECORD(IEND:IEND)
-            IF (RECI == '-') THEN
+            if (RECI == '-') then
 !              READ (RECORD(IEND-1:IEND),'(1A2)',IOSTAT = IOS) SYM
                SYM = RECORD(IEND-1:IEND)
-               IF (IOS /= 0) THEN
+               if (IOS /= 0) then
                   WRITE (ISTDE, *) 'PRSRSL: Symmetry ', RECORD(IEND-1:IEND), &
                      ' could not be decoded.'
                   STOP
-               ENDIF
+               endif
                IEND = IEND - 2
-            ELSE
+            else
                SYM(2:2) = ' '
 !              READ (RECI,'(1A1)',IOSTAT = IOS) SYM(1:1)
                SYM(1:1) = RECI
-               IF (IOS /= 0) THEN
+               if (IOS /= 0) then
                   WRITE (ISTDE, *) 'PRSRSL: Symmetry ', RECI, ' could not', &
                      ' be decoded.'
                   STOP
-               ENDIF
+               endif
                IEND = IEND - 1
-            ENDIF
+            endif
             DO II = 1, 19
-               IF (SYM /= SYMLST(II)) CYCLE
+               if (SYM /= SYMLST(II)) CYCLE
                NW = NW + 1
-               IF (NW > NNNW) THEN
+               if (NW > NNNW) then
                   WRITE (ISTDE, *) 'PRSRSL: Number of subshells ', &
                      'exceeds allocation: plant NW was set to', NNNW
                   STOP
-               ENDIF
+               endif
                NH(NW) = SYM
                IIB2 = II/2
                NKL(NW) = IIB2
-               IF (MOD(II,2) == 1) THEN
+               if (MOD(II,2) == 1) then
                   NAK(NW) = (-IIB2) - 1
                   NKJ(NW) = II
-               ELSE
+               else
                   NAK(NW) = IIB2
                   NKJ(NW) = II - 1
-               ENDIF
+               endif
                CALL CONVRT (IEND - ISTART + 1, CTEGER, LTEGER)
                FORM = '(1I'//CTEGER(1:LTEGER)//')'
                READ (RECORD(ISTART:IEND), FMT=FORM, IOSTAT=IOS) NP(NW)
-               IF (IOS /= 0) THEN
+               if (IOS /= 0) then
                   WRITE (ISTDE, *) 'PRSRSL: Principal quantum number ', RECORD(&
                      ISTART:IEND), ' could not be decoded.'
                   STOP
-               ENDIF
+               endif
                GO TO 3
             END DO
             WRITE (ISTDE, *) 'PRSRSL: Symmetry ', SYM, ' could not be decoded.'
             STOP
     3       CONTINUE
             ISTART = 0
-         ENDIF
-      ENDIF
+         endif
+      endif
 !
-!      IF (I < 500) THEN
-      IF (I < 1000) THEN
+!      if (I < 500) then
+      if (I < 1000) then
          I = I + 1
          GO TO 1
-      ENDIF
-      IF (NEWREC) THEN
+      endif
+      if (NEWREC) then
          RECORD = RECORD2
          NEWREC = .FALSE.
          I = 1
          ISTART = 0
          GO TO 1
-      ENDIF
+      endif
 !
-      RETURN
-      END SUBROUTINE PRSRSL
+      return
+      end subroutine PRSRSL

@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE GG1122(K1,K2,QM1,QM2,QM3,QM4,AA)
+      subroutine GG1122(K1,K2,QM1,QM2,QM3,QM4,AA)
 !                                                                  *
 ! ----------------  SECTION METWO    SUBPROGRAM 16  -------------  *
 !                                                                  *
@@ -11,7 +11,7 @@
 !     (j  Q J ::W(11)::j  Q'J') * (j  Q J ::W(22):: j  Q'J')    -+ *
 !       1  1 1          1  1 1      2  2 2           2  2 2     ++ *
 !                                                               -- *
-!     SUBROUTINE CALLED: WJ1                                       *
+!     subroutine CALLED: WJ1                                       *
 !                                                                  *
 !   Written by  G. Gaigalas                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -23,47 +23,47 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO, TENTH, EPS
-      USE trk_C
+      use CONS_C,          only: ZERO, TENTH, EPS
+      use trk_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE mes_I
-      USE wj1_I
+      use mes_I
+      use wj1_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER,      INTENT(IN)               :: K1, K2
-      real(real64), INTENT(IN)               :: QM1, QM2, QM3, QM4
-      real(real64), INTENT(OUT)              :: AA
+      integer,      intent(in)               :: K1, K2
+      real(real64), intent(in)               :: QM1, QM2, QM3, QM4
+      real(real64), intent(out)              :: AA
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: IQMM1, IQMM2, IQMM3, IQMM4, IQMM12, IQMM34
+      integer :: IQMM1, IQMM2, IQMM3, IQMM4, IQMM12, IQMM34
       real(real64) :: A1, W
 !-----------------------------------------------
       AA=ZERO
-      IF(IK1(3) > 9) THEN
-        IF(IK1(4) > 2) CALL MES(35)
-        IF(ID1(4) > 2) CALL MES(35)
-      ENDIF
-      IF(IK2(3) > 9) THEN
-        IF(IK2(4) > 2) CALL MES(35)
-        IF(ID2(4) > 2) CALL MES(35)
-      ENDIF
+      if(IK1(3) > 9) then
+        if(IK1(4) > 2) CALL MES(35)
+        if(ID1(4) > 2) CALL MES(35)
+      endif
+      if(IK2(3) > 9) then
+        if(IK2(4) > 2) CALL MES(35)
+        if(ID2(4) > 2) CALL MES(35)
+      endif
       IQMM1=QM1+QM1+TENTH*QM1
       IQMM2=QM2+QM2+TENTH*QM2
       IQMM12=IQMM1+IQMM2
-      IF(IK1(4) /= (ID1(4)+IQMM12))RETURN
+      if(IK1(4) /= (ID1(4)+IQMM12))return
       IQMM3=QM3+QM3+TENTH*QM3
       IQMM4=QM4+QM4+TENTH*QM4
       IQMM34=IQMM3+IQMM4
-      IF(IK2(4) /= (ID2(4)+IQMM34))RETURN
+      if(IK2(4) /= (ID2(4)+IQMM34))return
       CALL WJ1(IK1,BK1,ID1,BD1,K1,QM1,QM2,A1)
-      IF(DABS(A1) < EPS)RETURN
+      if(DABS(A1) < EPS)return
       CALL WJ1(IK2,BK2,ID2,BD2,K2,QM3,QM4,W)
-      IF(DABS(W) < EPS)RETURN
+      if(DABS(W) < EPS)return
       AA=A1*W
-      RETURN
-      END SUBROUTINE GG1122
+      return
+      end subroutine GG1122

@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE CALEN(JTIME, JDATE)
+      subroutine CALEN(JTIME, JDATE)
 !                                                                      *
 !   Loads the character strings JTIME and JDATE with the time of day   *
 !   and the date when called.                                          *
@@ -16,10 +16,10 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      CHARACTER  :: JTIME*10
-      CHARACTER  :: JDATE*8
+      character  :: JTIME*10
+      character  :: JDATE*8
 
       CALL DATE_AND_TIME(JDATE, JTIME)
 
-      RETURN
-      END SUBROUTINE CALEN
+      return
+      end subroutine CALEN

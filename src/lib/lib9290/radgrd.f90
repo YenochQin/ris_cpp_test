@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE RADGRD
+      subroutine RADGRD
 !                                                                      *
 !   This routine sets up the radial grid  R  and the associated arr-   *
 !   ays  RP  and  RPOR  in the COMMON block  /GRID/. Different grids   *
@@ -16,14 +16,14 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE DEBUG_C
-      USE DEF_C, ONLY: PRECIS
-      USE GRID_C
+      use DEBUG_C
+      use DEF_C, only: PRECIS
+      use GRID_C
       IMPLICIT NONE
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: NP10, I, NB2, NROWS, II, II1, II2
+      integer :: NP10, I, NB2, NROWS, II, II1, II2
       real(real64) :: EPH, ETT, ETTM1, EPSLON, A, RLAST, REST, T, RESTS, FOFR, &
          FPRI, DELR
 !-----------------------------------------------
@@ -38,7 +38,7 @@
 !
 !   Now set up the grids
 !
-      IF (HP == 0.0D00) THEN
+      if (HP == 0.0D00) then
 !        default comes here
 !
 !   Exponential grid if HP is zero
@@ -59,7 +59,7 @@
             RPOR(I) = ETT/ETTM1
          END DO
 !
-      ELSE
+      else
 !
 !   Asymptotically-linear exponential grid otherwise:
 !
@@ -87,48 +87,48 @@
             DELR = -FOFR*FPRI
             REST = RLAST + DELR
 !
-            IF (ABS(DELR/REST) < EPSLON) THEN
+            if (ABS(DELR/REST) < EPSLON) then
                R(I) = REST
                RESTS = REST + RNT
                FPRI = RESTS/(A*RESTS + 1.0D00)
                RP(I) = FPRI
                RPOR(I) = FPRI/REST
-            ELSE
+            else
                RLAST = REST
                GO TO 2
-            ENDIF
+            endif
 !
          END DO
 !
-      ENDIF
+      endif
 !
 !   Debug printout
 !
-      IF (LDBPR(1)) THEN
+      if (LDBPR(1)) then
          WRITE (99, 300)
          NB2 = N/2
-         IF (2*NB2 == N) THEN
+         if (2*NB2 == N) then
             NROWS = NB2
-         ELSE
+         else
             NROWS = NB2 + 1
-         ENDIF
+         endif
          DO II = 1, NROWS
             II1 = II
             II2 = II1 + NROWS
-            IF (II2 <= N) THEN
+            if (II2 <= N) then
                WRITE (99, 301) R(II1), RP(II1), RPOR(II1), R(II2), RP(II2), &
                   RPOR(II2)
-            ELSE IF (II1 <= N) THEN
+            else if (II1 <= N) then
                WRITE (99, 301) R(II1), RP(II1), RPOR(II1)
-            ENDIF
+            endif
          END DO
-      ENDIF
+      endif
 !
-      RETURN
+      return
 !
-  300 FORMAT(/,'From SUBROUTINE RADGRD:'/,2(&
+  300 FORMAT(/,'From subroutine RADGRD:'/,2(&
          ' -------- r -------- -------- r'' -------',' ------- r''/r ------'))
   301 FORMAT(1P,6(1X,1D19.12))
-      RETURN
+      return
 !
-      END SUBROUTINE RADGRD
+      end subroutine RADGRD

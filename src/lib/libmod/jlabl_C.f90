@@ -1,9 +1,9 @@
-      MODULE jlabl_C
+      module jlabl_C
 !...Created by Pacific-Sierra Research 77to90  4.3E  06:16:25   2/14/04
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
-      CHARACTER(LEN=4), DIMENSION(32) :: JLBL, JLBR
-      CHARACTER(LEN=4), DIMENSION(2) :: JLBP
+      character(LEN=4), dimension(32) :: JLBL, JLBR
+      character(LEN=4), dimension(2) :: JLBP
 !
 !   Left-justified strings
 !
@@ -24,4 +24,4 @@
       DATA JLBP/ ' -  ', ' +  '/
 !
 
-      END MODULE jlabl_C
+      end module jlabl_C

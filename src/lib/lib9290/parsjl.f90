@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE PARSJL(MODE, NCORE, RECORD, LOC, JX, NJX, IERR)
+      subroutine PARSJL(MODE, NCORE, RECORD, LOC, JX, NJX, IERR)
 !                                                                      *
 !   READs and  parses a string that specifies angular momentum quan-   *
 !   tum numbers.                                                       *
@@ -17,28 +17,28 @@
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE convrt_I
-      USE ORB_C, ONLY: NCF, NW, IQA
+      use convrt_I
+      use ORB_C, only: NCF, NW, IQA
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN)           :: MODE, NCORE, LOC
-      INTEGER, INTENT(OUT)          :: NJX, IERR
-      CHARACTER(LEN=256), INTENT(IN) :: RECORD
-      INTEGER, DIMENSION(*), INTENT(OUT) :: JX
+      integer, intent(in)           :: MODE, NCORE, LOC
+      integer, intent(out)          :: NJX, IERR
+      character(LEN=256), intent(in) :: RECORD
+      integer, dimension(*), intent(out) :: JX
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: NJXMAX, ISTART, I, ILOOP, IFRAC, IEND, LTEGER, J
-      CHARACTER(LEN=1) :: RECI
-      CHARACTER(LEN=2) :: CTEGER
-      CHARACTER(LEN=6) :: FORM
+      integer :: NJXMAX, ISTART, I, ILOOP, ifRAC, IEND, LTEGER, J
+      character(LEN=1) :: RECI
+      character(LEN=2) :: CTEGER
+      character(LEN=6) :: FORM
 !-----------------------------------------------
 !
 ! This subroutine is here to replace the existing one which has been
 ! renamed as PARSJL_OLD. The purpose is to remove illegal GOTO into an
-! IF block. The strategy is simple: copy the kernl to the bottom
+! if block. The strategy is simple: copy the kernl to the bottom
 ! and add a do-loop over I.
 ! To restore (re-use) this subroutine, give the existing PARSJL a new
 ! name and then change the name of this subroutine back to PARSJL, and
@@ -50,11 +50,11 @@
 !   MODE is 1, the subshell quantum numbers are being read; if MODE
 !   is 2, the intermediate and final angular momenta are being read
 !
-      IF (MODE == 1) THEN
+      if (MODE == 1) then
          NJXMAX = 2*(NW - NCORE)
-      ELSE
+      else
          NJXMAX = NW - NCORE
-      ENDIF
+      endif
 !
 !   Initialise NJX
 !
@@ -73,65 +73,65 @@
       ILOOP = MAX(1,LOC)
       DO I = 1, ILOOP
          RECI = RECORD(I:I)
-         IF (RECI/=' ' .AND. RECI/=',' .AND. RECI/=';') THEN
-            IF (ISTART == 0) THEN
+         if (RECI/=' ' .AND. RECI/=',' .AND. RECI/=';') then
+            if (ISTART == 0) then
                ISTART = I
-               IFRAC = 0
-            ELSE
-               IF (RECI == '/') THEN
-                 IFRAC = I
-               ENDIF
-            ENDIF
-         ELSE
-            IF (ISTART /= 0) THEN
+               ifRAC = 0
+            else
+               if (RECI == '/') then
+                 ifRAC = I
+               endif
+            endif
+         else
+            if (ISTART /= 0) then
 !XHH~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                NJX = NJX + 1
-               IF (NJX > NJXMAX) THEN
+               if (NJX > NJXMAX) then
                   WRITE (6, *) 'PARSJL: Too many angular momentum', &
                      ' quantum numbers specified;'
                   IERR = 1
                   GO TO 3
-               ENDIF
+               endif
                IEND = I - 1
-               IF (IFRAC == 0) THEN
+               if (ifRAC == 0) then
                   CALL CONVRT (IEND - ISTART + 1, CTEGER, LTEGER)
                   FORM = '(1I'//CTEGER(1:LTEGER)//')'
                   READ (RECORD(ISTART:IEND), FMT=FORM) J
-                  IF (J < 0) THEN
+                  if (J < 0) then
                      WRITE (6, *) 'PARSJL: Negative angular momentum', &
                         ' quantum number found;'
                      IERR = 2
                      GO TO 3
-                  ENDIF
+                  endif
                   JX(NJX) = 2*J
-               ELSE
-                  CALL CONVRT (IEND - IFRAC, CTEGER, LTEGER)
+               else
+                  CALL CONVRT (IEND - ifRAC, CTEGER, LTEGER)
                   FORM = '(1I'//CTEGER(1:LTEGER)//')'
-                  READ (RECORD(IFRAC+1:IEND), FMT=FORM) J
-                  IF (J /= 2) THEN
+                  READ (RECORD(ifRAC+1:IEND), FMT=FORM) J
+                  if (J /= 2) then
                      WRITE (6, *) 'PARSJL: The denominator of a', &
                         ' fractional quantum number must be 2;'
                      IERR = 3
                      GO TO 3
-                  ENDIF
-                  CALL CONVRT (IFRAC - ISTART, CTEGER, LTEGER)
+                  endif
+                  CALL CONVRT (ifRAC - ISTART, CTEGER, LTEGER)
                   FORM = '(1I'//CTEGER(1:LTEGER)//')'
-                  READ (RECORD(ISTART:IFRAC-1), FMT=FORM) J
-                  IF (J < 0) THEN
+                  READ (RECORD(ISTART:ifRAC-1), FMT=FORM) J
+                  if (J < 0) then
                      WRITE (6, *) 'PARSJL: Negative angular momentum', &
                         ' quantum number found;'
                      IERR = 4
                      GO TO 3
-                  ENDIF
+                  endif
                   JX(NJX) = J
-               ENDIF
+               endif
                ISTART = 0
 !XHH~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            ENDIF
-         ENDIF
+            endif
+         endif
       END DO
 !
-      IF (LOC >= 1) THEN
+      if (LOC >= 1) then
 
 ! The following was accessed one extra time only when 1 <= I = LOC+1 .
 ! After the do-loop above, the value of I would be either LOC+1 or
@@ -142,51 +142,51 @@
 ! The following is exactly the same as those above
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
          NJX = NJX + 1
-         IF (NJX > NJXMAX) THEN
+         if (NJX > NJXMAX) then
             WRITE (6, *) 'PARSJL: Too many angular momentum', &
                ' quantum numbers specified;'
             IERR = 1
             GO TO 3
-         ENDIF
+         endif
          IEND = I - 1
-         IF (IFRAC == 0) THEN
+         if (ifRAC == 0) then
             CALL CONVRT (IEND - ISTART + 1, CTEGER, LTEGER)
             FORM = '(1I'//CTEGER(1:LTEGER)//')'
             READ (RECORD(ISTART:IEND), FMT=FORM) J
-            IF (J < 0) THEN
+            if (J < 0) then
                WRITE (6, *) 'PARSJL: Negative angular momentum', &
                   ' quantum number found;'
                IERR = 2
                GO TO 3
-            ENDIF
+            endif
             JX(NJX) = 2*J
-         ELSE
-            CALL CONVRT (IEND - IFRAC, CTEGER, LTEGER)
+         else
+            CALL CONVRT (IEND - ifRAC, CTEGER, LTEGER)
             FORM = '(1I'//CTEGER(1:LTEGER)//')'
-            READ (RECORD(IFRAC+1:IEND), FMT=FORM) J
-            IF (J /= 2) THEN
+            READ (RECORD(ifRAC+1:IEND), FMT=FORM) J
+            if (J /= 2) then
                WRITE (6, *) 'PARSJL: The denominator of a', &
                   ' fractional quantum number must be 2;'
                IERR = 3
                GO TO 3
-            ENDIF
-            CALL CONVRT (IFRAC - ISTART, CTEGER, LTEGER)
+            endif
+            CALL CONVRT (ifRAC - ISTART, CTEGER, LTEGER)
             FORM = '(1I'//CTEGER(1:LTEGER)//')'
-            READ (RECORD(ISTART:IFRAC-1), FMT=FORM) J
-            IF (J < 0) THEN
+            READ (RECORD(ISTART:ifRAC-1), FMT=FORM) J
+            if (J < 0) then
                WRITE (6, *) 'PARSJL: Negative angular momentum', &
                   ' quantum number found;'
                IERR = 4
                GO TO 3
-            ENDIF
+            endif
             JX(NJX) = J
-         ENDIF
+         endif
          ISTART = 0
-      ENDIF
+      endif
 !XHH~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 !
       IERR = 0
 !
     3 CONTINUE
-      RETURN
-      END SUBROUTINE PARSJL
+      return
+      end subroutine PARSJL

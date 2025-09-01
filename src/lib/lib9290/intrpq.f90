@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      SUBROUTINE INTRPQ(PA, QA, MA, RA, J, DNORM)
+      subroutine INTRPQ(PA, QA, MA, RA, J, DNORM)
 !                                                                      *
 !   This  subprogram  interpolates  the  arrays  PA(1:MA), QA(1:MA),   *
 !   tabulated on grid RA(1:MA) into the COMMON arrays PF(1:MF(J),J),   *
@@ -8,7 +8,7 @@
 !   Introduction  to  Numerical  Analysis, 2nd ed., McGraw-Hill, New   *
 !   York, NY, 1974.) The orbital is renormalized.                      *
 !                                                                      *
-!   SUBROUTINEs called: RINT.                                          *
+!   subroutines called: RINT.                                          *
 !                                                                      *
 !   Written by Farid A Parpia, at Oxford    Last update: 14 Oct 1992   *
 !                                                                      *
@@ -20,39 +20,39 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE parameter_def,   ONLY: NNNP
-      USE DEBUG_C
-      USE DEF_C,           ONLY: ACCY
-      USE GRID_C
-      USE WAVE_C
+      use parameter_def,   only: NNNP
+      use DEBUG_C
+      use DEF_C,           only: ACCY
+      use GRID_C
+      use WAVE_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE rint_I
+      use rint_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: MA
-      INTEGER  :: J
-      real(real64), INTENT(OUT) :: DNORM
-      real(real64), DIMENSION(*), INTENT(IN) :: PA, QA, RA
+      integer, intent(in) :: MA
+      integer  :: J
+      real(real64), intent(out) :: DNORM
+      real(real64), dimension(*), intent(in) :: PA, QA, RA
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
-      INTEGER, PARAMETER :: MXORD = 13
+      integer, parameter :: MXORD = 13
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: I, MFJ, NRSTLO, KOUNT, IROW, K, NRSTHI, LLO, LHI, LOCNXT, &
+      integer :: I, MFJ, NRSTLO, KOUNT, IROW, K, NRSTHI, LLO, LHI, LOCNXT, &
          ILIROK, ILDIAG, ILOTHR, MFJP1
       real(real64) :: RAMA
-      real(real64), DIMENSION(MXORD) :: X, DX
-      real(real64), DIMENSION((MXORD*(MXORD + 1))/2) :: POLYP, POLYQ
-      real(real64) :: RN, XBAR, PESTL, QESTL, DIFF, DIFFT, DXKMN1, DXIROW, &
+      real(real64), dimension(MXORD) :: X, DX
+      real(real64), dimension((MXORD*(MXORD + 1))/2) :: POLYP, POLYQ
+      real(real64) :: RN, XBAR, PESTL, QESTL, DifF, DifFT, DXKMN1, DXIROW, &
          FACTOR, PESTT, QESTT, DPBP, DQBQ, DNFAC
-      LOGICAL :: SET
-      LOGICAL, DIMENSION(NNNP) :: USED
+      logical :: SET
+      logical, dimension(NNNP) :: useD
 !-----------------------------------------------
 !
 !
@@ -72,22 +72,22 @@
 !
 !   Checks
 !
-      IF (RAMA > RN) THEN
+      if (RAMA > RN) then
          WRITE (*, 300) RN, RAMA
          PRINT*, "N =",N,"MA =",MA
          STOP
-      ENDIF
+      endif
 !
 !   Determine end of grid
 !
       I = N
     1 CONTINUE
       I = I - 1
-      IF (R(I) <= RAMA) THEN
+      if (R(I) <= RAMA) then
          MFJ = I
-      ELSE
+      else
          GO TO 1
-      ENDIF
+      endif
       MF(J) = MFJ
 !
 !   Overall initialization for interpolation
@@ -111,18 +111,18 @@
 !
     2    CONTINUE
          K = NRSTLO + 1
-         IF (RA(K) < XBAR) THEN
+         if (RA(K) < XBAR) then
             NRSTLO = K
             GO TO 2
-         ELSE
+         else
             NRSTHI = K
-         ENDIF
+         endif
 !
 !   Clear relevant piece of use-indicator array
 !
          LLO = MAX(NRSTLO - MXORD,1)
          LHI = MIN(NRSTHI + MXORD,MA)
-         USED(LLO:LHI) = .FALSE.
+         useD(LLO:LHI) = .FALSE.
 !
 !   Determine next-nearest grid point
 !
@@ -132,31 +132,31 @@
          LHI = MIN(NRSTHI + IROW - 1,MA)
          SET = .FALSE.
          DO K = LLO, LHI
-            IF (USED(K)) CYCLE
-            IF (.NOT.SET) THEN
-               DIFF = RA(K) - XBAR
+            if (useD(K)) CYCLE
+            if (.NOT.SET) then
+               DifF = RA(K) - XBAR
                LOCNXT = K
                SET = .TRUE.
-            ELSE
-               DIFFT = RA(K) - XBAR
-               IF (ABS(DIFFT) < ABS(DIFF)) THEN
-                  DIFF = DIFFT
+            else
+               DifFT = RA(K) - XBAR
+               if (ABS(DifFT) < ABS(DifF)) then
+                  DifF = DifFT
                   LOCNXT = K
-               ENDIF
-            ENDIF
+               endif
+            endif
          END DO
-         USED(LOCNXT) = .TRUE.
+         useD(LOCNXT) = .TRUE.
          X(IROW) = RA(LOCNXT)
-         DX(IROW) = DIFF
+         DX(IROW) = DifF
 !
 !   Fill table for this row
 !
          DO K = 1, IROW
             ILIROK = ILOC(IROW,K)
-            IF (K == 1) THEN
+            if (K == 1) then
                POLYP(ILIROK) = PA(LOCNXT)
                POLYQ(ILIROK) = QA(LOCNXT)
-            ELSE
+            else
                ILDIAG = ILOC(K - 1,K - 1)
                ILOTHR = ILOC(IROW,K - 1)
                DXKMN1 = DX(K-1)
@@ -166,7 +166,7 @@
                   FACTOR
                POLYQ(ILIROK) = (POLYQ(ILDIAG)*DXIROW-POLYQ(ILOTHR)*DXKMN1)*&
                   FACTOR
-            ENDIF
+            endif
          END DO
 !
 !   Check for convergence
@@ -174,31 +174,31 @@
          ILDIAG = ILOC(IROW,IROW)
          PESTT = POLYP(ILDIAG)
          QESTT = POLYQ(ILDIAG)
-         IF (PESTT==0.0D00 .OR. QESTT==0.0D00) THEN
-            IF (IROW < MXORD) THEN
+         if (PESTT==0.0D00 .OR. QESTT==0.0D00) then
+            if (IROW < MXORD) then
                GO TO 4
-            ELSE
+            else
                PF(I,J) = PESTT
                QF(I,J) = QESTT
-            ENDIF
-         ELSE
+            endif
+         else
             DPBP = ABS((PESTT - PESTL)/PESTT)
             DQBQ = ABS((QESTT - QESTL)/QESTT)
-            IF (DQBQ<ACCY .AND. DPBP<ACCY) THEN
+            if (DQBQ<ACCY .AND. DPBP<ACCY) then
                PF(I,J) = PESTT
                QF(I,J) = QESTT
-            ELSE
+            else
                PESTL = PESTT
                QESTL = QESTT
-               IF (IROW < MXORD) THEN
+               if (IROW < MXORD) then
                   GO TO 4
-               ELSE
+               else
                   PF(I,J) = PESTT
                   QF(I,J) = QESTT
                   KOUNT = KOUNT + 1
-               ENDIF
-            ENDIF
-         ENDIF
+               endif
+            endif
+         endif
 !
       END DO
 !
@@ -209,7 +209,7 @@
       PF(MFJP1:N,J) = 0.0D00
       QF(MFJP1:N,J) = 0.0D00
 !
-      IF (LDBPR(3) .AND. KOUNT>0) WRITE (99, 301) ACCY, KOUNT, MFJ
+      if (LDBPR(3) .AND. KOUNT>0) WRITE (99, 301) ACCY, KOUNT, MFJ
 !
 !   Normalization
 !
@@ -218,22 +218,22 @@
       PF(:MFJ,J) = PF(:MFJ,J)*DNFAC
       QF(:MFJ,J) = QF(:MFJ,J)*DNFAC
 !
-      RETURN
+      return
 !
   300 FORMAT(/,'INTRPQ: Grid of insufficient extent:'/,&
          ' Present grid has R(N) = ',1P,1D19.12,' Bohr radii'/,&
          '          Require R(N) = ',1D19.12,' Bohr radii')
   301 FORMAT(/,'INTRPQ: Interpolation procedure not converged to',1P,1D19.12,&
          ' for ',1I3,' of ',1I3,' tabulation points')
-      RETURN
+      return
       CONTAINS
 
 
-      INTEGER FUNCTION ILOC (IND1, IND2)
-      INTEGER, INTENT(IN) :: IND1
-      INTEGER, INTENT(IN) :: IND2
+      integer FUNCTION ILOC (IND1, IND2)
+      integer, intent(in) :: IND1
+      integer, intent(in) :: IND2
       ILOC = (IND1*(IND1 - 1))/2 + IND2
-      RETURN
+      return
       END FUNCTION ILOC
 !
-      END SUBROUTINE INTRPQ
+      end subroutine INTRPQ

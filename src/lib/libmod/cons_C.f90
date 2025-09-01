@@ -1,7 +1,7 @@
 !
 !***********************************************************************
 !                                                                      *
-      MODULE cons_C
+      module cons_C
 !                                                                      *
 !***********************************************************************
       use iso_fortran_env, only: real64, int32, int64, real128
@@ -19,4 +19,4 @@
                       TEN   =10.0D00, &
                       ELEVEN=11.0D00, &
                       EPS   = 1.0D-08
-      END MODULE cons_C
+      end module cons_C

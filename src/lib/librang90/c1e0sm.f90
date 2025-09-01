@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE C1E0SM(Q,QM,C,CM,A)
+      subroutine C1E0SM(Q,QM,C,CM,A)
 !                                                                  *
 !     THIS PACKAGE DETERMINES THE VALUES OF FOLLOWING              *
 !                                                 ---         ---  *
@@ -20,42 +20,42 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO, TENTH, ONE, TWO, THREE, EPS
+      use CONS_C,          only: ZERO, TENTH, ONE, TWO, THREE, EPS
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE ittk_I
+      use ittk_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64), INTENT(IN)  :: Q, QM, C, CM
-      real(real64), INTENT(OUT) :: A
+      real(real64), intent(in)  :: Q, QM, C, CM
+      real(real64), intent(out) :: A
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: IIQ, IIC, IS, IG
+      integer :: IIQ, IIC, IS, IG
 !-----------------------------------------------
       A=ZERO
       IIQ=TWO*Q+TENTH
       IIC=TWO*C+TENTH
-      IF(ITTK(IIQ,IIC,2) == 0)RETURN
-      IF(DABS(QM-CM) > EPS) RETURN
-      IF((Q+TENTH) < DABS(QM)) RETURN
-      IF((C+TENTH) < DABS(CM)) RETURN
-      IF(DABS(QM) <= EPS) THEN
+      if(ITTK(IIQ,IIC,2) == 0)return
+      if(DABS(QM-CM) > EPS) return
+      if((Q+TENTH) < DABS(QM)) return
+      if((C+TENTH) < DABS(CM)) return
+      if(DABS(QM) <= EPS) then
        IS=Q+C+ONE+TENTH
-       IF((IS/2)*2 /= IS) RETURN
-      END IF
+       if((IS/2)*2 /= IS) return
+      END if
       IG=Q-C+TWO+TENTH
-      IF(IG <= 0) RETURN
-      IF(IG > 3) RETURN
-      IF (IG == 1) THEN
+      if(IG <= 0) return
+      if(IG > 3) return
+      if (IG == 1) then
         A=DSQRT(((C+CM)*(C-CM))/((TWO*C-ONE)*C))
-      ELSE IF (IG == 2) THEN
+      else if (IG == 2) then
         A=CM/DSQRT(C*(C+ONE))
-      ELSE IF (IG == 3) THEN
+      else if (IG == 3) then
         A=-DSQRT(((C+CM+ONE)*(C-CM+ONE))/((C+ONE)*(TWO*C+THREE)))
-      END IF
-      RETURN
-      END SUBROUTINE C1E0SM
+      END if
+      return
+      end subroutine C1E0SM

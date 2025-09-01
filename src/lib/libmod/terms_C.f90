@@ -1,18 +1,18 @@
 !
 !***********************************************************************
 !                                                                      *
-      MODULE terms_C
+      module terms_C
 !                                                                      *
 !***********************************************************************
 !...Created by Pacific-Sierra Research 77to90  4.3E  06:16:25   2/14/04
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       implicit none
-      INTEGER, DIMENSION(39) :: ITAB
-      INTEGER, DIMENSION(40) :: JTAB
-      INTEGER, DIMENSION(357) :: NTAB
-      INTEGER :: NROWS
-      INTEGER, PRIVATE :: i
+      integer, dimension(39) :: ITAB
+      integer, dimension(40) :: JTAB
+      integer, dimension(357) :: NTAB
+      integer :: NROWS
+      integer, PRIVATE :: i
       DATA NROWS/ 39/
 !
 !   A row is defined by a subshell angular momentum and an occupation
@@ -110,4 +110,4 @@
       DATA (JTAB(I),I=38,40)/ 327, 330, 358/
       DATA (NTAB(I),I=328,357)/ 1, 0, 18, 0, 0, 1, 2, 0, 5, 2, 0, 9, 2, 0, 13, &
          2, 0, 17, 2, 0, 21, 2, 0, 25, 2, 0, 29, 2, 0, 33/
-      END MODULE terms_C
+      end module terms_C

@@ -1,10 +1,10 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE DIAGA4(JA1,JA2,K1,K2,KA,IRE,IAT,RECC)
+      subroutine DIAGA4(JA1,JA2,K1,K2,KA,IRE,IAT,RECC)
 !                                                                  *
 !   ---------------  SECTION REC    SUBPROGRAM 04  --------------  *
 !                                                                  *
-!     SUBROUTINE CALLED:  NINE                                     *
+!     subroutine CALLED:  NINE                                     *
 !                                                                  *
 !   Written by G. Gaigalas,                                        *
 !   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
@@ -16,24 +16,24 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO
-      USE m_C,             ONLY: JLIST, JJQ1, JJQ2, JJC1, JJC2
+      use CONS_C,          only: ZERO
+      use m_C,             only: JLIST, JJQ1, JJQ2, JJC1, JJC2
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE nine_I
+      use nine_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN)       :: JA1,JA2,K1,K2,KA,IRE
-!      INTEGER, INTENT(OUT)      :: IAT
-      INTEGER, INTENT(INOUT)      :: IAT
-      real(real64), INTENT(OUT) :: RECC
+      integer, intent(in)       :: JA1,JA2,K1,K2,KA,IRE
+!      integer, intent(out)      :: IAT
+      integer, INTENT(INOUT)      :: IAT
+      real(real64), intent(out) :: RECC
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: IJ1,IJ2,IA1,IA2,IB1,IB2,N1,N2,J2,J2S,IT2,IT2S
+      integer :: IJ1,IJ2,IA1,IA2,IB1,IB2,N1,N2,J2,J2S,IT2,IT2S
       real(real64) :: A2
 !-----------------------------------------------
       RECC = ZERO
@@ -43,24 +43,24 @@
       IA2=JJQ1(3,IJ2)-1
       IB1=JJQ2(3,IJ1)-1
       IB2=JJQ2(3,IJ2)-1
-      IF(JA1 == 1.AND.JA2 == 2) THEN
+      if(JA1 == 1.AND.JA2 == 2) then
         IT2=IA1
         IT2S=IB1
         J2=JJC1(1)-1
         J2S=JJC2(1)-1
-      ELSE
+      else
         N1=JA2-1
         J2=JJC1(N1)-1
         J2S=JJC2(N1)-1
         N2=JA2-2
         IT2=JJC1(N2)-1
         IT2S=JJC2(N2)-1
-      END IF
-      IF(IRE /= 0) THEN
+      END if
+      if(IRE /= 0) then
         CALL NINE(IT2S,K1,IT2,IB2,K2,IA2,J2S,KA,J2,0,IAT,A2)
         RECC=A2*DSQRT(DBLE((IT2+1)*(KA+1)*(IA2+1)*(J2S+1)))
-      ELSE
+      else
         CALL NINE(IT2S,K1,IT2,IB2,K2,IA2,J2S,KA,J2,1,IAT,A2)
-      END IF
-      RETURN
-      END SUBROUTINE DIAGA4
+      END if
+      return
+      end subroutine DIAGA4

@@ -1,6 +1,6 @@
 !*******************************************************************
 !                                                                  *
-      SUBROUTINE EL33(JJJA,JJJB,JA,JB,JC,IREZ,JJA,JJB,JJC,JJD   &
+      subroutine EL33(JJJA,JJJB,JA,JB,JC,IREZ,JJA,JJB,JJC,JJD   &
                                                         ,ICOLBREI)
 !                                                                  *
 !   --------------  SECTION METWO    SUBPROGRAM 08  -------------  *
@@ -11,7 +11,7 @@
 !     CONFIGURATIONS:                               N'1 = N1 - 1   *
 !                                                   N'2 = N2 + 1   *
 !                                                                  *
-!     SUBROUTINE CALLED: COULOM,EILE,GG1233,ITREXG,IXJTIK,         *
+!     subroutine CALLED: COULOM,EILE,GG1233,ITREXG,IXJTIK,         *
 !                      JFAZE,PERKO2,RECO,REC3,SIXJ,SPEAK           *
 !                                                                  *
 !   Written by  G. Gaigalas                                        *
@@ -24,54 +24,54 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE CONS_C,          ONLY: ZERO, HALF, EPS
-      USE m_C,             ONLY: NQ1, JLIST, NPEEL
-      USE orb_C,           ONLY: NAK
-      USE trk_C
+      use CONS_C,          only: ZERO, HALF, EPS
+      use m_C,             only: NQ1, JLIST, NPEEL
+      use orb_C,           only: NAK
+      use trk_C
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE eile_I
-      USE reco_I
-      USE rec3_I
-      USE perko2_I
-      USE itrexg_I
-      USE itrig_I
-      USE ixjtik_I
-      USE jfaze_I
-      USE snrc_I
-      USE gg1233_I
-      USE coulom_I
-      USE speak_I
-      USE cxk_I
-      USE talk_I
-      USE sixj_I
+      use eile_I
+      use reco_I
+      use rec3_I
+      use perko2_I
+      use itrexg_I
+      use itrig_I
+      use ixjtik_I
+      use jfaze_I
+      use snrc_I
+      use gg1233_I
+      use coulom_I
+      use speak_I
+      use cxk_I
+      use talk_I
+      use sixj_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER, INTENT(IN) :: JJJA,JJJB,JA,JB,JC,IREZ,JJA,JJB,JJC,JJD &
+      integer, intent(in) :: JJJA,JJJB,JA,JB,JC,IREZ,JJA,JJB,JJC,JJD &
                                                         ,ICOLBREI
-!      DIMENSION PMGG(30),RAGG(30),J(3)
-!      DIMENSION CONE(12,20),S(12),IS(4),KAPS(4),KS(4)
+!      dimension PMGG(30),RAGG(30),J(3)
+!      dimension CONE(12,20),S(12),IS(4),KAPS(4),KS(4)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: IA,IB,IC,IAT,II,IIA,IIB,IIC,IID,IP1,IP2,IG1,IG2,   &
-                 IKK,INN,I1,I2,I3,I4,IBRD,IBRE,IFAZ,IFAZP,IFAZFRCS, &
+      integer :: IA,IB,IC,IAT,II,IIA,IIB,IIC,IID,IP1,IP2,IG1,IG2,   &
+                 IKK,INN,I1,I2,I3,I4,IBRD,IBRE,ifAZ,ifAZP,ifAZFRCS, &
                  JAA,JBB,JCC,JB1,J12,KRA,KRA1,L1,L2,L3,ND1,ND2,NE1, &
                  NE2,N,NN,NU,NUP1,MU
-      INTEGER, DIMENSION(3) :: J
-      INTEGER, DIMENSION(4) :: IS,KAPS,KS
+      integer, dimension(3) :: J
+      integer, dimension(4) :: IS,KAPS,KS
       real(real64)          :: A1,AA,AB,BB,QM1,QM2,QM3,QM4,RAG,RECC,SI
-      real(real64), DIMENSION(12) :: S
-      real(real64), DIMENSION(30) :: PMGG,RAGG
-      real(real64), DIMENSION(12,20) :: CONE
+      real(real64), dimension(12) :: S
+      real(real64), dimension(30) :: PMGG,RAGG
+      real(real64), dimension(12,20) :: CONE
 !-----------------------------------------------
-      IF(NPEEL <= 1)RETURN
+      if(NPEEL <= 1)return
       CALL EILE(JA,JB,JC,JAA,JBB,JCC)
       CALL RECO(JAA,JCC,JBB,JBB,2,IAT)
-      IF(IAT == 0)RETURN
+      if(IAT == 0)return
       IA=JLIST(JA)
       IB=JLIST(JB)
       IC=JLIST(JC)
@@ -91,9 +91,9 @@
       L2=(J(2)+1)/2
       L3=(J(3)+1)/2
       IP1=ITREXG(J(2),J(1),J(3),J(3),IKK)+1
-      IF(IKK <= 0)RETURN
+      if(IKK <= 0)return
       IG1=IP1+IKK-1
-      IF (ICOLBREI == 2) THEN
+      if (ICOLBREI == 2) then
         IS(1)=IIA
         IS(2)=IIB
         IS(3)=IIC
@@ -107,7 +107,7 @@
         KS(3)=IABS(KAPS(3))
         KS(4)=IABS(KAPS(4))
         CALL SNRC(IS,KAPS,KS,ND1,ND2,NE1,NE2,IBRD,IBRE)
-        IF(IBRD <= 0 .AND. IBRE <= 0)RETURN
+        if(IBRD <= 0 .AND. IBRE <= 0)return
         DO II=1,20
           CONE(1,II) =ZERO
           CONE(2,II) =ZERO
@@ -122,46 +122,46 @@
           CONE(11,II)=ZERO
           CONE(12,II)=ZERO
         END DO
-      END IF
+      END if
       DO I4=IP1,IG1,2
         KRA=(I4-1)/2
         KRA1=KRA+1
-        IF(KRA1 > 30)GO TO 10
+        if(KRA1 > 30)GO TO 10
         RAGG(KRA1)=ZERO
         PMGG(KRA1)=ZERO
         CALL REC3(JB,JA,JC,J(2),J(1),KRA*2,0,IAT,RECC)
-        IF(IAT == 0) CYCLE
+        if(IAT == 0) CYCLE
         CALL GG1233(IK2,IK1,IK3,BK2,BK1,BK3,ID2,ID1,ID3,BD2,  &
                     BD1,BD3,KRA,QM1,QM2,QM3,QM4,RAG)
-        IF(DABS(RAG) < EPS) CYCLE
+        if(DABS(RAG) < EPS) CYCLE
         RAGG(KRA1)=RAG
         CALL REC3(JB,JA,JC,J(2),J(1),KRA*2,1,IAT,RECC)
         PMGG(KRA1)=RECC
       END DO
-      IFAZP=JFAZE(JB,JA,JC,JC)
+      ifAZP=JFAZE(JB,JA,JC,JC)
 !
 !     TRANSFORM FANO & RACAH PHASE CONVENTION
 !     TO CONDON & SHORTLEY PHASE CONVENTION
 !
-      IFAZFRCS=1
-      IFAZ=IK1(5)*IK1(4)+IK2(5)*IK2(4)-ID1(5)*ID1(4)-ID2(5)*ID2(4)
-      IF((IFAZ/4)*4 /= IFAZ)IFAZFRCS=-IFAZFRCS
+      ifAZFRCS=1
+      ifAZ=IK1(5)*IK1(4)+IK2(5)*IK2(4)-ID1(5)*ID1(4)-ID2(5)*ID2(4)
+      if((ifAZ/4)*4 /= ifAZ)ifAZFRCS=-ifAZFRCS
 !
-      IF(JA > JB) THEN
+      if(JA > JB) then
         JAA=JB
         JBB=JA
-      ELSE
+      else
         JAA=JA
         JBB=JB
-      END IF
+      END if
       NN=0
       JB1=JBB-1
       DO II=JAA,JB1
         INN=JLIST(II)
         NN=NQ1(INN)+NN
       END DO
-      IF((NN/2)*2 == NN)IFAZP=-IFAZP
-      IF(IREZ == 2)GO TO 5
+      if((NN/2)*2 == NN)ifAZP=-ifAZP
+      if(IREZ == 2)GO TO 5
 ! * * *                      * * *                      * * *
 !     CASES 2313   + + - -        TRANSFORM TO  2133   + - + -
 !           3231                                2133
@@ -170,118 +170,118 @@
       DO I1=IP1,IG1,2
         KRA=(I1-1)/2
         KRA1=KRA+1
-        IF(KRA1 > 30)GO TO 10
-        IF (ICOLBREI == 1) THEN
+        if(KRA1 > 30)GO TO 10
+        if (ICOLBREI == 1) then
           CALL COULOM(L2,L3,L1,L3,ID2(5),ID3(5),ID1(5),ID3(5),KRA,A1)
-          IF(DABS(A1) < EPS) CYCLE
-        END IF
+          if(DABS(A1) < EPS) CYCLE
+        END if
         AA=PMGG(KRA1)
-        IF(DABS(AA) < EPS) CYCLE
+        if(DABS(AA) < EPS) CYCLE
         AA=AA*RAGG(KRA1)
-        IF(DABS(AA) < EPS) CYCLE
+        if(DABS(AA) < EPS) CYCLE
         AA=AA/DSQRT(DBLE(I1))
-        AA=AA*DBLE(IFAZP)
-        IF (ICOLBREI == 1) THEN
-          BB=A1*AA*DBLE(IFAZFRCS)
+        AA=AA*DBLE(ifAZP)
+        if (ICOLBREI == 1) then
+          BB=A1*AA*DBLE(ifAZFRCS)
           CALL SPEAK(JJJA,JJJB,IIA,IIB,IIC,IID,KRA,BB)
-        ELSE IF (ICOLBREI == 2) THEN
+        else if (ICOLBREI == 2) then
           N=(KRA-ND1)/2+1
           CALL CXK(S,IS,KAPS,KRA,KRA,2,1)
-          IF(DABS(S(1)) > EPS) THEN
+          if(DABS(S(1)) > EPS) then
             BB=S(1)*AA
-            IF(DABS(BB) > EPS)                    &
+            if(DABS(BB) > EPS)                    &
           CALL TALK(JJJA,JJJB,KRA,IS(1),IS(3),IS(2),IS(4),3,BB)
-          END IF
-        END IF
+          END if
+        END if
       END DO
-      IF(IREZ == 2) GO TO 7
+      if(IREZ == 2) GO TO 7
 ! * * *                      * * *                      * * *
 !     CASES 3213   + + - -        TRANSFORM TO  2133   + - + -
 !           2331                                2133
 !
     5 IP2=ITREXG(J(3),J(1),J(2),J(3),IKK)+1
-      IF(IKK <= 0) RETURN
+      if(IKK <= 0) return
       IG2=IP2+IKK-1
       DO I2=IP2,IG2,2
         KRA=(I2-1)/2
-        IF(KRA > 30)GO TO 10
-        IF (ICOLBREI == 1) THEN
+        if(KRA > 30)GO TO 10
+        if (ICOLBREI == 1) then
           CALL COULOM(L3,L2,L1,L3,ID3(5),ID2(5),ID1(5),ID3(5),KRA,A1)
-          IF(DABS(A1) < EPS) CYCLE
-        END IF
+          if(DABS(A1) < EPS) CYCLE
+        END if
         AB=ZERO
         DO I3=IP1,IG1,2
           J12=(I3-1)/2
           KRA1=J12+1
-          IF(KRA1 > 30)GO TO 10
+          if(KRA1 > 30)GO TO 10
           AA=PMGG(KRA1)
-          IF(DABS(AA) < EPS) CYCLE
+          if(DABS(AA) < EPS) CYCLE
           AA=AA*RAGG(KRA1)
-          IF(DABS(AA) < EPS) CYCLE
-          IF(IXJTIK(J(1),J(3),KRA*2,J(3),J(2),J12*2) == 0) CYCLE
+          if(DABS(AA) < EPS) CYCLE
+          if(IXJTIK(J(1),J(3),KRA*2,J(3),J(2),J12*2) == 0) CYCLE
           CALL SIXJ(J(1),J(3),KRA*2,J(3),J(2),J12*2,0,SI)
           AA=AA*SI*DSQRT(DBLE(I3))
           AB=AB+AA
         END DO
-        IF(DABS(AB) < EPS) CYCLE
-        AB=AB*DBLE(IFAZP)
-        IF (ICOLBREI == 1) THEN
-          BB=A1*AB*DBLE(IFAZFRCS)
+        if(DABS(AB) < EPS) CYCLE
+        AB=AB*DBLE(ifAZP)
+        if (ICOLBREI == 1) then
+          BB=A1*AB*DBLE(ifAZFRCS)
           CALL SPEAK(JJJA,JJJB,IIA,IIB,IID,IIC,KRA,BB)
-        ELSE IF (ICOLBREI == 2) THEN
+        else if (ICOLBREI == 2) then
           NU=KRA
-          IF(((NU-NE1)/2)*2 == (NU-NE1)) THEN
-            IF((ITRIG(KS(1),KS(4),NU+NU+1) /= 0) .AND.  &
-               (ITRIG(KS(2),KS(3),NU+NU+1) /= 0)) THEN
-              IF(NU > 0) THEN
+          if(((NU-NE1)/2)*2 == (NU-NE1)) then
+            if((ITRIG(KS(1),KS(4),NU+NU+1) /= 0) .AND.  &
+               (ITRIG(KS(2),KS(3),NU+NU+1) /= 0)) then
+              if(NU > 0) then
                 N=(NU-NE1)/2+1
                 CALL CXK(S,IS,KAPS,NU,KRA,1,2)
                 DO MU = 1,4
                   CONE(MU,N)=CONE(MU,N)+AB*S(MU)
                 END DO
-              END IF
-            END IF
-          END IF
+              END if
+            END if
+          END if
           NU=KRA+1
-          IF(((NU-NE1)/2)*2 == (NU-NE1)) THEN
-            IF((ITRIG(KS(1),KS(4),NU+NU-1) /= 0) .AND.  &
-               (ITRIG(KS(2),KS(3),NU+NU-1) /= 0)) THEN
-              IF(NU >= 0) THEN
+          if(((NU-NE1)/2)*2 == (NU-NE1)) then
+            if((ITRIG(KS(1),KS(4),NU+NU-1) /= 0) .AND.  &
+               (ITRIG(KS(2),KS(3),NU+NU-1) /= 0)) then
+              if(NU >= 0) then
                 N=(NU-NE1)/2+1
-                IF(N <= NE2) THEN
+                if(N <= NE2) then
                   CALL CXK(S,IS,KAPS,NU,KRA,1,2)
                   DO MU = 1,4
                     CONE(MU,N)=CONE(MU,N)+AB*S(MU)
                   END DO
-                END IF
-              END IF
-            END IF
-          END IF
+                END if
+              END if
+            END if
+          END if
           NU=KRA-1
-          IF(((NU-NE1)/2)*2 == (NU-NE1)) THEN
-            IF((ITRIG(KS(1),KS(4),NU+NU+3) /= 0) .AND.  &
-               (ITRIG(KS(2),KS(3),NU+NU+3) /= 0)) THEN
-              IF(NU >=  0) THEN
+          if(((NU-NE1)/2)*2 == (NU-NE1)) then
+            if((ITRIG(KS(1),KS(4),NU+NU+3) /= 0) .AND.  &
+               (ITRIG(KS(2),KS(3),NU+NU+3) /= 0)) then
+              if(NU >=  0) then
                 N=(NU-NE1)/2+1
-                IF(N < NE2) THEN
+                if(N < NE2) then
                   CALL CXK(S,IS,KAPS,NU,KRA,1,2)
                   DO MU = 1,12
                     CONE(MU,N)=CONE(MU,N)+AB*S(MU)
                   END DO
-                END IF
-              END IF
-            END IF
-          END IF
-        END IF
+                END if
+              END if
+            END if
+          END if
+        END if
       END DO
-      IF (ICOLBREI == 2) THEN
+      if (ICOLBREI == 2) then
         DO N = 1,NE2
           NU=NE1+2*(N-1)
           CALL TALK(JJJA,JJJB,NU,IS(1),IS(4),IS(2),IS(3),1,CONE(1,N))
           CALL TALK(JJJA,JJJB,NU,IS(4),IS(1),IS(3),IS(2),1,CONE(2,N))
           CALL TALK(JJJA,JJJB,NU,IS(1),IS(4),IS(3),IS(2),1,CONE(3,N))
           CALL TALK(JJJA,JJJB,NU,IS(4),IS(1),IS(2),IS(3),1,CONE(4,N))
-          IF(N == NE2) CYCLE
+          if(N == NE2) CYCLE
           NUP1=NU+1
           CALL TALK(JJJA,JJJB,NUP1,IS(1),IS(4),IS(2),IS(3),2,CONE(5,N))
           CALL TALK(JJJA,JJJB,NUP1,IS(2),IS(3),IS(1),IS(4),2,CONE(6,N))
@@ -292,11 +292,11 @@
           CALL TALK(JJJA,JJJB,NUP1,IS(4),IS(1),IS(2),IS(3),2,CONE(11,N))
           CALL TALK(JJJA,JJJB,NUP1,IS(2),IS(3),IS(4),IS(1),2,CONE(12,N))
         END DO
-      END IF
-      IF(IREZ == 2)GO TO 6
+      END if
+      if(IREZ == 2)GO TO 6
     7 CONTINUE
-      RETURN
+      return
    10 WRITE(99,100)
   100 FORMAT(5X,'ERRO IN EL33  PMGG RAGG')
       STOP
-      END SUBROUTINE EL33
+      end subroutine EL33

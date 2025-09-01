@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      REAL(KIND(0.0D0)) FUNCTION SLATER (IA, IB, IC, ID, K)
+      real(real64) FUNCTION SLATER (IA, IB, IC, ID, K)
 !                                                                      *
 !   The value of this  function is the Slater integral                 *
 !                                                                      *
@@ -19,16 +19,16 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      USE DEBUG_C
-      USE GRID_C
-      USE ORB_C
-      USE TATB_C,          ONLY: TA, TB, MTP
-      USE WAVE_C,          ONLY: MF, QF, PF
+      use DEBUG_C
+      use GRID_C
+      use ORB_C
+      use TATB_C,          only: TA, TB, MTP
+      use WAVE_C,          only: MF, QF, PF
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
-      USE yzk_I
-      USE quad_I
+      use yzk_I
+      use quad_I
       IMPLICIT NONE
 !-----------------------------------------------
 !   G l o b a l   P a r a m e t e r s
@@ -36,15 +36,15 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      INTEGER :: IA
-      INTEGER :: IB
-      INTEGER :: IC
-      INTEGER :: ID
-      INTEGER :: K
+      integer :: IA
+      integer :: IB
+      integer :: IC
+      integer :: ID
+      integer :: K
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      INTEGER :: I
+      integer :: I
       real(real64) :: RESULT
 !-----------------------------------------------
 !
@@ -53,11 +53,11 @@
 !
 !   Multiply by second term, and obtain result by integration
 !
-      IF (K==0 .AND. IB==ID) THEN
+      if (K==0 .AND. IB==ID) then
          MTP = MIN(MF(IA),MF(IC))
-      ELSE
+      else
          MTP = MIN(MIN(MTP,MF(IA)),MF(IC))
-      ENDIF
+      endif
 !
       TA(1) = 0.0D00
       DO I = 2, MTP
@@ -69,13 +69,13 @@
 !
 !   Debug printout
 !
-      IF (LDBPR(10)) WRITE (99, 300) K, NP(IA), NH(IA), NP(IB), NH(IB), NP(IC)&
+      if (LDBPR(10)) WRITE (99, 300) K, NP(IA), NH(IA), NP(IB), NH(IB), NP(IC)&
          , NH(IC), NP(ID), NH(ID), SLATER
 !
-      RETURN
+      return
 !
   300 FORMAT(/,'  (',1I1,')',/,' R   (',1I2,1A2,',',1I2,1A2,';',1I2,1A2,',',1I2&
          ,1A2,') ','= ',1P,D19.12)
-      RETURN
+      return
 !
       END FUNCTION SLATER
