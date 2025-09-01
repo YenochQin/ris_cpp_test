@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      real(real64) FUNCTION SLATER (IA, IB, IC, ID, K)
+      real(kind=real64) FUNCTION SLATER (IA, IB, IC, ID, K)
 !                                                                      *
 !   The value of this  function is the Slater integral                 *
 !                                                                      *
@@ -45,7 +45,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: I
-      real(real64) :: RESULT
+      real(kind=real64) :: RESULT
 !-----------------------------------------------
 !
 !

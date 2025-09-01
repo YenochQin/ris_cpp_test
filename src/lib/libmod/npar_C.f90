@@ -9,7 +9,7 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       integer :: NPARM
-      real(real64), dimension(2) :: PARM
+      real(kind=real64), dimension(2) :: PARM
       end module npar_C
 
       module nsmdat_C
@@ -17,7 +17,7 @@
 !...Created by Pacific-Sierra Research 77to90  4.3E  06:36:34  12/28/06
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
-      real(real64) :: SQN,DMOMNM,QMOMB
-      real(real64) :: HFSI, HFSD, HFSQ
-      real(real64) :: SMSI, SMSD, SMSQ
+      real(kind=real64) :: SQN,DMOMNM,QMOMB
+      real(kind=real64) :: HFSI, HFSD, HFSQ
+      real(kind=real64) :: SMSI, SMSD, SMSQ
       end module nsmdat_C

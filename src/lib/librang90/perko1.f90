@@ -32,7 +32,7 @@
 !-----------------------------------------------
       integer,      intent(in)                :: JA
       integer,      intent(out), dimension(7) :: IK, ID
-      real(real64), intent(out), dimension(3) :: BK, BD
+      real(kind=real64), intent(out), dimension(3) :: BK, BD
 !      dimension BK(3),IK(7),BD(3),ID(7)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s

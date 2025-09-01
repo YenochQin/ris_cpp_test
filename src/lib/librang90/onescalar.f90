@@ -40,7 +40,7 @@
 !-----------------------------------------------
       integer, intent(in)       :: JA,JB
       integer, intent(out)      :: IA1,IA2
-      real(real64), intent(out) :: VSHELL(NNNW)
+      real(kind=real64), intent(out) :: VSHELL(NNNW)
 !      dimension VSHELL(NNNW)
 !      dimension IS(2),KS(2)
 !-----------------------------------------------
@@ -49,7 +49,7 @@
       integer :: KK,IOPAR,IJ,IDQ,JA1,JA2,NDQ,NS,ISH,I,II,I1,IM, &
                  JW,KS1,KS2,NX,NPEELM
       integer, dimension(2) :: IS,KS
-      real(real64) ::  TCOEFF
+      real(kind=real64) ::  TCOEFF
 !-----------------------------------------------
       IA1 = 0
       KK = 1

@@ -34,12 +34,12 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer, intent(in) :: NS,KA,JJA,JJB,JA,JB
-      real(real64), intent(out) :: COEFF
+      real(kind=real64), intent(out) :: COEFF
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer      :: IAT
-      real(real64) :: REC,WJ,QM1,QM2
+      real(kind=real64) :: REC,WJ,QM1,QM2
 !-----------------------------------------------
 !
 !     THE CASE 11   + -

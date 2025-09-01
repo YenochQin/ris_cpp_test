@@ -24,7 +24,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: NP10, I, NB2, NROWS, II, II1, II2
-      real(real64) :: EPH, ETT, ETTM1, EPSLON, A, RLAST, REST, T, RESTS, FOFR, &
+      real(kind=real64) :: EPH, ETT, ETTM1, EPSLON, A, RLAST, REST, T, RESTS, FOFR, &
          FPRI, DELR
 !-----------------------------------------------
 !

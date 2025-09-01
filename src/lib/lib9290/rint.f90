@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      real(real64) FUNCTION RINT (I, J, K)
+      real(kind=real64) FUNCTION RINT (I, J, K)
 !                                                                      *
 !   The value of RINT is an approximation to:                          *
 !                                                                      *
@@ -44,7 +44,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: L
-      real(real64) :: RESULT
+      real(kind=real64) :: RESULT
 !-----------------------------------------------
 !
 !

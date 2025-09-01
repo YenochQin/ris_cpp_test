@@ -10,7 +10,7 @@
 !                     Gediminas Gaigalas  10/05/17
       integer, dimension(20) :: NCFBLK, NEVINBLK, NCFINBLK, TWO_J
       integer :: NBLOCK
-      real(real64), dimension(:), pointer :: IDXBLK
+      real(kind=real64), dimension(:), pointer :: IDXBLK
       integer :: NELECTOT, NCFTOT, NWTOT, NVECTOT, NVECSIZTOT, NBLOCK1
       integer :: NBLOCKI
       integer :: NBLOCKF

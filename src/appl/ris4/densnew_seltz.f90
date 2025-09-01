@@ -1,5 +1,6 @@
 !***********************************************************************
 !                                                                      *
+      use iso_fortran_env, only: real64
 !JE   subroutine DENSNEW(DOIT,DINT1,DINT2,DINT3,DINT4,DINT5,DINT6,DINT7)
        subroutine DENSNEW_SELTZ(DOIT,DINT1,DINT2,DINT3,                &
                           DINT4,DINT5,DINT6,DINT7,                     &
@@ -56,12 +57,12 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer, intent(in) :: DOIT, NRNUC
-      real(real64), dimension(NNNW,NNNW), intent(in) :: DINT1, DINT2, &
+      real(kind=real64), dimension(NNNW,NNNW), intent(in) :: DINT1, DINT2, &
                                                         DINT3, DINT4, &
                                                         DINT5, DINT6, &
                                                         DINT7
-      real(real64), dimension(NVEC,NRNUC), intent(out)     :: DENS1VEC !  JE ADD
-      real(real64), dimension(NNNW,NNNW,NRNUC), intent(in) :: DINT1VEC !  JE ADD
+      real(kind=real64), dimension(NVEC,NRNUC), intent(out)     :: DENS1VEC !  JE ADD
+      real(kind=real64), dimension(NNNW,NNNW,NRNUC), intent(in) :: DINT1VEC !  JE ADD
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
@@ -69,11 +70,11 @@
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      real(real64), dimension(NNNW) :: TSHELL, TSHELL_S
-      real(real64), dimension(NRNUC) :: CONTRI1VEC, ELEMNT1VEC
-      real(real64), dimension(:), pointer :: EMT1, EMT2, EMT3, EMT4,   &
+      real(kind=real64), dimension(NNNW) :: TSHELL, TSHELL_S
+      real(kind=real64), dimension(NRNUC) :: CONTRI1VEC, ELEMNT1VEC
+      real(kind=real64), dimension(:), pointer :: EMT1, EMT2, EMT3, EMT4,   &
                                              EMT5, EMT6
-      real(real64) :: ELEMNT1, ELEMNT2, ELEMNT3, ELEMNT4, ELEMNT5,     &
+      real(kind=real64) :: ELEMNT1, ELEMNT2, ELEMNT3, ELEMNT4, ELEMNT5,     &
                       ELEMNT6, ELEMNT7, CONTRI1, CONTRI2, CONTRI3,     &
                       CONTRI4, CONTRI5, CONTRI6, CONTRI7
       logical :: VSH, NUCDE, SMSSH, YES

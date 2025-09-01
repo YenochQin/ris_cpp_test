@@ -6,7 +6,7 @@
       integer, dimension(6) :: NDTPA, NTPI
       integer, dimension(:), pointer :: indtp1, indtp2, indtp3, indtp4, &
                                         indtp5, indtp6
-      real(real64), dimension(:), pointer :: valtp1, valtp2, valtp3, valtp4, &
+      real(kind=real64), dimension(:), pointer :: valtp1, valtp2, valtp3, valtp4, &
                                         valtp5, valtp6
       logical, dimension(6) :: FIRST
       end module bilst_C

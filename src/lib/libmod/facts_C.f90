@@ -9,5 +9,5 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       integer, parameter :: MFACT = 500
-      real(real64), dimension(MFACT) :: GAM
+      real(kind=real64), dimension(MFACT) :: GAM
       end module facts_C

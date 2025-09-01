@@ -37,13 +37,13 @@
 !-----------------------------------------------
       integer             :: I, J, K, L, M, N
       integer, intent(in) :: ITIK
-      real(real64)        :: SI
+      real(kind=real64)        :: SI
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: ifA
-      real(real64), dimension(0:4,0:4,0:4,0:4,0:4,0:4) :: RACA
-      real(real64) :: UNDEF, A
+      real(kind=real64), dimension(0:4,0:4,0:4,0:4,0:4,0:4) :: RACA
+      real(kind=real64) :: UNDEF, A
       logical :: SAVE
 !-----------------------------------------------
       DATA RACA/ 15625*1.D-20/

@@ -5,6 +5,6 @@
 !                     Gediminas Gaigalas  10/05/17
       use parameter_def,   only: NNN1
       integer :: N
-      real(real64), dimension(NNN1) :: R, RP, RPOR
-      real(real64) :: RNT, H, HP
+      real(kind=real64), dimension(NNN1) :: R, RP, RPOR
+      real(kind=real64) :: RNT, H, HP
       end module grid_C

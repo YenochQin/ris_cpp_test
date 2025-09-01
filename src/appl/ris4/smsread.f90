@@ -1,6 +1,5 @@
 !***********************************************************************
 !                                                                      *
-      subroutine SMSREAD(VINT,VINT2)
 !
 !   Call(s) to: [LIB92]: ALCBUF                                        *
 !                                                                      *
@@ -26,7 +25,7 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64), dimension(NNNW,NNNW), intent(in) :: VINT, VINT2
+      real(kind=real64), dimension(NNNW,NNNW), intent(in) :: VINT, VINT2
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
@@ -34,7 +33,7 @@
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      real(real64) :: CONTRI, CONTRIK1, COEFFSMS
+      real(kind=real64) :: CONTRI, CONTRIK1, COEFFSMS
       integer :: IC, IR, I, J, IIA, IIB, IIC, IID, LOC, LAB, IOS
 !-----------------------------------------------
 !

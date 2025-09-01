@@ -21,16 +21,16 @@
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
-      real(real64), parameter :: AINFCM = 0.52917721067D-08
-      real(real64), parameter :: ALFAI  = 137.035999139D00
-      real(real64), parameter :: CCMPS  = 2.99792458D10
-      real(real64), parameter :: EESU   = 4.803204673D-10
-      real(real64), parameter :: EMEG   = 9.10938356D-28
-      real(real64), parameter :: EMEAMU = 5.48579909070D-04
-      real(real64), parameter :: EMPAMU = 1.007276466879D00
-      real(real64), parameter :: HBARES = 1.054571800D-27
-      real(real64), parameter :: RINFEV = 13.605693009D00
-      real(real64), parameter :: RINFK  = 109737.31568508D00
+      real(kind=real64), parameter :: AINFCM = 0.52917721067D-08
+      real(kind=real64), parameter :: ALFAI  = 137.035999139D00
+      real(kind=real64), parameter :: CCMPS  = 2.99792458D10
+      real(kind=real64), parameter :: EESU   = 4.803204673D-10
+      real(kind=real64), parameter :: EMEG   = 9.10938356D-28
+      real(kind=real64), parameter :: EMEAMU = 5.48579909070D-04
+      real(kind=real64), parameter :: EMPAMU = 1.007276466879D00
+      real(kind=real64), parameter :: HBARES = 1.054571800D-27
+      real(kind=real64), parameter :: RINFEV = 13.605693009D00
+      real(kind=real64), parameter :: RINFK  = 109737.31568508D00
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

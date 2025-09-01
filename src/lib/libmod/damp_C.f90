@@ -6,6 +6,6 @@
 !                     Gediminas Gaigalas  10/05/17
       use iso_fortran_env, only: real64, int32, int64, real128
       use parameter_def,    only: NNNW
-      real(real64), dimension(NNNW) :: ODAMP
-      real(real64), dimension(:), pointer :: cdamp
+      real(kind=real64), dimension(NNNW) :: ODAMP
+      real(kind=real64), dimension(:), pointer :: cdamp
       end module damp_C

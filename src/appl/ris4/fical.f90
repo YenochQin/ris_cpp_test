@@ -1,21 +1,21 @@
 program fical
-  implicit none
+  use iso_fortran_env, only: real64
   integer :: i,j,ii,jj,l,lsjpresent,lmax,lmax1,lmax2
   integer :: nvec1,nvec2,nveclsj1,nveclsj2,level1(500),level2(500),levellsj1(500),levellsj2(500)
   integer :: relflag,dspin,efacflag
 
-  double precision :: energy1(500),nms1(500),sms1(500),ms1(500),fs1(6,500),fshift1(500),fshift11(500),fspin1(500)
-  double precision :: trms_1,t_1,w_1,b20_1,b40_1, radmom1(4)
-  double precision :: trms_2,t_2,w_2,b20_2,b40_2, radmom2(4)
+  real(kind=real64) :: energy1(500),nms1(500),sms1(500),ms1(500),fs1(6,500),fshift1(500),fshift11(500),fspin1(500)
+  real(kind=real64) :: trms_1,t_1,w_1,b20_1,b40_1, radmom1(4)
+  real(kind=real64) :: trms_2,t_2,w_2,b20_2,b40_2, radmom2(4)
 
-  double precision :: energy2(500),nms2(500),sms2(500),ms2(500),fs2(6,500),fshift2(500),fshift22(500),fspin2(500)
-  double precision :: tenergy, nmslaw, nmsconst, m1, m2, dr2, masshift,fieldshift,fieldshift22,fieldshift1(500),fieldshift2(500)
-  double precision :: isotopeshift
-  double precision :: f0, f2, f4, f6, f0res, f2res, linfac
-  double precision :: fieldshiftres, fieldshift22res, linfac2
+  real(kind=real64) :: energy2(500),nms2(500),sms2(500),ms2(500),fs2(6,500),fshift2(500),fshift22(500),fspin2(500)
+  real(kind=real64) :: tenergy, nmslaw, nmsconst, m1, m2, dr2, masshift,fieldshift,fieldshift22,fieldshift1(500),fieldshift2(500)
+  real(kind=real64) :: isotopeshift
+  real(kind=real64) :: f0, f2, f4, f6, f0res, f2res, linfac
+  real(kind=real64) :: fieldshiftres, fieldshift22res, linfac2
 
-  double precision :: drms, au2Kays
-  double precision :: z
+  real(kind=real64) :: drms, au2Kays
+  real(kind=real64) :: z
 
   character(len=100) :: state1, state2, file1, file2, file3, file4, file5, file6
   character(len=11) :: spinpar1(500),spinpar2(500)
@@ -754,7 +754,7 @@ subroutine openisodata(name,nameout,z)
   character(len=21) :: dummy21
   character(len=21) :: dummy6
   integer :: i
-  double precision :: z,a,c,t,rms,bohr,pi,radmom3(4)
+  real(kind=real64) :: z,a,c,t,rms,bohr,pi,radmom3(4)
 
   bohr = 52917.721067d0
   pi = 3.14159265359d0
@@ -792,11 +792,11 @@ subroutine openfile(name,unit,eflag,rflag,nvec,level,spinpar,fspin,par,energy,nm
   integer :: i,j,l
   integer :: nvec,level(500)
   integer :: eflag,rflag
-  double precision :: energy(500),nms(500),nmscorr(500),nmsrel(500)
-  double precision :: sms(500),smscorr(500),smsrel(500)
-  double precision :: ms(500),mscorr(500),msrel(500)
-  double precision :: fs(6,500),fspin(500)
-  double precision :: meV2GHz
+  real(kind=real64) :: energy(500),nms(500),nmscorr(500),nmsrel(500)
+  real(kind=real64) :: sms(500),smscorr(500),smsrel(500)
+  real(kind=real64) :: ms(500),mscorr(500),msrel(500)
+  real(kind=real64) :: fs(6,500),fspin(500)
+  real(kind=real64) :: meV2GHz
   character(len=200) :: string
   character(len=100) :: name
   character(len=24) :: dummy24
@@ -975,12 +975,12 @@ end subroutine openfile
 subroutine fermidist(trms,t,w,b20,b40,flag, radmom)
   IMPLICIT NONE
   integer :: m, m2, i, j, k, flag
-  double precision :: c0, a, t, w, b20, b40
-  double precision :: rmax, h, h2, pi, pi2, rms, trms, drms
-  double precision :: dnorm, norm, dinte, inte
-  double precision :: dr2, r2, dr4, r4, dr6, r6, dr8, r8, radmom(4)
-  double precision :: cv(0:2000), th(0:2000)
-  double precision, ALLOCATABLE :: r(:), rho(:)
+  real(kind=real64) :: c0, a, t, w, b20, b40
+  real(kind=real64) :: rmax, h, h2, pi, pi2, rms, trms, drms
+  real(kind=real64) :: dnorm, norm, dinte, inte
+  real(kind=real64) :: dr2, r2, dr4, r4, dr6, r6, dr8, r8, radmom(4)
+  real(kind=real64) :: cv(0:2000), th(0:2000)
+  real(kind=real64), ALLOCATABLE :: r(:), rho(:)
 
   parameter (pi = 3.14159265359d0)
   parameter (pi2 = 9.86960440108936d0)

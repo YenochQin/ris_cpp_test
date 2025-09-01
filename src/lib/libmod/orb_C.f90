@@ -12,7 +12,7 @@
 
       character(LEN=2), dimension(NNNW) :: NH
       character(LEN=2), dimension(NNNW) :: NHR
-      real(real64), dimension(NNNW) :: E, GAMA, PED
+      real(kind=real64), dimension(NNNW) :: E, GAMA, PED
       integer :: NCF, NW, NCFR, NWR
       integer(int8), dimension(:,:), pointer :: IQA
       integer, dimension(:,:), pointer :: IQAR

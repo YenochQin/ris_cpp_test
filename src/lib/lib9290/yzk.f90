@@ -61,10 +61,10 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: II, MTPP1, MTPP3, MTPP4, KK, NP4
-      real(real64), dimension(NNN1) :: RHOP
-      real(real64), dimension(NNN1,KLIMIT) :: RTTK, RTTKM, RTTK1, RTTKM1
-      real(real64), dimension(NNN1) :: RM, WK, TEMP
-      real(real64) :: SUM, RTMP, ZKLIM, Dif
+      real(kind=real64), dimension(NNN1) :: RHOP
+      real(kind=real64), dimension(NNN1,KLIMIT) :: RTTK, RTTKM, RTTK1, RTTKM1
+      real(kind=real64), dimension(NNN1) :: RM, WK, TEMP
+      real(kind=real64) :: SUM, RTMP, ZKLIM, Dif
       logical, dimension(0:KLIMIT) :: KCALC
 
       SAVE KCALC, RTTK, RTTKM, RTTK1, RTTKM1, RM

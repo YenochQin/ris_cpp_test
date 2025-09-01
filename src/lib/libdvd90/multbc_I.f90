@@ -8,9 +8,9 @@
       integer, intent(in) :: N
       integer, intent(in) :: K
       integer, intent(in) :: M
-      real(real64), dimension(K*M) :: C
-      real(real64), dimension(M) :: TEMP
-      real(real64), dimension(N*K) :: B
+      real(kind=real64), dimension(K*M) :: C
+      real(kind=real64), dimension(M) :: TEMP
+      real(kind=real64), dimension(N*K) :: B
 !VAST...Calls: DGEMV, DCOPY
       end subroutine
       end interface

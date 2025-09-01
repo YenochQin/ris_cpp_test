@@ -97,14 +97,14 @@
       integer  :: NLOOPS
 !      integer, INTENT(INOUT) :: IERR
       integer  :: IERR
-      real(real64)  :: CRITE
-      real(real64)  :: CRITC
-      real(real64)  :: CRITR
+      real(kind=real64)  :: CRITE
+      real(kind=real64)  :: CRITC
+      real(kind=real64)  :: CRITR
       logical  :: HIEND
       integer  :: IREV(*)
       integer  :: ISELEC(LIM)
       integer  :: IWORK(IIWSZ)
-      real(real64)  :: WORK(IWRSZ)
+      real(kind=real64)  :: WORK(IWRSZ)
       real(kind(0.0d0)) :: ddot
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
@@ -512,15 +512,15 @@
       integer , intent(in) :: LIM
       integer , intent(in) :: KPASS
       integer , intent(in) :: NNCV
-      real(real64)  :: BASIS(N*LIM)
-      real(real64)  :: AB(N*LIM)
-      real(real64) , intent(out) :: S(LIM*(LIM + 1)/2)
+      real(kind=real64)  :: BASIS(N*LIM)
+      real(kind=real64)  :: AB(N*LIM)
+      real(kind=real64) , intent(out) :: S(LIM*(LIM + 1)/2)
       real(kind(0.0d0)) :: ddot
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: IDSTART, ISSTART, IV, IBSTART, IBV
-      real(real64) :: SS
+      real(kind=real64) :: SS
 !-----------------------------------------------
 !-----------------------------------------------------------------------
 !   on entry
@@ -614,31 +614,31 @@
       integer, intent(in) :: MAXITER
       integer, INTENT(INOUT) :: NLOOPS
       integer, INTENT(INOUT) :: IERR
-      real(real64)  :: CRITE
-      real(real64)  :: CRITC
-      real(real64)  :: CRITR
+      real(kind=real64)  :: CRITE
+      real(kind=real64)  :: CRITC
+      real(kind=real64)  :: CRITR
       logical, intent(in) :: HIEND
       integer, intent(out) :: IREV(*)
       integer  :: ISELEC(NEIG)
       integer  :: ISCRA2(5*LIM)
       integer  :: INCV(LIM)
       integer  :: ICV(NUME + 1)
-      real(real64)  :: EIGVAL(LIM)
-      real(real64)  :: BASIS(N*LIM)
-      real(real64)  :: ORTHOBASIS(N*LIM + NOC*N)
-      real(real64)  :: AB(N*LIM)
-      real(real64)  :: S(LIM*(LIM + 1)/2)
-      real(real64)  :: TEMPS(LIM*(LIM + 1)/2)
-      real(real64)  :: SVEC(LIM*LIM)
-      real(real64)  :: SCRA1(8*LIM)
-      real(real64)  :: OLDVAL(NUME + 1)
+      real(kind=real64)  :: EIGVAL(LIM)
+      real(kind=real64)  :: BASIS(N*LIM)
+      real(kind=real64)  :: ORTHOBASIS(N*LIM + NOC*N)
+      real(kind=real64)  :: AB(N*LIM)
+      real(kind=real64)  :: S(LIM*(LIM + 1)/2)
+      real(kind=real64)  :: TEMPS(LIM*(LIM + 1)/2)
+      real(kind=real64)  :: SVEC(LIM*LIM)
+      real(kind=real64)  :: SCRA1(8*LIM)
+      real(kind=real64)  :: OLDVAL(NUME + 1)
       real(kind(0.0d0)) :: ddot
       real::slamch
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: REST, I, KPASS, NNCV, ifIND, NFOUND, INFO, NEWSTART
-      real(real64) :: TOL
+      real(kind=real64) :: TOL
       logical :: FIRST, DONE
 
       SAVE FIRST, DONE, REST, I, KPASS, NNCV, ifIND, TOL, NFOUND, INFO, &
@@ -884,11 +884,11 @@
       integer  :: LIM
       logical, intent(in) :: HIEND
       integer, intent(out) :: IREV(*)
-      real(real64)  :: SCRA1(*)
-      real(real64)  :: ORTHOBASIS(N*(NOC + LIM))
-      real(real64)  :: BASIS(N*LIM)
-      real(real64)  :: AB(N*LIM)
-      real(real64)  :: S(*)
+      real(kind=real64)  :: SCRA1(*)
+      real(kind=real64)  :: ORTHOBASIS(N*(NOC + LIM))
+      real(kind=real64)  :: BASIS(N*LIM)
+      real(kind=real64)  :: AB(N*LIM)
+      real(kind=real64)  :: S(*)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
@@ -980,9 +980,9 @@
       integer  :: N
       integer  :: K
       integer  :: M
-      real(real64)  :: C(K*M)
-      real(real64)  :: TEMP(M)
-      real(real64)  :: B(N*K)
+      real(kind=real64)  :: C(K*M)
+      real(kind=real64)  :: TEMP(M)
+      real(kind=real64)  :: B(N*K)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
@@ -1043,23 +1043,23 @@
       integer , intent(in) :: MBLOCK
       integer  :: KPASS
       integer , INTENT(INOUT) :: NNCV
-      real(real64) , intent(in) :: CRITR
+      real(kind=real64) , intent(in) :: CRITR
       logical , intent(out) :: DONE
       integer , INTENT(INOUT) :: INCV(NUME)
       integer , intent(out) :: ICV(NUME)
-      real(real64)  :: SVEC(LIM*NUME)
-      real(real64) , intent(in) :: EIGVAL(LIM)
-      real(real64) , intent(in) :: OLDVAL(NUME)
-      real(real64)  :: AB(N*LIM)
-      real(real64)  :: BASIS(N*LIM)
-      real(real64) , INTENT(INOUT) :: SCRA1(LIM)
-      real(real64) , intent(out) :: EPSIL(LIM)
+      real(kind=real64)  :: SVEC(LIM*NUME)
+      real(kind=real64) , intent(in) :: EIGVAL(LIM)
+      real(kind=real64) , intent(in) :: OLDVAL(NUME)
+      real(kind=real64)  :: AB(N*LIM)
+      real(kind=real64)  :: BASIS(N*LIM)
+      real(kind=real64) , INTENT(INOUT) :: SCRA1(LIM)
+      real(kind=real64) , intent(out) :: EPSIL(LIM)
        real(kind(0.0d0)) :: ddot
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: NEWSTART, NADDED, ICVC, LIMADD, ICUR, I, INDX
-      real(real64) :: SQRES, GAPLOW, GAP, GAPUP, DL, RES, RHSEPS
+      real(kind=real64) :: SQRES, GAPLOW, GAP, GAPUP, DL, RES, RHSEPS
 !-----------------------------------------------
 !-----------------------------------------------------------------------
 !   on entry
@@ -1209,12 +1209,12 @@
       integer  :: NUME
       integer  :: KPASS
 !CFF   ... add dimensionto SCRA1
-      real(real64)  :: SCRA1(NUME)
-      real(real64)  :: BASIS(N*KPASS)
-      real(real64)  :: AB(N*KPASS)
-      real(real64)  :: S((KPASS*(KPASS + 1))/2)
-      real(real64)  :: SVEC(KPASS*NUME)
-      real(real64) , intent(in) :: EIGVAL(KPASS)
+      real(kind=real64)  :: SCRA1(NUME)
+      real(kind=real64)  :: BASIS(N*KPASS)
+      real(kind=real64)  :: AB(N*KPASS)
+      real(kind=real64)  :: S((KPASS*(KPASS + 1))/2)
+      real(kind=real64)  :: SVEC(KPASS*NUME)
+      real(kind=real64) , intent(in) :: EIGVAL(KPASS)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
@@ -1298,21 +1298,21 @@
       integer , intent(in) :: NUME
       integer , intent(in) :: NEIG
       integer , INTENT(INOUT) :: NNCV
-      real(real64) , intent(in) :: CRITE
-      real(real64) , intent(in) :: CRITC
+      real(kind=real64) , intent(in) :: CRITE
+      real(kind=real64) , intent(in) :: CRITC
       integer , intent(in) :: ISELEC(NEIG)
       integer , intent(out) :: ICV(NUME)
       integer , INTENT(INOUT) :: IND(NEIG)
       integer , intent(out) :: INCV(NEIG)
-      real(real64) , intent(in) :: SVEC(KPASS*NUME)
-      real(real64) , intent(in) :: EIGVAL(NUME)
-      real(real64)  :: ROWLAST(NEIG)
-      real(real64) , intent(in) :: OLDVAL(NUME)
+      real(kind=real64) , intent(in) :: SVEC(KPASS*NUME)
+      real(kind=real64) , intent(in) :: EIGVAL(NUME)
+      real(kind=real64)  :: ROWLAST(NEIG)
+      real(kind=real64) , intent(in) :: OLDVAL(NUME)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: NNCE, I, IVAL, ICNT, ICUR, L, INDX, ITEMP
-      real(real64) :: TMAX, TEMP
+      real(kind=real64) :: TMAX, TEMP
       logical :: DONE
       integer :: idamax
 !-----------------------------------------------
@@ -1442,14 +1442,14 @@
       integer  :: n
       integer , intent(in) :: kp
       integer  :: new
-      real(real64)  :: scra(new)
-      real(real64)  :: b((kp + new)*n)
+      real(kind=real64)  :: scra(new)
+      real(kind=real64)  :: b((kp + new)*n)
       real(kind(0.0d0)) :: ddot
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: i, newstart, kcur, k, jcur, j, mm
-      real(real64) :: dnm
+      real(kind=real64) :: dnm
 !-----------------------------------------------
 
 !

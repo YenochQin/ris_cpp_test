@@ -33,8 +33,8 @@
       integer,      intent(out)               :: ITP, ITG
       integer,      intent(in),  dimension(7) :: IK, ID
       integer,      intent(out), dimension(7) :: IBT
-      real(real64), intent(in),  dimension(3) :: BK, BD
-      real(real64), intent(out), dimension(3) :: BT
+      real(kind=real64), intent(in),  dimension(3) :: BK, BD
+      real(kind=real64), intent(out), dimension(3) :: BT
 !      dimension ID(7),IK(7),IBT(7),BT(3),BD(3),BK(3)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s

@@ -34,12 +34,12 @@
       integer  :: J1, J2, J3, L1, L2, L3, K1, K2, K3
       integer, intent(in)  :: I
       integer, intent(out) :: INN
-      real(real64)  :: AA
+      real(kind=real64)  :: AA
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: N1, N2, N3, N4, N5, N6, MAX_, MIN_, IX
-      real(real64) :: S1, S2, S3, X
+      real(kind=real64) :: S1, S2, S3, X
 !-----------------------------------------------
       if (I == 1) then
          INN = 0

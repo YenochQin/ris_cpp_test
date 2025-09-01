@@ -9,11 +9,11 @@
       integer, intent(in) :: NUME
       integer, INTENT(INOUT) :: KPASS
 !CFF   .. added dimension to scra1
-      real(real64) :: SCRA1(NUME)
-      real(real64), dimension(N*KPASS) :: BASIS
-      real(real64), dimension(N*KPASS) :: AB
-      real(real64), dimension((KPASS*(KPASS + 1))/2), intent(out) :: S
-      real(real64), dimension(KPASS), intent(in) :: EIGVAL
+      real(kind=real64) :: SCRA1(NUME)
+      real(kind=real64), dimension(N*KPASS) :: BASIS
+      real(kind=real64), dimension(N*KPASS) :: AB
+      real(kind=real64), dimension((KPASS*(KPASS + 1))/2), intent(out) :: S
+      real(kind=real64), dimension(KPASS), intent(in) :: EIGVAL
 !VAST...Calls: MULTBC, DINIT
       end subroutine
       end interface

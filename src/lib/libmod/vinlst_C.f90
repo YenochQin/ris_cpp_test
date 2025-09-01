@@ -5,6 +5,6 @@
 !                     Gediminas Gaigalas  10/05/17
       integer :: NDVIN, NVINTI
       integer, dimension(:), pointer :: indtei
-      real(real64), dimension(:), pointer :: valtei
+      real(kind=real64), dimension(:), pointer :: valtei
       logical :: FRSTVI
       end module vinlst_C

@@ -4,5 +4,5 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       integer :: IPRERUN, NCSFPRE
-      real(real64) :: COEFFCUT1, COEFFCUT2
+      real(kind=real64) :: COEFFCUT1, COEFFCUT2
       end module blim_C

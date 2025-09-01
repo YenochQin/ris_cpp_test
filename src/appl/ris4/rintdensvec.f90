@@ -1,6 +1,5 @@
 !***********************************************************************
 !                                                                      *
-      subroutine RINTDENSVEC (I,J,DINT1VEC,NRNUC)
 !                                                                      *
 !   The value of DINT1VEC is an approximation to:                      *
 !                                                                      *
@@ -30,7 +29,7 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64), dimension(NNNW,NNNW,N), intent(out) :: DINT1VEC
+      real(kind=real64), dimension(NNNW,NNNW,N), intent(out) :: DINT1VEC
       integer  :: I, J
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s

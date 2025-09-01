@@ -5,10 +5,10 @@
 !                     Gediminas Gaigalas  10/05/17
       subroutine cgamma (ARGR, ARGI, RESR, RESI)
       use iso_fortran_env, only: real64, int32, int64, real128
-      real(real64), intent(in) :: ARGR
-      real(real64), intent(in) :: ARGI
-      real(real64), intent(out) :: RESR
-      real(real64), intent(out) :: RESI
+      real(kind=real64), intent(in) :: ARGR
+      real(kind=real64), intent(in) :: ARGI
+      real(kind=real64), intent(out) :: RESR
+      real(kind=real64), intent(out) :: RESI
 !VAST.../DEF0/ EXPMAX(IN), EXPMIN(IN), PRECIS(IN)
 !VAST.../DEF9/ PI(IN)
 !VAST...Calls: ARCTAN

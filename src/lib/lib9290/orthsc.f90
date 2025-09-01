@@ -34,8 +34,8 @@
 !-----------------------------------------------
       integer, dimension(NNNW) :: J
       integer :: L, NAKL, KOUNT, MTP0, K, MTP, I
-      real(real64), dimension(NNNW) :: OVLAP
-      real(real64) :: EPS, OVRLAP, DNORM, FACTOR
+      real(kind=real64), dimension(NNNW) :: OVLAP
+      real(kind=real64) :: EPS, OVRLAP, DNORM, FACTOR
       logical :: CHANGED
 !-----------------------------------------------
 !

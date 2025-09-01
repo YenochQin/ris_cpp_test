@@ -56,8 +56,8 @@
                  L1,L2,N,NN,ND1,ND2,NE1,NE2
       integer, dimension(2) :: J
       integer, dimension(4) :: IS,KAPS,KS
-      real(real64)          :: AA,AB,A1,BB,QM1,QM2,QM3,QM4,SI,RECC
-      real(real64), dimension(12) :: S
+      real(kind=real64)          :: AA,AB,A1,BB,QM1,QM2,QM3,QM4,SI,RECC
+      real(kind=real64), dimension(12) :: S
 !-----------------------------------------------
       if(NPEEL <= 1)return
       IIA=JLIST(JJA)

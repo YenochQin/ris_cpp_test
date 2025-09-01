@@ -13,7 +13,7 @@
       integer, intent(in) :: IC
       integer, intent(in) :: ID
       integer, intent(in) :: ITYPE
-      real(real64), intent(in) :: COEF
+      real(kind=real64), intent(in) :: COEF
 !VAST.../BUFFER/ NBDIM(IN), NVCOEF(INOUT)
 !VAST.../DEBUG/ IBUG1(IN)
 !VAST.../ORB4/ NP(IN)

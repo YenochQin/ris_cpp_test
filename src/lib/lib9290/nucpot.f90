@@ -30,7 +30,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: I, NB3, NROWS, II, II1, II2, II3
-      real(real64) :: C, A, ABC, TABC, ABC2, THABC2, ABC3, CBA, PI2, HPIAC2, &
+      real(kind=real64) :: C, A, ABC, TABC, ABC2, THABC2, ABC3, CBA, PI2, HPIAC2, &
          H3PHP, S2MCBA, S3MCBA, SABC3, DMSAS, EN, ZBN, RI, RMC, RMCBA, RBC, &
          S2RCBA, S3RCBA
       logical :: SET

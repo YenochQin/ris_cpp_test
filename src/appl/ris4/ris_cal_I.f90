@@ -1,4 +1,5 @@
       module ris_cal_I
+      use iso_fortran_env, only: real64
       interface
 !...Translated by Gediminas Gaigalas 11/18/19
       subroutine ris_cal(NAME)

@@ -30,12 +30,12 @@
       integer, intent(in)       :: NPEELGG,JA1,KA,IRE
 !      integer, intent(out)      :: IAT
       integer, INTENT(INOUT)      :: IAT
-      real(real64), intent(out) :: RECC
+      real(kind=real64), intent(out) :: RECC
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer      :: ITI1,ITI1S,IJ1,ITI,ITIS,JI
-      real(real64) :: A3
+      real(kind=real64) :: A3
 !-----------------------------------------------
       RECC = ZERO
       ITI1=JJC1(NPEELGG-1)-1

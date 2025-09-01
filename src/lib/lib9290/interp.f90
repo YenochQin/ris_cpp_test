@@ -25,11 +25,11 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer, intent(in) :: NARR
-      real(real64), intent(in) :: XVAL
-      real(real64), intent(out) :: YVAL
-      real(real64), intent(in) :: ACCY
-      real(real64), dimension(NARR), intent(in) :: XARR
-      real(real64), dimension(NARR), intent(in) :: YARR
+      real(kind=real64), intent(in) :: XVAL
+      real(kind=real64), intent(out) :: YVAL
+      real(kind=real64), intent(in) :: ACCY
+      real(kind=real64), dimension(NARR), intent(in) :: XARR
+      real(kind=real64), dimension(NARR), intent(in) :: YARR
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
@@ -39,9 +39,9 @@
 !-----------------------------------------------
       integer :: NRSTLO, NRSTHI, K, LLO, LHI, LLR, IROW, LOCNXT, ILIROK, ILDIAG&
          , ILOTHR, IBEST
-      real(real64), dimension(MXORD) :: DX, X, EST
-      real(real64), dimension((MXORD*(MXORD + 1))/2) :: POLY
-      real(real64) :: DifF, DifFT, DEBEB, DEBE
+      real(kind=real64), dimension(MXORD) :: DX, X, EST
+      real(kind=real64), dimension((MXORD*(MXORD + 1))/2) :: POLY
+      real(kind=real64) :: DifF, DifFT, DEBEB, DEBE
       logical :: SET
       logical, dimension(2*MXORD + 2) :: useD
 !-----------------------------------------------

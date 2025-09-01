@@ -1,6 +1,5 @@
 !***********************************************************************
 !                                                                      *
-      real(real64) FUNCTION VINTI (J, K)
 !                                                                      *
 !   The value of this  function is the one-electron integral V (J,K)   *
 !   for  orbitals  J, K. The analytical expression for this quantity   *
@@ -39,7 +38,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: I, KPJ, KPK, ifACT1, ifACT2
-      real(real64) :: PIECE1, FACT1, FACT2, PIECE2
+      real(kind=real64) :: PIECE1, FACT1, FACT2, PIECE2
 !-----------------------------------------------
 !
       MTP = MAX(MF(J),MF(K))

@@ -5,6 +5,6 @@
 !                     Gediminas Gaigalas  10/05/17
       integer :: NDCOEA, NCOEI
       integer, dimension(:), pointer :: indoei
-      real(real64), dimension(:), pointer :: valoei
+      real(kind=real64), dimension(:), pointer :: valoei
       logical :: FRSTCO
       end module coeils_C

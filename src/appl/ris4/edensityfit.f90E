@@ -22,27 +22,27 @@ subroutine EDENSITYFIT(XVEC,YVEC,Z,PAR,NRNUC,F,RHO,RES)
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64), dimension(NNN1) :: XVEC
-      real(real64), dimension(NNNP) :: YVEC
-!GG      real(real64), dimension(NNNP) :: XVEC, YVEC
-      real(real64), dimension(5) :: P
-      real(real64), dimension(6) :: F
-      real(real64), dimension(2) :: PAR
-      real(real64) :: Z, DRMS, RHO, RES
+      real(kind=real64), dimension(NNN1) :: XVEC
+      real(kind=real64), dimension(NNNP) :: YVEC
+!GG      real(kind=real64), dimension(NNNP) :: XVEC, YVEC
+      real(kind=real64), dimension(5) :: P
+      real(kind=real64), dimension(6) :: F
+      real(kind=real64), dimension(2) :: PAR
+      real(kind=real64) :: Z, DRMS, RHO, RES
       integer      :: NRNUC, NPARFIT
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      real(real64), dimension(NNN1) :: X
-      real(real64), dimension(NNNP) :: Y, W, DY
-!GG      real(real64), dimension(NNNP) :: X, Y, W, DY
-      real(real64), dimension(3,3)  :: M, MI, C, CI
-      real(real64), dimension(4)    :: DR, DR2
-      real(real64), dimension(3)    :: RM, PM, B, DF2
-      real(real64), dimension(2)    :: PARF, PARF2
-      real(real64) :: MDET, CDET, AU2FM, NORM, CONST, CONST2, A0
-      real(real64) :: A1, A2, FDSUM, FO90, R2,DR4,DR6, DE, DEN, dDEN
-      real(real64) :: dDEN2, DX2, DY2, X2, Y2
+      real(kind=real64), dimension(NNN1) :: X
+      real(kind=real64), dimension(NNNP) :: Y, W, DY
+!GG      real(kind=real64), dimension(NNNP) :: X, Y, W, DY
+      real(kind=real64), dimension(3,3)  :: M, MI, C, CI
+      real(kind=real64), dimension(4)    :: DR, DR2
+      real(kind=real64), dimension(3)    :: RM, PM, B, DF2
+      real(kind=real64), dimension(2)    :: PARF, PARF2
+      real(kind=real64) :: MDET, CDET, AU2FM, NORM, CONST, CONST2, A0
+      real(kind=real64) :: A1, A2, FDSUM, FO90, R2,DR4,DR6, DE, DEN, dDEN
+      real(kind=real64) :: dDEN2, DX2, DY2, X2, Y2
       integer :: I, INUC, NMIN, NMAX, NR
 !-----------------------------------------------
 !

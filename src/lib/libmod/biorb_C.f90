@@ -6,7 +6,7 @@
 !                     Gediminas Gaigalas  10/05/17
 
       character, dimension(NNNW) :: NHFF*2, NHII*2
-      real(real64), dimension(NNNW) :: EFF, GAMAFF , EII, GAMAII
+      real(kind=real64), dimension(NNNW) :: EFF, GAMAFF , EII, GAMAII
       integer :: NCFFF, NWFF, NCFII, NWII
       integer, dimension(NNNW) :: NPFF, NAKFF, NPII, NAKII
       integer, dimension(NNNW) :: NKLFF, NKJFF, NKLII, NKJII

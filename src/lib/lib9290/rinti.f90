@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      real(real64) FUNCTION RINTI (J, K, MODE)
+      real(kind=real64) FUNCTION RINTI (J, K, MODE)
 !                                                                      *
 !   The value of this  function is the one-electron integral I (J,K)   *
 !   for  orbitals  J, K. The analytical expression for this quantity   *
@@ -45,7 +45,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: I
-      real(real64) :: PIECE1, PIECE2, PIECE3, PIECE4
+      real(kind=real64) :: PIECE1, PIECE2, PIECE3, PIECE4
 !-----------------------------------------------
 !
 !   Stop if orbitals J and K have different kappa values

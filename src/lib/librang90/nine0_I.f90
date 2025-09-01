@@ -12,7 +12,7 @@
       integer, intent(in) :: K1
       integer, intent(in) :: K2
       integer, intent(in) :: K3
-      real(real64), intent(out) :: AA
+      real(kind=real64), intent(out) :: AA
 !VAST.../CONSTS/ ZERO(IN), ONE(IN)
 !VAST...Calls: SIXJ
       end subroutine

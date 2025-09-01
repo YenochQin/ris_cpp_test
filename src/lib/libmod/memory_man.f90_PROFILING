@@ -141,7 +141,7 @@ MODULE memory_man
 
    subroutine alloc_1r(p, n, var, sub)
      IMPLICIT NONE
-     real(real64), POINTER, DIMENSION(:) :: p
+     real(kind=real64), POINTER, DIMENSION(:) :: p
      integer, intent(in) :: n
      CHARACTER(LEN=*), intent(in) :: var, sub
      integer :: error
@@ -164,7 +164,7 @@ MODULE memory_man
 
    subroutine alloc_2r(p, n1, n2, var, sub)
      IMPLICIT NONE
-     real(real64), POINTER, DIMENSION(:,:) :: p
+     real(kind=real64), POINTER, DIMENSION(:,:) :: p
      integer, intent(in) :: n1, n2
      CHARACTER(LEN=*), intent(in) :: var, sub
      integer :: error
@@ -187,7 +187,7 @@ MODULE memory_man
 
    subroutine alloc_1rL(p, n, var, sub)
      IMPLICIT NONE
-     real(real64), POINTER, DIMENSION(:) :: p
+     real(kind=real64), POINTER, DIMENSION(:) :: p
      integer(LONG), intent(in) :: n
      CHARACTER(LEN=*), intent(in) :: var, sub
      integer :: error
@@ -554,7 +554,7 @@ MODULE memory_man
 
    subroutine ralloc_1r(p, n, var, sub)
      IMPLICIT NONE
-     real(real64), POINTER, DIMENSION(:) :: p, pnew
+     real(kind=real64), POINTER, DIMENSION(:) :: p, pnew
      integer, intent(in) :: n
      CHARACTER(LEN=*), intent(in) :: var, sub
      integer :: error, nold
@@ -581,7 +581,7 @@ MODULE memory_man
 
    subroutine ralloc_2r(p, n1, n2, var, sub)
      IMPLICIT NONE
-     real(real64), POINTER, DIMENSION(:,:) :: p, pnew
+     real(kind=real64), POINTER, DIMENSION(:,:) :: p, pnew
      integer, intent(in) :: n1, n2
      CHARACTER(LEN=*), intent(in) :: var, sub
      integer :: error, n1_old, n2_old

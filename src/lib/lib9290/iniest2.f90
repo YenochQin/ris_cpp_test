@@ -29,15 +29,15 @@
       integer  :: NIV
       integer, dimension(0:*), intent(in) :: JCOL
       integer, dimension(*), intent(in) :: IROW
-      real(real64), dimension(*) :: BASIS
-      real(real64), dimension(*), intent(in) :: HMX
+      real(kind=real64), dimension(*) :: BASIS
+      real(kind=real64), dimension(*), intent(in) :: HMX
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: NS, JOFFSPAR, J, JOFFNORM, IR, NFOUND, INFO, IERR
 
       integer, dimension(:), pointer :: iwork,ifail
-      real(real64), dimension(:), pointer :: ap, eigval,vec, work
+      real(kind=real64), dimension(:), pointer :: ap, eigval,vec, work
 
 !-----------------------------------------------
 

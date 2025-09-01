@@ -1,7 +1,7 @@
       subroutine DINIT(N, A, X, INCX)
 !     ==================================================================
 !
-!     PURPOSE ... INITIALIZES real(real64)           VECTOR TO
+!     PURPOSE ... INITIALIZES real(kind=real64)           VECTOR TO
 !                 A CONSTANT VALUE 'A'
 !
 !     CREATED ... APR. 14, 1987
@@ -20,8 +20,8 @@
 !-----------------------------------------------
       integer, intent(in) :: N
       integer, intent(in) :: INCX
-      real(real64), intent(in) :: A
-      real(real64), dimension(*), intent(out) :: X
+      real(kind=real64), intent(in) :: A
+      real(kind=real64), dimension(*), intent(out) :: X
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

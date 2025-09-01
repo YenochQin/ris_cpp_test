@@ -40,14 +40,14 @@
 !-----------------------------------------------
       integer,      intent(in)               :: K1
       integer,      intent(in), dimension(7) :: IK1, IK2, ID1, ID2
-      real(real64), intent(in)               :: QM1, QM2, QM3, QM4
-      real(real64), intent(in), dimension(3) :: BK1, BK2, BD1, BD2
-      real(real64), intent(out)              :: WW
+      real(kind=real64), intent(in)               :: QM1, QM2, QM3, QM4
+      real(kind=real64), intent(in), dimension(3) :: BK1, BK2, BD1, BD2
+      real(kind=real64), intent(out)              :: WW
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer      :: IQMM1,IQMM2,IQMM3,IQMM4,IQMM34,KK1
-      real(real64) :: A1, S, BK, AW
+      real(kind=real64) :: A1, S, BK, AW
 !-----------------------------------------------
       WW=ZERO
       if(IK1(3) > 9) then

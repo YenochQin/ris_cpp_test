@@ -5,11 +5,11 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       integer, dimension(NNNW) :: MF
-      real(real64), dimension(NNNW) :: PZ
+      real(kind=real64), dimension(NNNW) :: PZ
       integer, dimension(NNNW) :: MFFF
-      real(real64), dimension(NNNW) :: PZFF
+      real(kind=real64), dimension(NNNW) :: PZFF
       integer, dimension(NNNW) :: MFII
-      real(real64), dimension(NNNW) :: PZII
-      real(real64), dimension(:,:), pointer :: PF,QF
-      real(real64), dimension(:,:), pointer :: pfff,qfff,pfii,qfii
+      real(kind=real64), dimension(NNNW) :: PZII
+      real(kind=real64), dimension(:,:), pointer :: PF,QF
+      real(kind=real64), dimension(:,:), pointer :: pfff,qfff,pfii,qfii
       end module wave_C

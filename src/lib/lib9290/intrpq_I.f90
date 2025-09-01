@@ -7,10 +7,10 @@
       use iso_fortran_env, only: real64, int32, int64, real128
       integer MXORD
       parameter (MXORD = 13)
-      real(real64), dimension(*), intent(in) :: PA, QA, RA
+      real(kind=real64), dimension(*), intent(in) :: PA, QA, RA
       integer, intent(in) :: MA
       integer, intent(in) :: J
-      real(real64), intent(out) :: DNORM
+      real(kind=real64), intent(out) :: DNORM
       end subroutine
       end interface
       end module

@@ -33,11 +33,11 @@
 !-----------------------------------------------
       integer             :: JC, JE, JD, JB, JF
       integer, intent(in) :: ITIK
-      real(real64)        :: SI
+      real(kind=real64)        :: SI
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      real(real64) :: A, C, E, D, B, F, X1, X2, X3, S2, S3
+      real(kind=real64) :: A, C, E, D, B, F, X1, X2, X3, S2, S3
 !-----------------------------------------------
       SI = ZERO
       if (ITIK /= 0) then

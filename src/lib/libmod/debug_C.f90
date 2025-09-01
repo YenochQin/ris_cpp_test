@@ -12,5 +12,5 @@
       logical, dimension(5) :: LDBPA
       logical, dimension(5) :: LDBPG
       logical, dimension(30) :: LDBPR
-      real(real64) :: cutoff  ! used by bioscl
+      real(kind=real64) :: cutoff  ! used by bioscl
       end module debug_C

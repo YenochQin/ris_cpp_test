@@ -4,7 +4,7 @@
       subroutine ONEPARTICLEJJ2(NS,KA,JA,JB,COEFF)
       use iso_fortran_env, only: real64, int32, int64, real128
       integer, intent(in) :: NS,KA,JA,JB
-      real(real64), intent(out) :: COEFF
+      real(kind=real64), intent(out) :: COEFF
       end subroutine
       end interface
       end module

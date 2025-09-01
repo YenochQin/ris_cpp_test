@@ -29,12 +29,12 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer  :: J1, J2, J3, L1, L2, L3, K1, K2, K3
-      real(real64), intent(out) :: AA
+      real(kind=real64), intent(out) :: AA
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer      :: ifA
-      real(real64) :: A, B
+      real(kind=real64) :: A, B
 !-----------------------------------------------
       if (J1 == 0) then
          CALL SIXJ (L2, K2, J2, K3, L3, L1, 0, A)

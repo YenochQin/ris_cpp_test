@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      real(real64) FUNCTION CLRX (KAPPAA, K, KAPPAB)
+      real(kind=real64) FUNCTION CLRX (KAPPAA, K, KAPPAB)
 !                                                                      *
 !   The value of CLRX is the 3-j symbol:                               *
 !                                                                      *
@@ -36,7 +36,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: KA, KB, KAPKB, KABKP, KAMKB, KBMKA
-      real(real64) :: EXPTRM
+      real(kind=real64) :: EXPTRM
 !-----------------------------------------------
 !
 !

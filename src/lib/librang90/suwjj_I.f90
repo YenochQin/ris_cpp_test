@@ -5,7 +5,7 @@
       use iso_fortran_env, only: real64, int32, int64, real128
       integer,      intent(in)  :: K1, K2, J1, J2
       integer,      intent(out) :: LL
-      real(real64), intent(out) :: SUW
+      real(kind=real64), intent(out) :: SUW
       end subroutine
       end interface
       end module

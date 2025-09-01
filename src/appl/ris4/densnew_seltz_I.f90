@@ -1,4 +1,5 @@
       module densnew_seltz_I
+      use iso_fortran_env, only: real64
       interface
 !...Translated by Gediminas Gaigalas 11/18/19
       subroutine densnew_seltz (DOIT,DINT1,DINT2,DINT3,DINT4,DINT5,DINT6,    &
@@ -6,16 +7,16 @@
       use iso_fortran_env, only: real64, int32, int64, real128
       use parameter_def,   only: NNNW, NNNP
       use prnt_C,          only : NVEC
-      real(real64), dimension(NNNW,NNNW), intent(in) :: DINT1
-      real(real64), dimension(NNNW,NNNW), intent(in) :: DINT2
-      real(real64), dimension(NNNW,NNNW), intent(in) :: DINT3
-      real(real64), dimension(NNNW,NNNW), intent(in) :: DINT4
-      real(real64), dimension(NNNW,NNNW), intent(in) :: DINT5
-      real(real64), dimension(NNNW,NNNW), intent(in) :: DINT6
-      real(real64), dimension(NNNW,NNNW), intent(in) :: DINT7
+      real(kind=real64), dimension(NNNW,NNNW), intent(in) :: DINT1
+      real(kind=real64), dimension(NNNW,NNNW), intent(in) :: DINT2
+      real(kind=real64), dimension(NNNW,NNNW), intent(in) :: DINT3
+      real(kind=real64), dimension(NNNW,NNNW), intent(in) :: DINT4
+      real(kind=real64), dimension(NNNW,NNNW), intent(in) :: DINT5
+      real(kind=real64), dimension(NNNW,NNNW), intent(in) :: DINT6
+      real(kind=real64), dimension(NNNW,NNNW), intent(in) :: DINT7
       integer, intent(in) :: NRNUC
-      real(real64), dimension(NVEC,NRNUC), intent(out) :: DENS1VEC
-      real(real64), dimension(NNNW,NNNW,NRNUC), intent(in) :: DINT1VEC
+      real(kind=real64), dimension(NVEC,NRNUC), intent(out) :: DENS1VEC
+      real(kind=real64), dimension(NNNW,NNNW,NRNUC), intent(in) :: DINT1VEC
       integer, intent(in) :: DOIT
       end subroutine
       end interface

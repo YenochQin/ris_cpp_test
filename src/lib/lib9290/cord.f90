@@ -42,12 +42,12 @@
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
-      real(real64), parameter :: EPS = 1.0D-10
+      real(kind=real64), parameter :: EPS = 1.0D-10
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: IA1,IB1,NS,KAP1,J1,NQS1,NUMAX,NU,KAP2,J2,NQS2,NUMIN
-      real(real64) :: X,CONST,GAM
+      real(kind=real64) :: X,CONST,GAM
 !-----------------------------------------------
 !
 !

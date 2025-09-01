@@ -19,17 +19,17 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer,      intent(in)    :: N
-      real(real64), intent(in)    :: DCONST
-      real(real64), intent(out)   :: DL
+      real(kind=real64), intent(in)    :: DCONST
+      real(kind=real64), intent(out)   :: DL
       integer, dimension(N), intent(in) :: IDY
-      real(real64), dimension(*), intent(in) :: DB
-      real(real64), dimension(*), INTENT(INOUT) :: DC
-      real(real64), dimension(N), intent(in) :: DA
+      real(kind=real64), dimension(*), intent(in) :: DB
+      real(kind=real64), dimension(*), INTENT(INOUT) :: DC
+      real(kind=real64), dimension(N), intent(in) :: DA
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: I
-      real(real64) :: DSUM
+      real(kind=real64) :: DSUM
 !-----------------------------------------------
 
       DSUM = 0.0

@@ -31,14 +31,14 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer,      intent(in), dimension(7) :: IK1, IK2, ID1, ID2
-      real(real64), intent(in)               :: QM1, QM2
-      real(real64), intent(in), dimension(3) :: BK1, BK2, BD1, BD2
-      real(real64), intent(out)              :: WW
+      real(kind=real64), intent(in)               :: QM1, QM2
+      real(kind=real64), intent(in), dimension(3) :: BK1, BK2, BD1, BD2
+      real(kind=real64), intent(out)              :: WW
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: IQMM1, IQMM2
-      real(real64) :: A1, C, C1, S
+      real(kind=real64) :: A1, C, C1, S
 !-----------------------------------------------
       WW=ZERO
       if(IK1(3) > 9) then

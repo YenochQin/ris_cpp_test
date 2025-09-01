@@ -44,8 +44,8 @@
 !-----------------------------------------------
       integer :: J, I, K, NWIN, IOS, NPY, NAKY, MY
       integer :: ierr
-      real(real64) :: CON, FKK, EY, PZY, DNORM
-      real(real64), dimension(:), pointer :: PA, QA, RA
+      real(kind=real64) :: CON, FKK, EY, PZY, DNORM
+      real(kind=real64), dimension(:), pointer :: PA, QA, RA
 !-----------------------------------------------
 !
 !

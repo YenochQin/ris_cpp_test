@@ -28,14 +28,14 @@
 !-----------------------------------------------
       integer, intent(in) :: MTPFR
       integer, intent(out) :: NNCFF
-      real(real64), intent(out) :: SGN
-      real(real64), dimension(NNNP), intent(in) :: FR
+      real(kind=real64), intent(out) :: SGN
+      real(kind=real64), dimension(NNNP), intent(in) :: FR
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer, dimension(NNNP) :: LCEXT
       integer :: NEXT, I, LOC, NSTPS
-      real(real64) :: EXT, EMX, ABFRI, TEST, THRESE, ABLCL
+      real(kind=real64) :: EXT, EMX, ABFRI, TEST, THRESE, ABLCL
 !-----------------------------------------------
 !
 !

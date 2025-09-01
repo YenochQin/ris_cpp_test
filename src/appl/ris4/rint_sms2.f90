@@ -1,6 +1,5 @@
 !***********************************************************************
 !                                                                      *
-      real(real64) FUNCTION RINT_SMS2 (I, J)
 !                                                                      *
 !   The value of RINT_SMS2 is an approximation to:                     *
 !                                                                      *
@@ -40,7 +39,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer      :: L
-      real(real64) :: RESULT, APART1, APART2
+      real(kind=real64) :: RESULT, APART1, APART2
 !-----------------------------------------------
 !
 !   Tabulate integrand as required for subroutine QUAD

@@ -1,6 +1,5 @@
 !***********************************************************************
 !                                                                      *
-      subroutine ANGDATA(NAME,AVAIL,WHICHONE)
 !                                                                      *
 !   Checks if the angular files name.IOB (one-body) or                 *
 !   name.ITB (Two-body) are available                                  *

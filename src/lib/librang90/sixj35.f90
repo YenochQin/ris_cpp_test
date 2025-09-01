@@ -29,12 +29,12 @@
 !-----------------------------------------------
       integer                   :: J, K, L, M, N
       integer, intent(in)       :: ITIK
-      real(real64), intent(out) :: SI
+      real(kind=real64), intent(out) :: SI
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: I1
-      real(real64) :: AS, A, B, C, AKA
+      real(kind=real64) :: AS, A, B, C, AKA
 !-----------------------------------------------
       SI = ZERO
       if (ITIK /= 0) then

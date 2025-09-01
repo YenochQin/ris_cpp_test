@@ -41,7 +41,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: I
-      real(real64) :: DMHB2C, ENERGY, ENEFAC, RPI, YPRPOR
+      real(kind=real64) :: DMHB2C, ENERGY, ENEFAC, RPI, YPRPOR
       logical :: NOTSET
 !-----------------------------------------------
 !

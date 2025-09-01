@@ -17,8 +17,8 @@
       integer, intent(in) :: JCOL(0:*)
       integer, intent(in) :: IROW(*)
       integer, intent(in) :: IBLOCK(*)
-      real(real64), intent(in) :: HMX(*)
-      real(real64)  :: BASIS(*)
+      real(kind=real64), intent(in) :: HMX(*)
+      real(kind=real64)  :: BASIS(*)
       end subroutine
       end interface
       end module

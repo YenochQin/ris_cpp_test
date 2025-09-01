@@ -5,6 +5,6 @@
 !                     Gediminas Gaigalas  10/05/17
       integer :: NDVPA, NVPI
       integer, dimension(:), pointer :: indvpi
-      real(real64), dimension(:), pointer :: valvpi
+      real(kind=real64), dimension(:), pointer :: valvpi
       logical :: FRSTVP
       end module vpilst_C

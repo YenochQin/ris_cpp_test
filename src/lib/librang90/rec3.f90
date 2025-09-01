@@ -26,7 +26,7 @@
 !-----------------------------------------------
       integer, intent(in)       :: JA1,JA2,JA3,K1,K2,K3,IRE
       integer, intent(out)      :: IAT
-      real(real64), intent(out) :: RECC
+      real(kind=real64), intent(out) :: RECC
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

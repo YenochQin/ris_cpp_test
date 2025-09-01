@@ -1,6 +1,5 @@
 !***********************************************************************
 !                                                                      *
-      real(real64) FUNCTION RINT_SMS3 (I, J)
 !                                                                      *
 !   The value of RINT_SMS3 is an approximation to:                     *
 !                                                                      *
@@ -38,7 +37,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer      :: L
-      real(real64) :: RESULT
+      real(kind=real64) :: RESULT
 !-----------------------------------------------
 !
 !   Tabulate integrand as required for subroutine QUAD

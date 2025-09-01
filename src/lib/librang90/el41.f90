@@ -67,9 +67,9 @@
                   NUP1,MU
       integer, dimension(3) :: J
       integer, dimension(4) :: IS,KAPS,KS
-      real(real64)          :: AA,AB,A1,BB,QM1,QM2,QM3,QM4,SI,RECC
-      real(real64), dimension(12) :: S
-      real(real64), dimension(12,20) :: COND
+      real(kind=real64)          :: AA,AB,A1,BB,QM1,QM2,QM3,QM4,SI,RECC
+      real(kind=real64), dimension(12) :: S
+      real(kind=real64), dimension(12,20) :: COND
 !-----------------------------------------------
       CALL EILE(JA,JB,JC,JAA,JBB,JCC)
       if(NPEEL <= 1)return

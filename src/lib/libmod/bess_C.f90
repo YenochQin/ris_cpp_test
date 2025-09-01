@@ -5,8 +5,8 @@
 !...Created by Pacific-Sierra Research 77to90  4.3E  06:33:54  12/28/06
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
-      real(real64), dimension(2) :: WIJ
-      real(real64), dimension(2,2,NNNP) :: BESSJ, BESSN
-      real(real64), dimension(NNNP,3) :: BJ
-      real(real64), dimension(NNNP) :: TC, TD
+      real(kind=real64), dimension(2) :: WIJ
+      real(kind=real64), dimension(2,2,NNNP) :: BESSJ, BESSN
+      real(kind=real64), dimension(NNNP,3) :: BJ
+      real(kind=real64), dimension(NNNP) :: TC, TD
       end module bess_C

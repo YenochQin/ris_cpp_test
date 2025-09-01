@@ -1,7 +1,7 @@
       MODULE rint_sms3_I
       interface
 !...Translated by Gediminas Gaigalas 11/18/19
-      real(real64) FUNCTION rint_sms3 (I, J)
+      real(kind=real64) FUNCTION rint_sms3 (I, J)
       integer, intent(in) :: I
       integer, intent(in) :: J
       END FUNCTION

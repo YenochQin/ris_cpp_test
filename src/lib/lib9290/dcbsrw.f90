@@ -49,16 +49,16 @@
       integer, intent(in) :: N
       integer, intent(in) :: KAPPA
       integer, intent(out) :: MTP
-      real(real64), intent(in) :: Z
-      real(real64), intent(out) :: E
-      real(real64), intent(out) :: RG0
-      real(real64), dimension(NNNP), INTENT(INOUT) :: RG
-      real(real64), dimension(NNNP), intent(out) :: RF
+      real(kind=real64), intent(in) :: Z
+      real(kind=real64), intent(out) :: E
+      real(kind=real64), intent(out) :: RG0
+      real(kind=real64), dimension(NNNP), INTENT(INOUT) :: RG
+      real(kind=real64), dimension(NNNP), intent(out) :: RF
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: K, NR, NRFAC, I, IORDR1, IORDR2
-      real(real64) :: ALFA, FN, FKAPPA, FK, FNR, ZALFA, GAMMA, TWOGP1, BIGN, &
+      real(kind=real64) :: ALFA, FN, FKAPPA, FK, FNR, ZALFA, GAMMA, TWOGP1, BIGN, &
          EPS, ARGR, ARGI, RGAMM1, DUMMY, RGAMM2, FAC, FG, FF, FACN, A, AN1, AN2&
          , B, BN, FDEN, BIGNMK, RHO, RHON, F1, F2, OVLFAC, CUTOFF
 !-----------------------------------------------

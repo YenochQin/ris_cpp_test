@@ -30,8 +30,8 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64), intent(in)  :: Q, QM, S, C, CM
-      real(real64), intent(out) :: A
+      real(kind=real64), intent(in)  :: Q, QM, S, C, CM
+      real(kind=real64), intent(out) :: A
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

@@ -1,11 +1,12 @@
       module rintdensvec_I
+      use iso_fortran_env, only: real64
       interface
 !...Translated by Gediminas Gaigalas 11/18/19
       subroutine rintdensvec (I, J, DINT1VEC, NRNUC)
       use iso_fortran_env, only: real64, int32, int64, real128
       use parameter_def,    only: NNNW
       use grid_C,           only: N
-      real(real64), dimension(NNNW,NNNW,N), intent(out) :: DINT1VEC
+      real(kind=real64), dimension(NNNW,NNNW,N), intent(out) :: DINT1VEC
       integer, intent(in) :: I
       integer, intent(in) :: J
       integer, intent(in) :: NRNUC

@@ -24,7 +24,7 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer,      intent(in)  :: LL, IT, LQ, J, ITS, LQS, J1S
-      real(real64), intent(out) :: COEF
+      real(kind=real64), intent(out) :: COEF
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

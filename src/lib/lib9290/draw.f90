@@ -24,15 +24,15 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer, intent(in) :: MF
-      real(real64), intent(in) :: SP
-      real(real64), intent(in) :: SQ
-      real(real64), dimension(NNNP), intent(in) :: P
-      real(real64), dimension(NNNP), intent(in) :: Q
+      real(kind=real64), intent(in) :: SP
+      real(kind=real64), intent(in) :: SQ
+      real(kind=real64), dimension(NNNP), intent(in) :: P
+      real(kind=real64), dimension(NNNP), intent(in) :: Q
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: I, IOFFST, IXLOCQ, IXLOCP, IYLOC
-      real(real64) :: SIXTY, FifT4, OHTHT, DMX, DMN, SPI, SQI, RMX, XSCAL, &
+      real(kind=real64) :: SIXTY, FifT4, OHTHT, DMX, DMN, SPI, SQI, RMX, XSCAL, &
          YSCAL, SQX, SPX
       logical :: FIRST
       character :: CBLANK*132, CDASH*132

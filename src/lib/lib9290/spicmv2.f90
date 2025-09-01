@@ -26,13 +26,13 @@
 !-----------------------------------------------
       integer, intent(in) :: N
       integer, intent(in) :: M
-      real(real64), dimension(N,M), intent(in) :: B
-      real(real64), dimension(N,M), INTENT(INOUT) :: C
+      real(kind=real64), dimension(N,M), intent(in) :: B
+      real(kind=real64), dimension(N,M), INTENT(INOUT) :: C
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: IBEG, ICOL, IEND, NELC, IV
-      real(real64) :: DIAG, DL
+      real(kind=real64) :: DIAG, DL
 !-----------------------------------------------
 !
 !

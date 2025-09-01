@@ -4,11 +4,11 @@
 !...Created by Pacific-Sierra Research 77to90  4.3E  06:38:40  12/28/06
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
-      real(real64), dimension(NNNW) :: UCF
+      real(kind=real64), dimension(NNNW) :: UCF
       integer, dimension(NNNW) :: METHOD
-      real(real64), dimension(NNNW) :: SCNSTY
-      real(real64) :: EPSMIN, EPSMAX, EMIN, EMAX, ZINF
+      real(kind=real64), dimension(NNNW) :: SCNSTY
+      real(kind=real64) :: EPSMIN, EPSMAX, EMIN, EMAX, ZINF
       integer :: NDCOF, NXCOF, NYCOF, NDDIM, NXDIM, NYDIM
-      real(real64), dimension(:), pointer :: da, xa, ya
+      real(kind=real64), dimension(:), pointer :: da, xa, ya
       integer, dimension(:), pointer :: nda, nxa, nya
       end module scf_C

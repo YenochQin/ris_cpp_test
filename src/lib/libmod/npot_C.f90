@@ -5,5 +5,5 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       integer :: NNUC
-      real(real64), dimension(NNNP) :: ZZ
+      real(kind=real64), dimension(NNNP) :: ZZ
       end module npot_C

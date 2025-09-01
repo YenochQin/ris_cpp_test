@@ -37,12 +37,12 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer, intent(in) :: JJA,JJB,JA,JB
-      real(real64), intent(out) :: COEFF
+      real(kind=real64), intent(out) :: COEFF
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer      :: IAT,JAA,JBB,NN,IB1,II,INN,ifAZ
-      real(real64) :: QM1,QM2,REC,WW
+      real(kind=real64) :: QM1,QM2,REC,WW
 !-----------------------------------------------
       COEFF=ZERO
       if(JA == JB) return

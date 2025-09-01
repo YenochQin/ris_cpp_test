@@ -11,6 +11,6 @@
       integer :: NVEC, NVECMX
       integer :: NVECFF, NVECMXFF
       integer :: NVECII, NVECMXII
-      real(real64) :: PNIVECII
+      real(kind=real64) :: PNIVECII
       integer, dimension(:), pointer :: ivec, ivecff, ivecii
       end module prnt_C

@@ -5,5 +5,5 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       integer :: MTP
-      real(real64), dimension(NNN1) :: TA, TB
+      real(kind=real64), dimension(NNN1) :: TA, TB
       end module tatb_C

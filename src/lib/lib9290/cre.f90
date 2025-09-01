@@ -1,6 +1,6 @@
 !***********************************************************************
 !                                                                      *
-      real(real64) FUNCTION CRE (KAP1, K, KAP2)
+      real(kind=real64) FUNCTION CRE (KAP1, K, KAP2)
 !-----------------------------------------------
 !                                                                      *
 !   Computes the relativistic reduced matrix element                   *
@@ -38,7 +38,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: K1
-      real(real64) :: DK1K2
+      real(kind=real64) :: DK1K2
 !-----------------------------------------------
 !
       K1 = ABS(KAP1)

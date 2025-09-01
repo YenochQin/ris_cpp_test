@@ -68,10 +68,10 @@
                  J12,JB1,JD1,ND1,ND2,NE1,NE2,N,NN,NU,NUP1,MU
       integer, dimension(4) :: J
       integer, dimension(4) :: IS,KAPS,KS
-      real(real64)          :: AA,AB,A1,BB,QM1,QM2,QM3,QM4,RAG,RECC,SI
-      real(real64), dimension(12) :: S
-      real(real64), dimension(30) :: PMGG
-      real(real64), dimension(12,20) :: COND,CONE
+      real(kind=real64)          :: AA,AB,A1,BB,QM1,QM2,QM3,QM4,RAG,RECC,SI
+      real(kind=real64), dimension(12) :: S
+      real(kind=real64), dimension(30) :: PMGG
+      real(kind=real64), dimension(12,20) :: COND,CONE
 !-----------------------------------------------
       if(NPEEL <= 3)return
       CALL RECO(JA,JD,JC,JB,3,IAT)

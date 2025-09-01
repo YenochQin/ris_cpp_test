@@ -11,17 +11,17 @@
       integer, intent(in) :: LIM
       integer, intent(in) :: MBLOCK
       integer, intent(in) :: KPASS
-      real(real64), intent(in) :: CRITR
+      real(kind=real64), intent(in) :: CRITR
       integer, INTENT(INOUT) :: NNCV
       integer, dimension(NUME), INTENT(INOUT) :: INCV
-      real(real64), dimension(LIM*NUME) :: SVEC
-      real(real64), dimension(LIM), intent(in) :: EIGVAL
-      real(real64), dimension(NUME), intent(in) :: OLDVAL
-      real(real64), dimension(N*LIM) :: AB
-      real(real64), dimension(N*LIM) :: BASIS
+      real(kind=real64), dimension(LIM*NUME) :: SVEC
+      real(kind=real64), dimension(LIM), intent(in) :: EIGVAL
+      real(kind=real64), dimension(NUME), intent(in) :: OLDVAL
+      real(kind=real64), dimension(N*LIM) :: AB
+      real(kind=real64), dimension(N*LIM) :: BASIS
       integer, dimension(NUME), intent(out) :: ICV
-      real(real64), dimension(LIM), INTENT(INOUT) :: SCRA1
-      real(real64), dimension(LIM), intent(out) :: EPSIL
+      real(kind=real64), dimension(LIM), INTENT(INOUT) :: SCRA1
+      real(kind=real64), dimension(LIM), intent(out) :: EPSIL
       logical, intent(out) :: DONE
 !VAST.../MPI/ MYID(IN)
 !VAST...Calls: DGEMV, DAXPY, DDOT

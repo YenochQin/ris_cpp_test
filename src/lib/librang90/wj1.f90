@@ -39,14 +39,14 @@
 !-----------------------------------------------
       integer,      intent(in)               :: K2
       integer,      intent(in), dimension(7) :: IK, ID
-      real(real64), intent(in)               :: QM1, QM2
-      real(real64), intent(in), dimension(3) :: BK, BD
-      real(real64), intent(out)              :: WJ
+      real(kind=real64), intent(in)               :: QM1, QM2
+      real(kind=real64), intent(in), dimension(3) :: BK, BD
+      real(kind=real64), intent(out)              :: WJ
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer      :: K1, IQ, IQM2
-      real(real64) :: A, QQ, W, WK1
+      real(kind=real64) :: A, QQ, W, WK1
 !-----------------------------------------------
       WJ=ZERO
       if(ID(3) == 9) then

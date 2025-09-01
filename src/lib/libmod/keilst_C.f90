@@ -5,6 +5,6 @@
 !                     Gediminas Gaigalas  10/05/17
       integer :: NDKEA, NKEI
       integer, dimension(:), pointer :: indkei
-      real(real64), dimension(:), pointer :: valkei
+      real(kind=real64), dimension(:), pointer :: valkei
       logical :: FRSTKI
       end module keilst_C

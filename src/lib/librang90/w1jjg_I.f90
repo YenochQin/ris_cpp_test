@@ -5,9 +5,9 @@
       use iso_fortran_env, only: real64, int32, int64, real128
       integer,      intent(in)               :: K1
       integer,      intent(in), dimension(7) :: IK, ID
-      real(real64), intent(in)               :: QM1, QM2
-      real(real64), intent(in), dimension(3) :: BK, BD
-      real(real64), intent(out)              :: WW
+      real(kind=real64), intent(in)               :: QM1, QM2
+      real(kind=real64), intent(in), dimension(3) :: BK, BD
+      real(kind=real64), intent(out)              :: WW
       end subroutine
       end interface
       end module

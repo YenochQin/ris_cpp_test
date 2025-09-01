@@ -9,7 +9,7 @@
       integer, intent(in) :: JB
       integer, intent(in) :: JF
       integer, intent(in) :: ITIK
-      real(real64), intent(out) :: SI
+      real(kind=real64), intent(out) :: SI
 !VAST.../CONSTS/ ZERO(IN), HALF(IN), ONE(IN), TWO(IN), THREE(IN)
 !VAST.../CONSTS/ EPS(IN)
 !VAST...Calls: IXJTIK, GRACAH1, SIXJ2, SIXJ3

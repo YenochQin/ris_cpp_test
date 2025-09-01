@@ -7,8 +7,8 @@
       use iso_fortran_env, only: real64, int32, int64, real128
       integer, intent(in) :: N
       integer, intent(in) :: M
-      real(real64), dimension(N,M), intent(in) :: B
-      real(real64), dimension(N,M), INTENT(INOUT) :: C
+      real(kind=real64), dimension(N,M), intent(in) :: B
+      real(kind=real64), dimension(N,M), INTENT(INOUT) :: C
 !VAST...Calls: DINIT, IENDC, EMT, DMERGE, IROW
       end subroutine
       end interface

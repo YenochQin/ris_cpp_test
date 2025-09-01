@@ -5,7 +5,7 @@
       use iso_fortran_env, only: real64, int32, int64, real128
       integer, intent(in)       :: JA1,JA2,JA3,JA4,K1,K2,K3,K4,KA,IRE
       integer, intent(out)      :: IAT
-      real(real64), intent(out) :: RECC
+      real(kind=real64), intent(out) :: RECC
       end subroutine
       end interface
       end module

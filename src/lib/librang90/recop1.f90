@@ -30,12 +30,12 @@
 !-----------------------------------------------
       integer, intent(in)       :: NS, JA1, KA, IRE
       integer, intent(out)      :: IAT
-      real(real64), intent(out) :: RECC
+      real(kind=real64), intent(out) :: RECC
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer      :: IJ1, ISKR, NPEELGG
-      real(real64) :: S, RE
+      real(kind=real64) :: S, RE
 !-----------------------------------------------
       IAT=1
       IJ1=JLIST(JA1)

@@ -38,16 +38,16 @@
 !-----------------------------------------------
       integer,      intent(in)               :: K2
       integer,      intent(in), dimension(7) :: IK, ID
-      real(real64), intent(in)               :: QM1, QM2, QM3, QM4
-      real(real64), intent(in), dimension(3) :: BK, BD
-      real(real64), intent(out)              :: WW
+      real(kind=real64), intent(in)               :: QM1, QM2, QM3, QM4
+      real(kind=real64), intent(in), dimension(3) :: BK, BD
+      real(kind=real64), intent(out)              :: WW
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: KK2,KK6,IQ,IQM,IQ3,IQ4,IE,IE1,IT,ITP,ITG,IBTT
       integer, dimension(7)      :: IBT
-      real(real64)               :: ENQP, D1, W
-      real(real64), dimension(3) :: BT
+      real(kind=real64)               :: ENQP, D1, W
+      real(kind=real64), dimension(3) :: BT
 !-----------------------------------------------
       WW=ZERO
       if(ID(6) /= IK(6))return

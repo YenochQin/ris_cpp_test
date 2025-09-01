@@ -32,16 +32,16 @@
 !-----------------------------------------------
       integer,      intent(in)               :: K1
       integer,      intent(in), dimension(7) :: IK, ID
-      real(real64), intent(in)               :: QM1, QM2
-      real(real64), intent(in), dimension(3) :: BK, BD
-      real(real64), intent(out)              :: WW
+      real(kind=real64), intent(in)               :: QM1, QM2
+      real(kind=real64), intent(in), dimension(3) :: BK, BD
+      real(kind=real64), intent(out)              :: WW
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: KK1,IQ,IQM,IE,IT,ITK,ITD,ITP,ITP1,ITG,ITG1,IBTT
       integer,      dimension(7) :: IBT
-      real(real64)               :: ENQP, D1, SI1, W
-      real(real64), dimension(3) :: BT
+      real(kind=real64)               :: ENQP, D1, SI1, W
+      real(kind=real64), dimension(3) :: BT
 !-----------------------------------------------
       WW=ZERO
       if(IZAS1(ID(7),BD(3),IK(7),BK(3)) == 0)return

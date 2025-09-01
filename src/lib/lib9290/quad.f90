@@ -38,12 +38,12 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64) , intent(out) :: RESULT
+      real(kind=real64) , intent(out) :: RESULT
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: MTPM1, I, IP1, LOC
-      real(real64) :: TAI, TAIP1, QUOTT, FRIP1, FRI, RATIO, RIP1, RI, SIGMA
+      real(kind=real64) :: TAI, TAIP1, QUOTT, FRIP1, FRI, RATIO, RIP1, RI, SIGMA
 !-----------------------------------------------
 !
 !

@@ -8,11 +8,11 @@
       use parameter_def, only: NNNP
       integer, intent(in) :: N
       integer, intent(in) :: KAPPA
-      real(real64), intent(in) :: Z
-      real(real64), intent(out) :: E
-      real(real64), intent(out) :: RG0
-      real(real64), dimension(NNNP), INTENT(INOUT) :: RG
-      real(real64), dimension(NNNP), intent(out) :: RF
+      real(kind=real64), intent(in) :: Z
+      real(kind=real64), intent(out) :: E
+      real(kind=real64), intent(out) :: RG0
+      real(kind=real64), dimension(NNNP), INTENT(INOUT) :: RG
+      real(kind=real64), dimension(NNNP), intent(out) :: RF
       integer, intent(out) :: MTP
 !VAST.../DEF2/ C(IN)
 !VAST.../DEF4/ ACCY(IN)

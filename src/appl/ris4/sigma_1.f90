@@ -1,6 +1,5 @@
 !***********************************************************************
 !                                                                      *
-      subroutine SIGMA_1 (IPAR,I1,I2,APART)
 !                                                                      *
 !   This  routine computes                                             *
 !   [-kappa_a || sigma^(1) ||kappa_b]  if IPAR = 1                     *
@@ -26,12 +25,12 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer, intent(in) :: IPAR, I1, I2
-      real(real64), intent(out) :: APART
+      real(kind=real64), intent(out) :: APART
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: L1, L2, KAP1, KAP2, J1, J2, L1_TILDA
-      real(real64) :: RAC
+      real(kind=real64) :: RAC
 !-----------------------------------------------
 !
 !   Set KAP1 and KAP2

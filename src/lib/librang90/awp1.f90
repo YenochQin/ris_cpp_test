@@ -37,16 +37,16 @@
 !-----------------------------------------------
       integer,      intent(in)               :: K1
       integer,      intent(in), dimension(7) :: IK, ID
-      real(real64), intent(in)               :: BK2, QM1, QM2, QM3
-      real(real64), intent(in), dimension(3) :: BK, BD
-      real(real64), intent(out)              :: AW
+      real(kind=real64), intent(in)               :: BK2, QM1, QM2, QM3
+      real(kind=real64), intent(in), dimension(3) :: BK, BD
+      real(kind=real64), intent(out)              :: AW
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: KK1, KK2, IE, IQ, IQ2, IQ3, IQM, IT, ITP, ITG, IBTT
       integer,      dimension(7) :: IBT
-      real(real64)               :: ENQP, D1, S, SI, W
-      real(real64), dimension(3) :: BT
+      real(kind=real64)               :: ENQP, D1, S, SI, W
+      real(kind=real64), dimension(3) :: BT
 !-----------------------------------------------
       AW=ZERO
       if(ID(3) == 9) then

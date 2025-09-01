@@ -6,13 +6,13 @@
       use iso_fortran_env, only: real64, int32, int64, real128
       use parameter_def,   ONLY: NNNW, NNNP
       use prnt_C,          ONLY : NVEC
-      real(real64), dimension(NNNW,NNNW), intent(in) :: DINT1
-      real(real64), dimension(NNNW,NNNW), intent(in) :: DINT2
-      real(real64), dimension(NNNW,NNNW), intent(in) :: DINT3
-      real(real64), dimension(NNNW,NNNW), intent(in) :: DINT4
-      real(real64), dimension(NNNW,NNNW), intent(in) :: DINT5
-      real(real64), dimension(NNNW,NNNW), intent(in) :: DINT6
-      real(real64), dimension(NNNW,NNNW), intent(in) :: DINT7
+      real(kind=real64), dimension(NNNW,NNNW), intent(in) :: DINT1
+      real(kind=real64), dimension(NNNW,NNNW), intent(in) :: DINT2
+      real(kind=real64), dimension(NNNW,NNNW), intent(in) :: DINT3
+      real(kind=real64), dimension(NNNW,NNNW), intent(in) :: DINT4
+      real(kind=real64), dimension(NNNW,NNNW), intent(in) :: DINT5
+      real(kind=real64), dimension(NNNW,NNNW), intent(in) :: DINT6
+      real(kind=real64), dimension(NNNW,NNNW), intent(in) :: DINT7
       integer, intent(in) :: DOIT
       end subroutine
       end interface

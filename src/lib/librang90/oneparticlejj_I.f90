@@ -8,7 +8,7 @@
 !GG      parameter (NNNW = 214)
       integer, intent(in)  :: KA,IOPAR,JA,JB
       integer, intent(out) :: IA1,IA2
-      real(real64), dimension(NNNW), intent(out) :: VSHELL
+      real(kind=real64), dimension(NNNW), intent(out) :: VSHELL
       end subroutine
       end interface
       end module

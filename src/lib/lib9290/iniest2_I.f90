@@ -8,8 +8,8 @@
       integer, intent(in) :: NMAX
       integer, intent(in) :: NCF
       integer, intent(in) :: NIV
-      real(real64), dimension(*) :: BASIS
-      real(real64), dimension(*), intent(in) :: HMX
+      real(kind=real64), dimension(*) :: BASIS
+      real(kind=real64), dimension(*), intent(in) :: HMX
       integer, dimension(0:*), intent(in) :: JCOL
       integer, dimension(*), intent(in) :: IROW
 !VAST...Calls: ALLOC, DINIT, DSPEVX, DCOPY, DALLOC

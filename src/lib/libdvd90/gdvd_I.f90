@@ -10,19 +10,19 @@
       EXTERNAL OP
       integer, intent(in) :: N
       integer, intent(in) :: LIM
-      real(real64), dimension(N), INTENT(INOUT) :: DIAG
+      real(kind=real64), dimension(N), INTENT(INOUT) :: DIAG
       integer :: ILOW
       integer :: IHIGH
       integer, dimension(LIM) :: ISELEC
       integer, intent(in) :: NIV
       integer :: MBLOCK
-      real(real64) :: CRITE
-      real(real64) :: CRITC
-      real(real64) :: CRITR
-      real(real64) :: ORTHO
+      real(kind=real64) :: CRITE
+      real(kind=real64) :: CRITC
+      real(kind=real64) :: CRITR
+      real(kind=real64) :: ORTHO
 !VAST...Dummy argument ORTHO is not referenced in this routine.
       integer :: MAXITER
-      real(real64), dimension(IWRSZ), INTENT(INOUT) :: WORK
+      real(kind=real64), dimension(IWRSZ), INTENT(INOUT) :: WORK
       integer, intent(in) :: IWRSZ
       integer, dimension(IIWSZ), intent(in) :: IWORK
       integer, intent(in) :: IIWSZ

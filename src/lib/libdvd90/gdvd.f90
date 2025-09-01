@@ -37,21 +37,21 @@
       integer  :: NLOOPS
       integer, intent(out) :: NMV
       integer  :: IERR
-      real(real64)  :: CRITE
-      real(real64)  :: CRITC
-      real(real64)  :: CRITR
-      real(real64)  :: ORTHO
+      real(kind=real64)  :: CRITE
+      real(kind=real64)  :: CRITC
+      real(kind=real64)  :: CRITR
+      real(kind=real64)  :: ORTHO
       logical  :: HIEND
       integer  :: ISELEC(LIM)
       integer  :: IWORK(IIWSZ)
-      real(real64), dimension(N), INTENT(INOUT) :: DIAG
-      real(real64)  :: WORK(IWRSZ)
+      real(kind=real64), dimension(N), INTENT(INOUT) :: DIAG
+      real(kind=real64)  :: WORK(IWRSZ)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer, dimension(7) :: IREV
       integer :: NOC, IRC, NB, IW1, IW2, IW3, IIW, IIN, IW4, ICUR, I, INDX, J
-      real(real64) :: VALUE, OVALUE, RNORM, EPSIL
+      real(kind=real64) :: VALUE, OVALUE, RNORM, EPSIL
 !
 !**********************************************************************
 !  NOC = number of orthogonalization constraints

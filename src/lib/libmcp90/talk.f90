@@ -28,7 +28,7 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer, intent(in) :: JA, JB, NU, IA, IB, IC, ID, ITYPE
-      real(real64), intent(in) :: COEF
+      real(kind=real64), intent(in) :: COEF
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------

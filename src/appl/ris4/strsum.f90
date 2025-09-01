@@ -1,5 +1,6 @@
 !***********************************************************************
 !                                                                      *
+      use iso_fortran_env, only: real64
       subroutine STRSUM
 !                                                                      *
 !   Generates the first part of  grasp92.sum  (on stream 24).          *

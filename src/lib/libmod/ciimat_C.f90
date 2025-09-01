@@ -4,5 +4,5 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       integer, parameter :: NLMAX = 20
-      real(real64), dimension(20*NLMAX*NLMAX) :: CICI
+      real(kind=real64), dimension(20*NLMAX*NLMAX) :: CICI
       end module ciimat_C

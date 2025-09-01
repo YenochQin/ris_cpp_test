@@ -4,8 +4,8 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       integer :: NBLOCK  !! NCFBLK as an integer needs to be renamed
-!     real(real64) :: PNCFBLK
-!     real(real64) :: PNEVBLK, PNCMAXBLK
+!     real(kind=real64) :: PNCFBLK
+!     real(kind=real64) :: PNEVBLK, PNCMAXBLK
       integer, dimension(:), pointer :: ncfblk  !! this is a problem
       integer, dimension(:), pointer :: nevblk, ncmaxblk
       end module hblock_C

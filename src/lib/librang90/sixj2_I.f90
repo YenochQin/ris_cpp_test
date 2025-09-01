@@ -9,7 +9,7 @@
       integer, intent(in) :: M
       integer, intent(in) :: N
       integer, intent(in) :: ITIK
-      real(real64), intent(out) :: SI
+      real(kind=real64), intent(out) :: SI
 !VAST.../CONSTS/ ZERO(IN), HALF(IN), ONE(IN), TWO(IN), THREE(IN)
 !VAST.../CONSTS/ FOUR(IN)
 !VAST...Calls: IXJTIK

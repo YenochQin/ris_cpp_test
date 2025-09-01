@@ -1,6 +1,5 @@
 !***********************************************************************
 !                                                                      *
-      real(real64) FUNCTION RINTDENS (I, J)
 !                                                                      *
 !   The value of RINTDENS is an approximation to:                      *
 !                                                                      *
@@ -36,8 +35,8 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: L, II, NMIN
-      real(real64), dimension(3) :: XA, YA
-      real(real64) :: DENS
+      real(kind=real64), dimension(3) :: XA, YA
+      real(kind=real64) :: DENS
 !-----------------------------------------------
 !
       NMIN = 10

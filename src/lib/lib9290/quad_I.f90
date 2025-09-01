@@ -5,7 +5,7 @@
 !                     Gediminas Gaigalas  10/05/17
       subroutine quad (RESULT)
       use iso_fortran_env, only: real64, int32, int64, real128
-      real(real64), intent(out) :: RESULT
+      real(kind=real64), intent(out) :: RESULT
 !VAST.../GRID/ R(IN), RP(IN)
 !VAST.../NCC/ C1(IN), C2(IN), C3(IN), C4(IN)
 !VAST.../TATB/ TA(INOUT), MTP(IN)

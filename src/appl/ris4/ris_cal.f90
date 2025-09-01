@@ -1,6 +1,5 @@
 !***********************************************************************
 !                                                                      *
-      subroutine RIS_CAL (NAME)
 !                                                                      *
 !   This routine controls the main sequence of routine calls for the   *
 !   calculation  of the MS parameters, the electron density at the     *
@@ -62,25 +61,25 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       character*24, intent(in) :: NAME
-!      real(real64), intent(in) :: DR2
+!      real(kind=real64), intent(in) :: DR2
 !      integer, intent(in)      :: NOPAR
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      real(real64), dimension(:,:,:), pointer :: DINT1VEC
-      real(real64), dimension(:,:), pointer   :: DENS1VEC
-      real(real64), dimension(:), pointer     :: DENSFIT
-      real(real64), dimension(:,:), pointer     :: FMAT
-      real(real64), dimension(:), pointer     :: RHO
-      real(real64), dimension(:), pointer     :: RES
+      real(kind=real64), dimension(:,:,:), pointer :: DINT1VEC
+      real(kind=real64), dimension(:,:), pointer   :: DENS1VEC
+      real(kind=real64), dimension(:), pointer     :: DENSFIT
+      real(kind=real64), dimension(:,:), pointer     :: FMAT
+      real(kind=real64), dimension(:), pointer     :: RHO
+      real(kind=real64), dimension(:), pointer     :: RES
 
 
-      real(real64), dimension(NNNW)      :: TSHELL
-      real(real64), dimension(NNNW,NNNW) :: VINT, VINT2
-      real(real64), dimension(NNNW,NNNW) :: DINT1, DINT2, DINT3, &
+      real(kind=real64), dimension(NNNW)      :: TSHELL
+      real(kind=real64), dimension(NNNW,NNNW) :: VINT, VINT2
+      real(kind=real64), dimension(NNNW,NNNW) :: DINT1, DINT2, DINT3, &
                                             DINT4, DINT5, DINT6, &
                                             DINT7
-      real(real64) :: AU2FM, RCRE, HzSMSu, HzNMSu, FO90
+      real(kind=real64) :: AU2FM, RCRE, HzSMSu, HzNMSu, FO90
       character*11 :: CNUM
       character*2  :: CK
       logical :: VSH, NUCDE, SMSSH, YES, YES2, AVAIL_TB, AVAIL_OB

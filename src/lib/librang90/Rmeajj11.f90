@@ -23,12 +23,12 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer,      intent(in)  :: LL, J1, J2
-      real(real64), intent(out) :: S
+      real(kind=real64), intent(out) :: S
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer      :: LQ, LV, LQS, LVS, J, J1S, N, INN
-      real(real64) :: A1, A4, Q, QQ, QS, QM, QMS
+      real(kind=real64) :: A1, A4, Q, QQ, QS, QM, QMS
 !-----------------------------------------------
       S=ZERO
       CALL RUMTJJ(J1,LL,LQ,LV,J)

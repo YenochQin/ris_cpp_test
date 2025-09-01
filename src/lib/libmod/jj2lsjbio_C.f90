@@ -10,7 +10,7 @@
 !***********************************************************************
       use iso_fortran_env, only: real64, int32, int64, real128
 !
-      real(real64), dimension(:), pointer :: RLev_ENER_1,RLev_ENER_2
+      real(kind=real64), dimension(:), pointer :: RLev_ENER_1,RLev_ENER_2
       character(LEN=64), pointer, dimension(:) :: string_CSF1
       character(LEN=64), pointer, dimension(:) :: string_CSF2
       integer :: NVECTOTI,NVECTOTF,IOPEN_STATUS1,IOPEN_STATUS2

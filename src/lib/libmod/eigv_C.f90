@@ -8,7 +8,7 @@
 !...Created by Pacific-Sierra Research 77to90  4.3E  07:38:02   1/ 6/07
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
-      real(real64) :: EAV, EAVFF, EAVII
-      real(real64), dimension(:), pointer :: EVAL, EVALFF, EVALII
-      real(real64), dimension(:), pointer :: EVEC, EVECFF, EVECII
+      real(kind=real64) :: EAV, EAVFF, EAVII
+      real(kind=real64), dimension(:), pointer :: EVAL, EVALFF, EVALII
+      real(kind=real64), dimension(:), pointer :: EVEC, EVECFF, EVECII
       end module eigv_C

@@ -14,11 +14,11 @@
       integer, intent(in) :: NUME
       integer, intent(in) :: LIM
       logical, intent(in) :: HIEND
-      real(real64), dimension(*) :: SCRA1
-      real(real64), dimension(N*(NOC + LIM)) :: ORTHOBASIS
-      real(real64), dimension(N*LIM) :: BASIS
-      real(real64), dimension(N*LIM) :: AB
-      real(real64), dimension(*) :: S
+      real(kind=real64), dimension(*) :: SCRA1
+      real(kind=real64), dimension(N*(NOC + LIM)) :: ORTHOBASIS
+      real(kind=real64), dimension(N*LIM) :: BASIS
+      real(kind=real64), dimension(N*LIM) :: AB
+      real(kind=real64), dimension(*) :: S
 !VAST...Calls: DINIT, DCOPY, MGS_NRM, DSCAL, ADDS
       end subroutine
       end interface

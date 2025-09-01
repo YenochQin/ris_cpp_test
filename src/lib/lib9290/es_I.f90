@@ -5,9 +5,9 @@
 !                     Gediminas Gaigalas  10/05/17
       subroutine es (F, S2F, S3F)
       use iso_fortran_env, only: real64, int32, int64, real128
-      real(real64), intent(in) :: F
-      real(real64), intent(out) :: S2F
-      real(real64), intent(out) :: S3F
+      real(kind=real64), intent(in) :: F
+      real(kind=real64), intent(out) :: S2F
+      real(kind=real64), intent(out) :: S3F
       end subroutine
       end interface
       end module

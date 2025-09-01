@@ -63,10 +63,10 @@
                  NE2,N,NN,NU,NUP1,MU
       integer, dimension(3) :: J
       integer, dimension(4) :: IS,KAPS,KS
-      real(real64)          :: A1,AA,AB,BB,QM1,QM2,QM3,QM4,RAG,RECC,SI
-      real(real64), dimension(12) :: S
-      real(real64), dimension(30) :: PMGG,RAGG
-      real(real64), dimension(12,20) :: CONE
+      real(kind=real64)          :: A1,AA,AB,BB,QM1,QM2,QM3,QM4,RAG,RECC,SI
+      real(kind=real64), dimension(12) :: S
+      real(kind=real64), dimension(30) :: PMGG,RAGG
+      real(kind=real64), dimension(12,20) :: CONE
 !-----------------------------------------------
       if(NPEEL <= 1)return
       CALL EILE(JA,JB,JC,JAA,JBB,JCC)

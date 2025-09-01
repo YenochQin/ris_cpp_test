@@ -5,5 +5,5 @@
 !                     Gediminas Gaigalas  10/05/17
       integer :: NCOEFF, NINTG
       integer, dimension(:), pointer :: jann, jbnn, intgrl, intptr
-      real(real64), dimension(:), pointer :: cnn
+      real(kind=real64), dimension(:), pointer :: cnn
       end module mcpdata_C

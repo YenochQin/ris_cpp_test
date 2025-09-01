@@ -9,9 +9,9 @@
       integer, intent(in) :: LIM
       integer, intent(in) :: KPASS
       integer, intent(in) :: NNCV
-      real(real64), dimension(N*LIM) :: BASIS
-      real(real64), dimension(N*LIM) :: AB
-      real(real64), dimension(LIM*(LIM + 1)/2), intent(out) :: S
+      real(kind=real64), dimension(N*LIM) :: BASIS
+      real(kind=real64), dimension(N*LIM) :: AB
+      real(kind=real64), dimension(LIM*(LIM + 1)/2), intent(out) :: S
 !VAST...Calls: DDOT
       end subroutine
       end interface

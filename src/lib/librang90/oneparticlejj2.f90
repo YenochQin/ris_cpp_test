@@ -37,13 +37,13 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer, intent(in)       :: NS,KA,JA,JB
-      real(real64), intent(out) :: COEFF
+      real(kind=real64), intent(out) :: COEFF
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer      :: I,IA,IB,IAT,IJ,ifAZ,IQMM1,IQMM2,JIBKS1,JIB, &
                       KS1,KS2
-      real(real64) :: REC,A1,A2,A3,S1,S2,QM1,QM2
+      real(kind=real64) :: REC,A1,A2,A3,S1,S2,QM1,QM2
 !-----------------------------------------------
 !
 !     THE CASE 12   + -

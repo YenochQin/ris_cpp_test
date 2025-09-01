@@ -1,6 +1,5 @@
 !***********************************************************************
 !                                                                      *
-      subroutine GETSMD(NAME)
 !                                                                      *
 !   Interactively determines the data governing the SMS problem.       *
 !                                                                      *

@@ -8,8 +8,8 @@
       integer, intent(in) :: N
       integer, intent(in) :: KP
       integer, intent(in) :: NEW
-      real(real64), dimension(NEW), intent(in) :: SCRA
-      real(real64), dimension((KP + NEW)*N), INTENT(INOUT) :: B
+      real(kind=real64), dimension(NEW), intent(in) :: SCRA
+      real(kind=real64), dimension((KP + NEW)*N), INTENT(INOUT) :: B
 !VAST...Calls: DGEMV, DDOT, DSCAL
       end subroutine
       end interface

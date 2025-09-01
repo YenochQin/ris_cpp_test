@@ -35,8 +35,8 @@
 !-----------------------------------------------
       integer, intent(in) :: MA
       integer  :: J
-      real(real64), intent(out) :: DNORM
-      real(real64), dimension(*), intent(in) :: PA, QA, RA
+      real(kind=real64), intent(out) :: DNORM
+      real(kind=real64), dimension(*), intent(in) :: PA, QA, RA
 !-----------------------------------------------
 !   L o c a l   P a r a m e t e r s
 !-----------------------------------------------
@@ -46,10 +46,10 @@
 !-----------------------------------------------
       integer :: I, MFJ, NRSTLO, KOUNT, IROW, K, NRSTHI, LLO, LHI, LOCNXT, &
          ILIROK, ILDIAG, ILOTHR, MFJP1
-      real(real64) :: RAMA
-      real(real64), dimension(MXORD) :: X, DX
-      real(real64), dimension((MXORD*(MXORD + 1))/2) :: POLYP, POLYQ
-      real(real64) :: RN, XBAR, PESTL, QESTL, DifF, DifFT, DXKMN1, DXIROW, &
+      real(kind=real64) :: RAMA
+      real(kind=real64), dimension(MXORD) :: X, DX
+      real(kind=real64), dimension((MXORD*(MXORD + 1))/2) :: POLYP, POLYQ
+      real(kind=real64) :: RN, XBAR, PESTL, QESTL, DifF, DifFT, DXKMN1, DXIROW, &
          FACTOR, PESTT, QESTT, DPBP, DQBQ, DNFAC
       logical :: SET
       logical, dimension(NNNP) :: useD

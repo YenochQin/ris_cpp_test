@@ -7,12 +7,12 @@
       use iso_fortran_env, only: real64, int32, int64, real128
       integer MXORD
       parameter (MXORD = 11)
-      real(real64), dimension(NARR), intent(in) :: XARR
-      real(real64), dimension(NARR), intent(in) :: YARR
+      real(kind=real64), dimension(NARR), intent(in) :: XARR
+      real(kind=real64), dimension(NARR), intent(in) :: YARR
       integer, intent(in) :: NARR
-      real(real64), intent(in) :: XVAL
-      real(real64), intent(out) :: YVAL
-      real(real64), intent(in) :: ACCY
+      real(kind=real64), intent(in) :: XVAL
+      real(kind=real64), intent(out) :: YVAL
+      real(kind=real64), intent(in) :: ACCY
 !...This routine performs I/O.
       end subroutine
       end interface

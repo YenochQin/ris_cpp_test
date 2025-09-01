@@ -6,10 +6,10 @@
       subroutine draw (P, SP, Q, SQ, MF)
       use iso_fortran_env, only: real64, int32, int64, real128
       use parameter_def, only: NNNP
-      real(real64), dimension(NNNP), intent(in) :: P
-      real(real64), intent(in) :: SP
-      real(real64), dimension(NNNP), intent(in) :: Q
-      real(real64), intent(in) :: SQ
+      real(kind=real64), dimension(NNNP), intent(in) :: P
+      real(kind=real64), intent(in) :: SP
+      real(kind=real64), dimension(NNNP), intent(in) :: Q
+      real(kind=real64), intent(in) :: SQ
       integer, intent(in) :: MF
 !VAST.../GRID/ R(IN), N(IN)
 !...This routine performs I/O.

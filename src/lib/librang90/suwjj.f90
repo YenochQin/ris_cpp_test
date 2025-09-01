@@ -30,13 +30,13 @@
 !-----------------------------------------------
       integer,      intent(in)  :: K1, K2, J1, J2
       integer,      intent(out) :: LL
-      real(real64), intent(out) :: SUW
+      real(kind=real64), intent(out) :: SUW
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: KK1,KK2,I,IP,IG,L2Q1,L2V1,L2J1,L2Q2,L2V2,L2J2, &
                  L2QI,L2VI,L2JI
-      real(real64) :: COEF1, COEF2, S, SI1, SI2
+      real(kind=real64) :: COEF1, COEF2, S, SI1, SI2
 !-----------------------------------------------
       SUW=ZERO
       if(IMPTJJ(J1) /= IMPTJJ(J2)) return

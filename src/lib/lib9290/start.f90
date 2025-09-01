@@ -40,17 +40,17 @@
 !-----------------------------------------------
       integer  :: IORB
       integer, intent(in) :: ITYPE
-      real(real64), intent(in) :: P0
-      real(real64), intent(out) :: Q0
-      real(real64), dimension(NNNP), INTENT(INOUT) :: P
-      real(real64), dimension(NNNP), INTENT(INOUT) :: Q
+      real(kind=real64), intent(in) :: P0
+      real(kind=real64), intent(out) :: Q0
+      real(kind=real64), dimension(NNNP), INTENT(INOUT) :: P
+      real(kind=real64), dimension(NNNP), INTENT(INOUT) :: Q
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: MXITER=36, KIORB, I, JORB, NITER, J
-      real(real64), dimension(6) :: RDP, RDQ, RSEP, RSEQ
-      real(real64), dimension(2:6) :: SPEST, SQEST
-      real(real64) :: OBC, ZONC, GIORB, FKIORB, OMGI, OMGMK, OMGPK, RSEP1, &
+      real(kind=real64), dimension(6) :: RDP, RDQ, RSEP, RSEQ
+      real(kind=real64), dimension(2:6) :: SPEST, SQEST
+      real(kind=real64) :: OBC, ZONC, GIORB, FKIORB, OMGI, OMGMK, OMGPK, RSEP1, &
          RSEQ1, PZERO, P1, Q1, SUMP, SUMQ, FACTOR, CSQ, TWOCSQ, ENERGY, ENEFAC&
          , RI, RPI, RIRPI, YPIRPI, DifMAW, DifMAX, COEFIJ, PI, QI, RJ
 !-----------------------------------------------

@@ -7,8 +7,8 @@
       integer,      intent(out)               :: ITP, ITG
       integer,      intent(in),  dimension(7) :: IK, ID
       integer,      intent(out), dimension(7) :: IBT
-      real(real64), intent(in),  dimension(3) :: BK, BD
-      real(real64), intent(out), dimension(3) :: BT
+      real(kind=real64), intent(in),  dimension(3) :: BK, BD
+      real(kind=real64), intent(out), dimension(3) :: BT
       END FUNCTION
       end interface
       end module

@@ -25,14 +25,14 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64), intent(in) :: F
-      real(real64), intent(out) :: S2F
-      real(real64), intent(out) :: S3F
+      real(kind=real64), intent(in) :: F
+      real(kind=real64), intent(out) :: S2F
+      real(kind=real64), intent(out) :: S3F
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: N
-      real(real64) :: FASE, EN, OBN, ENF, TERM2, TERM3, S2LAST
+      real(kind=real64) :: FASE, EN, OBN, ENF, TERM2, TERM3, S2LAST
 !-----------------------------------------------
 !
       N = 0

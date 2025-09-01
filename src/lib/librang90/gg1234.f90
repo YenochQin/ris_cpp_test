@@ -39,14 +39,14 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer,      intent(in), dimension(7) :: IK1,IK2,IK3,IK4,ID1,ID2,ID3,ID4
-      real(real64), intent(in)               :: QM1,QM2,QM3,QM4
-      real(real64), intent(in), dimension(3) :: BK1,BK2,BK3,BK4,BD1,BD2,BD3,BD4
-      real(real64), intent(out)              :: WW
+      real(kind=real64), intent(in)               :: QM1,QM2,QM3,QM4
+      real(kind=real64), intent(in), dimension(3) :: BK1,BK2,BK3,BK4,BD1,BD2,BD3,BD4
+      real(kind=real64), intent(out)              :: WW
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: IQMM1, IQMM2, IQMM3, IQMM4
-      real(real64) :: A1, C, C1, S, V, Z
+      real(kind=real64) :: A1, C, C1, S, V, Z
 !-----------------------------------------------
       WW=ZERO
       if(IK1(3) > 9) then

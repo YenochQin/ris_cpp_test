@@ -1,6 +1,5 @@
 !***********************************************************************
 !                                                                      *
-      subroutine ENGOUT(EAV, E, JTOT, IPAR, ILEV, NN, MODE)
 !                                                                      *
 !   This  subroutine prints  energy levels, splittings, and energies   *
 !   relative to the lowest in  Hartrees, Kaysers, and  eV, using the   *
@@ -28,16 +27,16 @@
 !-----------------------------------------------
       integer, intent(in) :: NN
       integer, intent(in) :: MODE
-      real(real64), intent(in) :: EAV
+      real(kind=real64), intent(in) :: EAV
       integer, intent(in) :: JTOT(NN)
       integer, intent(in) :: IPAR(NN)
       integer, intent(in) :: ILEV(NN)
-      real(real64), intent(in) :: E(NN)
+      real(kind=real64), intent(in) :: E(NN)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer      :: J, I, IP
-      real(real64) :: EAU, ECM, EEV
+      real(kind=real64) :: EAU, ECM, EEV
 !-----------------------------------------------
 !
 !   Always print the eigenenergies

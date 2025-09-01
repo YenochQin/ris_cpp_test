@@ -34,7 +34,7 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: I, K, IROW, LOC
-      real(real64) :: A1, A2, A3, A4, A5, A6, HDPBDT, HDQBDT, AIK
+      real(kind=real64) :: A1, A2, A3, A4, A5, A6, HDPBDT, HDQBDT, AIK
 !-----------------------------------------------
 !
 

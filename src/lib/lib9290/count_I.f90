@@ -6,10 +6,10 @@
       subroutine count (FR, MTPFR, NNCFF, SGN)
       use iso_fortran_env, only: real64, int32, int64, real128
       use parameter_def,    only: NNNP
-      real(real64), dimension(NNNP), intent(in) :: FR
+      real(kind=real64), dimension(NNNP), intent(in) :: FR
       integer, intent(in) :: MTPFR
       integer, intent(out) :: NNCFF
-      real(real64), intent(out) :: SGN
+      real(kind=real64), intent(out) :: SGN
 !VAST.../COUN/ THRESH(IN)
 !VAST.../DEF4/ ACCY(IN)
       end subroutine

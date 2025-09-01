@@ -8,10 +8,10 @@
       use parameter_def,   only: NNNP
       integer, intent(in) :: IORB
       integer, intent(in) :: ITYPE
-      real(real64), intent(in) :: P0
-      real(real64), dimension(NNNP), INTENT(INOUT) :: P
-      real(real64), intent(out) :: Q0
-      real(real64), dimension(NNNP), INTENT(INOUT) :: Q
+      real(kind=real64), intent(in) :: P0
+      real(kind=real64), dimension(NNNP), INTENT(INOUT) :: P
+      real(kind=real64), intent(out) :: Q0
+      real(kind=real64), dimension(NNNP), INTENT(INOUT) :: Q
 !VAST.../CNC6/ CNC6C(IN)
 !VAST.../DEF1/ Z(IN)
 !VAST.../DEF2/ C(IN)

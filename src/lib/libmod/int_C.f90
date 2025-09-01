@@ -5,7 +5,7 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       integer :: MTP0
-      real(real64), dimension(NNNP) :: P, Q
-      real(real64) :: P0, Q0
-      real(real64), dimension(NNNP) :: TF, TG, XU, XV
+      real(kind=real64), dimension(NNNP) :: P, Q
+      real(kind=real64) :: P0, Q0
+      real(kind=real64), dimension(NNNP) :: TF, TG, XU, XV
       end module int_C

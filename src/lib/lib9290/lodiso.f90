@@ -21,7 +21,7 @@
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      real(real64) :: A, APARM, CPARM, EMNAMU
+      real(kind=real64) :: A, APARM, CPARM, EMNAMU
 !
 !   Read and echo pertinent information from  .iso  file
 !

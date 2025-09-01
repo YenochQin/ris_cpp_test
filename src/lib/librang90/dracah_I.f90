@@ -11,7 +11,7 @@
       integer, intent(in) :: L
       integer, intent(in) :: M
       integer, intent(in) :: N
-      real(real64), intent(out) :: RAC
+      real(kind=real64), intent(out) :: RAC
 !VAST.../FACTS/ GAM(IN)
       end subroutine
       end interface

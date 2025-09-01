@@ -5,5 +5,5 @@
 !                     Gediminas Gaigalas  10/05/17
       integer :: NBDIM, NVCOEF
       integer, dimension(:,:), pointer :: label
-      real(real64), dimension(:), pointer :: coeff
+      real(kind=real64), dimension(:), pointer :: coeff
       end module buffer_C

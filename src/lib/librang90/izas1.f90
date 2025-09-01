@@ -19,7 +19,7 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer,      intent(in) :: IB, IK
-      real(real64), intent(in) :: QB, QK
+      real(kind=real64), intent(in) :: QB, QK
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

@@ -5,9 +5,9 @@
 !                     Gediminas Gaigalas  11/02/17
       subroutine polint (XA, YA, DENS)
       use iso_fortran_env, only: real64, int32, int64, real128
-      real(real64), dimension(3), intent(in) :: XA
-      real(real64), dimension(3), intent(in) :: YA
-      real(real64), intent(out) :: DENS
+      real(kind=real64), dimension(3), intent(in) :: XA
+      real(kind=real64), dimension(3), intent(in) :: YA
+      real(kind=real64), intent(out) :: DENS
       end subroutine
       end interface
       end module

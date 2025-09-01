@@ -1,6 +1,5 @@
 !************************************************************************
 !
-subroutine POLINT(XA,YA,DENS)
 !                                                                             *
 !   This routine uses interpolating polynomial d(r) = d0 + d2*r^2 + d4*r^4    *
 !   to extrapolate electron density at r = 0.                                 *
@@ -18,15 +17,15 @@ subroutine POLINT(XA,YA,DENS)
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       IMPLICIT NONE
-      real(real64), intent(out) :: DENS
-      real(real64), dimension(3),  intent(in) :: XA, YA
+      real(kind=real64), intent(out) :: DENS
+      real(kind=real64), dimension(3),  intent(in) :: XA, YA
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      real(real64), dimension(3,3) :: M, MI
-      real(real64), dimension(3) :: RM, PM
+      real(kind=real64), dimension(3,3) :: M, MI
+      real(kind=real64), dimension(3) :: RM, PM
 
-      real(real64) :: MDET
+      real(kind=real64) :: MDET
 !-----------------------------------------------
 
       RM(1) = YA(1)

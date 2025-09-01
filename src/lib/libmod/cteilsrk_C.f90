@@ -4,5 +4,5 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       integer, dimension(:), pointer :: indteirk
-      real(real64), dimension(:), pointer :: valteirk
+      real(kind=real64), dimension(:), pointer :: valteirk
       end module cteilsrk_C

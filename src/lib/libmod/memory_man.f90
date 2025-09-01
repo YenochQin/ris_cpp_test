@@ -146,7 +146,7 @@ module memory_man
 
    subroutine alloc_1r(p, n, var, sub)
      IMPLICIT NONE
-     real(real64), pointer, dimension(:) :: p
+     real(kind=real64), pointer, dimension(:) :: p
      integer, intent(in) :: n
      character(LEN=*), intent(in) :: var, sub
      integer :: error
@@ -194,7 +194,7 @@ module memory_man
 
    subroutine alloc_1rL(p, n, var, sub)
      IMPLICIT NONE
-     real(real64), pointer, dimension(:) :: p
+     real(kind=real64), pointer, dimension(:) :: p
      integer(int64), intent(in) :: n
      character(LEN=*), intent(in) :: var, sub
      integer :: error
@@ -567,7 +567,7 @@ module memory_man
 
    subroutine ralloc_1r(p, n, var, sub)
      IMPLICIT NONE
-     real(real64), pointer, dimension(:) :: p, pnew
+     real(kind=real64), pointer, dimension(:) :: p, pnew
      integer, intent(in) :: n
      character(LEN=*), intent(in) :: var, sub
      integer :: error, nold

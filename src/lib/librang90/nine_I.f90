@@ -14,7 +14,7 @@
       integer, intent(in) :: K3
       integer, intent(in) :: I
       integer, intent(out) :: IN
-      real(real64), INTENT(INOUT) :: AA
+      real(kind=real64), INTENT(INOUT) :: AA
 !VAST.../CONSTS/ ZERO(IN)
 !VAST...Calls: ITTK, NINE0, SIXJ
       end subroutine

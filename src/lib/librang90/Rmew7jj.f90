@@ -23,7 +23,7 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer,      intent(in)  :: J1, J2, K1, K2
-      real(real64), intent(out) :: COEF
+      real(kind=real64), intent(out) :: COEF
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

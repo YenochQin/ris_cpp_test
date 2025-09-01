@@ -10,14 +10,14 @@
       integer, intent(in) :: NUME
       integer, intent(in) :: NEIG
       integer, dimension(NEIG), intent(in) :: ISELEC
-      real(real64), dimension(KPASS*NUME), intent(in) :: SVEC
-      real(real64), dimension(NUME), intent(in) :: EIGVAL
+      real(kind=real64), dimension(KPASS*NUME), intent(in) :: SVEC
+      real(kind=real64), dimension(NUME), intent(in) :: EIGVAL
       integer, dimension(NUME), intent(out) :: ICV
-      real(real64), intent(in) :: CRITE
-      real(real64), intent(in) :: CRITC
-      real(real64), dimension(NEIG), INTENT(INOUT) :: ROWLAST
+      real(kind=real64), intent(in) :: CRITE
+      real(kind=real64), intent(in) :: CRITC
+      real(kind=real64), dimension(NEIG), INTENT(INOUT) :: ROWLAST
       integer, dimension(NEIG), INTENT(INOUT) :: IND
-      real(real64), dimension(NUME), intent(in) :: OLDVAL
+      real(kind=real64), dimension(NUME), intent(in) :: OLDVAL
       integer, INTENT(INOUT) :: NNCV
       integer, dimension(NEIG), intent(out) :: INCV
 !VAST.../MPI/ MYID(IN)

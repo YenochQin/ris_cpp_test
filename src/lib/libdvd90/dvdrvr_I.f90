@@ -18,22 +18,22 @@
       integer, intent(in) :: NIV
       integer, intent(in) :: NEIG
       integer, dimension(NEIG) :: ISELEC
-      real(real64) :: CRITE
-      real(real64) :: CRITC
-      real(real64) :: CRITR
+      real(kind=real64) :: CRITE
+      real(kind=real64) :: CRITC
+      real(kind=real64) :: CRITR
       integer, intent(in) :: MAXITER
-      real(real64), dimension(LIM), INTENT(INOUT) :: EIGVAL
-      real(real64), dimension(N*LIM) :: BASIS
-      real(real64), dimension(N*LIM + NOC*N) :: ORTHOBASIS
-      real(real64), dimension(N*LIM) :: AB
-      real(real64), dimension(LIM*(LIM + 1)/2) :: S
-      real(real64), dimension(LIM*(LIM + 1)/2) :: TEMPS
-      real(real64), dimension(LIM*LIM) :: SVEC
-      real(real64), dimension(8*LIM), INTENT(INOUT) :: SCRA1
+      real(kind=real64), dimension(LIM), INTENT(INOUT) :: EIGVAL
+      real(kind=real64), dimension(N*LIM) :: BASIS
+      real(kind=real64), dimension(N*LIM + NOC*N) :: ORTHOBASIS
+      real(kind=real64), dimension(N*LIM) :: AB
+      real(kind=real64), dimension(LIM*(LIM + 1)/2) :: S
+      real(kind=real64), dimension(LIM*(LIM + 1)/2) :: TEMPS
+      real(kind=real64), dimension(LIM*LIM) :: SVEC
+      real(kind=real64), dimension(8*LIM), INTENT(INOUT) :: SCRA1
       integer, dimension(5*LIM) :: ISCRA2
       integer, dimension(LIM), intent(in) :: INCV
       integer, dimension(NUME + 1), intent(out) :: ICV
-      real(real64), dimension(NUME + 1), INTENT(INOUT) :: OLDVAL
+      real(kind=real64), dimension(NUME + 1), INTENT(INOUT) :: OLDVAL
       integer, INTENT(INOUT) :: NLOOPS
       integer, INTENT(INOUT) :: IERR
 !VAST.../MPI/ MYID(IN)

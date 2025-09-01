@@ -35,13 +35,13 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer,      intent(in)               :: K1, K2
-      real(real64), intent(in)               :: QM1, QM2, QM3, QM4
-      real(real64), intent(out)              :: AA
+      real(kind=real64), intent(in)               :: QM1, QM2, QM3, QM4
+      real(kind=real64), intent(out)              :: AA
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: IQMM1, IQMM2, IQMM3, IQMM4, IQMM12, IQMM34
-      real(real64) :: A1, W
+      real(kind=real64) :: A1, W
 !-----------------------------------------------
       AA=ZERO
       if(IK1(3) > 9) then

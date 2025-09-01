@@ -13,7 +13,7 @@
 !   M o d u l e s
 !-----------------------------------------------
       use iso_fortran_env, only: real64, int32, int64, real128
-      use grasp_utilities_interfaces
+      ! use grasp_utilities_interfaces
 !-----------------------------------------------
 !   I n t e r f a c e   B l o c k s
 !-----------------------------------------------
@@ -32,20 +32,20 @@
       integer, intent(in) :: JCOL(0:*)
       integer, intent(in) :: IROW(*)
       integer, intent(in) :: IBLOCK(*)
-      real(real64), intent(in) :: HMX(*)
-      real(real64)  :: BASIS(*)
+      real(kind=real64), intent(in) :: HMX(*)
+      real(kind=real64)  :: BASIS(*)
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
 
       integer :: NS, ICOUNT, &
          J, ISTART, ISH, II, NFOUND, INFO, IERR, IC
-      !real(real64) :: EIGVAL, WORK
+      !real(kind=real64) :: EIGVAL, WORK
 
       integer, dimension(:), pointer :: iqiwork,iqif,iqjsh
       integer, dimension(:), allocatable, target :: iwork, ifail, jsh
-      real(real64), dimension(:), pointer :: iqap,iqeig,iqvec,iqwork
-      real(real64), dimension(:), allocatable, target :: ap, eigval, vec, work
+      real(kind=real64), dimension(:), pointer :: iqap,iqeig,iqvec,iqwork
+      real(kind=real64), dimension(:), allocatable, target :: ap, eigval, vec, work
 
 !-----------------------------------------------
 !     !pointer (iqap,ap(1)),(iqeig,eigval(1)),(iqvec,vec(1))

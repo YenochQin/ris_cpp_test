@@ -1,6 +1,5 @@
 !***********************************************************************
 !                                                                      *
-      subroutine SMSNEW(DOIT,VINT,VINT2)
 !                                                                      *
 !   This routine controls the main sequence of routine calls for the   *
 !   calculation  of the  sms parameter, the electron density at the    *
@@ -39,7 +38,7 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64), dimension(NNNW,NNNW), intent(in) :: VINT, VINT2
+      real(kind=real64), dimension(NNNW,NNNW), intent(in) :: VINT, VINT2
       integer, intent(in) :: DOIT
 !-----------------------------------------------
 !  E x t e r n a l   F u n c t i o n s
@@ -57,7 +56,7 @@
       character*2  :: CK
       logical      :: GETYN,FIRSTT,VSH,NUCDE,SMSSH,YES
       logical      :: LFORDR,LTRANS,LVP,LSE,LNMS,LSMS
-      real(real64) :: CONTRI, CONTRIK1, VCOEFF
+      real(kind=real64) :: CONTRI, CONTRIK1, VCOEFF
       integer      :: I,J,K,LAB,LOC,IC,IR,ITJPOC,IIA,IIB,IIC,IID,INCOR
       integer      :: LCNUM
 !-----------------------------------------------

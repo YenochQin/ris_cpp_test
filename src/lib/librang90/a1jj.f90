@@ -18,14 +18,14 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer,      intent(in), dimension(7) :: IK, ID
-      real(real64), intent(in), dimension(3) :: BK, BD
-      real(real64), intent(in)               :: QM1
-      real(real64), intent(out)              :: A
+      real(kind=real64), intent(in), dimension(3) :: BK, BD
+      real(kind=real64), intent(in)               :: QM1
+      real(kind=real64), intent(out)              :: A
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer      :: ifAZ, ISUMA
-      real(real64) :: AB
+      real(kind=real64) :: AB
 !-----------------------------------------------
       A=ZERO
       if(QM1 < EPS) then

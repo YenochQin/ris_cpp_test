@@ -6,12 +6,12 @@
       subroutine dmerge (N, DB, DC, IDY, DA, DCONST, DL)
       use iso_fortran_env, only: real64, int32, int64, real128
       integer, intent(in) :: N
-      real(real64), dimension(*), intent(in) :: DB
-      real(real64), dimension(*), INTENT(INOUT) :: DC
+      real(kind=real64), dimension(*), intent(in) :: DB
+      real(kind=real64), dimension(*), INTENT(INOUT) :: DC
       integer, dimension(N), intent(in) :: IDY
-      real(real64), dimension(N), intent(in) :: DA
-      real(real64), intent(in) :: DCONST
-      real(real64), intent(out) :: DL
+      real(kind=real64), dimension(N), intent(in) :: DA
+      real(kind=real64), intent(in) :: DCONST
+      real(kind=real64), intent(out) :: DL
       end subroutine
       end interface
       end module

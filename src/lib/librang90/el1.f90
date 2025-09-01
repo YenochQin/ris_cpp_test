@@ -57,10 +57,10 @@
                  NE1,NE2,NUP1
       integer, dimension(2) :: J
       integer, dimension(4) :: IS,KAPS,KS
-      real(real64)          :: QM1,QM2,QM3,QM4,AA,AB,A1,BB,SI,RECC,RAG
-      real(real64), dimension(12)   :: S
-      real(real64), dimension(30)   :: PMGG,RAGG
-      real(real64), dimension(7,20) :: CONE
+      real(kind=real64)          :: QM1,QM2,QM3,QM4,AA,AB,A1,BB,SI,RECC,RAG
+      real(kind=real64), dimension(12)   :: S
+      real(kind=real64), dimension(30)   :: PMGG,RAGG
+      real(kind=real64), dimension(7,20) :: CONE
 !-----------------------------------------------
       if(JA /= JB)GO TO 9
 !

@@ -10,7 +10,7 @@
       integer, intent(in) :: M
       integer, intent(in) :: N
       integer, intent(in) :: ITIK
-      real(real64), intent(out) :: SI
+      real(kind=real64), intent(out) :: SI
 !VAST.../CONSTS/ ZERO(IN), ONE(IN)
 !VAST...Calls: IXJTIK, SIXJ5, SIXJ1, SIXJ35, SIXJ2, GRACAH1
 !VAST...Calls: SIXJ3, SIXJ4

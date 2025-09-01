@@ -29,14 +29,14 @@
 !-----------------------------------------------
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
-      real(real64), intent(in) :: ARGI, ARGR
-      real(real64), intent(out) :: RESR, RESI
+      real(kind=real64), intent(in) :: ARGI, ARGR
+      real(kind=real64), intent(out) :: RESR, RESI
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: I
-      real(real64), dimension(7) :: FN, FD
-      real(real64) :: HLNTPI, TWOI, DifF, ARGUM, CLNGI, FACNEG, ARGUR, OVLFAC, &
+      real(kind=real64), dimension(7) :: FN, FD
+      real(kind=real64) :: HLNTPI, TWOI, DifF, ARGUM, CLNGI, FACNEG, ARGUR, OVLFAC, &
          CLNGR, FAC, OBASQ, ARGUI, ARGUI2, OVLFR, OVLFI, TERMR, TERMI, ARGUR2, &
          OBASQR, OBASQI, ZFACR, ZFACI
       logical,SAVE :: FIRST, NEGARG

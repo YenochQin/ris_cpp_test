@@ -34,7 +34,7 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer, intent(in)        :: J1,J2,J3,J4,L1,L2,L3,L4,K
-      real(real64), intent(out)  :: AA
+      real(kind=real64), intent(out)  :: AA
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

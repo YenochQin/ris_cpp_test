@@ -28,7 +28,7 @@
       integer , intent(in) :: L
       integer , intent(in) :: M
       integer , intent(in) :: N
-      real(real64) , intent(out) :: RAC
+      real(kind=real64) , intent(out) :: RAC
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------

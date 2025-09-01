@@ -5,7 +5,7 @@
 !                     Gediminas Gaigalas  10/05/17
       subroutine cxk (S, IS, KAPS, NU, K, IBR, IEX)
       use iso_fortran_env, only: real64, int32, int64, real128
-      real(real64), dimension(12), INTENT(INOUT) :: S
+      real(kind=real64), dimension(12), INTENT(INOUT) :: S
       integer, dimension(4), intent(in) :: IS
       integer, dimension(4), intent(in) :: KAPS
       integer, intent(in) :: NU

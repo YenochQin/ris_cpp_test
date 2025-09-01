@@ -1,6 +1,5 @@
 !***********************************************************************
 !
-      subroutine GETMIXBLOCK(NAME, NCI)
 !
 !    Reads mixing coefficient file from block-structured format
 !
@@ -41,7 +40,7 @@
 !-----------------------------------------------
       integer :: K, IERR, IOS, NCFTOT, NVECTOT, NVECSIZ, NBLOCK, I, NVECPAT, &
          NCFPAT, NVECSIZPAT, NEAVSUM, JB, NB, NCFBLK, NEVBLK, IATJP, IASPA, J
-      real(real64) :: EAVSUM
+      real(kind=real64) :: EAVSUM
       character :: FILNAM*256, FORM*11, G92MIX*6, STATUS*3
 !-----------------------------------------------
 !

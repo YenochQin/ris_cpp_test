@@ -26,7 +26,7 @@
 !   D u m m y   A r g u m e n t s
 !-----------------------------------------------
       integer,      intent(in)  :: J, J1, J2, K1, K2
-      real(real64), intent(out) :: COEF
+      real(kind=real64), intent(out) :: COEF
 !-----------------------------------------------
       if(J == 1) then
          CALL RMEW1JJ(J1,J2,K1,K2,COEF)

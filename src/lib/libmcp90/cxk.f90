@@ -21,7 +21,7 @@
       integer, intent(in) :: IEX
       integer, intent(in) :: IS(4)
       integer, intent(in) :: KAPS(4)
-      real(real64) , INTENT(INOUT) :: S(12)
+      real(kind=real64) , INTENT(INOUT) :: S(12)
 !-----------------------------------------------
 !
       STOP 'CXK: Error '

@@ -4,11 +4,11 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       integer :: NSDIM
-      real(real64), dimension(:), pointer :: hb1, hb2, hc1, hc2, hm1, hm2
+      real(kind=real64), dimension(:), pointer :: hb1, hb2, hc1, hc2, hm1, hm2
       integer, dimension(:), pointer :: jja, jjb
       integer :: LK, KK
       integer :: NTDIM
-      real(real64), dimension(:), pointer :: xsldr, totc, totb
+      real(kind=real64), dimension(:), pointer :: xsldr, totc, totb
       integer, dimension(:), pointer :: isldr, isldr1
       integer :: NINT, NINTEG
       integer, dimension(:), pointer :: nptr, lab

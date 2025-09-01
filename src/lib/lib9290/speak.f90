@@ -34,7 +34,7 @@
       integer, intent(in) :: IA2
       integer, intent(in) :: IB2
       integer, intent(in) :: K
-      real(real64), intent(in) :: X
+      real(kind=real64), intent(in) :: X
 !-----------------------------------------------
 !
 !

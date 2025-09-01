@@ -30,12 +30,12 @@
       integer, intent(in)  :: JA1, JA2, KA, IRE
 !      integer, intent(out) :: IAT
       integer, INTENT(INOUT)      :: IAT
-      real(real64), intent(out) :: REC
+      real(kind=real64), intent(out) :: REC
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: I,LL1,JI,KK1,KK2,ITI,ITI1,ITIS,ITI1S,ifAZ
-      real(real64) :: AA, A3
+      real(kind=real64) :: AA, A3
 !-----------------------------------------------
       REC = ZERO
       AA=ONE

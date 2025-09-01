@@ -1,5 +1,6 @@
 !***********************************************************************
 !                                                                      *
+      use iso_fortran_env, only: real64
       PROGRAM RIS
 !                                                                      *
 !   Entry routine for RIS. Controls the entire computation.       *
@@ -39,7 +40,7 @@
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
-      real(real64) :: DR2
+      real(kind=real64) :: DR2
       logical   :: YES
       character :: NAME*24
       integer :: K, NCI, ncore_not_used, NOPAR

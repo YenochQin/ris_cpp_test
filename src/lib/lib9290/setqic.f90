@@ -27,11 +27,11 @@
 !   L o c a l   V a r i a b l e s
 !-----------------------------------------------
       integer :: I, J
-      real(real64), dimension(13,13) :: B13
-      real(real64), dimension(6) :: CG
-      real(real64), dimension(5,2:5) :: C5NUM
-      real(real64), dimension(6,2:6) :: C6NUM
-      real(real64) :: B13DEN, DENOM, C5DEN, C6DEN, FACTOR
+      real(kind=real64), dimension(13,13) :: B13
+      real(kind=real64), dimension(6) :: CG
+      real(kind=real64), dimension(5,2:5) :: C5NUM
+      real(kind=real64), dimension(6,2:6) :: C6NUM
+      real(kind=real64) :: B13DEN, DENOM, C5DEN, C6DEN, FACTOR
       logical :: FIRST
 !-----------------------------------------------
 !

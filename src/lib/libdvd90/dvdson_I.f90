@@ -17,11 +17,11 @@
       integer, dimension(LIM), INTENT(INOUT) :: ISELEC
       integer, intent(in) :: NIV
       integer, intent(in) :: MBLOCK
-      real(real64) :: CRITE
-      real(real64) :: CRITC
-      real(real64) :: CRITR
+      real(kind=real64) :: CRITE
+      real(kind=real64) :: CRITC
+      real(kind=real64) :: CRITR
       integer :: MAXITER
-      real(real64), dimension(IWRSZ) :: WORK
+      real(kind=real64), dimension(IWRSZ) :: WORK
       integer, intent(in) :: IWRSZ
       integer, dimension(IIWSZ) :: IWORK
       integer, intent(in) :: IIWSZ

@@ -6,8 +6,8 @@
       subroutine dinit (N, A, X, INCX)
       use iso_fortran_env, only: real64, int32, int64, real128
       integer, intent(in) :: N
-      real(real64), intent(in) :: A
-      real(real64), dimension(*), intent(out) :: X
+      real(kind=real64), intent(in) :: A
+      real(kind=real64), dimension(*), intent(out) :: X
       integer, intent(in) :: INCX
       end subroutine
       end interface

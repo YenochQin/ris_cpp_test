@@ -22,6 +22,7 @@
 !-----------------------------------------------
       use getyn_I
       use openfl_I
+      use iso_fortran_env, only: real64
       IMPLICIT NONE
 !-----------------------------------------------
 !   L o c a l   V a r i a b l e s

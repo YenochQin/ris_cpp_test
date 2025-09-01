@@ -6,7 +6,7 @@
       integer, intent(in)       :: JA1,JA2,K1,K2,KA,IRE
 !      integer, intent(out)      :: IAT
       integer, INTENT(INOUT)      :: IAT
-      real(real64), intent(out) :: RECC
+      real(kind=real64), intent(out) :: RECC
       end subroutine
       end interface
       end module

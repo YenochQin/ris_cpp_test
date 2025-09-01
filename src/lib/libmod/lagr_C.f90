@@ -4,6 +4,6 @@
 !...Modified by Charlotte Froese Fischer
 !                     Gediminas Gaigalas  10/05/17
       integer :: NEC
-      real(real64), dimension(:), pointer :: ecv
+      real(kind=real64), dimension(:), pointer :: ecv
       integer, dimension(:), pointer :: iecc
       end module lagr_C
