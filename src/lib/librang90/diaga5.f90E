@@ -1,0 +1,64 @@
+!*******************************************************************
+!                                                                  *
+      subroutine DIAGA5(NPEELGG,JA1,KA,IRE,IAT,RECC)
+!                                                                  *
+!   ---------------  SECTION REC    SUBPROGRAM 01  --------------  *
+!                                                                  *
+!     subroutine CALLED:  IXJTIK, SIXJ                             *
+!                                                                  *
+!   Written by G. Gaigalas,                                        *
+!   Transform to fortran 90/95 by G. Gaigalas       December 2012  *
+!   The last modification made by G. Gaigalas       October  2017  *
+!                                                                  *
+!*******************************************************************
+!
+!-----------------------------------------------
+!   M o d u l e s
+!-----------------------------------------------
+      use iso_fortran_env, only: real64, int32, int64, real128
+      use CONS_C,          ONLY: ZERO
+      use m_C,             ONLY: JLIST, JJC1, JJC2, JJQ1, JJQ2
+!-----------------------------------------------
+!   I n t e r f a c e   B l o c k s
+!-----------------------------------------------
+      use ixjtik_I
+      use sixj_I
+      IMPLICIT NONE
+!-----------------------------------------------
+!   D u m m y   A r g u m e n t s
+!-----------------------------------------------
+      integer, intent(in)       :: NPEELGG,JA1,KA,IRE
+!      integer, intent(out)      :: IAT
+      integer, INTENT(INOUT)      :: IAT
+      real(kind=real64), intent(out) :: RECC
+!-----------------------------------------------
+!   L o c a l   V a r i a b l e s
+!-----------------------------------------------
+      integer      :: ITI1,ITI1S,IJ1,ITI,ITIS,JI
+      real(kind=real64) :: A3
+!-----------------------------------------------
+      RECC = ZERO
+      ITI1=JJC1(NPEELGG-1)-1
+      ITI1S=JJC2(NPEELGG-1)-1
+      IJ1=JLIST(NPEELGG)
+      if(JA1 == NPEELGG) then
+        ITI=JJQ1(3,IJ1)-1
+        ITIS=JJQ2(3,IJ1)-1
+        JI=JJC1(NPEELGG-2)-1
+      else
+        JI=JJQ1(3,IJ1)-1
+        ITI=JJC1(NPEELGG-2)-1
+        ITIS=JJC2(NPEELGG-2)-1
+      END if
+      if(IRE == 0) then
+        if(IXJTIK(KA,ITIS,ITI,JI,ITI1,ITI1S) /= 0) IAT=1
+      else
+        CALL SIXJ(KA,ITIS,ITI,JI,ITI1,ITI1S,0,A3)
+        RECC=A3*DSQRT(DBLE((ITI+1)*(ITI1S+1)))
+        if(MOD(KA+JI+ITIS+ITI1,4) /= 0)RECC=-RECC
+        IAT=1
+        if(JA1 == NPEELGG)return
+        if(MOD(ITI+ITIS-ITI1S-ITI1+2*JI,4) /= 0)RECC=-RECC
+      END if
+      return
+      end subroutine DIAGA5

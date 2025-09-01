@@ -1,0 +1,134 @@
+!***********************************************************************
+!                                                                      *
+      subroutine RADGRD
+!                                                                      *
+!   This routine sets up the radial grid  R  and the associated arr-   *
+!   ays  RP  and  RPOR  in the COMMON block  /GRID/. Different grids   *
+!   are generated depending on whether or not  HP  is  zero .          *
+!                                                                      *
+!   Written by Farid A Parpia, at Oxford  Last revision: 06 Oct 1992   *
+!                                                                      *
+!***********************************************************************
+!...Translated by Pacific-Sierra Research 77to90  4.3E  10:50:19   2/14/04
+!...Modified by Charlotte Froese Fischer
+!                     Gediminas Gaigalas  10/05/17
+!-----------------------------------------------
+!   M o d u l e s
+!-----------------------------------------------
+      use iso_fortran_env, only: real64, int32, int64, real128
+      use DEBUG_C
+      use DEF_C, ONLY: PRECIS
+      use GRID_C
+      IMPLICIT NONE
+!-----------------------------------------------
+!   L o c a l   V a r i a b l e s
+!-----------------------------------------------
+      integer :: NP10, I, NB2, NROWS, II, II1, II2
+      real(kind=real64) :: EPH, ETT, ETTM1, EPSLON, A, RLAST, REST, T, RESTS, FOFR, &
+         FPRI, DELR
+!-----------------------------------------------
+!
+!
+!   RPOR(1) is never used in the program: it is arbitrarily
+!   set to zero
+!
+      NP10 = N + 10
+      R(1) = 0.0D00
+      RPOR(1) = 0.0D00
+!
+!   Now set up the grids
+!
+      if (HP == 0.0D00) then
+!        default comes here
+!
+!   Exponential grid if HP is zero
+!
+!   Initializations
+!
+         RP(1) = RNT
+         EPH = EXP(H)
+         ETT = 1.0D00
+!
+!   Set up the arrays R, RP, RPOR
+!
+         DO I = 2, NP10
+            ETT = EPH*ETT
+            ETTM1 = ETT - 1.0D00
+            R(I) = RNT*ETTM1
+            RP(I) = RNT*ETT
+            RPOR(I) = ETT/ETTM1
+         END DO
+!
+      else
+!
+!   Asymptotically-linear exponential grid otherwise:
+!
+!   Initializations
+!
+         EPSLON = 1.0D03*PRECIS
+         A = H/HP
+         RP(1) = RNT/(A*RNT + 1.0D00)
+         RLAST = 0.0D00
+         REST = 0.0D00
+!
+!   Set up the arrays R, RP, RPOR
+!
+         DO I = 2, NP10
+!
+            T = H*DBLE(I - 1)
+!
+!   Solve the implicit equation for R using the Newton-Raphson
+!   method
+!
+    2       CONTINUE
+            RESTS = REST + RNT
+            FOFR = LOG(RESTS/RNT) + A*REST - T
+            FPRI = RESTS/(A*RESTS + 1.0D00)
+            DELR = -FOFR*FPRI
+            REST = RLAST + DELR
+!
+            if (ABS(DELR/REST) < EPSLON) then
+               R(I) = REST
+               RESTS = REST + RNT
+               FPRI = RESTS/(A*RESTS + 1.0D00)
+               RP(I) = FPRI
+               RPOR(I) = FPRI/REST
+            else
+               RLAST = REST
+               GO TO 2
+            endif
+!
+         END DO
+!
+      endif
+!
+!   Debug printout
+!
+      if (LDBPR(1)) then
+         WRITE (99, 300)
+         NB2 = N/2
+         if (2*NB2 == N) then
+            NROWS = NB2
+         else
+            NROWS = NB2 + 1
+         endif
+         DO II = 1, NROWS
+            II1 = II
+            II2 = II1 + NROWS
+            if (II2 <= N) then
+               WRITE (99, 301) R(II1), RP(II1), RPOR(II1), R(II2), RP(II2), &
+                  RPOR(II2)
+            else if (II1 <= N) then
+               WRITE (99, 301) R(II1), RP(II1), RPOR(II1)
+            endif
+         END DO
+      endif
+!
+      return
+!
+  300 FORMAT(/,'From subroutine RADGRD:'/,2(&
+         ' -------- r -------- -------- r'' -------',' ------- r''/r ------'))
+  301 FORMAT(1P,6(1X,1D19.12))
+      return
+!
+      end subroutine RADGRD

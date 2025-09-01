@@ -1,0 +1,28 @@
+!***********************************************************************
+!                                                                      *
+      subroutine CXK (S,IS,KAPS,NU,K,IBR,IEX)
+!                                                                      *
+!***********************************************************************
+!...Translated by Pacific-Sierra Research 77to90  4.3E  14:04:58   1/ 3/07
+!...Modified by Charlotte Froese Fischer
+!                     Gediminas Gaigalas  10/05/17
+!-----------------------------------------------
+!   M o d u l e s
+!-----------------------------------------------
+      use iso_fortran_env, only: real64, int32, int64, real128
+      IMPLICIT NONE
+!      dimension IS(4),KAPS(4),S(12)
+!-----------------------------------------------
+!   D u m m y   A r g u m e n t s
+!-----------------------------------------------
+      integer, intent(in) :: NU
+      integer :: K
+      integer, intent(in) :: IBR
+      integer, intent(in) :: IEX
+      integer, intent(in) :: IS(4)
+      integer, intent(in) :: KAPS(4)
+      real(kind=real64) , INTENT(INOUT) :: S(12)
+!-----------------------------------------------
+!
+      STOP 'CXK: Error '
+      END

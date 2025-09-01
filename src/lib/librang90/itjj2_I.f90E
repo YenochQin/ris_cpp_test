@@ -1,0 +1,14 @@
+      MODULE itjj2_I
+      interface
+!
+      integer FUNCTION ITJJ2(IK,ID,KG1,BK,BD,IBT,BT,ITP,ITG,IQ)
+      use iso_fortran_env, only: real64, int32, int64, real128
+      integer,      intent(in)                :: KG1, IQ
+      integer,      intent(out)               :: ITP, ITG
+      integer,      intent(in),  dimension(7) :: IK, ID
+      integer,      intent(out), dimension(7) :: IBT
+      real(kind=real64), intent(in),  dimension(3) :: BK, BD
+      real(kind=real64), intent(out), dimension(3) :: BT
+      END FUNCTION
+      end interface
+      end module

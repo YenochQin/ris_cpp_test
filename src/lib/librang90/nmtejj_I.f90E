@@ -1,0 +1,8 @@
+      MODULE nmtejj_I
+      interface
+!
+      integer FUNCTION NMTEJJ(I2Q,I2J,J,NK,ND)
+      integer, intent(in) :: I2Q, I2J, J, NK, ND
+      END FUNCTION
+      end interface
+      end module

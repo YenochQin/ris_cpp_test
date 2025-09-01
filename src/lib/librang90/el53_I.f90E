@@ -1,0 +1,8 @@
+      MODULE el53_I
+      interface
+!
+      subroutine EL53(JJA,JJB,JA,JB,JC,JD,IREZ,ICOLBREI)
+      integer, intent(in) :: JJA,JJB,JA,JB,JC,JD,IREZ,ICOLBREI
+      end subroutine
+      end interface
+      end module

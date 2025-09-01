@@ -1,0 +1,13 @@
+      MODULE AWP1JJG_I
+      interface
+!
+      subroutine AWP1JJG(K1,BK2,QM1,QM2,QM3,IK,BK,ID,BD,AW)
+      use iso_fortran_env, only: real64, int32, int64, real128
+      integer,      intent(in)               :: K1
+      integer,      intent(in), dimension(7) :: IK, ID
+      real(kind=real64), intent(in)               :: BK2, QM1, QM2, QM3
+      real(kind=real64), intent(in), dimension(3) :: BK, BD
+      real(kind=real64), intent(out)              :: AW
+      end subroutine
+      end interface
+      end module

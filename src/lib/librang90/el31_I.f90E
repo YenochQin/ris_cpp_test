@@ -1,0 +1,8 @@
+      MODULE el31_I
+      interface
+!
+      subroutine EL31(JJJA,JJJB,JA,JB,JJA,JJB,JJC,JJD,ICOLBREI)
+      integer, intent(in) :: JJJA,JJJB,JA,JB,JJA,JJB,JJC,JJD,ICOLBREI
+      end subroutine
+      end interface
+      end module

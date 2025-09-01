@@ -1,0 +1,118 @@
+!***********************************************************************
+!                                                                      *
+      subroutine NUCPOT
+!                                                                      *
+!   Evaluate the nuclear potential for point and Fermi models.         *
+!                                                                      *
+!   Call(s) to: [LIB92] ES.                                            *
+!                                                                      *
+!   Written by Farid A Parpia, at Oxford  Last revision: 05 Oct 1992   *
+!                                                                      *
+!***********************************************************************
+!...Translated by Pacific-Sierra Research 77to90  4.3E  10:50:02   2/14/04
+!...Modified by Charlotte Froese Fischer
+!                     Gediminas Gaigalas  10/05/17
+!-----------------------------------------------
+!   M o d u l e s
+!-----------------------------------------------
+      use iso_fortran_env, only: real64, int32, int64, real128
+      use DEBUG_C
+      use DEF_C,           ONLY: Z, PI
+      use GRID_C
+      use NPAR_C
+      use NPOT_C,          ONLY: ZZ, NNUC
+!-----------------------------------------------
+!   I n t e r f a c e   B l o c k s
+!-----------------------------------------------
+      use es_I
+      IMPLICIT NONE
+!-----------------------------------------------
+!   L o c a l   V a r i a b l e s
+!-----------------------------------------------
+      integer :: I, NB3, NROWS, II, II1, II2, II3
+      real(kind=real64) :: C, A, ABC, TABC, ABC2, THABC2, ABC3, CBA, PI2, HPIAC2, &
+         H3PHP, S2MCBA, S3MCBA, SABC3, DMSAS, EN, ZBN, RI, RMC, RMCBA, RBC, &
+         S2RCBA, S3RCBA
+      logical :: SET
+!-----------------------------------------------
+!
+!
+!   Point nucleus
+!
+      if (NPARM == 0) then
+!
+         ZZ(:N) = Z
+!
+!   Fermi distribution
+!
+      else if (NPARM == 2) then
+!
+         C = PARM(1)
+         A = PARM(2)
+         ABC = A/C
+         TABC = 2.0D00*ABC
+         ABC2 = ABC*ABC
+         THABC2 = 3.0D00*ABC2
+         ABC3 = ABC2*ABC
+         CBA = C/A
+         PI2 = PI*PI
+         HPIAC2 = 0.5D00*PI2*ABC2
+         H3PHP = 1.5D00 + HPIAC2
+         CALL ES ((-CBA), S2MCBA, S3MCBA)
+         SABC3 = 6.0D00*ABC3
+         DMSAS = -SABC3*S3MCBA
+         EN = 1.0D00 + ABC2*PI2 + DMSAS
+         ZBN = Z/EN
+!
+         SET = .FALSE.
+         DO I = 1, N
+            RI = R(I)
+            RMC = RI - C
+            RMCBA = RMC/A
+            RBC = RI/C
+            if (RBC <= 1.0D00) then
+               CALL ES (RMCBA, S2RCBA, S3RCBA)
+               ZZ(I) = ZBN*(DMSAS + SABC3*S3RCBA + RBC*(H3PHP - THABC2*S2RCBA&
+                   - 0.5D00*RBC*RBC))
+            else
+               if (.NOT.SET) then
+                  NNUC = I
+                  SET = .TRUE.
+               endif
+               CALL ES ((-RMCBA), S2RCBA, S3RCBA)
+               ZZ(I) = Z*(1.0D00 + THABC2*(RBC*S2RCBA + TABC*S3RCBA)/EN)
+            endif
+         END DO
+      endif
+!
+      if (LDBPR(2)) then
+         WRITE (99, 300)
+         NB3 = N/3
+         if (3*NB3 == N) then
+            NROWS = NB3
+         else
+            NROWS = NB3 + 1
+         endif
+         DO II = 1, NROWS
+            II1 = II
+            II2 = II1 + NROWS
+            II3 = II2 + NROWS
+            if (II3 <= N) then
+               WRITE (99, 301) R(II1), ZZ(II1), R(II2), ZZ(II2), R(II3), ZZ(II3&
+                  )
+            else if (II2 <= N) then
+               WRITE (99, 301) R(II1), ZZ(II1), R(II2), ZZ(II2)
+            else
+               WRITE (99, 301) R(II1), ZZ(II1)
+            endif
+         END DO
+      endif
+!
+      return
+!
+  300 FORMAT(/,'From subroutine NUCPOT:'/,3(&
+         ' -------- r -------- ----- -r*V(r) -----'))
+  301 FORMAT(1P,6(1X,1D19.12))
+      return
+!
+      end subroutine NUCPOT

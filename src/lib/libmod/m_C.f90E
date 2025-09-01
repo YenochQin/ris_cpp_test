@@ -1,0 +1,15 @@
+!
+!***********************************************************************
+!                                                                      *
+      MODULE m_C
+      use iso_fortran_env, only: real64, int32, int64, real128
+      use parameter_def,   ONLY:  NNNW
+!...Created by Pacific-Sierra Research 77to90  4.3E  06:33:54  12/28/06
+!...Modified by Charlotte Froese Fischer
+!                     Gediminas Gaigalas  10/05/17
+      integer, dimension(NNNW) :: NQ1, NQ2
+      integer, dimension(NNNW) :: JJC1, JJC2
+      integer, dimension(3,NNNW) :: JJQ1, JJQ2
+      integer, dimension(NNNW) :: JLIST, KLIST
+      integer :: NPEEL, NCORE
+      end module m_C

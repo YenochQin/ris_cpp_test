@@ -1,0 +1,9 @@
+      MODULE eile_I
+      interface
+!                                                                  *
+      subroutine EILE(JA,JB,JC,JAA,JBB,JCC)
+      integer, intent(in)  :: JA, JB, JC
+      integer, intent(out) :: JAA, JBB, JCC
+      end subroutine
+      end interface
+      end module

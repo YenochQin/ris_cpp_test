@@ -1,0 +1,9 @@
+      MODULE fixd_C
+      use iso_fortran_env, only: real64, int32, int64, real128
+      use parameter_def,    ONLY: NNNW
+!...Created by Pacific-Sierra Research 77to90  4.3E  06:37:37  12/28/06
+!...Modified by Charlotte Froese Fischer
+!                     Gediminas Gaigalas  10/05/17
+      integer :: NFIX
+      logical, dimension(NNNW) :: LFIX
+      end module fixd_C
