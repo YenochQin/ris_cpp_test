@@ -5,9 +5,9 @@ __pycache__/
 
 # C extensions
 *.so
-src/ris_cpp/build/
+
 # Distribution / packaging
-# .Python
+.Python
 build/
 develop-eggs/
 dist/
@@ -170,9 +170,9 @@ cython_debug/
 # Cursor AI editor
 .cursorignore
 .cursorindexingignore
-
+.cursor/*
 # claude code
-# .CLAUDE.md
+# CLAUDE.md
 
 # System files
 .DS_Store
